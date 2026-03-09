@@ -318,12 +318,12 @@
 
   .hero-eyebrow {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.6rem;
     opacity: 1;
   }
 
@@ -1115,6 +1115,7 @@
 
     /* Hero fixes */
     .hero { padding: 5rem 1.5rem 2.5rem; min-height: unset; height: auto; }
+    .hero-eyebrow { font-size: 0.8rem; }
     .hero h1 { white-space: normal; font-size: clamp(2rem, 9vw, 3.5rem); }
     .hero-top { margin-bottom: 1.5rem; }
     .hero-darwin-sketch { display: none; }
@@ -1369,7 +1370,7 @@
   <div class="hero-quote">
     <span class="hero-quote-mark">"</span>
     <p class="hero-quote-text">Evrimin ışığı olmaksızın biyolojide hiçbir şeyin anlamı yoktur.</p>
-    <span class="hero-quote-attr">— Theodosius Dobzhansky</span>
+    <span class="hero-quote-attr">— THEDOSIUS DOBZHANSKY</span>
   </div>
 
   <a href="#etkinlikler" class="hero-scroll">
@@ -2516,6 +2517,47 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     slideIndex = (slideIndex + dir + totalSlides) % totalSlides;
     goToSlide(slideIndex);
   }
+
+  // ── Touch/Swipe desteği (mobil) ──
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchDiffX = 0;
+  let isSwiping = false;
+
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchDiffX = 0;
+    isSwiping = false;
+    clearInterval(autoSlide);
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function(e) {
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (!isSwiping && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+      isSwiping = true;
+    }
+    if (isSwiping) {
+      e.preventDefault();
+      touchDiffX = dx;
+      const pct = -slideIndex * 100 + (touchDiffX / track.offsetWidth) * 100;
+      track.style.transform = `translateX(${pct}%)`;
+    }
+  }, { passive: false });
+
+  track.addEventListener('touchend', function() {
+    track.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+    if (Math.abs(touchDiffX) > 50) {
+      if (touchDiffX > 0 && slideIndex > 0) slideMove(-1);
+      else if (touchDiffX < 0 && slideIndex < totalSlides - 1) slideMove(1);
+      else goToSlide(slideIndex);
+    } else {
+      goToSlide(slideIndex);
+    }
+    autoSlide = setInterval(() => slideMove(1), 4000);
+  });
 
   // Otomatik geçiş
   let autoSlide = setInterval(() => slideMove(1), 4000);
