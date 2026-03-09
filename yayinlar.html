@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yayınlar</title>
+<link rel="icon" type="image/png" href="images/evo_logo2.png" id="favicon">
+<script>
+  (function(){
+    var img = new Image();
+    img.onload = function(){
+      var c = document.createElement('canvas');
+      c.width = img.width; c.height = img.height;
+      var ctx = c.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      ctx.globalCompositeOperation = 'source-in';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, c.width, c.height);
+      document.getElementById('favicon').href = c.toDataURL();
+    };
+    img.src = 'images/evo_logo2.png';
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #0a0e0a;
+    --surface: #111711;
+    --surface2: #161e16;
+    --accent: #6dbf67;
+    --accent-soft: #8fd98a;
+    --text: #e8ede8;
+    --text-muted: #9aaa9a;
+    --border: rgba(168,219,104,0.15);
+    --border-soft: rgba(168,219,104,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(168,219,104,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(168,219,104,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  body > nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    height: 64px;
+    background: rgba(10,14,10,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .nav-logo-img {
+    width: 34px; height: 34px;
+    object-fit: contain;
+    mix-blend-mode: luminosity;
+    filter: brightness(1.1) contrast(1.05);
+    flex-shrink: 0;
+  }
+  .nav-logo-divider {
+    display: block;
+    height: 1.15rem; width: 1px;
+    background: rgba(168,219,104,0.35);
+    margin: 0 0.1rem;
+    font-size: 0;
+  }
+  .nav-logo-iu {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .nav-logo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+  }
+  .nav-links > li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .nav-links > li > a,
+  .nav-item-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0 1.3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.25s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+  .nav-links > li > a:hover,
+  .nav-item-btn:hover,
+  .nav-links > li.open > .nav-item-btn { color: var(--accent); }
+  .nav-active { color: var(--accent) !important; }
+
+  .nav-chevron { font-size: 0.55rem; transition: transform 0.25s; }
+  .nav-links > li.open .nav-chevron { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    min-width: 190px;
+    background: rgba(10,16,10,0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    border-top: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .nav-links > li.open .dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .dropdown a {
+    display: block;
+    padding: 0.9rem 1.6rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .dropdown a:last-child { border-bottom: none; }
+  .dropdown a:hover { color: var(--accent); background: rgba(168,219,104,0.07); }
+  .dropdown a.active-link { color: var(--accent); }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 201;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--text-muted);
+    transition: transform 0.3s, opacity 0.3s, background 0.3s;
+  }
+  .hamburger:hover span { background: var(--accent); }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── SIDE PANEL ── */
+  .side-panel {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(320px, 85vw);
+    height: 100%;
+    background: rgba(10,14,10,0.82);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--border);
+    z-index: 500;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    overflow-y: auto;
+  }
+  .side-panel.open { transform: translateX(0); }
+
+  .side-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 499;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .side-panel-overlay.open { opacity: 1; pointer-events: all; }
+
+  .side-panel-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+  .side-panel-close:hover { color: var(--text); }
+
+  .side-panel-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .side-panel-nav { display: flex; flex-direction: column; gap: 0.25rem; }
+
+  .sp-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .sp-group:last-child { border-bottom: none; }
+
+  .sp-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+    padding: 0.4rem 0 0.6rem;
+  }
+
+  .sp-group a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.6rem 0;
+    transition: color 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .sp-group a:hover { color: var(--text); }
+  .sp-main { font-size: 0.9rem !important; font-weight: 500 !important; color: var(--text) !important; }
+  .sp-current { color: var(--accent) !important; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    position: relative;
+    min-height: 44vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 8rem 4rem 4rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .page-hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.18;
+    mix-blend-mode: luminosity;
+    filter: sepia(0.4) saturate(1.4) hue-rotate(78deg) brightness(0.7) contrast(1.1);
+  }
+  .page-hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(168,219,104,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 60%, rgba(168,219,104,0.04) 0%, transparent 45%),
+      linear-gradient(to bottom, rgba(10,14,10,0.55) 0%, rgba(10,14,10,0.2) 60%, rgba(10,14,10,0.7) 100%);
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .page-hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .page-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+  }
+
+  .page-hero-sub {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 540px;
+  }
+
+  .page-hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    right: 4rem;
+    color: var(--text-muted);
+    opacity: 0.4;
+    transition: opacity 0.25s;
+    z-index: 1;
+  }
+  .page-hero-scroll:hover { opacity: 0.8; }
+  .page-hero-scroll svg { animation: scrollBounce 2.4s ease-in-out infinite; }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50%       { transform: translateY(8px); opacity: 0.8; }
+  }
+
+  /* ── YAYINLAR BÖLÜMÜ ── */
+  .yayinlar-section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 4rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .yayinlar-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('images/yayınlar/yazilar_background.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    mix-blend-mode: luminosity;
+    filter: sepia(0.4) saturate(1.4) hue-rotate(78deg) brightness(0.7) contrast(1.1);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .section-header-mg {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid rgba(168,219,104,0.5);
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.15;
+  }
+
+  .yayinlar-intro {
+    max-width: 700px;
+    margin-bottom: 3.5rem;
+  }
+
+  .yayinlar-intro p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .yayinlar-tur-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .yayinlar-tur-card {
+    padding: 1.75rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .yayinlar-tur-card:hover {
+    border-color: rgba(109,191,103,0.4);
+    transform: translateY(-3px);
+  }
+
+  .ytur-icon {
+    color: var(--accent);
+    font-size: 0.75rem;
+    margin-bottom: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .ytur-baslik {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .ytur-aciklama {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── BOŞ DURUM ── */
+  .yayinlar-bos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    border: 1px dashed rgba(109,191,103,0.2);
+    background: var(--surface);
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  .yayinlar-bos-svg {
+    width: 48px;
+    height: 48px;
+    color: rgba(109,191,103,0.3);
+    margin-bottom: 1.25rem;
+  }
+
+  .yayinlar-bos-baslik {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .yayinlar-bos-aciklama {
+    font-size: 0.875rem;
+    color: rgba(154,170,154,0.6);
+    line-height: 1.6;
+  }
+
+  /* ── BAŞVURU FORMU ── */
+  .yaz-section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 4rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .yaz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .yaz-inner {
+    max-width: 660px;
+  }
+
+  /* ── SSS ── */
+  .yaz-sss {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .yaz-sss-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sss-item {
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .sss-item:last-child { border-bottom: none; }
+
+  .sss-q {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .sss-q:hover { color: var(--accent); }
+
+  .sss-q-icon {
+    color: var(--accent);
+    font-size: 1rem;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .sss-item.open .sss-q-icon { transform: rotate(45deg); }
+  .sss-item.open .sss-q { color: var(--accent); }
+
+  .sss-a {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0;
+  }
+
+  .sss-item.open .sss-a {
+    max-height: 300px;
+    padding-bottom: 1rem;
+  }
+
+  .yaz-body {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--surface2) 100%);
+    border: 1px solid var(--border);
+    padding: 2.5rem 2.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .yaz-body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, var(--accent), rgba(168,219,104,0.2));
+  }
+
+  .yaz-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .yaz-desc strong { color: var(--text); font-weight: 500; }
+
+  .yaz-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .yaz-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .yaz-list li::before {
+    content: '';
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.7;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .yaz-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.9rem 2.2rem;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    white-space: nowrap;
+  }
+  .yaz-btn:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(168,219,104,0.25);
+  }
+  .yaz-btn::after { content: '→'; }
+
+  /* ── FOOTER ── */
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 4rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ── REVEAL ANİMASYON ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSİVE ── */
+  @media (max-width: 1024px) {
+    .yayinlar-tur-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    body > nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .page-hero { padding: 7rem 1.5rem 3.5rem; min-height: 42vh; }
+    .yayinlar-section,
+    .yaz-section { padding: 4rem 1.5rem; }
+    .yayinlar-tur-grid { grid-template-columns: 1fr; }
+    .yayinlar-bos { max-width: 100%; }
+    .yaz-body { padding: 1.8rem; }
+    .yaz-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── SIDE PANEL ── -->
+<div class="side-panel" id="side-panel">
+  <button class="side-panel-close" id="side-panel-close" aria-label="Kapat">✕</button>
+  <div class="side-panel-logo">
+    <span class="nav-logo-iu">İÜ</span>
+    <span class="nav-logo-name">Evrim Topluluğu</span>
+  </div>
+  <nav class="side-panel-nav">
+    <div class="sp-group">
+      <span class="sp-label">Etkinlikler</span>
+      <a href="index.html#etkinlikler">Yaklaşan Etkinlikler</a>
+      <a href="events.html">Tüm Etkinlikler</a>
+      <a href="makale-grubu.html">Makale Grubu</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">Yayınlar</span>
+      <a href="yayinlar.html">Yazılar & İçerikler</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">Biz Kimiz?</span>
+      <a href="index.html#biz-kimiz">Amacımız</a>
+      <a href="index.html#tab-kurulus">Kuruluş</a>
+      <a href="index.html#tab-ekip">Yönetim Kurulu</a>
+      <a href="index.html#tab-katil">Bize Katıl</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">SSS</span>
+      <a href="index.html#sss">Sıkça Sorulan Sorular</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">İletişim</span>
+      <a href="index.html#iletisim">Bize Ulaşın</a>
+    </div>
+  </nav>
+</div>
+<div class="side-panel-overlay" id="side-panel-overlay"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img class="nav-logo-img" src="images/evo_logo.png" alt="İÜ Evrim Topluluğu Logo">
+    <span class="nav-logo-divider"></span>
+    <span class="nav-logo-iu">Evrim</span>
+    <span class="nav-logo-name">Topluluğu</span>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li id="nav-etkinlikler">
+      <button class="nav-item-btn">
+        Etkinlikler&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="index.html#etkinlikler">Yaklaşan Etkinlikler</a>
+        <a href="events.html">Tüm Etkinlikler</a>
+        <a href="makale-grubu.html">Makale Grubu</a>
+      </div>
+    </li>
+    <li><a href="yayinlar.html" class="nav-active">Yayınlar</a></li>
+    <li id="nav-biz">
+      <button class="nav-item-btn">
+        Biz Kimiz?&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="index.html#biz-kimiz">Amacımız</a>
+        <a href="index.html#tab-kurulus">Kuruluş</a>
+        <a href="index.html#tab-ekip">Yönetim Kurulu</a>
+        <a href="index.html#tab-katil">Bize Katıl</a>
+      </div>
+    </li>
+    <li><a href="index.html#sss">SSS</a></li>
+    <li><a href="index.html#iletisim">İletişim</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img class="page-hero-bg-img" src="images/yayınlar/yayinlar_hero.PNG" alt="">
+    <div class="page-hero-bg-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <span class="page-hero-eyebrow">İÜ Evrim Topluluğu</span>
+    <h1 class="page-hero-title">Yayınlar</h1>
+    <p class="page-hero-sub">Evrim Topluluğu'nda yazar olmak, bilim iletişimine katkı sağlamak ister misin? Popüler bilim, çeviri, makale incelemeleri veya staj deneyimleri... Konunu seç, yazını hazırla ve formu doldurup bize gönder.</p>
+  </div>
+  <a href="#icerik" class="page-hero-scroll" aria-label="Aşağı kaydır">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </a>
+</section>
+
+<!-- ── YAYINLAR İÇERİK ── -->
+<section class="yayinlar-section" id="icerik">
+  <div class="section-header-mg reveal">
+    <div>
+      <span class="section-eyebrow">Bu Sayfada Neler Olacak?</span>
+      <h2 class="section-heading">Yayın Türleri</h2>
+    </div>
+  </div>
+
+  <div class="yayinlar-intro reveal">
+  </div>
+
+  <div class="yayinlar-tur-grid reveal">
+    <div class="yayinlar-tur-card">
+      <div class="ytur-icon">✦</div>
+      <div class="ytur-baslik">Popüler Bilim Yazıları</div>
+      <div class="ytur-aciklama">Evrimsel biyoloji ve ilgili alanlara dair temel konuları/soruları, teorileri ve araştırmaları geniş kitlelere aktaran erişilebilir yazılar</div>
+    </div>
+    <div class="yayinlar-tur-card">
+      <div class="ytur-icon">✦</div>
+      <div class="ytur-baslik">Makale İncelemeleri</div>
+      <div class="ytur-aciklama">Evrimsel biyoloji alanındaki güncel araştırma ve derleme makalelerinin özetleri.</div>
+    </div>
+    <div class="yayinlar-tur-card">
+      <div class="ytur-icon">✦</div>
+      <div class="ytur-baslik">Öğrenci Staj ve Araştırma Deneyimleri</div>
+      <div class="ytur-aciklama">Lisans & lisansüstü öğrencilerinin evrimsel biyoloji ile ilgili laboratuvar & arazi staj deneyimlerini veya araştırma süreçlerini paylaştığı bilgilendirici yazılar</div>
+    </div>
+  </div>
+</section>
+
+      
+
+<!-- ── YAZAR BAŞVURUSU ── -->
+<section class="yaz-section" id="basvuru">
+  <div class="yaz-grid">
+    <!-- SOL: Form -->
+    <div class="yaz-inner reveal">
+      <div class="section-header-mg" style="margin-bottom: 0;">
+        <div>
+          <span class="section-eyebrow">Evrim Topluluğu'nda yazılarınızı yayımlamak ister misiniz?</span>
+          <h2 class="section-heading">Başvuru Formu</h2>
+        </div>
+      </div>
+      <div class="yaz-body">
+        <p class="yaz-desc">
+          Aşağıdaki başvuru formunu doldurarak bize ulaşabilirsiniz.
+        </p>
+
+        <a href="https://forms.gle/BD6HXmRAq4uFqfV77" target="_blank" rel="noopener noreferrer" class="yaz-btn">
+          Başvuru Formunu Doldur
+        </a>
+      </div>
+    </div>
+
+    <!-- SAĞ: SSS -->
+    <div class="yaz-sss reveal">
+      <div class="section-header-mg" style="margin-bottom: 0;">
+        <div>
+          <span class="section-eyebrow">&nbsp;</span>
+          <h2 class="section-heading">Sıkça Sorulan Sorular</h2>
+        </div>
+      </div>
+      <div style="margin-top: 2rem;">
+
+      <div class="sss-item">
+        <button class="sss-q">Kimler yazı yazabilir? <span class="sss-q-icon">+</span></button>
+        <div class="sss-a">Bilimsel merakı olan herkes. Topluluk üyesi olmasanız veya biyolojik bilimlerden farklı bir disiplinde eğitim görüyor olsanız bile, evrimsel bakış açısı taşıyan içeriklerinizle katkı sunabilirsiniz. </div>
+      </div>
+
+      <div class="sss-item">
+        <button class="sss-q">Yazım süreci nasıl işliyor? <span class="sss-q-icon">+</span></button>
+        <div class="sss-a">Yazınız taslak aşamasında olsa bile başvuru formunu doldurabilirsiniz. Editör ekibimiz metni inceleyecek ve yayına hazırlık sürecinde gerekli düzenlemeler için sizinle iletişime geçecektir.  </div>
+      </div>
+
+
+      <div class="sss-item">
+        <button class="sss-q">Daha önce hiç yazı deneyimim olmadı, sorun olur mu? <span class="sss-q-icon">+</span></button>
+        <div class="sss-a">Kesinlikle hayır. Hepimiz bu süreçte öğreniyoruz. Yazınızı gönderdiğinizde, ekip arkadaşlarımız kurgu ve dil kullanımı konusunda size destek olacak ve metni birlikte geliştireceğiz.</div>
+      </div>
+
+      <div class="sss-item">
+        <button class="sss-q">Konu seçimini kendim mi yapmalıyım yoksa siz mi yönlendiriyorsunuz? <span class="sss-q-icon">+</span></button>
+        <div class="sss-a">Her ikisi de mümkün. Kendi ilgi alanınıza giren bir konuyu önerebileceğiniz gibi, eğer kararsızsanız başvuru formunu doldurup bizimle de iletişime geçebilirsiniz.</div>
+      </div>
+
+      <div class="sss-item">
+        <button class="sss-q">Düzenli yazar olma şartı var mı? <span class="sss-q-icon">+</span></button>
+        <div class="sss-a">Hayır. Topluluğumuz tek seferlik katkılara da, sürekli yazarlığa da açıktır. Ne zaman ilginizi çeken bir konu olursa veya vaktiniz olursa o zaman yazabilirsiniz.</div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">İÜ Evrim Topluluğu</div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu</div>
+</footer>
+
+<script>
+  // ── Dropdown hover ──
+  const navEtkinlikler = document.getElementById('nav-etkinlikler');
+  navEtkinlikler.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navEtkinlikler.classList.add('open'));
+  navEtkinlikler.addEventListener('mouseleave', () => navEtkinlikler.classList.remove('open'));
+
+  const navBiz = document.getElementById('nav-biz');
+  navBiz.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navBiz.classList.add('open'));
+  navBiz.addEventListener('mouseleave', () => navBiz.classList.remove('open'));
+
+  // ── Hamburger / Side Panel ──
+  const hamburger        = document.getElementById('hamburger');
+  const sidePanel        = document.getElementById('side-panel');
+  const sidePanelOverlay = document.getElementById('side-panel-overlay');
+  const sidePanelClose   = document.getElementById('side-panel-close');
+
+  function openPanel() {
+    sidePanel.classList.add('open');
+    sidePanelOverlay.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel() {
+    sidePanel.classList.remove('open');
+    sidePanelOverlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
+  sidePanelClose.addEventListener('click', closePanel);
+  sidePanelOverlay.addEventListener('click', closePanel);
+  sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
+
+  // ── SSS Accordion ──
+  document.querySelectorAll('.sss-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.sss-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.sss-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>
