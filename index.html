@@ -358,13 +358,15 @@
 
 
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 
 
 
 
-
-    to   { transform: rotate(360deg); }
-  }
+  
 
 
 
@@ -420,22 +422,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     text-decoration: none;
-    color: rgba(154,170,154,0.4);
-    transition: color 0.4s;
+    color: var(--text);
     z-index: 2;
+    transition: opacity 0.3s;
   }
-  .hero-scroll:hover { color: rgba(109,191,103,0.7); }
+  .hero-scroll:hover { opacity: 1; }
   .hero-scroll-text {
-    display: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--text-muted);
+    animation: scrollTextPulse 3s ease-in-out infinite;
   }
-  .hero-scroll-arrow {
-    animation: scrollBounce 2.4s ease-in-out infinite;
+  @keyframes scrollTextPulse {
+    0%, 100% { opacity: 0.7; }
+    50%      { opacity: 1; }
   }
-  @keyframes scrollBounce {
-    0%, 100% { transform: translateY(0); opacity: 0.3; }
-    50%       { transform: translateY(8px); opacity: 0.8; }
+  .hero-scroll-chevron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    animation: chevronBounce 2.2s ease-in-out infinite;
+  }
+  .hero-scroll-chevron svg:first-child { opacity: 0.4; }
+  .hero-scroll-chevron svg:last-child { opacity: 0.7; margin-top: -3px; }
+  @keyframes chevronBounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(6px); }
   }
 
   /* Duyuru bandı */
@@ -1374,12 +1391,10 @@
   </div>
 
   <a href="#etkinlikler" class="hero-scroll">
-    <span class="hero-scroll-text">Keşfet</span>
-    <div class="hero-scroll-arrow">
-      <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-        <line x1="8" y1="0" x2="8" y2="20" stroke="currentColor" stroke-width="1.5"/>
-        <polyline points="2,14 8,22 14,14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <span class="hero-scroll-text">Keşfetmek için kaydır</span>
+    <div class="hero-scroll-chevron">
+      <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><polyline points="1,1 7,6.5 13,1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><polyline points="1,1 7,6.5 13,1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
   </a>
 
@@ -1902,7 +1917,7 @@
     <div class="amac-grid">
       <div class="amac-text">
         <p>İstanbul Üniversitesi Evrim Topluluğu; evrimsel biyoloji ve doğa bilimlerine ilgi duyan öğrencileri bir araya getiren, bilimsel düşünceyi teşvik eden bir öğrenci kulübüdür.</p>
-        <p>Öncelikli amacımız, evrim teorisinin temellerinin öğrenciler tarafından doğru ve bilimsel gerçeklere dayalı bir biçimde öğrenilmesini sağlamak ve bu bilinci yaygınlaştırmaktır. Biyolojik bilimlerin temeli olan evrimsel mekanizmaları kavramak; her biyoloji öğrencisinin edinmesi gereken temel bir donanım olduğu gibi, yaşamın işleyişini anlamak isteyen her bölümden meraklı öğrenci için de önemli bir bakış açısıdır.</p>
+        <p>Öncelikli amacımız, evrim teorisinin temellerinin doğru ve bilimsel gerçeklere dayalı bir biçimde öğrenilmesini sağlamak ve bu bilinci yaygınlaştırmaktır. Biyolojik bilimlerin temeli olan evrimsel mekanizmaları kavramak; her biyoloji öğrencisinin edinmesi gereken temel bir donanım olduğu gibi, yaşamın işleyişini anlamak isteyen herkes için önemli bir bakış açısıdır.</p>
         <p>Bu doğrultuda Evrim Topluluğu olarak; evrimi hem biyolojik mekanizmalar bağlamında incelediğimiz hem de antropoloji, psikoloji ve bilim felsefesi gibi alanlarla kesişim noktalarını ele aldığımız etkinlikler düzenliyoruz. Etkinliklerimizde, alanında uzman akademisyenlerle öğrencileri bir araya getirmenin yanı sıra; öğrencilerin aktif rol alıp fikirlerini tartışabileceği ve sunumlar yapabileceği makale grupları oluşturuyoruz.
 
 Nihai amacımız; öğrencileri pasif bir dinleyici konumundan çıkararak, evrimi öğrendikleri, tartıştıkları ve anlattıkları interaktif bir alanda buluşturabilmektir.</p>
@@ -1966,21 +1981,21 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
       <div class="team-grid">
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Sevval Ok</div><div class="team-role">Başkan Yardımcısı</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_Sezen.jpeg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"></div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar">M</div><div class="team-name">Melsa Kurt</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melsa_kurt.jpg" alt="Melsa Kurt" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Melsa Kurt</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/zehra_gundogdu.jpeg" alt="Zehra Gündoğdu" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Zehra Gündoğdu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ipek_korucu.jpeg" alt="İpek Korucu" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">İpek Korucu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/eda_citak.jpeg" alt="Eda Çıtak" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Eda Çıtak</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar">E</div><div class="team-name">Elif Kara</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar">P</div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/elif_kara.jpeg" alt="Elif Kara" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Elif Kara</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
       </div>
     </div>
 
     <div class="period-panel" id="period-2024-2025">
       <div class="team-grid">
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_Sezen.jpeg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Başkan</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Başkan</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan Yardımcısı</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/umur_aslan.jpeg" alt="Umur Aslan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Umur Aslan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Sevval Ok</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
@@ -1989,7 +2004,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melisa_gürkan.jpeg" alt="Melisa Gürkan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Melisa Gürkan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar">P</div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
       </div>
     </div>
 
@@ -1998,11 +2013,12 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
         <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Başkan</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/umur_aslan.jpeg" alt="Umur Aslan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Umur Aslan</div><div class="team-role">Başkan Yardımcısı</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_Sezen.jpeg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/aziz_cetin.jpeg" alt="Muhammet Aziz Çetin" style="width:100%;height:100%;object-fit:contain;"></div><div class="team-name">Muhammet Aziz Çetin</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/taylan_ozgur_delibas.png" alt="Taylan Özgür Delibaş" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Taylan Özgür Delibaş</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/can_furat.png" alt="Can Furat" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Can Furat</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar">P</div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+      </div>
       </div>
     </div>
   </div>
@@ -2010,7 +2026,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   <!-- BİZE KATIL -->
   <div class="tab-panel" id="tab-katil">
     <div class="katil-intro">
-      <p>Evrim Topluluğu, etkinliklerimizde aktif rol üstlenmek ve projelerimize katkı sağlamak isteyenlerin katılımlarına yıl boyunca açıktır. Aşağıdaki görev dağılımlarından ilginizi çekeni seçerek formu doldurabilir ve ekibimize dahil olabilirsiniz.</p>
+      <p>Evrim Topluluğu, etkinliklerimizde aktif rol üstlenmek ve projelerimize katkı sağlamak isteyenlerin katılımlarına her zaman açıktır. Aşağıdaki görev dağılımlarından ilginizi çekeni seçerek formu doldurabilir ve ekibimize dahil olabilirsiniz.</p>
     </div>
 
     <div class="katil-grid">
@@ -2036,7 +2052,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
       <div class="katil-rol-card">
         <div class="katil-rol-icon">✦</div>
         <div class="katil-rol-baslik">Bilim İletişimi &amp; Yazarlık </div>
-        <div class="katil-rol-aciklama">Popüler bilim yazıları, güncel makale özetleri ve topluluk bültenlerinin hazırlanması süreçlerinde görev alır. Web sitemiz ve yayın organlarımız için bilimsel içeriklerin üretilmesi ve düzenlenmesi çalışmalarına katkı sağlar.</div>
+        <div class="katil-rol-aciklama">Popüler bilim yazıları, güncel makale özetleri ve topluluk bültenlerinin hazırlanması süreçlerinde görev alır. Web sitemiz için bilimsel içeriklerin üretilmesi ve düzenlenmesi çalışmalarına katkı sağlar.</div>
       </div>
 
       <div class="katil-rol-card">
@@ -2048,7 +2064,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
       <div class="katil-rol-card katil-form-card">
         <div class="katil-rol-icon">✦</div>
         <div class="katil-rol-baslik">Başvuru Formu</div>
-        <div class="katil-rol-aciklama">Topluluğumuza hangi alanda katkı sağlamak istediğinizi bizimle paylaşabilirsiniz. Formu dolduran herkesle en kısa sürede bireysel olarak iletişime geçiyoruz.</div>
+        <div class="katil-rol-aciklama">Topluluğumuza hangi alanda katkı sağlamak istediğinizi bizimle paylaşabilirsiniz. Formu dolduran herkesle en kısa sürede iletişime geçiyoruz.</div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrcW7oi47YIUTH4uVFkDFpfy5JKY1YCH1z5i_kt6hpCynhhA/viewform?usp=sharing&ouid=111635200072060043016" target="_blank" rel="noopener noreferrer" class="katil-btn" style="margin-top:1.4rem; display:inline-flex;">
           Formu Doldur
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2073,7 +2089,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q">Kulüpte aktif görev alabilir miyim? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Evet! Kulüp çalışmalarına katkı sağlamak isteyen herkese kapımız açık. <a href="#biz-kimiz" data-scroll-tab="katil" style="color:var(--accent);">Daha fazla bilgi için tıklayınız.</a></p></div>
+      <div class="faq-a"><p>Evet! Kulüp çalışmalarına katkı sağlamak isteyen herkese kapımız açıktır. <a href="#biz-kimiz" data-scroll-tab="katil" style="color:var(--accent);">Daha fazla bilgi için tıklayınız.</a></p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">Katılım için İstanbul Üniversitesi öğrencisi olmak zorunlu mu? <span class="faq-icon">+</span></button>
@@ -2097,7 +2113,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     </div>
     <div class="faq-item">
       <button class="faq-q">Etkinliklerden nasıl haberdar olabilirim? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>En güncel duyurular için Instagram hesabımızı takip edebilir veya sitemizdeki Yaklaşan Etkinlikler bölümünü kontrol edebilirsiniz.</p></div>
+      <div class="faq-a"><p>En güncel duyurular için <a href="https://www.instagram.com/iu.evrimtoplulugu" target="_blank" class="green-link">Instagram</a> hesabımızı takip edebilir veya sitemizdeki <a href="#etkinlikler" class="green-link">Yaklaşan Etkinlikler</a> bölümünü kontrol edebilirsiniz.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">Kulübe nasıl üye olabilirim? <span class="faq-icon">+</span></button>
@@ -2106,7 +2122,16 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   </div>
 </section>
 
+
 <style>
+  .green-link {
+    color: var(--accent);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  .green-link:hover {
+    color: var(--accent-soft);
+  }
 
   .sss-section {
     position: relative;
