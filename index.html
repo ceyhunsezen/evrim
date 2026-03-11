@@ -2624,8 +2624,8 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
       if (track && index >= 0) {
         const container = track.parentElement;
         container.scrollLeft = 0;
-        const panelWidth = container.offsetWidth;
-        track.style.transform = `translateX(-${index * panelWidth}px)`;
+        
+        track.style.transform = `translateX(-${index * 100}%)`;
       }
     }
   }
