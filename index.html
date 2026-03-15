@@ -264,6 +264,10 @@
   }
 
   .hero-bg-haeckel {
+    display: contents;
+  }
+
+  .hero-bg-haeckel img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1365,7 +1369,10 @@
 <!-- HERO -->
 <section class="hero">
   <img class="hero-bg-svg" src="images/image_1.svg" alt="">
-  <img class="hero-bg-haeckel" src="images/Header.webp" alt="">
+  <picture class="hero-bg-haeckel">
+    <source media="(max-width: 768px)" srcset="images/Header_mobile.webp">
+    <img src="images/Header.webp" alt="">
+  </picture>
   <img class="hero-darwin-sketch" src="images/hero_darwin_sketch.png" alt="">
   <div class="hdl hdl-2"></div>
     <div class="hdl hdl-3"></div>
