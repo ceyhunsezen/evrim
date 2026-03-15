@@ -260,8 +260,8 @@
     display: flex;
     align-items: baseline;
     gap: 0.45rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
   }
 
@@ -280,6 +280,19 @@
     color: var(--accent);
     margin-bottom: 0.6rem;
     font-weight: 500;
+  }
+  .side-panel-nav .sp-label {
+    color: var(--accent) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.6rem !important;
+    font-weight: 500 !important;
+    padding: 0 !important;
+  }
+  .side-panel-nav .sp-label:hover {
+    color: var(--accent-soft) !important;
+    padding-left: 0 !important;
   }
   .side-panel-nav a {
     color: var(--text-muted);
@@ -1164,13 +1177,11 @@
       <a href="makale-grubu.html" class="sp-current">Makale Grubu</a>
     </div>
     <div class="sp-group">
-      <span class="sp-label">Yayınlar</span>
-      <a href="yayinlar.html">Yazılar & İçerikler</a>
+      <a href="yayinlar.html" class="sp-label" style="display: block; text-decoration: none;">Yayınlar</a>
     </div>
     <div class="sp-group">
       <span class="sp-label">Biz Kimiz?</span>
       <a href="index.html#biz-kimiz">Amacımız</a>
-      <a href="index.html#tab-kurulus">Kuruluş</a>
       <a href="index.html#tab-ekip">Yönetim Kurulu</a>
       <a href="index.html#tab-katil">Bize Katıl</a>
     </div>
@@ -1217,7 +1228,6 @@
       </button>
       <div class="dropdown">
         <a href="index.html#biz-kimiz">Amacımız</a>
-        <a href="index.html#tab-kurulus">Kuruluş</a>
         <a href="index.html#tab-ekip">Yönetim Kurulu</a>
         <a href="index.html#tab-katil">Bize Katıl</a>
       </div>

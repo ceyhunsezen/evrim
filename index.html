@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="image" href="images/Header.webp">
+<link rel="preload" as="image" href="images/hero_darwin_sketch.png">
 <title>İÜ Evrim Topluluğu</title>
 <link rel="icon" type="image/png" href="images/evo_logo2.png" id="favicon">
 <script>
@@ -302,19 +306,6 @@
   @media (prefers-reduced-motion: reduce) {
     .hero-darwin-sketch { animation: none; opacity: 0.62; transform: perspective(700px) rotateY(-18deg) rotateX(6deg) rotate(2deg) translateY(-50%); }
   }
-
-  /* Filogenetik dal motifi — sol üst köşe */
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 280px; height: 280px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'%3E%3Cg stroke='rgba(109,191,103,0.08)' stroke-width='1' fill='none'%3E%3Cline x1='40' y1='280' x2='40' y2='140'/%3E%3Cline x1='40' y1='140' x2='10' y2='80'/%3E%3Cline x1='40' y1='140' x2='80' y2='100'/%3E%3Cline x1='10' y1='80' x2='5' y2='40'/%3E%3Cline x1='10' y1='80' x2='25' y2='50'/%3E%3Cline x1='80' y1='100' x2='60' y2='55'/%3E%3Cline x1='80' y1='100' x2='110' y2='60'/%3E%3Cline x1='60' y1='55' x2='50' y2='25'/%3E%3Cline x1='60' y1='55' x2='72' y2='20'/%3E%3Cline x1='110' y1='60' x2='100' y2='20'/%3E%3Cline x1='110' y1='60' x2='130' y2='25'/%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
-
 
   .hero-eyebrow {
     font-family: 'Outfit', sans-serif;
@@ -634,8 +625,9 @@
   .tab-btn.active { color: var(--accent); }
   .tab-btn.active::after { transform: scaleX(1); }
 
-  .tab-panel { display: none; animation: fadeIn 0.45s; }
+  .tab-panel { animation: fadeIn 0.45s; }
   .tab-panel.active { display: block; }
+  .tab-panel:not(.active) { display: none; }
 
   /* AMACIMIZ */
   .amac-grid {
@@ -1142,10 +1134,11 @@
     .tab-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; scrollbar-width: none; }
     .tab-nav::-webkit-scrollbar { display: none; }
     .tab-btn { padding: 0.9rem 1.1rem; white-space: nowrap; flex-shrink: 0; }
-    /* Tab paneller — kaydırmalı geçiş */
+    /* Tab paneller — mobil için display toggle */
     .tab-panels-container { overflow: hidden; width: 100%; }
-    .tab-panels-track { display: flex; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
-    .tab-panels-track .tab-panel { width: 100%; min-width: 100%; flex-shrink: 0; display: block !important; box-sizing: border-box; }
+    .tab-panels-track { display: block; }
+    .tab-panels-track .tab-panel { display: none; }
+    .tab-panels-track .tab-panel.active { display: block; }
 
     /* Bize Katıl */
     .katil-grid { grid-template-columns: 1fr; }
@@ -1228,8 +1221,8 @@
     display: flex;
     align-items: baseline;
     gap: 0.45rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
   }
 
@@ -1250,6 +1243,21 @@
     color: var(--accent);
     margin-bottom: 0.6rem;
     font-weight: 500;
+  }
+
+  .side-panel-nav .sp-label {
+    color: var(--accent) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.6rem !important;
+    font-weight: 500 !important;
+    padding: 0 !important;
+  }
+
+  .side-panel-nav .sp-label:hover {
+    color: var(--accent-soft) !important;
+    padding-left: 0 !important;
   }
 
   .side-panel-nav a {
@@ -1290,13 +1298,11 @@
       <a href="makale-grubu.html">Makale Grubu</a>
     </div>
     <div class="sp-group">
-      <span class="sp-label">Yayınlar</span>
-      <a href="yayinlar.html">Yazılar & İçerikler</a>
+      <a href="yayinlar.html" class="sp-label" style="display: block; text-decoration: none;">Yayınlar</a>
     </div>
     <div class="sp-group">
       <span class="sp-label">Biz Kimiz?</span>
       <a href="#biz-kimiz" data-scroll-tab="amac">Amacımız</a>
-      <a href="#biz-kimiz" data-scroll-tab="kurulus">Kuruluş</a>
       <a href="#biz-kimiz" data-scroll-tab="ekip">Yönetim Kurulu</a>
       <a href="#biz-kimiz" data-scroll-tab="katil">Bize Katıl</a>
     </div>
@@ -1346,7 +1352,6 @@
       </a>
       <div class="dropdown">
         <a href="#biz-kimiz" data-scroll-tab="amac">Amacımız</a>
-        <a href="#biz-kimiz" data-scroll-tab="kurulus">Kuruluş</a>
         <a href="#biz-kimiz" data-scroll-tab="ekip">Yönetim Kurulu</a>
         <a href="#biz-kimiz" data-scroll-tab="katil">Bize Katıl</a>
       </div>
@@ -1417,7 +1422,7 @@
     <div class="slide slide-1">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/baharpatlar_mobile.jpg">
-        <img src="images/slideshow/baharpatlar_28022026.png" alt="Dr. Bahar Patlar ile Eşeysel Seçilim Teorisi Çalıştayı" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        <img src="images/slideshow/baharpatlar_28022026.png" alt="Dr. Bahar Patlar ile Eşeysel Seçilim Teorisi Çalıştayı" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
       </picture>
       <div class="slide-caption">
         <span class="slide-caption-title">Dr. Bahar Patlar ile Eşeysel Seçilim Teorisi Çalıştayı</span>
@@ -1427,7 +1432,7 @@
     <div class="slide slide-2">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/evoneuro_ss_mobile.jpg">
-        <img src="images/slideshow/evoneuro_ss.png" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;">
+        <img src="images/slideshow/evoneuro_ss.png" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="lazy" decoding="async">
       </picture>
       <div class="slide-caption">
         <span class="slide-caption-title">Evrimsel Nörobilim Journal Club</span>
@@ -1438,7 +1443,7 @@
     <div class="slide slide-3">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/makalegrubu_ss_mobile.jpg">
-        <img src="images/slideshow/makalegrubu_Ss.png" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;">
+        <img src="images/slideshow/makalegrubu_Ss.png" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="lazy" decoding="async">
       </picture>
       <div class="slide-caption">
         <span class="slide-caption-title">Makale Grubu</span>
@@ -1448,7 +1453,7 @@
     <div class="slide slide-4">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/cmkosemen_ss_mobile.jpg">
-        <img src="images/slideshow/cmkosemen_ss.png" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;">
+        <img src="images/slideshow/cmkosemen_ss.png" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="lazy" decoding="async"
       </picture>
       <div class="slide-caption">
         <span class="slide-caption-title">C.M. Kösemen ile Paleoart & Spec Evo</span>
@@ -1492,7 +1497,7 @@
             </div>
           </div>
           <div class="etk-poster-col">
-            <img src="images/events/2526_evoneuro6 (1).jpg" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'">
+            <img src="images/events/2526_evoneuro6 (1).jpg" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1522,7 +1527,7 @@
             </div>
           </div>
           <div class="etk-poster-col">
-            <img src="images/banner/evoneuro26_banner6.png" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'">
+            <img src="images/banner/evoneuro26_banner6.png" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1550,7 +1555,7 @@
             </div>
           </div>
           <div class="etk-poster-col">
-            <img src="images/banner/baharpatlar_banner.png" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'">
+            <img src="images/banner/baharpatlar_banner.png" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'" loading="lazy" decoding="async"
           </div>
         </div>
       </div>
@@ -1900,7 +1905,6 @@
   <!-- Tabs: Amacımız | Kuruluş | Yönetim Kurulu | Bize Katıl -->
   <div class="tab-nav">
     <button class="tab-btn active" data-tab="amac">Amacımız</button>
-    <button class="tab-btn" data-tab="kurulus">Kuruluş</button>
     <button class="tab-btn" data-tab="ekip">Yönetim Kurulu</button>
     <button class="tab-btn" data-tab="katil">Bize Katıl</button>
   </div>
@@ -1934,36 +1938,6 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     </div>
   </div>
 
-  <!-- KURULUŞ -->
-  <div class="tab-panel" id="tab-kurulus">
-    <div class="kurulus-timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2023</div>
-        <div class="timeline-content">
-          <h3>Topluluğun Kuruluşu</h3>
-          <p>İstanbul Üniversitesi'nde evrimsel biyolojiye tutkulu bir grup öğrenci tarafından topluluk resmi olarak kuruldu. İlk genel kurul toplantısı gerçekleştirildi.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2024</div>
-        <div class="timeline-content">
-          <h3>İlk Büyük Etkinlikler</h3>
-          <p>İlk sempozyum ve konferans serileri düzenlendi. Topluluğun üye sayısı hızla büyüdü; farklı fakültelerden öğrenciler katıldı.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2025</div>
-        <div class="timeline-content">
-          <h3>Büyüme ve Gelişme</h3>
-          <p>Araştırma çalışma grupları oluşturuldu, arazi gezileri planlandı ve üniversiteler arası işbirlikleri hayata geçirildi.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- YÜRÜTÜCÜ EKİP -->
   <div class="tab-panel" id="tab-ekip">
     <div class="period-selector">
@@ -1974,16 +1948,16 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 
     <div class="period-panel active" id="period-2025-2026">
       <div class="team-grid">
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Sevval Ok</div><div class="team-role">Başkan Yardımcısı</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Sevval Ok</div><div class="team-role">Başkan Yardımcısı</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"></div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melsa_kurt.jpg" alt="Melsa Kurt" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Melsa Kurt</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/zehra_gundogdu.jpeg" alt="Zehra Gündoğdu" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Zehra Gündoğdu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ipek_korucu.jpeg" alt="İpek Korucu" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">İpek Korucu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melsa_kurt.jpg" alt="Melsa Kurt" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Melsa Kurt</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/zehra_gundogdu.jpeg" alt="Zehra Gündoğdu" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Zehra Gündoğdu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ipek_korucu.jpeg" alt="İpek Korucu" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">İpek Korucu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/eda_citak.jpeg" alt="Eda Çıtak" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Eda Çıtak</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/elif_kara.jpeg" alt="Elif Kara" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Elif Kara</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/eda_citak.jpeg" alt="Eda Çıtak" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Eda Çıtak</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/elif_kara.jpeg" alt="Elif Kara" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Elif Kara</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
       </div>
     </div>
@@ -2611,7 +2585,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   });
 
   // ── Tabs (Biz Kimiz içi: Amacımız / Kuruluş / Yönetim Kurulu) ──
-  const TAB_ORDER = ['amac', 'kurulus', 'ekip', 'katil'];
+  const TAB_ORDER = ['amac', 'ekip', 'katil'];
   function activateTab(id) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -2622,17 +2596,6 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
       btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
     }
     if (panel) panel.classList.add('active');
-    // Mobil: panelleri kaydır
-    if (window.innerWidth <= 768) {
-      const index = TAB_ORDER.indexOf(id);
-      const track = document.getElementById('tab-panels-track');
-      if (track && index >= 0) {
-        const container = track.parentElement;
-        container.scrollLeft = 0;
-        
-        track.style.transform = `translateX(-${index * 100}%)`;
-      }
-    }
   }
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -2750,20 +2713,13 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 
   // ── Dış sayfadan (makale-grubu vb.) hash ile tab aç ──
   (function () {
-    const tabMap = { 'tab-kurulus': 'kurulus', 'tab-ekip': 'ekip', 'tab-katil': 'katil', 'tab-amac': 'amac' };
+    const tabMap = { 'tab-ekip': 'ekip', 'tab-katil': 'katil', 'tab-amac': 'amac' };
     const hash = window.location.hash.replace('#', '');
     if (tabMap[hash]) {
       // Hash'i temizle — tarayıcının tab-panel elementine otomatik scroll yapmasını engelle
       history.replaceState(null, '', window.location.pathname);
       activateTab(tabMap[hash]);
-      function resetScrollLeft() {
-        const track = document.getElementById('tab-panels-track');
-        if (track) track.parentElement.scrollLeft = 0;
-      }
-      resetScrollLeft();
-      requestAnimationFrame(resetScrollLeft);
       setTimeout(() => {
-        resetScrollLeft();
         const el = document.getElementById('biz-kimiz');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 150);

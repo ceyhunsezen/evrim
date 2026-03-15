@@ -131,13 +131,16 @@ body > nav {
   font-size: 1.1rem; cursor: pointer; transition: color 0.2s; margin-bottom: 2rem;
 }
 .sp-close:hover { color: var(--accent); }
-.sp-logo { display: flex; align-items: baseline; gap: 0.45rem; margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+.sp-logo { display: flex; align-items: baseline; gap: 0.45rem; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
 .sp-nav { display: flex; flex-direction: column; gap: 0.2rem; }
 .sp-group { display: flex; flex-direction: column; padding: 0.7rem 0; border-bottom: 1px solid var(--border-soft); }
 .sp-group:last-child { border-bottom: none; }
+.sp-group:has(.sp-label[href="yayinlar.html"]) { border-top: 1px solid var(--border-soft); text-align: center; }
 .sp-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; font-weight: 500; }
 .sp-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; padding: 0.35rem 0; letter-spacing: 0.03em; transition: color 0.2s, padding-left 0.2s; }
 .sp-nav a:hover { color: var(--accent); padding-left: 0.35rem; }
+.sp-nav .sp-label { color: var(--accent) !important; font-size: 0.68rem !important; letter-spacing: 0.18em !important; text-transform: uppercase !important; margin-bottom: 0.5rem !important; font-weight: 500 !important; padding: 0 !important; }
+.sp-nav .sp-label:hover { color: var(--accent-soft) !important; padding-left: 0 !important; }
 .sp-main { font-size: 1rem !important; color: var(--text) !important; font-weight: 400; }
 .sp-main:hover { color: var(--accent) !important; }
 
@@ -650,13 +653,11 @@ footer {
       <a href="makale-grubu.html">Makale Grubu</a>
     </div>
     <div class="sp-group">
-      <span class="sp-label">Yayınlar</span>
-      <a href="yayinlar.html">Yazılar & İçerikler</a>
+      <a href="yayinlar.html" class="sp-label" style="display: block; text-decoration: none;">Yayınlar</a>
     </div>
     <div class="sp-group">
       <span class="sp-label">Biz Kimiz?</span>
       <a href="index.html#tab-amac">Amacımız</a>
-      <a href="index.html#tab-kurulus">Kuruluş</a>
       <a href="index.html#tab-ekip">Yönetim Kurulu</a>
       <a href="index.html#tab-katil">Bize Katıl</a>
     </div>
@@ -701,7 +702,6 @@ footer {
       <button class="nav-item-btn">Biz Kimiz?&nbsp;<span class="nav-chevron">▼</span></button>
       <div class="dropdown">
         <a href="index.html#tab-amac">Amacımız</a>
-        <a href="index.html#tab-kurulus">Kuruluş</a>
         <a href="index.html#tab-ekip">Yönetim Kurulu</a>
         <a href="index.html#tab-katil">Bize Katıl</a>
       </div>
