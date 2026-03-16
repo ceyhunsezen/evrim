@@ -1,78 +1,60 @@
 ﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KV5XFSZ09"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'G-8KV5XFSZ09');
-</script>
+  <title>Tüm Etkinlikler | İÜ Evrim Topluluğu</title>
+  <meta name="description" content="İstanbul Üniversitesi Evrim Topluluğu'nun düzenlediği tüm etkinlikler.">
+  <link rel="icon" type="image/png" href="images/evo_logo4.png">
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KV5XFSZ09"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8KV5XFSZ09');
+  </script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tüm Etkinlikler</title>
-<link rel="icon" type="image/png" href="images/evo_logo2.png" id="favicon">
-<script>
-  (function(){
-    var img = new Image();
-    img.onload = function(){
-      var c = document.createElement('canvas');
-      c.width = img.width; c.height = img.height;
-      var ctx = c.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      ctx.globalCompositeOperation = 'source-in';
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, c.width, c.height);
-      document.getElementById('favicon').href = c.toDataURL();
-    };
-    img.src = 'images/evo_logo2.png';
-  })();
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  :root {
-    --bg: #0a0e0a;
-    --surface: #111711;
-    --surface2: #161e16;
-    --accent: #6dbf67;
-    --accent-soft: #8fd98a;
-    --text: #e8ede8;
-    --text-muted: #9aaa9a;
-    --border: rgba(109,191,103,0.15);
-    --border-soft: rgba(109,191,103,0.08);
-  }
+  <style>
+    :root {
+      --bg: #0a0e0a;
+      --surface: #111711;
+      --surface2: #161e16;
+      --accent: #6dbf67;
+      --accent-soft: #8fd98a;
+      --text: #e8ede8;
+      --text-muted: #9aaa9a;
+      --border: rgba(109,191,103,0.15);
+      --border-soft: rgba(109,191,103,0.08);
+    }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+    /* İki body bloğu tek bir blokta birleştirildi */
+    body {
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-  body {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  }
-
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 50%, rgba(109,191,103,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(109,191,103,0.04) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(109,191,103,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(109,191,103,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
   /* ¦¦ NAV ¦¦ */
   body > nav {
@@ -98,8 +80,6 @@
   .nav-logo-img {
     width: 34px; height: 34px;
     object-fit: contain;
-    mix-blend-mode: luminosity;
-    filter: brightness(1.1) contrast(1.05);
     flex-shrink: 0;
   }
   .nav-logo-divider {
@@ -560,11 +540,7 @@
 
   .event-card.hidden { display: none; }
 
-  .event-card.reveal {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: none !important;
-  }
+
 
   /* Afiş */
   .ec-poster {
@@ -772,13 +748,7 @@
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
   }
 
-  /* Scroll-reveal başlangıç durumları */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+
 
   /* ¦¦ KOMPAKT İSTATİSTİK BANDI ¦¦ */
   .stats-bar {
@@ -1216,7 +1186,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <img class="nav-logo-img" src="images/evo_logo.png" alt="İÜ Evrim Topluluğu Logo">
+    <img class="nav-logo-img" src="images/evo_logo4.png" alt="İÜ Evrim Topluluğu Logo">
     <span class="nav-logo-divider"></span>
     <span class="nav-logo-iu">Evrim</span>
     <span class="nav-logo-name">Topluluğu</span>
@@ -2707,15 +2677,7 @@
 
 
 
-  // ¦¦ Scroll reveal ¦¦
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06 });
+
 
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
