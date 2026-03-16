@@ -1278,6 +1278,31 @@
   @media (max-width: 768px) {
     .hamburger { display: flex; }
   }
+  /* ── MOBİL PERFORMANS OPTİMİZASYONU ── */
+@media (max-width: 768px) {
+  /* 1. Ekran kartını yoran SVG Noise (kumlanma) efektini mobilde kapatıyoruz */
+  body {
+    background-image: none !important;
+  }
+
+  /* 2. Sabit degradeyi akışa alıyoruz (Zoom yaparken sayfa ile büyüsün, telefonu yormasın) */
+  body::before {
+    position: absolute !important;
+  }
+
+  /* 3. Ağır resim maskelerini (kenar silikleştirme) mobilde devre dışı bırakıyoruz */
+  .hero-bg-haeckel img,
+  .biz-kimiz::before,
+  .etkinlikler-section::before,
+  .sss-section::before {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  body > nav {
+    backdrop-filter: none !important;
+    background: rgba(10,14,10,0.97) !important;
+  }
+}
 </style>
 </head>
 <body>
