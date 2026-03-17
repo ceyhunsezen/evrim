@@ -43,6 +43,16 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  a:focus, button:focus, input:focus, label:focus,
+  a:focus-visible, button:focus-visible {
+  outline: none;
+  background-color: transparent;
+  } 
+
+  * {
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  }
+
   :root {
     --bg: #0a0e0a;
     --surface: #111711;
