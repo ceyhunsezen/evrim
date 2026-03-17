@@ -52,7 +52,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
@@ -289,6 +288,8 @@
     filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.15);
     mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 60%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   .hero-darwin-sketch {
@@ -485,6 +486,9 @@
     gap: 1.5rem;
     white-space: nowrap;
     animation: scrollBand 28s linear infinite;
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   .announcement-track:hover {
@@ -2193,12 +2197,18 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     line-height: 1;
     transition: transform 0.3s;
     flex-shrink: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
   }
   .faq-item.open .faq-icon { transform: rotate(45deg); }
   .faq-a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease, padding 0.3s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: max-height;
   }
   .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
   .faq-a p { font-size: 0.97rem; color: var(--text-muted); line-height: 1.75; }
