@@ -973,12 +973,13 @@
   navBiz.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navBiz.classList.add('open'));
   navBiz.addEventListener('mouseleave', () => navBiz.classList.remove('open'));
 
+  document.addEventListener('DOMContentLoaded', function() {
+
   // ── Hamburger / Side Panel ──
   const hamburger        = document.getElementById('hamburger');
   const sidePanel        = document.getElementById('side-panel');
   const sidePanelOverlay = document.getElementById('side-panel-overlay');
   const sidePanelClose   = document.getElementById('side-panel-close');
-
   function openPanel() {
     sidePanel.classList.add('open');
     sidePanelOverlay.classList.add('open');
@@ -995,7 +996,6 @@
   sidePanelClose.addEventListener('click', closePanel);
   sidePanelOverlay.addEventListener('click', closePanel);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
-
   // Swipe ile kapat
   let panelTouchStartX = 0;
   sidePanel.addEventListener('touchstart', function(e) {
@@ -1006,6 +1006,7 @@
     if (diff > 60) closePanel();
   }, {passive: true});
 
+ });
   // ── SSS Accordion ──
   document.querySelectorAll('.sss-q').forEach(btn => {
     btn.addEventListener('click', () => {
