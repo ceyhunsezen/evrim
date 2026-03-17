@@ -2635,12 +2635,13 @@
   navBiz.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navBiz.classList.add('open'));
   navBiz.addEventListener('mouseleave', () => navBiz.classList.remove('open'));
 
-  // ¦¦ Hamburger / Side Panel ¦¦
-  const hamburger = document.getElementById('hamburger');
-  const sidePanel = document.getElementById('side-panel');
-  const sidePanelOverlay = document.getElementById('side-panel-overlay');
-  const sidePanelClose = document.getElementById('side-panel-close');
+  document.addEventListener('DOMContentLoaded', function() {
 
+  // ── Hamburger / Side Panel ──
+  const hamburger        = document.getElementById('hamburger');
+  const sidePanel        = document.getElementById('side-panel');
+  const sidePanelOverlay = document.getElementById('side-panel-overlay');
+  const sidePanelClose   = document.getElementById('side-panel-close');
   function openPanel() {
     sidePanel.classList.add('open');
     sidePanelOverlay.classList.add('open');
@@ -2657,7 +2658,6 @@
   sidePanelClose.addEventListener('click', closePanel);
   sidePanelOverlay.addEventListener('click', closePanel);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
-
   // Swipe ile kapat
   let panelTouchStartX = 0;
   sidePanel.addEventListener('touchstart', function(e) {
@@ -2667,6 +2667,8 @@
     const diff = e.changedTouches[0].clientX - panelTouchStartX;
     if (diff > 60) closePanel();
   }, {passive: true});
+
+ });
 
   // ¦¦ Seri filtre butonları ¦¦
   const allCards   = document.querySelectorAll('.event-card');

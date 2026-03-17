@@ -2729,12 +2729,15 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     obs.observe(el);
-  });  // ── Hamburger / Side Panel ──
-  const hamburger = document.getElementById('hamburger');
-  const sidePanel = document.getElementById('side-panel');
-  const sidePanelOverlay = document.getElementById('side-panel-overlay');
-  const sidePanelClose = document.getElementById('side-panel-close');
+  });  
 
+ document.addEventListener('DOMContentLoaded', function() {
+
+  // ── Hamburger / Side Panel ──
+  const hamburger        = document.getElementById('hamburger');
+  const sidePanel        = document.getElementById('side-panel');
+  const sidePanelOverlay = document.getElementById('side-panel-overlay');
+  const sidePanelClose   = document.getElementById('side-panel-close');
   function openPanel() {
     sidePanel.classList.add('open');
     sidePanelOverlay.classList.add('open');
@@ -2747,11 +2750,10 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     hamburger.classList.remove('open');
     document.body.style.overflow = '';
   }
-
   hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
   sidePanelClose.addEventListener('click', closePanel);
   sidePanelOverlay.addEventListener('click', closePanel);
-
+  sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
   // Swipe ile kapat
   let panelTouchStartX = 0;
   sidePanel.addEventListener('touchstart', function(e) {
@@ -2761,6 +2763,8 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     const diff = e.changedTouches[0].clientX - panelTouchStartX;
     if (diff > 60) closePanel();
   }, {passive: true});
+
+ });
 
   // Panel içindeki linklere tıklanınca kapat
   sidePanel.querySelectorAll('a').forEach(link => {
