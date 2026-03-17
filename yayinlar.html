@@ -1017,6 +1017,16 @@
   }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
+// buradaki kod mobilde tıklanabilen şeylere tıklayınca çıkan mavi şeyi yok etmek için var ──
+<script>
+   document.addEventListener('touchstart', function(){}, {passive: true});
 
+  document.querySelectorAll('a, button, [role="button"], .tab-btn, .nav-item-btn')
+    .forEach(el => {
+      el.addEventListener('touchstart', function(e) {
+        e.currentTarget.style.webkitTapHighlightColor = 'transparent';
+      }, {passive: true});
+    });
+</script>
 </body>
 </html>
