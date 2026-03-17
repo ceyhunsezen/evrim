@@ -996,6 +996,16 @@
   sidePanelOverlay.addEventListener('click', closePanel);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
 
+  // Swipe ile kapat
+  let panelTouchStartX = 0;
+  sidePanel.addEventListener('touchstart', function(e) {
+    panelTouchStartX = e.touches[0].clientX;
+  }, {passive: true});
+  sidePanel.addEventListener('touchend', function(e) {
+    const diff = e.changedTouches[0].clientX - panelTouchStartX;
+    if (diff > 60) closePanel();
+  }, {passive: true});
+
   // ── SSS Accordion ──
   document.querySelectorAll('.sss-q').forEach(btn => {
     btn.addEventListener('click', () => {
