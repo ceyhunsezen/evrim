@@ -2655,7 +2655,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
       btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
     }
     if (panel) panel.classList.add('active');
-  }
+   }
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => activateTab(btn.dataset.tab));
@@ -2788,14 +2788,15 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 </script>
 // buradaki kod mobilde tıklanabilen şeylere tıklayınca çıkan mavi şeyi yok etmek için var ──
 <script>
-   document.addEventListener('touchstart', function(){}, {passive: true});
-
-  document.querySelectorAll('a, button, [role="button"], .tab-btn, .nav-item-btn')
-    .forEach(el => {
-      el.addEventListener('touchstart', function(e) {
-        e.currentTarget.style.webkitTapHighlightColor = 'transparent';
-      }, {passive: true});
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('touchstart', function(){}, {passive: true});
+    document.querySelectorAll('a, button, [role="button"], .tab-btn, .nav-item-btn')
+      .forEach(el => {
+        el.addEventListener('touchstart', function(e) {
+          e.currentTarget.style.webkitTapHighlightColor = 'transparent';
+        }, {passive: true});
+      });
+  });
 </script>
 </body>
 </html>
