@@ -2697,6 +2697,28 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     });
   });
 
+  // ── Tab swipe ──
+let tabTouchStartX = 0;
+const bizKimizSection = document.getElementById('biz-kimiz');
+
+bizKimizSection.addEventListener('touchstart', function(e) {
+  tabTouchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+bizKimizSection.addEventListener('touchend', function(e) {
+  const diff = e.changedTouches[0].clientX - tabTouchStartX;
+  if (Math.abs(diff) > 60) {
+    const current = TAB_ORDER.indexOf(
+      document.querySelector('.tab-btn.active')?.dataset.tab
+    );
+    if (diff < 0 && current < TAB_ORDER.length - 1) {
+      activateTab(TAB_ORDER[current + 1]);
+    } else if (diff > 0 && current > 0) {
+      activateTab(TAB_ORDER[current - 1]);
+    }
+  }
+  }, { passive: true });
+
   // ── Etkinlik kartı: badge'e göre otomatik past/upcoming stili ──
   document.querySelectorAll('.etk-badge').forEach(badge => {
     const card = badge.closest('.etk-card');
