@@ -1176,9 +1176,9 @@
     </div>
     <div class="sp-group">
       <span class="sp-label">Biz Kimiz?</span>
-      <a href="index.html#biz-kimiz">Amacımız</a>
-      <a href="index.html#tab-ekip">Yönetim Kurulu</a>
-      <a href="index.html#tab-katil">Bize Katıl</a>
+      <a href="index.html#tab-amac" data-scroll-tab="amac">Amacımız</a>
+      <a href="index.html#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+      <a href="index.html#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
     </div>
     <div class="sp-group">
       <span class="sp-label">SSS</span>
@@ -1222,9 +1222,9 @@
         Biz Kimiz?&nbsp;<span class="nav-chevron">▼</span>
       </button>
       <div class="dropdown">
-        <a href="index.html#biz-kimiz">Amacımız</a>
-        <a href="index.html#tab-ekip">Yönetim Kurulu</a>
-        <a href="index.html#tab-katil">Bize Katıl</a>
+        <a href="index.html#tab-amac" data-scroll-tab="amac">Amacımız</a>
+        <a href="index.html#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+        <a href="index.html#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
       </div>
     </li>
     <li><a href="index.html#sss">SSS</a></li>
@@ -2658,6 +2658,15 @@
   sidePanelClose.addEventListener('click', closePanel);
   sidePanelOverlay.addEventListener('click', closePanel);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
+  document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const tabId = link.dataset.scrollTab;
+      const targetHash = tabId === 'ekip' ? 'tab-ekip' : (tabId === 'katil' ? 'tab-katil' : 'tab-amac');
+      closePanel();
+      window.location.href = `index.html#${targetHash}`;
+    });
+  });
   // Swipe ile kapat
   let panelTouchStartX = 0;
   sidePanel.addEventListener('touchstart', function(e) {

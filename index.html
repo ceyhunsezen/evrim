@@ -2786,6 +2786,18 @@ bizKimizSection.addEventListener('touchend', function(e) {
   sidePanelClose.addEventListener('click', closePanel);
   sidePanelOverlay.addEventListener('click', closePanel);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
+  sidePanel.querySelectorAll('[data-scroll-tab]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const tabId = link.dataset.scrollTab;
+      activateTab(tabId);
+      setTimeout(() => {
+        const el = document.getElementById('biz-kimiz');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+      closePanel();
+    });
+  });
   // Swipe ile kapat
   let panelTouchStartX = 0;
   sidePanel.addEventListener('touchstart', function(e) {
@@ -2797,24 +2809,6 @@ bizKimizSection.addEventListener('touchend', function(e) {
   }, {passive: true});
 
  });
-
-  // Panel içindeki linklere tıklanınca kapat
-  sidePanel.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => closePanel());
-  });
-
-  // data-scroll-tab desteği
-  sidePanel.querySelectorAll('[data-scroll-tab]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const tabId = link.dataset.scrollTab;
-      if (typeof activateTab === 'function') activateTab(tabId);
-      setTimeout(() => {
-        const el = document.getElementById('biz-kimiz');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-    });
-  });
 
   // ── Dış sayfadan (makale-grubu vb.) hash ile tab aç ──
   (function () {
