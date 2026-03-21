@@ -528,8 +528,28 @@
     position: relative;
     z-index: 1;
     padding: 6rem 4rem;
-    background: var(--surface);
+    background-image: url('/images/makale grubu/background3.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .yaz-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(168,219,104,0.04) 0%, transparent 55%),
+      linear-gradient(135deg, rgba(10,14,10,0.94) 0%, rgba(18,24,18,0.92) 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .yaz-section > * {
+    position: relative;
+    z-index: 1;
   }
 
   .yaz-grid {
