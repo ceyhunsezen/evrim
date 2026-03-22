@@ -970,7 +970,14 @@
   .slide-2 .slide-placeholder { background: linear-gradient(135deg, #0e1a10 0%, #152814 50%, #0c1a0e 100%); }
   .slide-3 .slide-placeholder { background: linear-gradient(135deg, #121c12 0%, #1e2e1a 50%, #0e1a0c 100%); }
   .slide-4 .slide-placeholder { background: linear-gradient(135deg, #0c1c14 0%, #162a1c 50%, #0a1812 100%); }
-  .slide-5 .slide-placeholder { background: linear-gradient(135deg, #0e2018 0%, #1a3022 50%, #0c1c14 100%); }
+  .slide-5 .slide-placeholder {
+    background-image:
+      linear-gradient(135deg, rgba(4,8,6,0.74) 0%, rgba(4,8,6,0.58) 100%),
+      url('images/makale%20grubu/background3.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
   .slide-placeholder {
     width: 100%;
@@ -1024,6 +1031,50 @@
     font-style: italic;
     letter-spacing: 0.1em;
     color: var(--accent);
+  }
+
+  .slide-cta-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 1.25rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(10,14,10,0.72) 0%, rgba(10,14,10,0.35) 100%);
+    z-index: 2;
+  }
+
+  .slide-cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    font-style: italic;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  .slide-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.45rem;
+    border: 1px solid var(--accent);
+    background: rgba(109,191,103,0.14);
+    color: var(--accent);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  }
+
+  .slide-cta-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+    transform: translateY(-1px);
   }
 
   .slide-label {
@@ -1537,6 +1588,15 @@
       <div class="slide-caption">
         <span class="slide-caption-title">C.M. Kösemen ile Paleoart & Spec Evo</span>
         <span class="slide-caption-date">Aralık 2024</span>
+      </div>
+    </div>
+
+    <div class="slide slide-5">
+      <div class="slide-placeholder">
+        <div class="slide-cta-overlay">
+          <span class="slide-cta-title">Geçmiş ve yaklaşan tüm etkinlikler</span>
+          <a href="/tum-etkinlikler/" class="slide-cta-btn">Tüm etkinlikleri görmek için tıkla</a>
+        </div>
       </div>
     </div>
   </div>
