@@ -362,6 +362,8 @@
       background: linear-gradient(135deg, rgba(17,23,17,0.92) 0%, rgba(14,18,14,0.85) 100%);
       border: 1px solid var(--border);
       padding: 1rem;
+      content-visibility: auto;
+      contain-intrinsic-size: 420px;
     }
 
     .video-title {
@@ -466,6 +468,7 @@
       height: 100%;
       border: 0;
       display: block;
+      background: #000;
     }
 
     .video-fallback {
@@ -613,6 +616,21 @@
 
       .video-card {
         padding: 0.75rem;
+      }
+
+      .video-wrap {
+        contain: layout paint style;
+      }
+
+      .video-wrap iframe {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .classroom-panel,
+      .page-header,
+      footer {
+        contain: layout paint;
       }
 
       .video-title {
@@ -767,7 +785,7 @@
     <article class="video-card" id="derslik-5" data-classroom="Derslik 5">
       <div class="video-title">Derslik 5 Yol Tarifi</div>
       <div class="video-wrap">
-        <iframe data-video-id="v3NUMHDVPM8" src="https://www.youtube.com/embed/v3NUMHDVPM8?rel=0&playsinline=1&modestbranding=1&enablejsapi=1" title="Derslik 5 yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe data-video-id="v3NUMHDVPM8" loading="lazy" title="Derslik 5 yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <p class="video-fallback"><a href="https://www.youtube.com/watch?v=v3NUMHDVPM8" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
     </article>
@@ -775,7 +793,7 @@
     <article class="video-card" id="amfi-a" data-classroom="Amfi-A">
       <div class="video-title">Amfi-A Yol Tarifi</div>
       <div class="video-wrap">
-        <iframe data-video-id="1k8EgwZW43Y" src="https://www.youtube.com/embed/1k8EgwZW43Y?rel=0&playsinline=1&modestbranding=1&enablejsapi=1" title="Amfi-A yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe data-video-id="1k8EgwZW43Y" loading="lazy" title="Amfi-A yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <p class="video-fallback"><a href="https://www.youtube.com/watch?v=1k8EgwZW43Y" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
     </article>
@@ -897,10 +915,7 @@
       const baseOrigin = isHttpPage ? window.location.origin : 'https://iuevrim.org';
       const pageReferrer = isHttpPage ? `${window.location.origin}${window.location.pathname}` : 'https://iuevrim.org/nasil-gidilir/';
 
-      videoIframes.forEach((iframe) => {
-        const videoId = iframe.dataset.videoId;
-        if (!videoId) return;
-
+      function buildEmbedUrl(videoId) {
         const params = new URLSearchParams({
           rel: '0',
           playsinline: '1',
@@ -910,8 +925,33 @@
           widget_referrer: pageReferrer
         });
 
-        iframe.src = `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
-      });
+        return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+      }
+
+      function loadIframe(iframe) {
+        if (!iframe || iframe.dataset.loaded === '1') return;
+
+        const videoId = iframe.dataset.videoId;
+        if (!videoId) return;
+
+        iframe.src = buildEmbedUrl(videoId);
+        iframe.dataset.loaded = '1';
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            loadIframe(entry.target);
+            obs.unobserve(entry.target);
+          });
+        }, { rootMargin: '280px 0px', threshold: 0.01 });
+
+        videoIframes.forEach((iframe) => observer.observe(iframe));
+      } else {
+        videoIframes.forEach(loadIframe);
+      }
   function filterClassrooms() {
     const query = normalizeText(classroomSearch.value);
     classroomLinks.forEach(link => {
