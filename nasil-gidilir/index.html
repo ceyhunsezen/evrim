@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="referrer" content="origin-when-cross-origin">
 
   <title>Nasıl Gidilir? | İÜ Evrim Topluluğu</title>
   <meta name="description" content="Nasıl Gidilir? İstanbul Üniversitesi Fen Fakültesi">
@@ -551,11 +551,33 @@
     }
 
     @media (max-width: 768px) {
+      html { scroll-behavior: auto; }
       body > nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      body::before { position: absolute; }
-      body { background-attachment: scroll; }
+      body {
+        background-attachment: scroll;
+        background-image: none;
+      }
+      body::before {
+        display: none;
+      }
+      body > nav {
+        position: sticky;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(10,14,10,0.98);
+      }
+      .side-panel {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(10,14,10,0.96);
+      }
+      .page-header,
+      .video-card,
+      .classroom-panel {
+        background: rgba(14,18,14,0.94);
+      }
 
       .page {
         padding: 6rem 1rem 2.25rem;
@@ -619,14 +641,31 @@
       }
 
       .classroom-list {
-        display: none;
+        display: flex;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transform: translateY(-6px);
+        transition: max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease, transform 0.3s ease;
       }
 
       .classroom-panel.show-list .classroom-list {
-        display: flex;
+        max-height: 52vh;
+        opacity: 1;
+        overflow-y: auto;
+        pointer-events: auto;
+        transform: translateY(0);
       }
 
       footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
     }
 
     @media (max-width: 420px) {
@@ -728,7 +767,7 @@
     <article class="video-card" id="derslik-5" data-classroom="Derslik 5">
       <div class="video-title">Derslik 5 Yol Tarifi</div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/v3NUMHDVPM8?rel=0&playsinline=1&modestbranding=1&origin=https%3A%2F%2Fiuevrim.org&widget_referrer=https%3A%2F%2Fiuevrim.org%2Fnasil-gidilir%2F" title="Derslik 5 yol tarifi videosu" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe data-video-id="v3NUMHDVPM8" src="https://www.youtube.com/embed/v3NUMHDVPM8?rel=0&playsinline=1&modestbranding=1&enablejsapi=1" title="Derslik 5 yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <p class="video-fallback">Açılmazsa: <a href="https://www.youtube.com/watch?v=v3NUMHDVPM8" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
     </article>
@@ -736,7 +775,7 @@
     <article class="video-card" id="amfi-a" data-classroom="Amfi-A">
       <div class="video-title">Amfi-A Yol Tarifi</div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/1k8EgwZW43Y?rel=0&playsinline=1&modestbranding=1&origin=https%3A%2F%2Fiuevrim.org&widget_referrer=https%3A%2F%2Fiuevrim.org%2Fnasil-gidilir%2F" title="Amfi-A yol tarifi videosu" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe data-video-id="1k8EgwZW43Y" src="https://www.youtube.com/embed/1k8EgwZW43Y?rel=0&playsinline=1&modestbranding=1&enablejsapi=1" title="Amfi-A yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <p class="video-fallback">Açılmazsa: <a href="https://www.youtube.com/watch?v=1k8EgwZW43Y" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
     </article>
@@ -852,6 +891,27 @@
     });
   }
 
+
+      const videoIframes = Array.from(document.querySelectorAll('.video-wrap iframe[data-video-id]'));
+      const isHttpPage = window.location.protocol === 'https:' || window.location.protocol === 'http:';
+      const baseOrigin = isHttpPage ? window.location.origin : 'https://iuevrim.org';
+      const pageReferrer = isHttpPage ? `${window.location.origin}${window.location.pathname}` : 'https://iuevrim.org/nasil-gidilir/';
+
+      videoIframes.forEach((iframe) => {
+        const videoId = iframe.dataset.videoId;
+        if (!videoId) return;
+
+        const params = new URLSearchParams({
+          rel: '0',
+          playsinline: '1',
+          modestbranding: '1',
+          enablejsapi: '1',
+          origin: baseOrigin,
+          widget_referrer: pageReferrer
+        });
+
+        iframe.src = `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+      });
   function filterClassrooms() {
     const query = normalizeText(classroomSearch.value);
     classroomLinks.forEach(link => {
