@@ -665,11 +665,12 @@
         overflow: hidden;
         pointer-events: none;
         transform: translateY(-6px);
-        transition: max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease, transform 0.3s ease;
+        will-change: max-height, opacity, transform;
+        transition: max-height 0.48s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.32s ease, transform 0.38s ease;
       }
 
       .classroom-panel.show-list .classroom-list {
-        max-height: 52vh;
+        max-height: var(--classroom-list-open-height, 52vh);
         opacity: 1;
         overflow-y: auto;
         pointer-events: auto;
@@ -968,6 +969,15 @@
     classroomToggle.textContent = isOpen ? 'Tüm sınıfları gizle' : 'Tüm sınıfları gör';
   }
 
+  function updateClassroomListHeight() {
+    if (!classroomPanel || !classroomList) return;
+
+    const maxViewportHeight = Math.floor(window.innerHeight * 0.52);
+    const contentHeight = classroomList.scrollHeight;
+    const openHeight = Math.min(contentHeight, maxViewportHeight);
+    classroomPanel.style.setProperty('--classroom-list-open-height', `${Math.max(openHeight, 0)}px`);
+  }
+
   function scrollToClassroom(targetId) {
     if (!targetId) return;
     const target = document.getElementById(targetId);
@@ -989,6 +999,7 @@
 
   classroomSearch.addEventListener('input', () => {
     const hasQuery = normalizeText(classroomSearch.value).length > 0;
+    updateClassroomListHeight();
     setClassroomPanelOpen(hasQuery && window.matchMedia('(max-width: 768px)').matches);
     filterClassrooms();
     updateSuggestions();
@@ -1001,14 +1012,23 @@
   if (classroomToggle && classroomPanel) {
     classroomToggle.addEventListener('click', () => {
       const isOpen = !classroomPanel.classList.contains('show-list');
+      updateClassroomListHeight();
       setClassroomPanelOpen(isOpen);
       if (isOpen) {
         classroomLinks.forEach(link => {
           link.parentElement.style.display = '';
         });
+        updateClassroomListHeight();
       }
     });
   }
+
+  window.addEventListener('resize', () => {
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+    updateClassroomListHeight();
+  });
+
+  updateClassroomListHeight();
 
   classroomLinks.forEach(link => {
     link.addEventListener('click', (e) => {
