@@ -1559,6 +1559,29 @@
     if (diff > 60) closePanel();
   }, {passive: true});
 
+  const buildRouteUrl = (locationText) => {
+    const normalized = locationText.toLocaleLowerCase('tr-TR');
+    if (normalized.includes('derslik 5')) return '/nasil-gidilir/#derslik-5';
+    if (normalized.includes('amfi a')) return '/nasil-gidilir/#amfi-a';
+    return '/nasil-gidilir/';
+  };
+
+  document.querySelectorAll('.blog-card-meta span').forEach((metaItem) => {
+    const text = metaItem.textContent || '';
+    if (!text.includes('📍') || metaItem.querySelector('a')) return;
+
+    const link = document.createElement('a');
+    link.href = buildRouteUrl(text);
+    link.textContent = text.trim();
+    link.style.color = 'inherit';
+    link.style.textDecoration = 'underline';
+    link.style.textUnderlineOffset = '2px';
+    link.style.cursor = 'pointer';
+
+    metaItem.textContent = '';
+    metaItem.appendChild(link);
+  });
+
  });
 
   // ── Makale slider butonları ──
