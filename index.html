@@ -1548,8 +1548,20 @@
 
 <!-- FOTO SLIDESHOW -->
 <div class="photo-slideshow">
+
   <div class="slideshow-track" id="slideshow-track">
     <div class="slide slide-1">
+      <picture style="width:100%;height:100%;display:block;">
+        <source media="(max-width: 768px)" srcset="images/slideshow/cansusaracoglu_slider_mobile.webp">
+        <img src="images/slideshow/cansusaracoglu_slider_desktop.webp" alt="Cansu Saraçoğlu ile Mercanlarda Popülasyon Genetiği" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="eager" decoding="async">
+      </picture>
+      <div class="slide-caption">
+        <span class="slide-caption-title">Cansu Saraçoğlu ile Mercanlarda Populasyon Genetiği</span>
+        <span class="slide-caption-date">Nisan 2026</span>
+      </div>
+    </div>
+
+    <div class="slide slide-2">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider1_mobile.webp">
         <img src="images/slideshow/slider1_desktop.webp" alt="Dr. Bahar Patlar ile Eşeysel Seçilim Teorisi Çalıştayı" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1559,7 +1571,8 @@
         <span class="slide-caption-date">Şubat 2026</span>
       </div>
     </div>
-    <div class="slide slide-2">
+
+    <div class="slide slide-3">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider2_mobile.webp">
         <img src="images/slideshow/slider2_desktop.webp" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1570,7 +1583,7 @@
       </div>
     </div>
 
-    <div class="slide slide-3">
+    <div class="slide slide-4">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider3_mobile.webp">
         <img src="images/slideshow/slider3_desktop.webp" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1580,7 +1593,8 @@
         <span class="slide-caption-date"></span>
       </div>
     </div>
-    <div class="slide slide-4">
+
+    <div class="slide slide-5">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider4_mobile.webp">
         <img src="images/slideshow/slider4_desktop.webp" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="lazy" decoding="async">
@@ -1591,7 +1605,7 @@
       </div>
     </div>
 
-    <div class="slide slide-5">
+    <div class="slide slide-6">
       <div class="slide-placeholder">
         <div class="slide-cta-overlay">
           <span class="slide-cta-title">Geçmiş ve yaklaşan tüm etkinlikler</span>
@@ -1614,6 +1628,35 @@
 
   <div class="etk-timeline">
     <!-- Yaklaşan -->
+     <div class="etk-item upcoming" data-type="upcoming">
+      <div class="etk-card etk-card-upcoming">
+        <div class="etk-card-inner">
+          <div class="etk-date-col">
+            <div class="etk-date-tag">
+              <div class="etk-date-box">
+                <div class="etk-day">16</div>
+                <div class="etk-month">Nis</div>
+              </div>
+              <div class="etk-year">2026</div>
+            </div>
+          </div>
+          <div class="etk-content-col">
+            <span class="etk-badge upcoming-badge">Yaklaşan</span>
+            <h3 class="etk-title">Cansu Saraçoğlu ile Mercanlarda Populasyon Genetiği</h3>
+            <p class="etk-desc">🌊Deniz biyolojisi ve evrimi bir araya getiren bir etkinlikle sizlerleyiz! Cansu Saraçoğlu ile gerçekleştireceğimiz bu etkinliğin konusu: Mercanlarda Populasyon Genetiği ve Evrimsel Süreçler!</p>
+            <div class="etk-meta">
+              <span>📍 Derlik 5</span>
+              <span>🕒 16.00</span>
+            </div>
+          </div>
+          <div class="etk-poster-col">
+            <img src="images/events/cansusaracoglu_afis.webp" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+     </div>
+
+  
      <div class="etk-item past" data-type="past">
       <div class="etk-card etk-card-past">
         <div class="etk-card-inner">
@@ -1672,33 +1715,7 @@
       </div>
     </div>
 
-    <div class="etk-item past" data-type="past">
-      <div class="etk-card etk-card-past">
-        <div class="etk-card-inner">
-          <div class="etk-date-col">
-            <div class="etk-date-tag">
-              <div class="etk-date-box">
-                <div class="etk-day">28</div>
-                <div class="etk-month">şUB</div>
-              </div>
-              <div class="etk-year">2026</div>
-            </div>
-          </div>
-          <div class="etk-content-col">
-            <span class="etk-badge past-badge">Geçmiş</span>
-            <h3 class="etk-title">Dr. Bahar Patlar ile Eşeysel Seçilim Çalıştayı</h3>
-            <p class="etk-desc">Eşeysel seçilim teorisini tarihsel, felsefi ve biyolojik bağlamda bütüncül bir bakış açısıyla tartışacağımız kapsamlı bir çalıştay sizleri bekliyor!</p>
-            <div class="etk-meta">
-              <span>📍 Amfi A</span>
-              <span>🕒 12:00 – 18:30</span>
-            </div>
-          </div>
-          <div class="etk-poster-col">
-            <img src="images/events/baharpatlar_banner.webp" alt="Etkinlik afişi" onerror="this.closest('.etk-poster-col').style.display='none'" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     </div>
 
