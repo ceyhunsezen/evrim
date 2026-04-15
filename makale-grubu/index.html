@@ -1,0 +1,1639 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Makale Grubu | İÜ Evrim Topluluğu</title>
+  <meta name="description" content="Makale Grubu, İstanbul Üniversitesi Evrim Topluluğu bünyesinde yürütülen, öğrencilerin bilimsel araştırma ve sunum yetkinliklerini geliştirmeyi hedefleyen bir Journal Club serisidir. ">
+  <link rel="icon" type="image/png" href="/images/evo_logo4.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KV5XFSZ09"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8KV5XFSZ09');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #0a0e0a;
+    --surface: #111711;
+    --surface2: #161e16;
+    --accent: #6dbf67;
+    --accent-soft: #8fd98a;
+    --text: #e8ede8;
+    --text-muted: #9aaa9a;
+    --border: rgba(168,219,104,0.15);
+    --border-soft: rgba(168,219,104,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(168,219,104,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(168,219,104,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  body > nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    height: 64px;
+    background: rgba(10,14,10,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .nav-logo-img {
+    width: 34px; height: 34px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .nav-logo-divider {
+    display: block;
+    height: 1.15rem; width: 1px;
+    background: rgba(168,219,104,0.35);
+    margin: 0 0.1rem;
+    font-size: 0;
+  }
+  .nav-logo-iu {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .nav-logo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+  }
+  .nav-links > li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .nav-links > li > a,
+  .nav-item-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0 1.3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.25s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+  .nav-links > li > a:hover,
+  .nav-item-btn:hover,
+  .nav-links > li.open > .nav-item-btn { color: var(--accent); }
+  .nav-active { color: var(--accent) !important; }
+
+  .nav-chevron { font-size: 0.55rem; transition: transform 0.25s; }
+  .nav-links > li.open .nav-chevron { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    min-width: 190px;
+    background: rgba(10,16,10,0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    border-top: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .nav-links > li.open .dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .dropdown a {
+    display: block;
+    padding: 0.9rem 1.6rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .dropdown a:last-child { border-bottom: none; }
+  .dropdown a:hover { color: var(--accent); background: rgba(168,219,104,0.07); }
+  .dropdown a.active-link { color: var(--accent); }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 201;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--text-muted);
+    transition: transform 0.3s, opacity 0.3s, background 0.3s;
+  }
+  .hamburger:hover span { background: var(--accent); }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── SIDE PANEL ── */
+  .side-panel {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(320px, 85vw);
+    height: 100%;
+    background: rgba(10,14,10,0.82);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--border);
+    z-index: 500;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    overflow-y: auto;
+  }
+  .side-panel.open { transform: translateX(0); }
+
+  .side-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 499;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .side-panel-overlay.open { opacity: 1; pointer-events: all; }
+
+  .side-panel-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    transition: color 0.2s;
+    margin-bottom: 2rem;
+  }
+  .side-panel-close:hover { color: var(--accent); }
+
+  .side-panel-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .side-panel-nav { display: flex; flex-direction: column; gap: 0.3rem; }
+  .sp-group {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .sp-group:last-child { border-bottom: none; }
+  .sp-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+  .side-panel-nav .sp-label {
+    color: var(--accent) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.6rem !important;
+    font-weight: 500 !important;
+    padding: 0 !important;
+  }
+  .side-panel-nav .sp-label:hover {
+    color: var(--accent-soft) !important;
+    padding-left: 0 !important;
+  }
+  .side-panel-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+    letter-spacing: 0.04em;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .side-panel-nav a:hover { color: var(--accent); padding-left: 0.4rem; }
+  .sp-main { font-size: 1rem !important; color: var(--text) !important; font-weight: 400; }
+  .sp-main:hover { color: var(--accent) !important; }
+  .sp-current { color: var(--accent) !important; }
+
+  /* ── HERO (PLACEHOLDER) ── */
+  /*
+   * ===============================================================
+   *  HERO — Kullanıcı bu bölümü özelleştirecek
+   *  Mevcut içerik geçici placeholder'dır.
+   * ===============================================================
+   */
+  .page-hero {
+    position: relative;
+    z-index: 1;
+    padding: 9rem 4rem 4rem;
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/makale_grubu_hero.webp');
+    background-size: cover;
+    background-position: center 60%;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .page-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,14,10,0.45);
+  }
+
+  /* Sol üst köşe filogenetik dal motifi */
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 280px; height: 280px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'%3E%3Cg stroke='rgba(168,219,104,0.08)' stroke-width='1' fill='none'%3E%3Cline x1='40' y1='280' x2='40' y2='140'/%3E%3Cline x1='40' y1='140' x2='10' y2='80'/%3E%3Cline x1='40' y1='140' x2='80' y2='100'/%3E%3Cline x1='10' y1='80' x2='5' y2='40'/%3E%3Cline x1='10' y1='80' x2='25' y2='50'/%3E%3Cline x1='80' y1='100' x2='60' y2='55'/%3E%3Cline x1='80' y1='100' x2='110' y2='60'/%3E%3Cline x1='60' y1='55' x2='50' y2='25'/%3E%3Cline x1='60' y1='55' x2='72' y2='20'/%3E%3Cline x1='110' y1='60' x2='100' y2='20'/%3E%3Cline x1='110' y1='60' x2='130' y2='25'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  .page-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.8rem;
+  }
+  .page-hero h1 em { font-style: normal; color: var(--accent); }
+
+  .page-hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 520px;
+    padding-left: 1.2rem;
+    border-left: 2px solid rgba(168,219,104,0.4);
+  }
+
+  .page-hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(154,170,154,0.35);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .page-hero-scroll:hover { color: rgba(168,219,104,0.6); }
+  .page-hero-scroll svg { animation: scrollBounce 2.4s ease-in-out infinite; }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50%       { transform: translateY(8px); opacity: 0.8; }
+  }
+
+  /* ── AYLIK MAKALELER ── */
+  .articles-section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 4rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .articles-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(168,219,104,0.04) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .articles-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/background1.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .articles-section > * { position: relative; z-index: 1; }
+
+  .section-header-mg {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid rgba(168,219,104,0.5);
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.15;
+  }
+  .section-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 560px;
+    margin-top: 0.6rem;
+  }
+
+  /* Makale slider */
+  .articles-slider-wrap {
+    position: relative;
+  }
+  .articles-slider {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+  }
+  .articles-slider::-webkit-scrollbar { display: none; }
+
+  .article-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: linear-gradient(160deg, var(--bg) 0%, var(--surface2) 100%);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+  .article-card::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(168,219,104,0.15));
+    opacity: 0.35;
+    transition: opacity 0.35s;
+  }
+  .article-card:hover {
+    border-color: rgba(168,219,104,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  }
+  .article-card:hover::before { opacity: 1; }
+
+  .article-card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .article-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s;
+    opacity: 0.85;
+  }
+  .article-card:hover .article-card-img img { opacity: 1; }
+  .article-card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+    position: relative;
+  }
+  .article-card-img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(168,219,104,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168,219,104,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .article-card-body {
+    padding: 1.2rem 1.3rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.5rem;
+  }
+
+  .article-month-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(168,219,104,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(168,219,104,0.2);
+    padding: 0.15rem 0.6rem;
+    align-self: flex-start;
+  }
+
+  .article-journal {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: rgba(168,219,104,0.55);
+    font-weight: 500;
+  }
+
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--text);
+    transition: color 0.25s;
+    flex: 1;
+  }
+  .article-card:hover .article-title { color: var(--accent); }
+
+  .article-authors {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .article-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0.4rem;
+    font-weight: 500;
+  }
+  .article-cta::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+  .article-card:hover .article-cta::after { transform: translateX(4px); }
+
+  /* Slider nav butonları */
+  .slider-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+  }
+  .slider-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 34px; height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .slider-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── HAKKINDA ── */
+  .about-section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 4rem;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .about-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/background2.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .about-section > * { position: relative; z-index: 1; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+  }
+  .about-text p + p { margin-top: 1.1rem; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .about-card {
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--border-soft);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+    position: relative;
+    transition: border-color 0.35s;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .about-card:hover { border-color: rgba(168,219,104,0.3); }
+
+  .about-card-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.45rem;
+    font-weight: 500;
+  }
+  .about-card-text {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── GEÇMİŞ ETKİNLİKLER ── */
+  .blog-section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 4rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .blog-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/background3.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.06;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2.5) hue-rotate(78deg) brightness(0.55) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .blog-section > * { position: relative; z-index: 1; }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .blog-card {
+    background: linear-gradient(160deg, var(--bg) 0%, var(--surface2) 100%);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+  }
+  .blog-card::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(168,219,104,0.15));
+    opacity: 0.3;
+    transition: opacity 0.35s;
+  }
+  .blog-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,219,104,0.1);
+  }
+  .blog-card:hover::before { opacity: 1; }
+
+  .blog-card-poster {
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    overflow: hidden;
+    position: relative;
+  }
+  .blog-card-poster img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.88;
+    transition: opacity 0.3s, transform 0.4s;
+  }
+  .blog-card:hover .blog-card-poster img { opacity: 1; transform: scale(1.02); }
+  .blog-card-poster-placeholder {
+    width: 100%; height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+    position: relative;
+  }
+  .blog-card-poster-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(168,219,104,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168,219,104,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .blog-card-poster-placeholder svg { opacity: 0.15; position: relative; z-index: 1; }
+
+  .blog-card-body {
+    padding: 1.2rem 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.5rem;
+  }
+
+  .blog-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .blog-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: rgba(168,219,104,0.45);
+    line-height: 1;
+  }
+
+  .blog-card-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .blog-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text);
+    transition: color 0.25s;
+  }
+  .blog-card:hover .blog-card-title { color: var(--accent); }
+
+  .blog-card-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .blog-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .blog-card-read {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 0.2rem;
+    transition: gap 0.2s;
+  }
+  .blog-card-read::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+  .blog-card:hover .blog-card-read::after { transform: translateX(4px); }
+
+  /* Sayfalara gidemeyen (henüz hazır değil) kartlar */
+  .blog-card.no-post {
+    cursor: default;
+  }
+  .blog-card.no-post:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(168,219,104,0.2);
+  }
+  .blog-card.no-post:hover .blog-card-title { color: var(--text); }
+  .blog-card-coming {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.5;
+    margin-top: 0.2rem;
+  }
+
+  /* ── FORM SECTION ── */
+  .form-section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 4rem;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .form-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/background1.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .form-section > * { position: relative; z-index: 1; }
+
+  .form-inner {
+    max-width: 700px;
+  }
+
+  .form-body {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+    border: 1px solid var(--border);
+    padding: 2.5rem 2.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, var(--accent), rgba(168,219,104,0.2));
+  }
+
+  .form-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .form-desc strong { color: var(--text); font-weight: 500; }
+
+  .form-hint-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .form-hint-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .form-hint-list li::before {
+    content: '';
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.7;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .form-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.9rem 2.2rem;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    white-space: nowrap;
+  }
+  .form-cta-btn:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(168,219,104,0.25);
+  }
+  .form-cta-btn::after { content: '→'; }
+  .form-cta-btn--ghost {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid rgba(168,219,104,0.45);
+  }
+  .form-cta-btn--ghost:hover {
+    background: rgba(168,219,104,0.08);
+    box-shadow: 0 6px 18px rgba(168,219,104,0.12);
+  }
+  .about-form-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.8rem;
+  }
+
+  /* ── FOTO GALERİ ── */
+  .gallery-section {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 0 3rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .gallery-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/background2.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .gallery-section > * { position: relative; z-index: 1; }
+  .gallery-section-header {
+    padding: 0 4rem 2rem;
+  }
+  .gallery-strip {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 4rem;
+    cursor: grab;
+  }
+  .gallery-strip:active { cursor: grabbing; }
+  .gallery-strip::-webkit-scrollbar { display: none; }
+  .gallery-item {
+    flex: 0 0 320px;
+    height: 215px;
+    scroll-snap-align: start;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.82;
+    transition: opacity 0.3s, transform 0.4s;
+  }
+  .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
+  .gallery-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    padding: 0 4rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ── REVEAL ANİMASYON ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── RESPONSİVE ── */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  @media (max-width: 768px) {
+    body > nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .page-hero { padding: 4.5rem 1.5rem 1.5rem; min-height: 28vh; }
+    .page-hero-bg {
+      background-image: url('/images/makale grubu/makalegrubu_hero_mobile.webp');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    .articles-section,
+    .about-section,
+    .blog-section,
+    .form-section { padding: 3.5rem 1.5rem; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .form-body { padding: 1.8rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .gallery-section { padding: 2.5rem 0 2rem; }
+    .gallery-section-header { padding: 0 1.5rem 1.5rem; }
+    .gallery-strip { padding: 0 1.5rem; }
+    .gallery-nav { padding: 0 1.5rem; }
+    .gallery-item { flex: 0 0 260px; height: 175px; }
+  }
+ /* ── MOBİL PERFORMANS OPTİMİZASYONU ── */
+@media (max-width: 768px) {
+  /* 1. Ekran kartını yoran SVG Noise (kumlanma) efektini mobilde kapatıyoruz */
+  body {
+    background-image: none !important;
+  }
+
+  /* 2. Sabit degradeyi akışa alıyoruz (Zoom yaparken sayfa ile büyüsün, telefonu yormasın) */
+  body::before {
+    position: absolute !important;
+  }
+
+  /* 3. Ağır resim maskelerini (kenar silikleştirme) mobilde devre dışı bırakıyoruz */
+  .hero-bg-haeckel img,
+  .biz-kimiz::before,
+  .etkinlikler-section::before,
+  .sss-section::before {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  body > nav {
+    backdrop-filter: none !important;
+    background: rgba(10,14,10,0.97) !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ── SIDE PANEL ── -->
+<div class="side-panel" id="side-panel">
+  <button class="side-panel-close" id="side-panel-close" aria-label="Kapat">✕</button>
+  <a href="/" class="side-panel-logo" style="text-decoration: none;">
+    <span class="nav-logo-iu">İÜ</span>
+    <span class="nav-logo-name">Evrim Topluluğu</span>
+  </a>
+  <nav class="side-panel-nav">
+    <div class="sp-group">
+      <span class="sp-label">Etkinlikler</span>
+      <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
+      <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+      <a href="/makale-grubu/" class="sp-current">Makale Grubu</a>
+      <a href="/nasil-gidilir/">Nasıl Gidilir?</a>
+    </div>
+    <div class="sp-group">
+      <a href="/yayinlar/" class="sp-label" style="display: block; text-decoration: none;">Yayınlar</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">Biz Kimiz?</span>
+      <a href="/#tab-amac" data-scroll-tab="amac">Amacımız</a>
+      <a href="/#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+      <a href="/#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
+    </div>
+    <div class="sp-group">
+      <a href="/#sss" class="sp-label" style="display: block; text-decoration: none;">SSS</a>
+    </div>
+    <div class="sp-group">
+      <a href="/#iletisim" class="sp-label" style="display: block; text-decoration: none;">İletişim</a>
+    </div>
+  </nav>
+</div>
+<div class="side-panel-overlay" id="side-panel-overlay"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo">
+    <span class="nav-logo-divider"></span>
+    <span class="nav-logo-iu">Evrim</span>
+    <span class="nav-logo-name">Topluluğu</span>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li id="nav-etkinlikler">
+      <button class="nav-item-btn nav-active">
+        Etkinlikler&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
+        <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+        <a href="/makale-grubu/" class="active-link">Makale Grubu</a>
+        <a href="/nasil-gidilir/">Nasıl Gidilir?</a>
+      </div>
+    </li>
+    <li><a href="/yayinlar/">Yayınlar</a></li>
+    <li id="nav-biz">
+      <button class="nav-item-btn">
+        Biz Kimiz?&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="/#tab-amac" data-scroll-tab="amac">Amacımız</a>
+        <a href="/#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+        <a href="/#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
+      </div>
+    </li>
+    <li><a href="/#sss">SSS</a></li>
+    <li><a href="/#iletisim">İletişim</a></li>
+  </ul>
+</nav>
+
+<!-- ==============================================================
+     HERO — Kullanıcı bu bölümü özelleştirecek.
+     Tasarımınızı buraya ekleyin.
+============================================================== -->
+<section class="page-hero" id="hero">
+  <div class="page-hero-bg"></div>
+  <a href="#ayin-makaleleri" class="page-hero-scroll" aria-label="Aşağı kaydır">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </a>
+</section>
+
+<!-- ==============================================================
+     AYLIK MAKALELER
+     Her ay yeni kartlar ekleyin; article-card'ı href özniteliğine
+     makalenin DOI veya URL'sini yazın.
+============================================================== -->
+<section class="articles-section" id="ayin-makaleleri">
+  <div class="section-header-mg reveal">
+    <div>
+      <h2 class="section-heading">Güncel Literatür</h2>
+      <p class="section-sub">Evrimsel biyoloji literatüründen güncel makale seçkisi — başlığa tıklayarak makaleye ulaşabilirsiniz.</p>
+    </div>
+  </div>
+
+  <div class="articles-slider-wrap reveal">
+    <div class="articles-slider" id="articles-slider">
+      <a class="article-card" href="https://academic.oup.com/gbe/article/18/3/evag034/8487294" target="_blank" rel="noopener">
+        <div class="article-card-img">
+          <img src="/images/makale grubu/literature/dhakad-et-al.png" alt="Dhakad et al. 2026">
+        </div>
+        <div class="article-card-body">
+          <span class="article-month-badge">Mart 2026</span>
+          <span class="article-journal">GENOME BIOLOGY AND EVOLUTION</span>
+          <p class="article-title">Predictors of Protein Evolution in the drosophilid Immune System</p>
+          <p class="article-authors">Dhakad P, Obbard DJ, 2026</p>
+          <span class="article-cta">Makaleyi Oku</span>
+        </div>
+      </a>
+      <a class="article-card" href="https://www.nature.com/articles/s41559-026-03003-7" target="_blank" rel="noopener">
+        <div class="article-card-img">
+          <img src="/images/makale grubu/literature/moreira-et-al.PNG" alt="Cardoso-Moreira 2026">
+        </div>
+        <div class="article-card-body">
+          <span class="article-month-badge">Şubat 2026</span>
+          <span class="article-journal">NATURE ECOLOGY &amp; EVOLUTION</span>
+          <p class="article-title">The molecular evolution of vertebrate organs</p>
+          <p class="article-authors">Cardoso-Moreira M, 2026</p>
+          <span class="article-cta">Makaleyi Oku</span>
+        </div>
+      </a>
+      <a class="article-card" href="https://www.annualreviews.org/content/journals/10.1146/annurev-ento-121423-013404" target="_blank" rel="noopener">
+        <div class="article-card-img">
+          <img src="/images/makale grubu/literature/peris-et-al.PNG" alt="de Medeiros, Peris 2026">
+        </div>
+        <div class="article-card-body">
+          <span class="article-month-badge">Ocak 2026</span>
+          <span class="article-journal">ANNUAL REVIEW OF ENTOMOLOGY</span>
+          <p class="article-title">The Evolution of Flower Beetles as Visitors and Pollinators</p>
+          <p class="article-authors">de Medeiros BAS, Peris D, 2026</p>
+          <span class="article-cta">Makaleyi Oku</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="slider-nav">
+      <button class="slider-btn" id="slider-prev" aria-label="Önceki">&#8592;</button>
+      <button class="slider-btn" id="slider-next" aria-label="Sonraki">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     MAKALE GRUBU NEDİR?
+============================================================== -->
+<section class="about-section" id="hakkinda">
+  <div class="section-header-mg reveal">
+    <div>
+      <span class="section-eyebrow">Seri Hakkında</span>
+      <h2 class="section-heading">Makale Grubu Nedir?</h2>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        Makale Grubu, İstanbul Üniversitesi Evrim Topluluğu bünyesinde yürütülen, öğrencilerin bilimsel araştırma ve sunum yetkinliklerini geliştirmeyi hedefleyen bir Journal Club serisidir.
+      </p>
+      <p>
+        Temel amacımız; akademik makale okuma ve bilimsel tartışma kültürünü yaygınlaştırmak, makalelerin sadece dinlenildiği değil, üzerine aktif olarak konuşulduğu ve fikir üretildiği bir ortam sunmaktır.
+      </p>
+      <p>
+        Makale veya konu önermek ya da sunucu olarak yer almak için aşağıdaki formları doldurabilirsiniz. Öneriler her dönem değerlendirilerek planlama sürecine dahil edilmektedir.
+      </p>
+      <div class="about-form-btns">
+        <a class="form-cta-btn" href="https://forms.gle/mSi67wDRW1ySXT5WA" target="_blank" rel="noopener">Makale / Konu Öner</a>
+        <a class="form-cta-btn form-cta-btn--ghost" href="https://forms.gle/HiWuxex3vJwmUQSP7" target="_blank" rel="noopener">Sunucu Ol</a>
+      </div>
+    </div>
+
+    <div class="about-cards reveal">
+      <div class="about-card">
+        <div class="about-card-label">Format & İşleyiş</div>
+        <div class="about-card-text">Belirlenen makale üzerine hazırlanan öğrenci sunumlarıyla başlar; soru-cevap bölümü ve akademisyenlerin/katılımcıların eklediği perspektiflerle devam eder.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Kapsam & İçerik</div>
+        <div class="about-card-text">Konu kısıtlaması olmaksızın; moleküler düzeyden ekosistemlere, genetikten paleontolojiye kadar evrimsel biyolojinin bütün alt disiplinlerini kapsayan geniş bir literatürü konu alıyoruz.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Kimler Katılabilir?</div>
+        <div class="about-card-text">Etkinlikler herkese açıktır. Sunucu olarak katılmak isterseniz formu doldurabilirsiniz.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Sıklık</div>
+        <div class="about-card-text">Her dönem birden fazla etkinlik düzenlenmektedir. Duyurular için <a href="https://iuevo.org" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">web sitemizi</a> veya <a href="https://www.instagram.com/iu.evrimtoplulugu" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Instagram hesabımızı</a> takip edebilirsiniz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+    GEÇMİŞ ETKİNLİKLER — BLOG POST KARTLARI
+     Her oturumu href="makale-grubu-SLUG.html" şeklinde bağlayın.
+     Sayfa henüz hazır değilse blog-card sınıfına "no-post" ekleyin.
+============================================================== -->
+<section class="blog-section" id="arsiv">
+  <div class="section-header-mg reveal">
+    <div>
+      <span class="section-eyebrow">Arşiv</span>
+      <h2 class="section-heading">Geçmiş Oturumlar</h2>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+
+    <!-- ── #8 Tardigradlar — 18 Aralık 2025 ── -->
+    <!-- Sayfa hazır olduğunda: href="makale-grubu-tardigradlar.html" ve no-post sınıfını kaldırın -->
+    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+      <div class="blog-card-poster">
+        <img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(1).jpg"
+             alt="Makale Grubu — Tardigradlar"
+             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-top">
+          <span class="blog-card-date">18 Aralık 2025</span>
+        </div>
+        <h3 class="blog-card-title">Arş. Gör. Ahmet Arıhan Erözden Eşliğinde Tardigradlar</h3>
+        <p class="blog-card-desc">Sevde Nur Aydın ve Esma Güler'in sunumlarıyla "Multiomics Study of a Heterotardigrade, Echinisicus testudo, Suggets The Possibility of Convergent Evolution of Abundant Heat-Soluble Proteins in Tardigrada" ve "Developmental and Genomic Insight Into The Origin of The Tardigrade Body Plan" makaleleri tartışıldı.</p>
+        <div class="blog-card-meta">
+          <span>📍 Derslik 5</span>
+          <span>🕒 16:30</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ── #6 Doç. Dr. Yasemin Aydın — 26 Aralık 2024 ── -->
+    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+      <div class="blog-card-poster">
+        <img src="/images/events/2425_makalegrubu_yaseminaydin%20(1).jpg"
+             alt="Makale Grubu — Yasemin Aydın ile Gelişim Biyolojisi"
+             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-top">
+          <span class="blog-card-date">26 Aralık 2024</span>
+        </div>
+        <h3 class="blog-card-title">Doç. Dr. Yasemin Aydın ile Gelişim Biyolojisi ve Evrim</h3>
+        <p class="blog-card-desc">Sevval Ok ve İrem Balcıoğlu'nun sunumlarıyla "Feather function and the evolution of birds" ve "A farewell to arms and legs: a review of limb reduction in squamates" makaleleri tartışıldı.</p>
+        <div class="blog-card-meta">
+          <span>📍 Fahir Yeniçay Dersliği</span>
+          <span>🕒 16:00</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ── #3a Sinir Sisteminin Omurgasız Kökenleri — 1 Kasım 2024 ── -->
+    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+      <div class="blog-card-poster">
+        <img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(1).jpg"
+             alt="Makale Grubu — Sinir Sisteminin Omurgasız Kökenleri"
+             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-top">
+          <span class="blog-card-date">1 Kasım 2024</span>
+        </div>
+        <h3 class="blog-card-title">Sinir Sisteminin Omurgasız Kökenleri</h3>
+        <p class="blog-card-desc">Betül Zehra Darcan ve Ceyhun Sezen'in sunumlarıyla "Evolution of Synapses and Neurotransmitter Systems: The Divide and Conquer Model for earyl neural cell-type evolution" ve "Evolutionary Origin of The Nervous System from Ctenophora Prospective" makaleleri tartışıldı.</p>
+        <div class="blog-card-meta">
+          <span>📍 Derslik 5</span>
+          <span>🕒 16:00</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ── #13 Prof. Dr. Murat Belivermiş — 2 Mayıs 2024 ── -->
+    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+      <div class="blog-card-poster">
+        <img src="/images/events/2324_makalegrubu%20(1).jpg"
+             alt="Makale Grubu — Prof. Dr. Murat Belivermiş"
+             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-top">
+          <span class="blog-card-date">2 Mayıs 2024</span>
+        </div>
+        <h3 class="blog-card-title">Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu</h3>
+        <p class="blog-card-desc">Beste Zorlu ve Alper Karagöl'ün sunumuyla "Evolutionary rescue via transgenerational plasticity" ve "Predicting evolutionary responses due to climate change in the sea" makaleleri tartışıldı.</p>
+        <div class="blog-card-meta">
+          <span>📍 Derslik 5</span>
+          <span>🕒 16:00</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── FOTO GALERİ ── -->
+<section class="gallery-section">
+  <div class="gallery-section-header reveal">
+    <div class="section-header-mg" style="margin-bottom:0;">
+      <div>
+        <h2 class="section-heading">Anılar</h2>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-strip" id="gallery-strip">
+    <div class="gallery-item"><img src="/images/events/2324_makalegrubu%20(2).jpg" alt="Makale Grubu 2023–24"></div>
+    <div class="gallery-item"><img src="/images/events/2324_makalegrubu%20(3).jpg" alt="Makale Grubu 2023–24"></div>
+    <div class="gallery-item"><img src="/images/events/2324_makalegrubu%20(4).jpg" alt="Makale Grubu 2023–24"></div>
+    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_yaseminaydin%20(4).jpg" alt="Makale Grubu — Yasemin Aydın"></div>
+    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_yaseminaydin%20(6).jpg" alt="Makale Grubu — Yasemin Aydın"></div>
+    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(2).jpg" alt="Sinir Sisteminin Omurgasız Kökenleri"></div>
+    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(3).jpg" alt="Sinir Sisteminin Omurgasız Kökenleri"></div>
+    <div class="gallery-item"><img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(2).jpg" alt="Makale Grubu — Tardigradlar"></div>
+  </div>
+  <div class="gallery-nav">
+    <button class="slider-btn" id="gallery-prev" aria-label="Önceki">&#8592;</button>
+    <button class="slider-btn" id="gallery-next" aria-label="Sonraki">&#8594;</button>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">İÜ Evrim Topluluğu</div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu</div>
+</footer>
+
+<script>
+  // ── Dropdown hover ──
+  const navEtkinlikler = document.getElementById('nav-etkinlikler');
+  navEtkinlikler.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navEtkinlikler.classList.add('open'));
+  navEtkinlikler.addEventListener('mouseleave', () => navEtkinlikler.classList.remove('open'));
+
+  const navBiz = document.getElementById('nav-biz');
+  navBiz.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navBiz.classList.add('open'));
+  navBiz.addEventListener('mouseleave', () => navBiz.classList.remove('open'));
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+  // ── Hamburger / Side Panel ──
+  const hamburger        = document.getElementById('hamburger');
+  const sidePanel        = document.getElementById('side-panel');
+  const sidePanelOverlay = document.getElementById('side-panel-overlay');
+  const sidePanelClose   = document.getElementById('side-panel-close');
+  function openPanel() {
+    sidePanel.classList.add('open');
+    sidePanelOverlay.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel() {
+    sidePanel.classList.remove('open');
+    sidePanelOverlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
+  sidePanelClose.addEventListener('click', closePanel);
+  sidePanelOverlay.addEventListener('click', closePanel);
+  sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
+  document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const tabId = link.dataset.scrollTab;
+      const targetHash = tabId === 'ekip' ? 'tab-ekip' : (tabId === 'katil' ? 'tab-katil' : 'tab-amac');
+      closePanel();
+      window.location.href = `/#${targetHash}`;
+    });
+  });
+  // Swipe ile kapat
+  let panelTouchStartX = 0;
+  sidePanel.addEventListener('touchstart', function(e) {
+    panelTouchStartX = e.touches[0].clientX;
+  }, {passive: true});
+  sidePanel.addEventListener('touchend', function(e) {
+    const diff = e.changedTouches[0].clientX - panelTouchStartX;
+    if (diff > 60) closePanel();
+  }, {passive: true});
+
+  const buildRouteUrl = (locationText) => {
+    const normalized = locationText.toLocaleLowerCase('tr-TR');
+    if (normalized.includes('derslik 5')) return '/nasil-gidilir/#derslik-5';
+    if (normalized.includes('amfi a')) return '/nasil-gidilir/#amfi-a';
+    return '/nasil-gidilir/';
+  };
+
+  document.querySelectorAll('.blog-card-meta span').forEach((metaItem) => {
+    const text = metaItem.textContent || '';
+    if (!text.includes('📍') || metaItem.querySelector('a')) return;
+
+    const link = document.createElement('a');
+    link.href = buildRouteUrl(text);
+    link.textContent = text.trim();
+    link.style.color = 'inherit';
+    link.style.textDecoration = 'underline';
+    link.style.textUnderlineOffset = '2px';
+    link.style.cursor = 'pointer';
+
+    metaItem.textContent = '';
+    metaItem.appendChild(link);
+  });
+
+ });
+
+  // ── Makale slider butonları ──
+  const slider    = document.getElementById('articles-slider');
+  const cardWidth = () => slider.querySelector('.article-card')?.offsetWidth + 19 || 320; // gap dahil
+  document.getElementById('slider-prev').addEventListener('click', () => {
+    slider.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+  });
+  document.getElementById('slider-next').addEventListener('click', () => {
+    slider.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+  });
+
+  // ── Foto galerisi ──
+  const galleryStrip = document.getElementById('gallery-strip');
+  const galleryItemW = () => (galleryStrip.querySelector('.gallery-item')?.offsetWidth || 320) + 12;
+  document.getElementById('gallery-prev').addEventListener('click', () => {
+    galleryStrip.scrollBy({ left: -galleryItemW(), behavior: 'smooth' });
+  });
+  document.getElementById('gallery-next').addEventListener('click', () => {
+    galleryStrip.scrollBy({ left: galleryItemW(), behavior: 'smooth' });
+  });
+  let gDown = false, gStartX, gScrollLeft;
+  galleryStrip.addEventListener('mousedown', e => { gDown = true; gStartX = e.pageX - galleryStrip.offsetLeft; gScrollLeft = galleryStrip.scrollLeft; });
+  galleryStrip.addEventListener('mouseleave', () => { gDown = false; });
+  galleryStrip.addEventListener('mouseup', () => { gDown = false; });
+  galleryStrip.addEventListener('mousemove', e => { if (!gDown) return; e.preventDefault(); galleryStrip.scrollLeft = gScrollLeft - (e.pageX - galleryStrip.offsetLeft - gStartX); });
+
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('touchstart', function(){}, {passive: true});
+    document.querySelectorAll('a, button, [role="button"], .tab-btn, .nav-item-btn')
+      .forEach(el => {
+        el.addEventListener('touchstart', function(e) {
+          e.currentTarget.style.webkitTapHighlightColor = 'transparent';
+        }, {passive: true});
+      });
+  });
+</script>
+</body>
+</html>
+
+
+
+

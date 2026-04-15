@@ -1,0 +1,3001 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tüm Etkinlikler | İÜ Evrim Topluluğu</title>
+  <meta name="description" content="İstanbul Üniversitesi Evrim Topluluğu'nun düzenlediği tüm etkinlikler.">
+  <link rel="icon" type="image/png" href="/images/evo_logo4.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KV5XFSZ09"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8KV5XFSZ09');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e0a;
+      --surface: #111711;
+      --surface2: #161e16;
+      --accent: #6dbf67;
+      --accent-soft: #8fd98a;
+      --text: #e8ede8;
+      --text-muted: #9aaa9a;
+      --border: rgba(109,191,103,0.15);
+      --border-soft: rgba(109,191,103,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* İki body bloğu tek bir blokta birleştirildi */
+    body {
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(109,191,103,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(109,191,103,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+  /* ¦¦ NAV ¦¦ */
+  body > nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    height: 64px;
+    background: rgba(10,14,10,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .nav-logo-img {
+    width: 34px; height: 34px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .nav-logo-divider {
+    color: rgba(109,191,103,0.35);
+    font-size: 0;
+    line-height: 1;
+    margin: 0 0.1rem;
+    align-self: center;
+    display: block;
+    height: 1.15rem;
+    width: 1px;
+    background: rgba(109,191,103,0.35);
+  }
+  .nav-logo-iu {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .nav-logo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+  }
+  .nav-links > li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .nav-links > li > a,
+  .nav-item-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0 1.3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.25s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+  .nav-links > li > a:hover,
+  .nav-item-btn:hover,
+  .nav-links > li.open > .nav-item-btn,
+  .nav-links > li > a.nav-active {
+    color: var(--accent);
+  }
+  .nav-chevron {
+    font-size: 0.55rem;
+    transition: transform 0.25s;
+  }
+  .nav-links > li.open .nav-chevron { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    min-width: 190px;
+    background: rgba(10,16,10,0.96);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    border-top: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .nav-links > li.open .dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .dropdown a {
+    display: block;
+    padding: 0.9rem 1.6rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .dropdown a:last-child { border-bottom: none; }
+  .dropdown a:hover { color: var(--accent); background: rgba(109,191,103,0.07); }
+
+  /* ¦¦ HAMBURGER ¦¦ */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 201;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--text-muted);
+    transition: transform 0.3s, opacity 0.3s, background 0.3s;
+  }
+  .hamburger:hover span { background: var(--accent); }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ¦¦ SIDE PANEL ¦¦ */
+  .side-panel {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(320px, 85vw);
+    height: 100%;
+    background: rgba(10,14,10,0.82);
+    backdrop-filter: blur(24px);
+    border-left: 1px solid var(--border);
+    z-index: 500;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    overflow-y: auto;
+  }
+  .side-panel.open { transform: translateX(0); }
+  .side-panel-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 499;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .side-panel-overlay.open { opacity: 1; pointer-events: all; }
+  .side-panel-close {
+    align-self: flex-end;
+    background: none; border: none;
+    color: var(--text-muted); font-size: 1.2rem;
+    cursor: pointer; padding: 0.3rem;
+    transition: color 0.2s; margin-bottom: 2rem;
+  }
+  .side-panel-close:hover { color: var(--accent); }
+  .side-panel-logo {
+    display: flex; align-items: baseline; gap: 0.45rem;
+    margin-bottom: 1.2rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .side-panel-nav { display: flex; flex-direction: column; gap: 0.3rem; }
+  .sp-group {
+    display: flex; flex-direction: column;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .sp-group:last-child { border-bottom: none; }
+  .sp-label {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.6rem; font-weight: 500;
+  }
+  .side-panel-nav .sp-label {
+    color: var(--accent) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.6rem !important;
+    font-weight: 500 !important;
+    padding: 0 !important;
+  }
+  .side-panel-nav .sp-label:hover {
+    color: var(--accent-soft) !important;
+    padding-left: 0 !important;
+  }
+  .side-panel-nav a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.95rem; padding: 0.4rem 0;
+    letter-spacing: 0.04em; transition: color 0.2s, padding-left 0.2s;
+  }
+  .side-panel-nav a:hover { color: var(--accent); padding-left: 0.4rem; }
+  .sp-main { font-size: 1rem !important; color: var(--text) !important; font-weight: 400; }
+  .sp-main:hover { color: var(--accent) !important; }
+
+  @media (max-width: 768px) {
+    body > nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  /* ¦¦ PAGE HERO ¦¦ */
+  .page-hero {
+    position: relative;
+    z-index: 1;
+    padding: 10rem 4rem 5rem;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/events/events2.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(1) contrast(1.2);
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.9) 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.9) 20%, transparent 100%);
+  }
+
+  .page-hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+
+  .page-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .page-hero h1 em { font-style: normal; color: var(--accent); }
+
+  .page-hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 560px;
+    padding-left: 1.2rem;
+    border-left: 2px solid rgba(109,191,103,0.4);
+  }
+
+  /* ¦¦ DUYURU BANDI ¦¦ */
+  .announcement-bar {
+    position: relative;
+    z-index: 2;
+    background: var(--surface2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  .announcement-bar::before, .announcement-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .announcement-bar::before { left: 0; background: linear-gradient(to right, var(--surface2), transparent); }
+  .announcement-bar::after  { right: 0; background: linear-gradient(to left, var(--surface2), transparent); }
+  .announcement-track {
+    display: flex; align-items: center; gap: 1.5rem;
+    white-space: nowrap;
+    animation: scrollBand 28s linear infinite;
+  }
+  .announcement-track:hover { animation-play-state: paused; }
+  @keyframes scrollBand {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .announcement-item {
+    font-size: 0.75rem; letter-spacing: 0.05em;
+    color: var(--text-muted);
+    display: flex; align-items: center; gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .ann-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%; background: var(--accent);
+    opacity: 0.7; flex-shrink: 0;
+  }
+  .announcement-sep { color: var(--border); font-size: 1rem; flex-shrink: 0; }
+
+  /* ¦¦ ANA İÇERİK ¦¦ */
+  .events-main {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 4rem 6rem;
+    background: var(--bg);
+  }
+
+  /* Filtre çubuğu */
+  .events-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(109,191,103,0.08);
+  }
+  .filter-btn:hover:not(.active) {
+    border-color: rgba(109,191,103,0.35);
+    color: var(--text);
+  }
+
+  /* ¦¦ SERİ BÖLÜMÜ ¦¦ */
+  .series-section {
+    margin-bottom: 5rem;
+    scroll-margin-top: 90px;
+  }
+
+  .series-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid rgba(109,191,103,0.5);
+  }
+  .series-icon {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .series-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .series-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+  .series-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.15;
+  }
+  .series-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 640px;
+    margin-bottom: 2rem;
+    padding-left: 1.2rem;
+  }
+
+  /* ¦¦ ETKİNLİK GRID ¦¦ */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .event-card {
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(22,33,24,0.7) 100%);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .event-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(109,191,103,0.12);
+  }
+  .event-card::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(109,191,103,0.2));
+    opacity: 0.4;
+  }
+  .event-card:hover::before { opacity: 1; }
+
+  .event-card.hidden { display: none; }
+
+
+
+  /* Afiş */
+  .ec-poster {
+    width: 100%;
+    overflow: hidden;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ec-poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s;
+    opacity: 0.9;
+  }
+  .event-card:hover .ec-poster img { opacity: 1; }
+  .ec-poster-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  }
+  .ec-poster-placeholder svg { opacity: 0.18; }
+
+  /* Kart gövdesi */
+  .ec-body {
+    padding: 1.2rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .ec-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .ec-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    flex-shrink: 0;
+  }
+  .ec-badge.upcoming {
+    background: rgba(109,191,103,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(109,191,103,0.25);
+  }
+  .ec-badge.preclub {
+    background: rgba(255,200,100,0.06);
+    color: rgba(255,200,100,0.65);
+    border: 1px solid rgba(255,200,100,0.2);
+  }
+
+  .ec-date {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .ec-date-box {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+  .ec-date-box .ec-day {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .ec-date-box .ec-month-year {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    line-height: 1;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+  }
+
+  .ec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    transition: color 0.3s;
+  }
+  .event-card:hover .ec-title { color: var(--accent); }
+
+  .ec-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .ec-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .ec-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+  /* ¦¦ BÜYÜK SERİ AYRAÇLARI ¦¦ */
+  .series-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 4rem 0;
+    position: relative;
+  }
+  .series-divider::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 60px; height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  /* ¦¦ İSTATİSTİK BAR ¦¦ */
+  .stats-bar {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 4rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.5rem 1.5rem;
+    border-left: 1px solid var(--border);
+  }
+  .stat-item:first-child { border-left: none; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ¦¦ FOOTER ¦¦ */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero { padding: 8rem 1.5rem 3.5rem; }
+    .events-main { padding: 3rem 1.5rem 4rem; }
+    .stats-bar { padding: 1.5rem; gap: 1rem; }
+    .events-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+
+
+
+  /* ¦¦ KOMPAKT İSTATİSTİK BANDI ¦¦ */
+  .stats-bar {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    padding: 0.85rem 4rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+    align-items: center;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.2rem 1.8rem;
+    border-left: 1px solid var(--border);
+  }
+  .stat-item:first-child { border-left: none; padding-left: 0; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ¦¦ EVENTS LAYOUT ¦¦ */
+  .events-main {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    background: var(--bg);
+  }
+  .events-layout {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 0;
+    align-items: start;
+    padding: 4rem 4rem 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ¦¦ DÖNEM KENAR ÇUBUĞU ¦¦ */
+  .period-sidebar {
+    position: sticky;
+    top: 80px;
+    padding-left: 2rem;
+    border-left: 1px solid var(--border);
+  }
+  .ps-head {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .ps-period-block {
+    margin-bottom: 0.6rem;
+  }
+  .ps-period-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    transition: color 0.25s;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ps-period-btn:hover, .ps-period-btn.active { color: var(--text); }
+  .ps-community-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(255,200,100,0.08);
+    color: rgba(255,200,100,0.7);
+    border: 1px solid rgba(255,200,100,0.2);
+    padding: 0.05rem 0.35rem;
+    line-height: 1.6;
+  }
+
+
+  /* ¦¦ DÖNEM GRUPLARI ¦¦ */
+  .events-content {
+    padding-right: 3rem;
+  }
+  .events-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .period-group {
+    margin-bottom: 4.5rem;
+    scroll-margin-top: 90px;
+  }
+  .period-group.hidden { display: none; }
+  .pg-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pg-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    line-height: 1;
+  }
+  .pg-community-note {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,200,100,0.65);
+    border: 1px solid rgba(255,200,100,0.2);
+    background: rgba(255,200,100,0.05);
+    padding: 0.1rem 0.5rem;
+    margin-left: auto;
+    align-self: center;
+  }
+  .pg-header-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    align-self: center;
+    margin-left: 0.3rem;
+  }
+
+  /* ¦¦ SERİ ETİKETİ (kart üstünde) ¦¦ */
+  .ec-series-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-top: 0.6rem;
+  }
+  .ec-series-tag::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 960px) {
+    .events-layout {
+      grid-template-columns: 1fr;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .period-sidebar {
+      position: static;
+      padding-left: 0;
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      margin-top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      order: -1;
+      margin-bottom: 2rem;
+    }
+    .ps-head { margin-bottom: 0; margin-right: 0.5rem; }
+
+    .ps-period-block { margin-bottom: 0; }
+    .ps-period-btn { padding: 0.4rem 0.8rem; border: 1px solid var(--border); font-size: 0.75rem; border-bottom: 1px solid var(--border); }
+    .events-content { padding-right: 0; order: 0; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { padding: 8rem 1.5rem 3.5rem; }
+    .stats-bar { padding: 0.7rem 1.5rem; gap: 0; flex-wrap: wrap; }
+    .stat-item { padding: 0.2rem 1rem; }
+    .events-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+
+  /* ¦¦ GALERİ KARTI İPUCU ¦¦ */
+  .event-card { cursor: pointer; }
+  .ec-photo-badge {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(6px);
+    color: var(--accent);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border: 1px solid rgba(109,191,103,0.3);
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.25s;
+  }
+  .event-card:hover .ec-photo-badge { opacity: 0.9; }
+  .ec-poster-glow {
+    position: absolute;
+    inset: 0;
+    background: rgba(109,191,103,0);
+    transition: background 0.3s;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .event-card:hover .ec-poster-glow { background: rgba(109,191,103,0.05); }
+
+  /* ¦¦ GALERİ LİGHTBOX ¦¦ */
+  .gal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 950;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+  }
+  .gal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .gal-panel {
+    position: relative;
+    width: min(680px, 94vw);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    max-height: 88vh;
+    box-shadow: 0 28px 90px rgba(0,0,0,0.65);
+    animation: galSlideUp 0.26s ease;
+  }
+  @keyframes galSlideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .gal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .gal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .gal-counter {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    flex-shrink: 0;
+    background: rgba(109,191,103,0.08);
+    padding: 2px 9px;
+    border: 1px solid rgba(109,191,103,0.2);
+  }
+  .gal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 2px 5px;
+    transition: color 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .gal-close:hover { color: var(--text); }
+  .gal-main {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #040604;
+    overflow: hidden;
+    min-height: 180px;
+  }
+  .gal-main-img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.18s;
+  }
+  .gal-main-img.fading { opacity: 0; }
+  .gal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10,14,10,0.65);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    width: 38px; height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+    backdrop-filter: blur(6px);
+    line-height: 1;
+  }
+  .gal-nav:hover { color: var(--accent); border-color: rgba(109,191,103,0.4); background: rgba(10,14,10,0.9); }
+  .gal-nav:disabled { opacity: 0.18; pointer-events: none; }
+  .gal-prev { left: 10px; }
+  .gal-next { right: 10px; }
+  .gal-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-top: 1px solid var(--border-soft);
+    background: var(--surface2);
+    flex-shrink: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: center;
+  }
+  .gal-footer::-webkit-scrollbar { display: none; }
+  .gal-thumb {
+    width: 58px; height: 46px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: border-color 0.2s, opacity 0.2s;
+    opacity: 0.42;
+    flex-shrink: 0;
+    display: block;
+  }
+  .gal-thumb:hover { opacity: 0.82; }
+  .gal-thumb.active { border-color: var(--accent); opacity: 1; }
+  @media (max-width: 480px) {
+    .gal-main-img { max-height: 50vw; }
+    .gal-thumb { width: 46px; height: 38px; }
+  }
+ /* ── MOBİL PERFORMANS OPTİMİZASYONU ── */
+@media (max-width: 768px) {
+  /* 1. Ekran kartını yoran SVG Noise (kumlanma) efektini mobilde kapatıyoruz */
+  body {
+    background-image: none !important;
+  }
+
+  /* 2. Sabit degradeyi akışa alıyoruz (Zoom yaparken sayfa ile büyüsün, telefonu yormasın) */
+  body::before {
+    position: absolute !important;
+  }
+
+  /* 3. Ağır resim maskelerini (kenar silikleştirme) mobilde devre dışı bırakıyoruz */
+  .hero-bg-haeckel img,
+  .biz-kimiz::before,
+  .etkinlikler-section::before,
+  .sss-section::before {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  body > nav {
+    backdrop-filter: none !important;
+    background: rgba(10,14,10,0.97) !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- GALERİ LİGHTBOX -->
+<div class="gal-overlay" id="gal-overlay" role="dialog" aria-modal="true" aria-label="Fotoğraf Galerisi">
+  <div class="gal-panel" id="gal-panel">
+    <div class="gal-header">
+      <span class="gal-title" id="gal-title"></span>
+      <span class="gal-counter" id="gal-counter"></span>
+      <button class="gal-close" id="gal-close" aria-label="Kapat">✕</button>
+    </div>
+    <div class="gal-main" id="gal-main">
+      <img class="gal-main-img" id="gal-main-img" src="" alt="">
+      <button class="gal-nav gal-prev" id="gal-prev" aria-label="Önceki">‹</button>
+      <button class="gal-nav gal-next" id="gal-next" aria-label="Sonraki">›</button>
+    </div>
+    <div class="gal-footer" id="gal-footer"></div>
+  </div>
+</div>
+
+<!-- SIDE PANEL -->
+<div class="side-panel" id="side-panel">
+  <button class="side-panel-close" id="side-panel-close" aria-label="Kapat">✕</button>
+  <a href="/" class="side-panel-logo" style="text-decoration: none;">
+    <span class="nav-logo-iu">İÜ</span>
+    <span class="nav-logo-name">Evrim Topluluğu</span>
+  </a>
+  <nav class="side-panel-nav">
+    <div class="sp-group">
+      <span class="sp-label">Etkinlikler</span>
+      <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
+      <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+      <a href="/makale-grubu/">Makale Grubu</a>
+      <a href="/nasil-gidilir/">Nasıl Gidilir?</a>
+    </div>
+    <div class="sp-group">
+      <a href="/yayinlar/" class="sp-label" style="display: block; text-decoration: none;">Yayınlar</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">Biz Kimiz?</span>
+      <a href="/#tab-amac" data-scroll-tab="amac">Amacımız</a>
+      <a href="/#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+      <a href="/#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
+    </div>
+    <div class="sp-group">
+      <a href="/#sss" class="sp-label" style="display: block; text-decoration: none;">SSS</a>
+    </div>
+    <div class="sp-group">
+      <a href="/#iletisim" class="sp-label" style="display: block; text-decoration: none;">İletişim</a>
+    </div>
+  </nav>
+</div>
+<div class="side-panel-overlay" id="side-panel-overlay"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo">
+    <span class="nav-logo-divider"></span>
+    <span class="nav-logo-iu">Evrim</span>
+    <span class="nav-logo-name">Topluluğu</span>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li id="nav-etkinlikler">
+      <button class="nav-item-btn nav-active">
+        Etkinlikler&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
+        <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+        <a href="/makale-grubu/">Makale Grubu</a>
+        <a href="/nasil-gidilir/">Nasıl Gidilir?</a>
+      </div>
+    </li>
+    <li><a href="/yayinlar/">Yayınlar</a></li>
+    <li id="nav-biz">
+      <button class="nav-item-btn">
+        Biz Kimiz?&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="/#tab-amac" data-scroll-tab="amac">Amacımız</a>
+        <a href="/#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+        <a href="/#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
+      </div>
+    </li>
+    <li><a href="/#sss">SSS</a></li>
+    <li><a href="/#iletisim">İletişim</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">İstanbul Üniversitesi Evrim Topluluğu</p>
+    <h1>Tüm <em>Etkinlikler</em></h1>
+    <p class="page-hero-desc">
+      Geçmiş etkinliklerimizi keşfedin, devam eden serileri takip edin.<br>
+      Söyleşilerden makale tartışmalarına, çalıştaylardan konferanslara...
+    </p>
+  </div>
+</section>
+
+<!-- ANA ETKİNLİKLER İÇERİĞİ -->
+<main class="events-main">
+  <div class="events-layout">
+
+    <!-- ¦¦ SOL: ETKİNLİK İÇERİĞİ ¦¦ -->
+    <div class="events-content">
+
+      <!-- Seri Filtre Çubuğu -->
+      <div class="events-filter-bar">
+        <span class="filter-label">Seri:</span>
+        <button class="filter-btn active" data-filter="all">Tümü</button>
+        <button class="filter-btn" data-filter="norobiology">Evrimsel Nörobilim</button>
+        <button class="filter-btn" data-filter="makale">Makale Grubu</button>
+        <button class="filter-btn" data-filter="calistay">Çalıştay &amp; Söyleşi</button>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- DÖNEM: 2025–2026 BAHAR                         -->
+      <!-- ============================================== -->
+      <div class="period-group reveal" id="pg-2025-2026" data-period="2025-2026">
+        <div class="pg-header">
+          <span class="pg-year">2025–2026</span>
+          <span class="pg-header-line"></span>
+        </div>
+        <div class="events-grid">
+          <!-- 15. Evrimsel Nörobilim Journal Club — Oturum 6 — 13 Mart 2026 -->
+
+           <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2025-2026" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2526_evoneuro6 (1).webp" alt="Evrimsel Nörobilim Journal Club — Oturum 6"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">13</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2026</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Journal Club — Oturum 6</h3>
+              <p class="ec-desc">
+                Bu hafta, omurgalı sinir sisteminin kökenlerini anlamak için Kordalılar (Chordata) şubesinin omurgalı olmayan üyelerini, özellikle de Amphioxusları inceliyoruz.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
+            </div>
+          </div>
+
+
+
+          <!-- 14. Evrimsel Nörobilim Journal Club — Oturum 5 — 5 Mart 2026 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2025-2026" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2526_evoneuro5.1.jpg" alt="Evrimsel Nörobilim Journal Club — Oturum 5"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">5</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2026</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Journal Club — Oturum 5</h3>
+              <p class="ec-desc">
+                Boğaziçi Üniversitesi'nden Taha Akkülah'ın konuk sunumu eşliğinde Tosches &amp; Arendt (2013), Martinez &amp; Sprecher (2020) ve Furness &amp; Stebbing (2017) makaleleriyle sinir sisteminin merkezileşmesini tartışıyoruz.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
+            </div>
+          </div>
+
+          <!-- 13. Dr. Bahar Patlar ile Eşeysel Seçilim Çalıştayı — 28 Şubat 2026 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2526_baharpatlar1.jpg" alt="Dr. Bahar Patlar ile Eşeysel Seçilim Çalıştayı"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">28</span>
+                    <span class="ec-month-year"><span>Şubat</span><span>2026</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Dr. Bahar Patlar ile Eşeysel Seçilim Çalıştayı</h3>
+              <p class="ec-desc">
+                Martin Luther Üniversitesi'nden Dr. Bahar Patlar ile eşeysel seçilim teorisini tarihsel, felsefi ve biyolojik bağlamda bütüncül bir bakış açısıyla tartışan sertifikalı, kapsamlı bir tam günlük çalıştay.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Amfi A</span>
+                <span>🕒 12:00 – 18:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 12. Evrimsel Nörobilim Journal Club — Oturum 4 (Cnidaria) — 20 Şubat 2026 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2025-2026" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2526_evoneuro4%20(1).jpg" alt="Evrimsel Nörobilim Journal Club: Cnidaria"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">20</span>
+                    <span class="ec-month-year"><span>Şubat</span><span>2026</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Cnidaria — Sinir Ağlarından Beyne</h3>
+              <p class="ec-desc">
+                Cnidaria şubesi sinir sisteminin kökeni hakkında bize ne söylüyor? Kelava et al. (2015), Sprecher (2022) ve Arendt et al. (2016) makaleleriyle diffüz sinir ağlarından merkezi sinir sistemine geçişin evrimsel hikayesini inceledik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
+            </div>
+          </div>
+
+          <!-- 11. Psikiyatrik Hastalıkların Evrimsel Kökeni — 26 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_ilkerkucukparlak1%20(1).jpg" alt="Psikiyatrik Hastalıkların Evrimsel Kökeni"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">26</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Psikiyatrik Hastalıkların Evrimsel Kökeni</h3>
+              <p class="ec-desc">
+                Psikiyatrist Dr. İlker Küçükparlak'ın anlatımıyla psikopatolojik bozuklukları evrimsel bir perspektiften ele aldık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Fahir Yeniçay Dersliği</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 10. Denizlerdeki Küresel Değişikliklerin Biyolojik Etkileri ve Evrim — 23 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_muratbelivermis1%20(1).jpg" alt="Denizlerdeki Küresel Değişikliklerin Biyolojik Etkileri ve Evrim"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">23</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Denizlerdeki Küresel Değişikliklerin Biyolojik Etkileri ve Evrim</h3>
+              <p class="ec-desc">
+                Prof. Dr. Murat Belivermiş ile iklim değişikliği, okyanus ekosistemlerindeki bozulmalar, deniz canlılarının adaptasyonları ve bu süreçlerin evrimsel etkilerini tartıştık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 9. Evrimsel Nörobilim Journal Club — Oturum 3 — 22 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_evoneuro3%20(1).jpg" alt="Evrimsel Nörobilim Journal Club — Oturum 3"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">22</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Journal Club — Oturum 3</h3>
+              <p class="ec-desc">
+                "Before the Brain" temasıyla sinaptik proteinlerin ve uyarılabilirliğin evrimsel kökenlerini Sachkova et al. (2025), Colgren &amp; Burkhardt (2025) ve Wan &amp; Jékely (2021) makaleleri üzerinden tartıştık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
+            </div>
+          </div>
+
+          <!-- 8. Makale Grubu: Tardigradlar — 18 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="makale" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(1).jpg" alt="Makale Grubu — Arıhan Erözden: Tardigradlar"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">18</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Makale Grubu: Arş. Gör. Ahmet Arıhan Erözden Eşliğinde Tardigradlar</h3>
+              <p class="ec-desc">
+                Arş. Gör. Ahmet Arıhan Erözden eşliğinde, Sevde Nur Aydın ve Esma Güler'in sunumlarıyla Tardigradların evrimine ilişkin iki makaleyi inceledik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Makale Grubu</div>
+            </div>
+          </div>
+
+          <!-- 7. Evrimsel Nörobilim Journal Club — Oturum 2 — 16 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_evoneuro2%20(1).jpg" alt="Evrimsel Nörobilim Journal Club — Oturum 2"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">16</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Journal Club — Oturum 2</h3>
+              <p class="ec-desc">
+                Makale sunumlarına geçmeden önce evrim ve nörobilimin temel kavramlarını öğrenci sunumları eşliğinde tartıştık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:40</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
+            </div>
+          </div>
+
+          <!-- 6. Evrimsel Nörobilim Journal Club — Oturum 1 — 9 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_evoneuro_1%20(1).jpg" alt="Evrimsel Nörobilim Journal Club — Oturum 1"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">9</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Journal Club — Oturum 1</h3>
+              <p class="ec-desc">
+                Tanışma etkinliği ve "A History of Ideas in Evolutionary Neuroscience" ile evrimsel nörobilime dair geçmişten bugüne geliştirilmiş düşünce ve çalışmaları tarihsel bir düzlemde keşfettik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 6</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
+            </div>
+          </div>
+
+          <!-- 5. Ahlakın Evrimsel Boyutu — 10 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_ahlak%C4%B1nevrimi1%20(1).jpg" alt="Ahlakın Evrimsel Boyutu"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">10</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Ahlakın Evrimsel Boyutu</h3>
+              <p class="ec-desc">
+                Kadir Has Üniversitesi'nden Doç. Dr. Onurcan Yılmaz'ın anlatımıyla günümüz ahlaki yargılarının kökenlerini evrimsel ve psikolojik bir perspektiften tartıştık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Fahir Yeniçay Dersliği</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 4. Belgesel Günü: JANE — 4 Aralık 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="belgesel" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_janebelgesel.jpg" alt="Belgesel Günü: JANE (2017)"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M15 10l4.553-2.277A1 1 0 0 1 21 8.645v6.71a1 1 0 0 1-1.447.893L15 14M3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">4</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Belgesel Günü: JANE (2017)</h3>
+              <p class="ec-desc">
+                Jane Goodall'ın anısına, onun şempanzelere adanmış ilham verici yolculuğunu anlatan Brett Morgen imzalı JANE (2017) belgeselini birlikte izledik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Amfi A</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Belgesel</div>
+            </div>
+          </div>
+
+          <!-- 3. Antik DNA Işığında İnsan Evrimi ve Kültürel Süreçler — 21 Ekim 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_ezgialtinisik1 (6).jpg" alt="Antik DNA Işığında İnsan Evrimi ve Kültürel Süreçler"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">21</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Antik DNA Işığında İnsan Evrimi ve Kültürel Süreçler</h3>
+              <p class="ec-desc">
+                Hacettepe Üniversitesi'nden Dr. Nefize Ezgi Altınışık ile Türkiye'deki Antik DNA çalışmalarını ve bu çalışmaların kültürel anlatıya ve toplumsal cinsiyet rollerine olan etkisini konuştuk.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Fahir Yeniçay Dersliği</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 2. Genomların İzinde: Evrimin Moleküler Yolculuğu — 14 Ekim 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_ogunadebali1%20(1).jpg" alt="Genomların İzinde: Evrimin Moleküler Yolculuğu"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">14</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Genomların İzinde: Evrimin Moleküler Yolculuğu</h3>
+              <p class="ec-desc">
+                Sabancı Üniversitesi'nden Doç. Dr. Ogün Adebali ile evrimsel süreçte genomlarımızda biriken değişimlerin hastalıklardaki rolünü, DNA hasar birikimini ve filogenetik tabanlı yöntemleri konuştuk.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Fahir Yeniçay Dersliği</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 1. İstanbul Üniversitesi'nde Evrim — 8 Ekim 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2025-2026" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2526_istanbuluniversitesindeevrim1%20(1).jpg" alt="İstanbul Üniversitesi'nde Evrim"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">8</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">İstanbul Üniversitesi'nde Evrim</h3>
+              <p class="ec-desc">
+                Üniversitemizde geçmişten bugüne evrim fikrinin nasıl ele alındığını ve İstanbul Üniversitesi çatısı altında yürütülen araştırmaların evrimle olan ilişkisini Prof. Dr. Cihan Demirci Tansel, Doç. Dr. Vahap Eldem ve Arş. Gör. Harun İnci'den dinledik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Engin Arık Dersliği</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- DÖNEM: 2024–2025                              -->
+      <!-- ============================================== -->
+      <div class="period-group reveal" id="pg-2024-2025" data-period="2024-2025">
+        <div class="pg-header">
+          <span class="pg-year">2024–2025</span>
+          <span class="pg-header-line"></span>
+        </div>
+        <div class="events-grid">
+
+          <!-- 11. Bilim Emekçileri ve Emek Mücadelesi — 28 Nisan 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2425_bilimemekcileri.jpg" alt="Bilim Emekçileri ve Emek Mücadelesi"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">28</span>
+                    <span class="ec-month-year"><span>Nisan</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Bilim Emekçileri ve Emek Mücadelesi</h3>
+              <p class="ec-desc">
+                1 Mayıs'a giderken, Prof. Dr. Mehmet Bona ve Arş. Gör. Atakan Çiftçi ile bilim emekçilerinin mücadelesini, akademinin durumunu ve çözüm yollarını tartıştık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Diş Kantini Açık Alan</span>
+                <span>🕒 13:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 10. Evrimsel Nörobilim Çalışma Grubu 3 — 14 Mart 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2024-2025" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2425_evoneuro3%20(1).jpg" alt="Evrimsel Nörobilim Çalışma Grubu — Oturum 3"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">14</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Çalışma Grubu — Oturum 3</h3>
+              <p class="ec-desc">
+                Sinir Sisteminin Gelişimi ve Neural Crest konularını ele aldık; beyin bölgeleri quizi, nöral gelişim sunumu ve "Evolution of Vertebrates as Viewed from the Crest" makalesi tartışmasıyla devam ettik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Çalışma Grubu</div>
+            </div>
+          </div>
+
+          <!-- 9. Evrimsel Nörobilim Çalışma Grubu 2 — 7 Mart 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2024-2025" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2425_evoneuro2%20(1).jpg" alt="Evrimsel Nörobilim Çalışma Grubu — Oturum 2"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">7</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Çalışma Grubu — Oturum 2</h3>
+              <p class="ec-desc">
+                Katılımcıların beyin bölgelerine dair kısa sunumlarıyla nöroanatomiye giriş yapıldı; ardından "The Evolutionary Origins of the Vertebrate Olfactory System" makalesi sunuldu ve tartışıldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Çalışma Grubu</div>
+            </div>
+          </div>
+
+          <!-- 8. Evrimde İz Bırakmış Kadınlar — 6 Mart 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2425_evrimdeizbirakmiskadinlar%20(1).jpg" alt="Evrimde İz Bırakmış Kadınlar"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">6</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimde İz Bırakmış Kadınlar</h3>
+              <p class="ec-desc">
+                8 Mart'a giderken; Sarah Blaffer Hrdy, Lynn Margulis ve Mary Leakey başta olmak üzere evrim teorisine katkı sunmuş kadın bilim insanlarının yaşam ve çalışmalarını konuştuk.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 7. Evrimsel Nörobilim Çalışma Grubu 1 — 28 Şubat 2025 -->
+          <div class="event-card reveal" data-type="past" data-series="norobiology" data-period="2024-2025" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2425_evoneuro1%20(1).jpg" alt="Evrimsel Nörobilim Çalışma Grubu — Oturum 1"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">28</span>
+                    <span class="ec-month-year"><span>Şubat</span><span>2025</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrimsel Nörobilim Çalışma Grubu — Oturum 1</h3>
+              <p class="ec-desc">
+                Nöronların ortaya çıkışı, sinir sisteminin merkezileşmesi ve farklı hayvan gruplarındaki evrimini inceleyen çalışma grubumuzun ilk buluşması; temel nörobilim ve gönüllü makale sunumlarıyla başladı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Biyoloji Yeni Bina — Derslik 5</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Evrimsel Nörobilim Çalışma Grubu</div>
+            </div>
+          </div>
+
+          <!-- 6. Makale Grubu: Doç. Dr. Yasemin Aydın ile Gelişim Biyolojisi ve Evrim — 26 Aralık 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="makale" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_makalegrubu_yaseminaydin%20(1).jpg" alt="Makale Grubu: Gelişim Biyolojisi ve Evrim"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">26</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Makale Grubu: Doç. Dr. Yasemin Aydın ile Gelişim Biyolojisi ve Evrim</h3>
+              <p class="ec-desc">
+                Doç. Dr. Yasemin Aydın tarafından belirlenen makalelerin öğrenci sunumları ve tartışmalarla işlendiği etkinlik, Fahir Yeniçay Dersliği'nde gerçekleşti.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Fahir Yeniçay Dersliği</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Makale Grubu</div>
+            </div>
+          </div>
+
+          <!-- 5. Biyoloji Felsefesine Giriş: Temel Tartışmalar — 16 Aralık 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_biofelsefe%20(1).jpg" alt="Biyoloji Felsefesine Giriş: Temel Tartışmalar"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">16</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Biyoloji Felsefesine Giriş: Temel Tartışmalar</h3>
+              <p class="ec-desc">
+                Tarihinden ve felsefesinden bağımsız aktarılan anaakım bilim anlatısının ötesine geçerek biyoloji felsefesini keşfettiğimiz etkinlik; kitap ödüllü sorular da içerdi.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 6</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 4. C.M. Kösemen ile Paleoart & Spekülatif Evrim — 2 Aralık 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_cmkosemen%20(1).jpg" alt="C.M. Kösemen ile Paleoart &amp; Spekülatif Evrim"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">2</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">C.M. Kösemen ile Paleoart &amp; Spekülatif Evrim</h3>
+              <p class="ec-desc">
+                Fosilleri en doğru şekilde nasıl resmederiz? Canlılar farklı koşullarda evrimleşseydi nasıl görünürdü? Sanat ve bilimin kesişiminde C.M. Kösemen ile keşfettik.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Engin Arık Dersliği</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 3b. Toplumsal Cinsiyet ve Bilim — 27 Kasım 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_toplumsalcinsiyet.jpg" alt="Toplumsal Cinsiyet ve Bilim"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">27</span>
+                    <span class="ec-month-year"><span>Kasım</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Toplumsal Cinsiyet ve Bilim</h3>
+              <p class="ec-desc">
+                25 Kasım Kadına Yönelik Şiddete Karşı Mücadele Günü haftasında Evelyn Fox Keller'ın kitabından bir bölümü okuyup toplumsal cinsiyet ile bilim eşitsizliğini tartıştık.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 3a. Makale Grubu: Sinir Sisteminin Omurgasız Kökenleri — 1 Kasım 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="makale" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri (1).jpg" alt="Makale Grubu: Sinir Sisteminin Omurgasız Kökenleri"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">1</span>
+                    <span class="ec-month-year"><span>Kasım</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Makale Grubu: Sinir Sisteminin Omurgasız Kökenleri</h3>
+              <p class="ec-desc">
+                Sezonun ilk makale grubu etkinliğinde biri İngilizce biri Türkçe gerçekleştirilen iki sunum, Derslik 5'te öğrenciler arasında tartışıldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Makale Grubu</div>
+            </div>
+          </div>
+
+          <!-- 2. Çağatay Tarhan ile Evrim Dersleri — 14 & 21 Ekim 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_cagataytarhan%20(1).jpg" alt="Çağatay Tarhan ile Evrim Dersleri"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">14</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Çağatay Tarhan ile Evrim Dersleri</h3>
+              <p class="ec-desc">
+                Evrim teorisi ve mekanizmalarının derinlemesine ele alındığı iki oturumlu ders serisi (14 ve 21 Ekim). Temellerden başlayarak giderek detaylandı; her seviyeden katılımcıya hitap etti.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Engin Arık Dersliği</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 1. Tanışma Toplantısı — Ekim 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2024-2025" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2425_tanisma.jpg" alt="Evrim Topluluğu Tanışma Toplantısı"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">—</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Topluluğu Tanışma Toplantısı</h3>
+              <p class="ec-desc">
+                Evrim Topluluğu'nu tanımak, yapılan ve yapılacak etkinlikler hakkında bilgi almak ve toplulukta aktif rol almak isteyen herkese yönelik tanışma toplantısı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Engin Arık Dersliği</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- DÖNEM: 2023–2024                              -->
+      <!-- ============================================== -->
+      <div class="period-group reveal" id="pg-2023-2024" data-period="2023-2024">
+        <div class="pg-header">
+          <span class="pg-year">2023–2024</span>
+          <span class="pg-header-line"></span>
+        </div>
+        <div class="events-grid">
+
+          <!-- 14. Belgesel Günü: Secrets of Neanderthals — Mayıs 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="belgesel" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_belgesel%20(1).jpg" alt="Belgesel Günü: Secrets of Neanderthals"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M15 10l4.553-2.277A1 1 0 0 1 21 8.645v6.71a1 1 0 0 1-1.447.893L15 14M3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">—</span>
+                    <span class="ec-month-year"><span>Mayıs</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Belgesel Günü: Secrets of Neanderthals</h3>
+              <p class="ec-desc">
+                Evrim Topluluğu ve Sinema Topluluğu ortaklığıyla Şanidar Mağarası kazılarını ve en iyi korunmuş Neandertal iskeleti Shanidar Z'yi anlatan belgesel izlendi.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+              </div>
+              <div class="ec-series-tag">Belgesel</div>
+            </div>
+          </div>
+
+          <!-- 13. Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu — 2 Mayıs 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="makale" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_makalegrubu%20(1).jpg" alt="Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">2</span>
+                    <span class="ec-month-year"><span>Mayıs</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu</h3>
+              <p class="ec-desc">
+                Beste Zorlu ve Alper Karagöl'ün sunumuyla "Evolutionary rescue via transgenerational plasticity" ve "Predicting evolutionary responses due to climate change in the sea" makaleleri tartışıldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Makale Grubu</div>
+            </div>
+          </div>
+
+          <!-- 12. İhsan Ketin Doğa Tarihi Müzesi Gezisi — Nisan 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_gezi%20(1).jpg" alt="İhsan Ketin Doğa Tarihi Müzesi Gezisi"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">—</span>
+                    <span class="ec-month-year"><span>Nisan</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">İhsan Ketin Doğa Tarihi Müzesi Gezisi</h3>
+              <p class="ec-desc">
+                Evrim Topluluğu ve Antropoloji Kulübü'nün ilk ortak etkinliği; İTÜ Maden Fakültesi bünyesindeki Prof. Dr. İhsan Ketin Doğa Tarihi Müzesi'ne gezi.
+              </p>
+              <div class="ec-meta">
+                <span>📍 İTÜ Maden Fakültesi</span>
+              </div>
+              <div class="ec-series-tag">Gezi</div>
+            </div>
+          </div>
+
+          <!-- 11. Evrim Okumaları 5: Paleontoloji ve Evrim — 26 Nisan 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_evrimokumalari5.jpg" alt="Evrim Okumaları 5: Paleontoloji ve Evrim"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">26</span>
+                    <span class="ec-month-year"><span>Nisan</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları 5: Paleontoloji ve Evrim</h3>
+              <p class="ec-desc">
+                Derek Turner'ın "Paleontoloji ve Evrim: Felsefi Bir Yaklaşım" kitabının ilk üç bölümü üzerinden filetik kademelilik, kesintili denge ve tür kavramları tartışıldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Biyoloji Bölümü — Derslik 5</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- 10. Ekoloji Hareketi ve Hayvan Özgürlüğü Mücadelesi — 14 Mart 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_ekoloji.jpg" alt="Ekoloji Hareketi ve Hayvan Özgürlüğü Mücadelesi"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">14</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Ekoloji Hareketi ve Hayvan Özgürlüğü Mücadelesi</h3>
+              <p class="ec-desc">
+                Vegan Topluluğu, Evrim Topluluğu ve Bilim Tarihi Kulübü'nün ortak etkinliği; ekoloji hareketi ve hayvan özgürlüğü mücadelesi tarihsel ve felsefi bir perspektiften ele alındı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Edebiyat Fakültesi Şeref Holü</span>
+                <span>🕒 14:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 9. Sercan Acar ile Primatların Yaşam Öyküleri — 7 Mart 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_sercanacar%20(1).jpg" alt="Sercan Acar ile Primatların Yaşam Öyküleri"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">7</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Sercan Acar ile Primatların Yaşam Öyküleri</h3>
+              <p class="ec-desc">
+                Antropoloji bölümü akademisyeni Dr. Sercan Acar'ın sunumuyla primatların milyonlarca yıllık yaşam öyküleri ve evrimsel süreçleri incelendi.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Engin Arık Dersliği</span>
+                <span>🕒 15:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 8. Evrim Okumaları 4: Richard Lewontin — 4 Mart 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_evrimokumalari4%20(1).jpg" alt="Evrim Okumaları 4: İdeoloji Olarak Biyoloji"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">4</span>
+                    <span class="ec-month-year"><span>Mart</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları 4: İdeoloji Olarak Biyoloji</h3>
+              <p class="ec-desc">
+                Richard Lewontin'in bilim ile ideoloji ilişkisini inceleyen "İdeoloji Olarak Biyoloji" kitabı tartışıldı; biyolojik indirgemecilik ve sınıfsal eşitsizliklerin perdelenmesi ele alındı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 6</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- 7. Prof. Dr. Mehmet Bona ile Evrim Teorisine Kısa Bir Giriş — 22 Şubat 2024 -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="bahar">
+            <div class="ec-poster">
+              <img src="/images/events/2324_mehmetbona%20(1).jpg" alt="Prof. Dr. Mehmet Bona ile Evrim Teorisine Kısa Bir Giriş"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">22</span>
+                    <span class="ec-month-year"><span>Şubat</span><span>2024</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Prof. Dr. Mehmet Bona ile Evrim Teorisine Kısa Bir Giriş: Mekanizmalar</h3>
+              <p class="ec-desc">
+                Kulübün ilk resmi üniversite etkinliğinde Prof. Dr. Mehmet Bona ile evrimin işleyişini sağlayan mekanizmalar ele alındı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Derslik 5</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 6. Kaan Biçici ile Bilim ve Laiklik — 20 Aralık 2023 — Kulüp Öncesi -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2324_kaanbicici.jpg" alt="Kaan Biçici ile Bilim ve Laiklik"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">20</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2023</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Kaan Biçici ile Bilim ve Laiklik</h3>
+              <p class="ec-desc">
+                Kaan Biçici'nin anlatımıyla bilim ve laiklik arasındaki ilişki tarihsel ve felsefi bir perspektiften ele alındı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Simurg Kafe</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 5. Evrim Okumaları 3: Barış Özener — 6 Aralık 2023 — Kulüp Öncesi -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2324_evrimokumalari3.jpg" alt="Evrim Okumaları 3: İnsan Çeşitliliği"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">6</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2023</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları 3: İnsan Çeşitliliği</h3>
+              <p class="ec-desc">
+                Barış Özener'in "İnsan Çeşitliliği" kitabı tartışıldı; insan çeşitliliğinin biyolojik ve evrimsel temelleri değerlendirildi.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Bahçe Cafe</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- 4. Evrim Okumaları 2: Aydınlanma & Bilimin Doğası — 25 Kasım 2023 — Kulüp Öncesi -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2324_evrimokumalari2.jpg" alt="Evrim Okumaları 2: Aydınlanma ve Bilimin Doğası"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">25</span>
+                    <span class="ec-month-year"><span>Kasım</span><span>2023</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları 2: Aydınlanma, Hipotez, Olgu ve Bilimin Doğası</h3>
+              <p class="ec-desc">
+                Immanuel Kant'ın "Aydınlanma Nedir" ve Douglas Futuyma'nın "Hipotez, Olgu ve Bilimin Doğası" metinleri okunup tartışıldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Simurg Cafe</span>
+                <span>🕒 16:30</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- 3. Dr. Çağatay Tarhan ile Evrim Teorisinin Tarihi — 3 Kasım 2023 — Kulüp Öncesi -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2324_cagataytarhan%20(1).jpg" alt="Dr. Çağatay Tarhan ile Evrim Teorisinin Tarihi"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">3</span>
+                    <span class="ec-month-year"><span>Kasım</span><span>2023</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Dr. Çağatay Tarhan ile Evrim Teorisinin Tarihi</h3>
+              <p class="ec-desc">
+                "Darwin Öncesi ve Sonrası Düşünceler" başlığıyla Dr. Çağatay Tarhan'ın anlatımıyla evrim teorisinin tarihsel gelişimi ele alındı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Edebiyat Fakültesi B Blok — D-328</span>
+                <span>🕒 15:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- 2. Evrim Okumaları 1: Tamer Kaya — 25 Ekim 2023 — Kulüp Öncesi -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2324_evrimokumalari1%20(1).jpg" alt="Evrim Okumaları 1: Tamer Kaya"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">25</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2023</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları 1: Tamer Kaya — Evrim</h3>
+              <p class="ec-desc">
+                Tamer Kaya'nın "Evrim" kitabının tartışıldığı ilk okuma grubu etkinliği; kalınan yerden devam edildi ve yeni dönemin ilk topluluğu buluşması gerçekleşti.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Bahçe Kafe</span>
+                <span>🕒 17:30</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- 1. Tanışma Toplantısı — 9 Ekim 2023 — Kulüp Öncesi -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2023-2024" data-sem="guz">
+            <div class="ec-poster">
+              <img src="/images/events/2324_tanisma%20(1).jpg" alt="Tanışma Toplantısı"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">9</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2023</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Tanışma Toplantısı</h3>
+              <p class="ec-desc">
+                Dönem boyunca gerçekleştirilecek etkinlikleri konuşmak ve birbirini tanımak için düzenlenen ilk buluşma.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Simurg Cafe — 1. Kat</span>
+                <span>🕒 17:30</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- DÖNEM: 2022–2023 (TOPLULUK DÖNEMİ)            -->
+      <!-- ============================================== -->
+      <div class="period-group reveal" id="pg-2022-2023" data-period="2022-2023" data-sem="all">
+        <div class="pg-header">
+          <span class="pg-year">2022–2023</span>
+          <span class="pg-community-note">Kulüp öncesi dönem</span>
+          <span class="pg-header-line"></span>
+        </div>
+        <div class="events-grid" id="grid-2022-2023">
+
+          <!-- Dr. Çağatay Tarhan ile Evrim 101 — 16 Aralık -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2022-2023">
+            <div class="ec-poster">
+              <img src="/images/events/2223_cagataytarhan (1).jpg" alt="Dr. Çağatay Tarhan ile Evrim 101"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">16</span>
+                    <span class="ec-month-year"><span>Aralık</span><span>2022</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Dr. Çağatay Tarhan ile Evrim 101</h3>
+              <p class="ec-desc">
+                Bilim Tarihi Kulübü ile ortak düzenlenen söyleşide Dr. Öğr. Üyesi Çağatay Tarhan "Evrim Ne Söyler? Neden Önemlidir?" sorusunu ele aldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 D-226</span>
+                <span>🕒 16:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- Evrim Okumaları 2: Darwin Devrimi — 18 Kasım -->
+          <div class="event-card reveal" data-type="past" data-series="makale" data-period="2022-2023">
+            <div class="ec-poster">
+              <img src="/images/events/2223_evrimokumalari2.jpg" alt="Evrim Okumaları: Darwin Devrimi"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">18</span>
+                    <span class="ec-month-year"><span>Kasım</span><span>2022</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları: Darwin Devrimi</h3>
+              <p class="ec-desc">
+                Sınavların ardından devam eden Evrim Okumalarında Darwin Devrimi üzerine metinler tartışıldı. PDF materyaller WhatsApp grubu üzerinden paylaşıldı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Çayİstanbul alt kat</span>
+                <span>🕒 17:00</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- Ergi Deniz Özsoy: İmza ve Söyleşi — 7 Ekim -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2022-2023">
+            <div class="ec-poster">
+              <img src="/images/events/2223_ergidenizozsoy.jpg" alt="Ergi Deniz Özsoy: İmza ve Söyleşi"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">7</span>
+                    <span class="ec-month-year"><span>Ekim</span><span>2022</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Prof. Dr. Ergi Deniz Özsoy: İmza ve Söyleşi</h3>
+              <p class="ec-desc">
+                Pangaltı Evrim Atölyesi ve İKÜ MBG kulübüyle ortak düzenlenen etkinlikte Prof. Dr. Ergi Deniz Özsoy, Ginko Bilim'den çıkan "Evrim, Bilim ve Tarih" kitabı üzerine konuştu ve kitaplarını imzaladı.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Şişli Nostalji Kitap Kafe</span>
+                <span>🕒 19:00</span>
+              </div>
+              <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
+            </div>
+          </div>
+
+          <!-- Tanışma Toplantısı — 30 Eylül -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2022-2023">
+            <div class="ec-poster">
+              <img src="/images/events/2223_tanisma.jpg" alt="Tanışma Toplantısı"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">30</span>
+                    <span class="ec-month-year"><span>Eylül</span><span>2022</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Tanışma Toplantısı</h3>
+              <p class="ec-desc">
+                Dönem boyunca gerçekleştirilecek etkinliklerin konuşulduğu ve topluluğun birbirini tanıdığı ilk buluşma.
+              </p>
+              <div class="ec-meta">
+                <span>📍 Çayİstanbul alt kat</span>
+                <span>🕒 18:00</span>
+              </div>
+              <div class="ec-series-tag">Toplantı</div>
+            </div>
+          </div>
+
+          <!-- Evrim Okumaları 1: Çağrı Mert Bakırcı — 22 Temmuz -->
+          <div class="event-card reveal" data-type="past" data-series="makale" data-period="2022-2023">
+            <div class="ec-poster">
+              <img src="/images/events/2223_evrimokumalari1.jpg" alt="Evrim Okumaları: Çağrı Mert Bakırcı"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+                <div class="ec-date">
+                  <div class="ec-date-box">
+                    <span class="ec-day">22</span>
+                    <span class="ec-month-year"><span>Temmuz</span><span>2022</span></span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="ec-title">Evrim Okumaları: Çağrı Mert Bakırcı'nın "Evrim Kuramı ve Mekanizmalar" Kitabı</h3>
+              <p class="ec-desc">
+                Çağrı Mert Bakırcı'nın "Evrim Kuramı ve Mekanizmaları" kitabıyla devam eden evrim okumalarına katılım için detaylar DM üzerinden paylaşıldı.
+              </p>
+              <div class="ec-meta">
+                <span>🕒 18:00</span>
+              </div>
+              <div class="ec-series-tag">Evrim Okumaları</div>
+            </div>
+          </div>
+
+          <!-- Topluluk Kuruluşu -->
+          <div class="event-card reveal" data-type="past" data-series="calistay" data-period="2022-2023">
+            <div class="ec-poster">
+              <img src="/images/events/2223_kurulus.jpg" alt="İÜ Evrim Topluluğu Kuruluşu"
+                   onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg></div>'">
+            </div>
+            <div class="ec-body">
+              <div class="ec-top">
+                <span class="ec-badge preclub">Kulüp Öncesi</span>
+              </div>
+              <h3 class="ec-title">İstanbul Üniversitesi Evrim Topluluğu Kuruluşu</h3>
+              <p class="ec-desc">
+                Yaklaşık bir dönemdir süren evrim okumalarının ardından İstanbul Üniversitesi Evrim Topluluğu olarak yola devam etme kararı alındı. Amacımız evrim teorisini disiplinlerarası bir perspektifle ele almak ve üniversitemizde tartışma ortamı yaratmak.
+              </p>
+              <div class="ec-series-tag">Duyuru</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Boş sonuç mesajı -->
+
+    </div>
+    <!-- ¦¦ SOL SONU ¦¦ -->
+
+    <!-- ¦¦ SAĞ: DÖNEM KENAR ÇUBUĞU ¦¦ -->
+    <aside class="period-sidebar" id="period-sidebar">
+      <div class="ps-head">Dönemler</div>
+
+      <!-- 2025–2026 -->
+      <div class="ps-period-block" data-period-block="2025-2026">
+        <button class="ps-period-btn">2025–2026</button>
+      </div>
+
+      <!-- 2024–2025 -->
+      <div class="ps-period-block" data-period-block="2024-2025">
+        <button class="ps-period-btn">2024–2025</button>
+      </div>
+
+      <!-- 2023–2024 -->
+      <div class="ps-period-block" data-period-block="2023-2024">
+        <button class="ps-period-btn">2023–2024</button>
+      </div>
+
+      <!-- 2022–2023 (Topluluk Dönemi) -->
+      <div class="ps-period-block" data-period-block="2022-2023">
+        <button class="ps-period-btn">2022–2023</button>
+      </div>
+
+    </aside>
+    <!-- ¦¦ SAĞ SONU ¦¦ -->
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">İÜ Evrim Topluluğu</div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır.</div>
+</footer>
+
+<script>
+  // ¦¦ Dropdown hover ¦¦
+  const navEtkinlikler = document.getElementById('nav-etkinlikler');
+  navEtkinlikler.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navEtkinlikler.classList.add('open'));
+  navEtkinlikler.addEventListener('mouseleave', () => navEtkinlikler.classList.remove('open'));
+
+  const navBiz = document.getElementById('nav-biz');
+  navBiz.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navBiz.classList.add('open'));
+  navBiz.addEventListener('mouseleave', () => navBiz.classList.remove('open'));
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+  // ── Hamburger / Side Panel ──
+  const hamburger        = document.getElementById('hamburger');
+  const sidePanel        = document.getElementById('side-panel');
+  const sidePanelOverlay = document.getElementById('side-panel-overlay');
+  const sidePanelClose   = document.getElementById('side-panel-close');
+  function openPanel() {
+    sidePanel.classList.add('open');
+    sidePanelOverlay.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel() {
+    sidePanel.classList.remove('open');
+    sidePanelOverlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
+  sidePanelClose.addEventListener('click', closePanel);
+  sidePanelOverlay.addEventListener('click', closePanel);
+  sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
+  document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const tabId = link.dataset.scrollTab;
+      const targetHash = tabId === 'ekip' ? 'tab-ekip' : (tabId === 'katil' ? 'tab-katil' : 'tab-amac');
+      closePanel();
+      window.location.href = `/#${targetHash}`;
+    });
+  });
+  // Swipe ile kapat
+  let panelTouchStartX = 0;
+  sidePanel.addEventListener('touchstart', function(e) {
+    panelTouchStartX = e.touches[0].clientX;
+  }, {passive: true});
+  sidePanel.addEventListener('touchend', function(e) {
+    const diff = e.changedTouches[0].clientX - panelTouchStartX;
+    if (diff > 60) closePanel();
+  }, {passive: true});
+
+  const buildRouteUrl = (locationText) => {
+    const normalized = locationText.toLocaleLowerCase('tr-TR');
+    if (normalized.includes('derslik 5')) return '/nasil-gidilir/#derslik-5';
+    if (normalized.includes('amfi a')) return '/nasil-gidilir/#amfi-a';
+    return '/nasil-gidilir/';
+  };
+
+  document.querySelectorAll('.ec-meta span').forEach((metaItem) => {
+    const text = metaItem.textContent || '';
+    if (!text.includes('📍') || metaItem.querySelector('a')) return;
+
+    const link = document.createElement('a');
+    link.href = buildRouteUrl(text);
+    link.textContent = text.trim();
+    link.style.color = 'inherit';
+    link.style.textDecoration = 'underline';
+    link.style.textUnderlineOffset = '2px';
+    link.style.cursor = 'pointer';
+    link.addEventListener('click', (event) => event.stopPropagation());
+
+    metaItem.textContent = '';
+    metaItem.appendChild(link);
+  });
+
+ });
+
+  // ¦¦ Seri filtre butonları ¦¦
+  const allCards   = document.querySelectorAll('.event-card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      allCards.forEach(card => {
+        card.classList.toggle('hidden', filter !== 'all' && card.dataset.series !== filter);
+      });
+    });
+  });
+
+   // URL'den filtre oku  <-- BURAYA EKLE
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlFilter = urlParams.get('filter');
+  if (urlFilter) {
+    const targetBtn = document.querySelector(`.filter-btn[data-filter="${urlFilter}"]`);
+    if (targetBtn) targetBtn.click();
+  }
+
+  // ¦¦ Dönem sidebar: tıklayınca scroll ¦¦
+  document.querySelectorAll('.ps-period-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ps-period-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const period = btn.closest('[data-period-block]').dataset.periodBlock;
+      const target = document.getElementById('pg-' + period);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+
+
+
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ¦¦ GALERİ SİSTEMİ ¦¦
+  const GALLERY_MAP = {
+    // 2025–2026
+    '2526_evoneuro5.1.jpg': [
+      'images/events/2526_evoneuro5.1.jpg','images/events/2526_evoneuro5.2.jpg',
+      'images/events/2526_evoneuro5.3.jpg','images/events/2526_evoneuro5.4.jpg',
+      'images/events/2526_evoneuro5.5.jpg'
+    ],
+    '2526_baharpatlar1.jpg': [
+      'images/events/2526_baharpatlar1.jpg','images/events/2526_baharpatlar2.jpg',
+      'images/events/2526_baharpatlar3.jpg','images/events/2526_baharpatlar4.jpg'
+    ],
+    '2526_evoneuro4 (1).jpg': [
+      'images/events/2526_evoneuro4 (1).jpg','images/events/2526_evoneuro4 (2).jpg',
+      'images/events/2526_evoneuro4 (3).jpg','images/events/2526_evoneuro4 (4).jpg',
+      'images/events/2526_evoneuro4 (5).jpg'
+    ],
+    '2526_ilkerkucukparlak1 (1).jpg': [
+      'images/events/2526_ilkerkucukparlak1 (1).jpg','images/events/2526_ilkerkucukparlak1 (2).jpg'
+    ],
+    '2526_muratbelivermis1 (1).jpg': [
+      'images/events/2526_muratbelivermis1 (1).jpg','images/events/2526_muratbelivermis1 (2).jpg'
+    ],
+    '2526_evoneuro3 (1).jpg': [
+      'images/events/2526_evoneuro3 (1).jpg','images/events/2526_evoneuro3 (2).jpg',
+      'images/events/2526_evoneuro3 (3).jpg','images/events/2526_evoneuro3 (4).jpg',
+      'images/events/2526_evoneuro3 (5).jpg'
+    ],
+    '2526_makalegrubu_arıhanerozden1 (1).jpg': [
+      'images/events/2526_makalegrubu_arıhanerozden1 (1).jpg',
+      'images/events/2526_makalegrubu_arıhanerozden1 (2).jpg'
+    ],
+    '2526_evoneuro2 (1).jpg': [
+      'images/events/2526_evoneuro2 (1).jpg','images/events/2526_evoneuro2 (2).jpg',
+      'images/events/2526_evoneuro2 (3).jpg','images/events/2526_evoneuro2 (4).jpg',
+      'images/events/2526_evoneuro2 (5).jpg'
+    ],
+    '2526_evoneuro_1 (1).jpg': [
+      'images/events/2526_evoneuro_1 (1).jpg','images/events/2526_evoneuro_1 (2).jpg'
+    ],
+    '2526_ahlakınevrimi1 (1).jpg': [
+      'images/events/2526_ahlakınevrimi1 (1).jpg','images/events/2526_ahlakınevrimi1 (2).jpg',
+      'images/events/2526_ahlakınevrimi1 (3).jpg','images/events/2526_ahlakınevrimi1 (4).jpg'
+    ],
+    '2526_ezgialtinisik1 (6).jpg': [
+      'images/events/2526_ezgialtinisik1 (6).jpg',
+      'images/events/2525_ezgialtinisik1 (2).jpg',
+      'images/events/2525_ezgialtinisik1 (3).jpg','images/events/2525_ezgialtinisik1 (4).jpg',
+      'images/events/2525_ezgialtinisik1 (5).jpg'
+    ],
+    '2526_ogunadebali1 (1).jpg': [
+      'images/events/2526_ogunadebali1 (1).jpg','images/events/2526_ogunadebali1 (2).jpg',
+      'images/events/2526_ogunadebali1 (3).jpg','images/events/2526_ogunadebali1 (4).jpg',
+      'images/events/2526_ogunadebali1 (5).jpg'
+    ],
+    '2526_istanbuluniversitesindeevrim1 (1).jpg': [
+      'images/events/2526_istanbuluniversitesindeevrim1 (1).jpg',
+      'images/events/2526_istanbuluniversitesindeevrim1 (2).jpg',
+      'images/events/2526_istanbuluniversitesindeevrim1 (3).jpg',
+      'images/events/2526_istanbuluniversitesindeevrim1 (4).jpg',
+      'images/events/2526_istanbuluniversitesindeevrim1 (5).jpg'
+    ],
+    // 2024–2025
+    '2425_evoneuro3 (1).jpg': [
+      'images/events/2425_evoneuro3 (1).jpg','images/events/2425_evoneuro3 (2).jpg',
+      'images/events/2425_evoneuro3 (3).jpg','images/events/2425_evoneuro3 (4).jpg'
+    ],
+    '2425_evoneuro2 (1).jpg': [
+      'images/events/2425_evoneuro2 (1).jpg','images/events/2425_evoneuro2 (2).jpg',
+      'images/events/2425_evoneuro2 (3).jpg','images/events/2425_evoneuro2 (4).jpg',
+      'images/events/2425_evoneuro2 (5).jpg'
+    ],
+    '2425_evrimdeizbirakmiskadinlar (1).jpg': [
+      'images/events/2425_evrimdeizbirakmiskadinlar (1).jpg',
+      'images/events/2425_evrimdeizbirakmiskadinlar (2).jpg',
+      'images/events/2425_evrimdeizbirakmiskadinlar (3).jpg',
+      'images/events/2425_evrimdeizbirakmiskadinlar (4).jpg',
+      'images/events/2425_evrimdeizbirakmiskadinlar (5).jpg'
+    ],
+    '2425_makalegrubu_yaseminaydin (1).jpg': [
+      'images/events/2425_makalegrubu_yaseminaydin (1).jpg',
+      'images/events/2425_makalegrubu_yaseminaydin (2).jpg',
+      'images/events/2425_makalegrubu_yaseminaydin (3).jpg',
+      'images/events/2425_makalegrubu_yaseminaydin (4).jpg',
+      'images/events/2425_makalegrubu_yaseminaydin (5).jpg'
+    ],
+    '2425_makalegrubu_sinirsistemininomurgasizkokenleri (1).jpg': [
+      'images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri (1).jpg',
+      'images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri (2).jpg',
+      'images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri (3).jpg'
+    ],
+    '2425_biofelsefe (1).jpg': [
+      'images/events/2425_biofelsefe (1).jpg','images/events/2425_biofelsefe (2).jpg',
+      'images/events/2425_biofelsefe (3).jpg','images/events/2425_biofelsefe (4).jpg'
+    ],
+    '2425_cmkosemen (1).jpg': [
+      'images/events/2425_cmkosemen (1).jpg','images/events/2425_cmkosemen (2).jpg',
+      'images/events/2425_cmkosemen (3).jpg','images/events/2425_cmkosemen (4).jpg',
+      'images/events/2425_cmkosemen (5).jpg'
+    ],
+    '2425_cagataytarhan (1).jpg': [
+      'images/events/2425_cagataytarhan (1).jpg','images/events/2425_cagataytarhan (2).jpg',
+      'images/events/2425_cagataytarhan (3).jpg','images/events/2425_cagataytarhan (4).jpg',
+      'images/events/2425_cagataytarhan (5).jpg'
+    ],
+    '2425_evoneuro1 (1).jpg': [
+      'images/events/2425_evoneuro1 (1).jpg','images/events/2425_evoneuro1 (2).jpg',
+      'images/events/2425_evoneuro1 (3).jpg','images/events/2425_evoneuro1 (4).jpg',
+      'images/events/2425_evoneuro1 (5).jpg'
+    ],
+    // 2023–2024
+    '2324_belgesel (1).jpg': [
+      'images/events/2324_belgesel (1).jpg','images/events/2324_belgesel (2).jpg'
+    ],
+    '2324_makalegrubu (1).jpg': [
+      'images/events/2324_makalegrubu (1).jpg','images/events/2324_makalegrubu (2).jpg',
+      'images/events/2324_makalegrubu (3).jpg','images/events/2324_makalegrubu (4).jpg'
+    ],
+    '2324_gezi (1).jpg': [
+      'images/events/2324_gezi (1).jpg','images/events/2324_gezi (2).jpg',
+      'images/events/2324_gezi (3).jpg','images/events/2324_gezi (4).jpg',
+      'images/events/2324_gezi (5).jpg'
+    ],
+    '2324_sercanacar (1).jpg': [
+      'images/events/2324_sercanacar (1).jpg','images/events/2324_sercanacar (2).jpg',
+      'images/events/2324_sercanacar (3).jpg','images/events/2324_sercanacar (4).jpg',
+      'images/events/2324_sercanacar (5).jpg'
+    ],
+    '2324_evrimokumalari4 (1).jpg': [
+      'images/events/2324_evrimokumalari4 (1).jpg','images/events/2324_evrimokumalari4 (2).jpg'
+    ],
+    '2324_mehmetbona (1).jpg': [
+      'images/events/2324_mehmetbona (1).jpg','images/events/2324_mehmetbona (2).jpg',
+      'images/events/2324_mehmetbona (3).jpg','images/events/2324_mehmetbona (4).jpg'
+    ],
+    '2324_cagataytarhan (1).jpg': [
+      'images/events/2324_cagataytarhan (1).jpg','images/events/2324_cagataytarhan (2).jpg',
+      'images/events/2324_cagataytarhan (3).jpg','images/events/2324_cagataytarhan (4).jpg'
+    ],
+    '2324_evrimokumalari1 (1).jpg': [
+      'images/events/2324_evrimokumalari1 (1).jpg','images/events/2324_evrimokumalari1 (2).jpg'
+    ],
+    '2324_tanisma (1).jpg': [
+      'images/events/2324_tanisma (1).jpg','images/events/2324_tanisma (2).jpg'
+    ],
+    // 2022–2023
+    '2223_cagataytarhan (1).jpg': [
+      'images/events/2223_cagataytarhan (1).jpg','images/events/2223_cagataytarhan (2).jpg',
+      'images/events/2223_cagataytarhan (3).jpg'
+    ]
+  };
+
+  // ¦¦ Lightbox DOM referansları ¦¦
+  const galOverlay  = document.getElementById('gal-overlay');
+  const galTitleEl  = document.getElementById('gal-title');
+  const galCounter  = document.getElementById('gal-counter');
+  const galCloseBtn = document.getElementById('gal-close');
+  const galMainImg  = document.getElementById('gal-main-img');
+  const galFooter   = document.getElementById('gal-footer');
+  const galPrevBtn  = document.getElementById('gal-prev');
+  const galNextBtn  = document.getElementById('gal-next');
+
+  let galImages = [];
+  let galIdx    = 0;
+
+  function galShow(index) {
+    galIdx = index;
+    const src = galImages[index];
+    galMainImg.classList.add('fading');
+    setTimeout(() => {
+      galMainImg.src = src;
+      galMainImg.alt = '';
+      galMainImg.onload  = () => galMainImg.classList.remove('fading');
+      galMainImg.onerror = () => galMainImg.classList.remove('fading');
+    }, 160);
+    galCounter.textContent = (index + 1) + ' / ' + galImages.length;
+    galFooter.querySelectorAll('.gal-thumb').forEach((t, i) => t.classList.toggle('active', i === index));
+    // scroll thumb into view
+    const activeThumb = galFooter.querySelectorAll('.gal-thumb')[index];
+    if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    galPrevBtn.disabled = index === 0;
+    galNextBtn.disabled = index === galImages.length - 1;
+  }
+
+  function galOpen(images, title) {
+    galImages = images;
+    galTitleEl.textContent = title;
+    galFooter.innerHTML = '';
+    images.forEach((src, i) => {
+      const t = document.createElement('img');
+      t.className = 'gal-thumb';
+      t.src = src;
+      t.alt = '';
+      t.addEventListener('click', () => galShow(i));
+      galFooter.appendChild(t);
+    });
+    // Hide footer if only 1 image
+    galFooter.style.display = images.length > 1 ? 'flex' : 'none';
+    galShow(0);
+    galOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function galClose() {
+    galOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { galMainImg.src = ''; }, 300);
+  }
+
+  galCloseBtn.addEventListener('click', galClose);
+  galOverlay.addEventListener('click', e => { if (e.target === galOverlay) galClose(); });
+  galPrevBtn.addEventListener('click', () => galShow(galIdx - 1));
+  galNextBtn.addEventListener('click', () => galShow(galIdx + 1));
+
+  document.addEventListener('keydown', e => {
+    if (!galOverlay.classList.contains('open')) return;
+    if (e.key === 'Escape')     galClose();
+    if (e.key === 'ArrowLeft')  { if (galIdx > 0) galShow(galIdx - 1); }
+    if (e.key === 'ArrowRight') { if (galIdx < galImages.length - 1) galShow(galIdx + 1); }
+  });
+
+  // ¦¦ Kartlara galeri bağla ¦¦
+  document.querySelectorAll('.event-card').forEach(card => {
+    const posterEl = card.querySelector('.ec-poster');
+    const img = posterEl ? posterEl.querySelector('img') : null;
+    if (!img) return;
+
+    // Glow katmanı ekle
+    const glow = document.createElement('div');
+    glow.className = 'ec-poster-glow';
+    posterEl.appendChild(glow);
+
+    const rawSrc  = img.getAttribute('src') || '';
+    const decoded = decodeURIComponent(rawSrc);
+    const filename = decoded.split('/').pop();
+    const images  = GALLERY_MAP[filename] || [rawSrc];
+
+    const title = card.querySelector('.ec-title')?.textContent?.trim() || '';
+    card.addEventListener('click', () => galOpen(images, title));
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('touchstart', function(){}, {passive: true});
+    document.querySelectorAll('a, button, [role="button"], .tab-btn, .nav-item-btn')
+      .forEach(el => {
+        el.addEventListener('touchstart', function(e) {
+          e.currentTarget.style.webkitTapHighlightColor = 'transparent';
+        }, {passive: true});
+      });
+  });
+</script>
+</body>
+</html>
+
+

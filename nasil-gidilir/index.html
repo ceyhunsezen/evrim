@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="origin-when-cross-origin">
+
+  <title>Nasıl Gidilir? | İÜ Evrim Topluluğu</title>
+  <meta name="description" content="Nasıl Gidilir? İstanbul Üniversitesi Fen Fakültesi">
+  <link rel="icon" type="image/png" href="/images/evo_logo4.png">
+  <link rel="preload" as="image" href="/images/nas%C4%B1l%20gidilir/yol_hero.jpg" fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e0a;
+      --surface: #111711;
+      --surface2: #161e16;
+      --accent: #6dbf67;
+      --accent-soft: #8fd98a;
+      --text: #e8ede8;
+      --text-muted: #9aaa9a;
+      --border: rgba(109,191,103,0.15);
+      --border-soft: rgba(109,191,103,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        linear-gradient(rgba(10,14,10,0.84), rgba(10,14,10,0.84)),
+        url('/images/nas%C4%B1l%20gidilir/yol_hero.jpg') center/cover fixed no-repeat,
+        var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(109,191,103,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(109,191,103,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4rem;
+      height: 64px;
+      background: rgba(10,14,10,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .nav-logo-img {
+      width: 34px; height: 34px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-divider {
+      display: block;
+      height: 1.15rem;
+      width: 1px;
+      background: rgba(109,191,103,0.35);
+      margin: 0 0.1rem;
+      font-size: 0;
+    }
+
+    .nav-logo-iu,
+    .nav-logo-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      line-height: 1;
+    }
+
+    .nav-logo-iu { color: var(--accent); }
+    .nav-logo-name { color: var(--text-muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      height: 100%;
+    }
+
+    .nav-links > li {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links > li > a,
+    .nav-item-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0 1.3rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.25s;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      white-space: nowrap;
+    }
+
+    .nav-links > li > a:hover,
+    .nav-item-btn:hover,
+    .nav-links > li.open > .nav-item-btn { color: var(--accent); }
+
+    .nav-chevron { font-size: 0.55rem; transition: transform 0.25s; }
+    .nav-links > li.open .nav-chevron { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 1px);
+      right: 0;
+      min-width: 220px;
+      background: rgba(10,16,10,0.96);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-top: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-links > li.open .dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.9rem 1.6rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { color: var(--accent); background: rgba(109,191,103,0.07); }
+    .dropdown a.active-link { color: var(--accent); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 201;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text-muted);
+      transition: transform 0.3s, opacity 0.3s, background 0.3s;
+    }
+
+    .hamburger:hover span { background: var(--accent); }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .side-panel {
+      position: fixed;
+      top: 0; right: 0;
+      width: min(320px, 85vw);
+      height: 100%;
+      background: rgba(10,14,10,0.82);
+      backdrop-filter: blur(24px);
+      border-left: 1px solid var(--border);
+      z-index: 500;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 2rem 3rem;
+      overflow-y: auto;
+    }
+
+    .side-panel.open { transform: translateX(0); }
+
+    .side-panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 499;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    .side-panel-overlay.open { opacity: 1; pointer-events: all; }
+
+    .side-panel-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.3rem;
+      transition: color 0.2s;
+      margin-bottom: 2rem;
+    }
+
+    .side-panel-close:hover { color: var(--accent); }
+
+    .side-panel-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .side-panel-nav { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .sp-group {
+      display: flex;
+      flex-direction: column;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .sp-group:last-child { border-bottom: none; }
+
+    .sp-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    .side-panel-nav .sp-label {
+      color: var(--accent) !important;
+      font-size: 0.68rem !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 0.6rem !important;
+      font-weight: 500 !important;
+      padding: 0 !important;
+    }
+
+    .side-panel-nav .sp-label:hover {
+      color: var(--accent-soft) !important;
+      padding-left: 0 !important;
+    }
+
+    .sp-group a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      letter-spacing: 0.04em;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .sp-group a:hover { color: var(--accent); padding-left: 0.35rem; }
+    .sp-current { color: var(--accent) !important; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      padding: 8rem 4rem 4rem;
+    }
+
+    .page-header {
+      max-width: 840px;
+      margin-bottom: 2.5rem;
+      padding: 1.4rem 1.4rem 1.4rem 1.2rem;
+      border-left: 2px solid rgba(109,191,103,0.5);
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(10,14,10,0.72) 0%, rgba(10,14,10,0.58) 100%);
+    }
+
+    .page-header p {
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.1rem, 5vw, 3.8rem);
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 0.9rem;
+    }
+
+    .page-header .desc {
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    .page-header .desc-line { display: block; }
+    .page-header .desc-line:first-child { margin-bottom: 1em; }
+    .page-header .desc-line:last-child { margin-top: 1em; }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background: linear-gradient(135deg, rgba(17,23,17,0.92) 0%, rgba(14,18,14,0.85) 100%);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      content-visibility: auto;
+      contain-intrinsic-size: 420px;
+    }
+
+    .video-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .classroom-panel {
+      position: sticky;
+      top: 84px;
+      background: linear-gradient(135deg, rgba(17,23,17,0.92) 0%, rgba(14,18,14,0.84) 100%);
+      border: 1px solid var(--border);
+      padding: 1rem;
+    }
+
+    .classroom-panel-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .classroom-search {
+      width: 100%;
+      background: rgba(10,14,10,0.75);
+      border: 1px solid var(--border-soft);
+      color: var(--text);
+      padding: 0.65rem 0.75rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      margin-bottom: 0.9rem;
+    }
+
+    .classroom-search::placeholder { color: var(--text-muted); }
+    .classroom-search:focus { border-color: rgba(109,191,103,0.35); }
+
+    .classroom-toggle {
+      display: none;
+      width: 100%;
+      background: rgba(109,191,103,0.1);
+      border: 1px solid rgba(109,191,103,0.28);
+      color: var(--accent);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.65rem 0.7rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .classroom-toggle:hover {
+      background: rgba(109,191,103,0.16);
+      border-color: rgba(109,191,103,0.4);
+    }
+
+    .classroom-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      max-height: 52vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .classroom-list a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-muted);
+      border: 1px solid var(--border-soft);
+      background: rgba(10,14,10,0.45);
+      padding: 0.6rem 0.7rem;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .classroom-list a:hover,
+    .classroom-list a.active {
+      color: var(--accent);
+      border-color: rgba(109,191,103,0.28);
+      background: rgba(109,191,103,0.08);
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .video-fallback {
+      margin-top: 0.55rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .video-fallback a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .video-fallback a:hover {
+      color: var(--accent-soft);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+    @media (min-width: 901px) {
+      .page {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+        align-items: start;
+      }
+
+      .page-header {
+        grid-column: 1;
+        grid-row: 1;
+        max-width: 100%;
+        margin-bottom: 0;
+      }
+
+      .content-layout {
+        display: contents;
+      }
+
+      .video-grid {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .classroom-panel {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .content-layout { grid-template-columns: 1fr; }
+      .classroom-panel {
+        position: static;
+        order: -1;
+      }
+      .classroom-list {
+        max-height: none;
+      }
+      .page-header {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      html { scroll-behavior: auto; }
+      body > nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      body {
+        background:
+          linear-gradient(rgba(10,14,10,0.84), rgba(10,14,10,0.84)),
+          url('/images/nas%C4%B1l%20gidilir/yol_hero.jpg') center/cover no-repeat,
+          var(--bg);
+        background-attachment: scroll;
+      }
+      body::before {
+        display: none;
+      }
+      body > nav {
+        position: sticky;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(10,14,10,0.98);
+      }
+      .side-panel {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(10,14,10,0.96);
+      }
+      .page-header,
+      .video-card,
+      .classroom-panel {
+        background: rgba(14,18,14,0.94);
+      }
+
+      .page {
+        padding: 6rem 1rem 2.25rem;
+      }
+
+      .page-header {
+        margin-bottom: 1.25rem;
+        padding: 1rem;
+      }
+
+      .page-header p {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+      }
+
+      .page-header h1 {
+        font-size: clamp(1.9rem, 9vw, 2.6rem);
+        margin-bottom: 0.7rem;
+      }
+
+      .page-header .desc {
+        font-size: 0.92rem;
+        line-height: 1.65;
+      }
+
+      .content-layout {
+        gap: 1rem;
+      }
+
+      .video-grid {
+        gap: 1rem;
+      }
+
+      .video-card {
+        padding: 0.75rem;
+      }
+
+      .video-wrap {
+        contain: layout paint style;
+      }
+
+      .video-wrap iframe {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .classroom-panel,
+      .page-header,
+      footer {
+        contain: layout paint;
+      }
+
+      .video-title {
+        font-size: 0.72rem;
+        margin-bottom: 0.55rem;
+      }
+
+      .classroom-panel {
+        padding: 0.75rem;
+      }
+
+      .classroom-search {
+        min-height: 42px;
+        font-size: 0.95rem;
+        padding: 0.6rem 0.7rem;
+      }
+
+      .classroom-toggle {
+        display: block;
+      }
+
+      .classroom-list a {
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+      }
+
+      .classroom-list {
+        display: flex;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transform: translateY(-6px);
+        will-change: max-height, opacity, transform;
+        transition: max-height 0.48s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.32s ease, transform 0.38s ease;
+      }
+
+      .classroom-panel.show-list .classroom-list {
+        max-height: var(--classroom-list-open-height, 52vh);
+        opacity: 1;
+        overflow-y: auto;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body > nav { padding: 0 0.8rem; }
+      .page { padding: 5.7rem 0.8rem 2rem; }
+      .page-header .desc { font-size: 0.88rem; }
+      .footer-copy { font-size: 0.74rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="side-panel" id="side-panel">
+  <button class="side-panel-close" id="side-panel-close" aria-label="Kapat">✕</button>
+  <a href="/" class="side-panel-logo" style="text-decoration: none;">
+    <span class="nav-logo-iu">İÜ</span>
+    <span class="nav-logo-name">Evrim Topluluğu</span>
+  </a>
+  <nav class="side-panel-nav">
+    <div class="sp-group">
+      <span class="sp-label">Etkinlikler</span>
+      <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
+      <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+      <a href="/makale-grubu/">Makale Grubu</a>
+      <a href="/nasil-gidilir/" class="sp-current">Nasıl Gidilir?</a>
+    </div>
+    <div class="sp-group">
+      <a href="/yayinlar/" class="sp-label" style="display: block; text-decoration: none;">Yayınlar</a>
+    </div>
+    <div class="sp-group">
+      <span class="sp-label">Biz Kimiz?</span>
+      <a href="/#tab-amac" data-scroll-tab="amac">Amacımız</a>
+      <a href="/#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+      <a href="/#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
+    </div>
+    <div class="sp-group">
+      <a href="/#sss" class="sp-label" style="display: block; text-decoration: none;">SSS</a>
+    </div>
+    <div class="sp-group">
+      <a href="/#iletisim" class="sp-label" style="display: block; text-decoration: none;">İletişim</a>
+    </div>
+  </nav>
+</div>
+<div class="side-panel-overlay" id="side-panel-overlay"></div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img class="nav-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo">
+    <span class="nav-logo-divider"></span>
+    <span class="nav-logo-iu">Evrim</span>
+    <span class="nav-logo-name">Topluluğu</span>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li id="nav-etkinlikler">
+      <button class="nav-item-btn">
+        Etkinlikler&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
+        <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+        <a href="/makale-grubu/">Makale Grubu</a>
+        <a href="/nasil-gidilir/" class="active-link">Nasıl Gidilir?</a>
+      </div>
+    </li>
+    <li><a href="/yayinlar/">Yayınlar</a></li>
+    <li id="nav-biz">
+      <button class="nav-item-btn">
+        Biz Kimiz?&nbsp;<span class="nav-chevron">▼</span>
+      </button>
+      <div class="dropdown">
+        <a href="/#tab-amac" data-scroll-tab="amac">Amacımız</a>
+        <a href="/#tab-ekip" data-scroll-tab="ekip">Yönetim Kurulu</a>
+        <a href="/#tab-katil" data-scroll-tab="katil">Bize Katıl</a>
+      </div>
+    </li>
+    <li><a href="/#sss">SSS</a></li>
+    <li><a href="/#iletisim">İletişim</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+  <header class="page-header">
+    <p>Ulaşım Rehberi</p>
+    <h1>Nasıl Gidilir?</h1>
+    <div class="desc">
+      <span class="desc-line">Etkinlik mekanına ulaşım için hazırladığımız yol tarifi videolarını aşağıdan izleyebilirsiniz.</span>
+      <span class="desc-line">Yol tarifi videoları için başlangıç konumu her zaman M2 Vezneciler durağı'dır.</span>
+      <span class="desc-line">Konum: <a href="https://maps.app.goo.gl/qptJPw1J3mkACZiTA" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">https://maps.app.goo.gl/qptJPw1J3mkACZiTA</a></span>
+    </div>
+  </header>
+
+  <div class="content-layout">
+  <section class="video-grid" id="video-grid">
+    <article class="video-card" id="derslik-5" data-classroom="Derslik 5">
+      <div class="video-title">Derslik 5 Yol Tarifi</div>
+      <div class="video-wrap">
+        <iframe data-video-id="v3NUMHDVPM8" loading="lazy" title="Derslik 5 yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="video-fallback"><a href="https://www.youtube.com/watch?v=v3NUMHDVPM8" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
+    </article>
+
+    <article class="video-card" id="amfi-a" data-classroom="Amfi A">
+      <div class="video-title">Amfi A Yol Tarifi</div>
+      <div class="video-wrap">
+        <iframe data-video-id="1k8EgwZW43Y" loading="lazy" title="Amfi A yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="video-fallback"><a href="https://www.youtube.com/watch?v=1k8EgwZW43Y" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
+    </article>
+  </section>
+
+  <aside class="classroom-panel" aria-label="Derslik listesi">
+    <div class="classroom-panel-title">Derslik Seçimi</div>
+    <input id="classroom-search" class="classroom-search" type="text" placeholder="Derslik ara (örn. Derslik 5)" list="classroom-suggestions" autocomplete="off">
+    <button id="classroom-toggle" class="classroom-toggle" type="button" aria-expanded="false">Tüm sınıfları gör</button>
+    <datalist id="classroom-suggestions"></datalist>
+    <ul class="classroom-list" id="classroom-list"></ul>
+  </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">İÜ Evrim Topluluğu</div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu</div>
+</footer>
+
+<script>
+  const navEtkinlikler = document.getElementById('nav-etkinlikler');
+  navEtkinlikler.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navEtkinlikler.classList.add('open'));
+  navEtkinlikler.addEventListener('mouseleave', () => navEtkinlikler.classList.remove('open'));
+
+  const navBiz = document.getElementById('nav-biz');
+  navBiz.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navBiz.classList.add('open'));
+  navBiz.addEventListener('mouseleave', () => navBiz.classList.remove('open'));
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+  // ── Hamburger / Side Panel ──
+  const hamburger        = document.getElementById('hamburger');
+  const sidePanel        = document.getElementById('side-panel');
+  const sidePanelOverlay = document.getElementById('side-panel-overlay');
+  const sidePanelClose   = document.getElementById('side-panel-close');
+  function openPanel() {
+    sidePanel.classList.add('open');
+    sidePanelOverlay.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel() {
+    sidePanel.classList.remove('open');
+    sidePanelOverlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
+  sidePanelClose.addEventListener('click', closePanel);
+  sidePanelOverlay.addEventListener('click', closePanel);
+  sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
+  document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const tabId = link.dataset.scrollTab;
+      const targetHash = tabId === 'ekip' ? 'tab-ekip' : (tabId === 'katil' ? 'tab-katil' : 'tab-amac');
+      closePanel();
+      window.location.href = `/#${targetHash}`;
+    });
+  });
+  // Swipe ile kapat
+  let panelTouchStartX = 0;
+  sidePanel.addEventListener('touchstart', function(e) {
+    panelTouchStartX = e.touches[0].clientX;
+  }, {passive: true});
+  sidePanel.addEventListener('touchend', function(e) {
+    const diff = e.changedTouches[0].clientX - panelTouchStartX;
+    if (diff > 60) closePanel();
+  }, {passive: true});
+
+ });
+
+  const classroomSearch = document.getElementById('classroom-search');
+  const classroomPanel = document.querySelector('.classroom-panel');
+  const classroomToggle = document.getElementById('classroom-toggle');
+  const classroomSuggestions = document.getElementById('classroom-suggestions');
+  const classroomList = document.getElementById('classroom-list');
+  const classroomCards = Array.from(document.querySelectorAll('.video-card[data-classroom]'));
+  const classroomNames = [];
+
+  classroomCards.forEach(card => {
+    const classroomName = (card.dataset.classroom || '').trim();
+    if (!classroomName || !card.id) return;
+    classroomNames.push(classroomName);
+
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = `#${card.id}`;
+    link.dataset.target = card.id;
+    link.textContent = classroomName;
+    li.appendChild(link);
+    classroomList.appendChild(li);
+  });
+
+  const classroomLinks = Array.from(document.querySelectorAll('#classroom-list a'));
+
+  function normalizeText(value) {
+    return value.toLocaleLowerCase('tr-TR').trim();
+  }
+
+  function updateSuggestions() {
+    const query = normalizeText(classroomSearch.value);
+    classroomSuggestions.innerHTML = '';
+    if (!query) return;
+
+    const uniqueNames = [...new Set(classroomNames)];
+    const matches = uniqueNames.filter(name => normalizeText(name).includes(query));
+    matches.forEach(name => {
+      const option = document.createElement('option');
+      option.value = name;
+      classroomSuggestions.appendChild(option);
+    });
+  }
+
+
+      const videoIframes = Array.from(document.querySelectorAll('.video-wrap iframe[data-video-id]'));
+      const isHttpPage = window.location.protocol === 'https:' || window.location.protocol === 'http:';
+      const baseOrigin = isHttpPage ? window.location.origin : 'https://iuevrim.org';
+      const pageReferrer = isHttpPage ? `${window.location.origin}${window.location.pathname}` : 'https://iuevrim.org/nasil-gidilir/';
+
+      function buildEmbedUrl(videoId) {
+        const params = new URLSearchParams({
+          rel: '0',
+          playsinline: '1',
+          modestbranding: '1',
+          enablejsapi: '1',
+          origin: baseOrigin,
+          widget_referrer: pageReferrer
+        });
+
+        return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+      }
+
+      function loadIframe(iframe) {
+        if (!iframe || iframe.dataset.loaded === '1') return;
+
+        const videoId = iframe.dataset.videoId;
+        if (!videoId) return;
+
+        iframe.src = buildEmbedUrl(videoId);
+        iframe.dataset.loaded = '1';
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            loadIframe(entry.target);
+            obs.unobserve(entry.target);
+          });
+        }, { rootMargin: '280px 0px', threshold: 0.01 });
+
+        videoIframes.forEach((iframe) => observer.observe(iframe));
+      } else {
+        videoIframes.forEach(loadIframe);
+      }
+  function filterClassrooms() {
+    const query = normalizeText(classroomSearch.value);
+    classroomLinks.forEach(link => {
+      const text = normalizeText(link.textContent || '');
+      const visible = text.includes(query);
+      link.parentElement.style.display = visible ? '' : 'none';
+    });
+  }
+
+  function setClassroomPanelOpen(isOpen) {
+    if (!classroomPanel || !classroomToggle) return;
+    classroomPanel.classList.toggle('show-list', isOpen);
+    classroomToggle.setAttribute('aria-expanded', String(isOpen));
+    classroomToggle.textContent = isOpen ? 'Tüm sınıfları gizle' : 'Tüm sınıfları gör';
+  }
+
+  function updateClassroomListHeight() {
+    if (!classroomPanel || !classroomList) return;
+
+    const maxViewportHeight = Math.floor(window.innerHeight * 0.52);
+    const contentHeight = classroomList.scrollHeight;
+    const openHeight = Math.min(contentHeight, maxViewportHeight);
+    classroomPanel.style.setProperty('--classroom-list-open-height', `${Math.max(openHeight, 0)}px`);
+  }
+
+  function scrollToClassroom(targetId) {
+    if (!targetId) return;
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    classroomLinks.forEach(item => item.classList.remove('active'));
+    const activeLink = classroomLinks.find(link => link.dataset.target === targetId);
+    if (activeLink) activeLink.classList.add('active');
+
+    const nav = document.querySelector('body > nav');
+    const navHeight = nav ? nav.offsetHeight : 64;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setClassroomPanelOpen(false);
+    }
+  }
+
+  classroomSearch.addEventListener('input', () => {
+    const hasQuery = normalizeText(classroomSearch.value).length > 0;
+    updateClassroomListHeight();
+    setClassroomPanelOpen(hasQuery && window.matchMedia('(max-width: 768px)').matches);
+    filterClassrooms();
+    updateSuggestions();
+  });
+
+  classroomSearch.addEventListener('blur', () => {
+    classroomSuggestions.innerHTML = '';
+  });
+
+  if (classroomToggle && classroomPanel) {
+    classroomToggle.addEventListener('click', () => {
+      const isOpen = !classroomPanel.classList.contains('show-list');
+      updateClassroomListHeight();
+      setClassroomPanelOpen(isOpen);
+      if (isOpen) {
+        classroomLinks.forEach(link => {
+          link.parentElement.style.display = '';
+        });
+        updateClassroomListHeight();
+      }
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+    updateClassroomListHeight();
+  });
+
+  updateClassroomListHeight();
+
+  classroomLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToClassroom(link.dataset.target);
+    });
+  });
+
+  classroomSearch.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const query = normalizeText(classroomSearch.value);
+    const firstMatch = classroomLinks.find(link => normalizeText(link.textContent || '').includes(query));
+    if (firstMatch) {
+      e.preventDefault();
+      scrollToClassroom(firstMatch.dataset.target);
+    }
+  });
+</script>
+</body>
+</html>
