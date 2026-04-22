@@ -2741,7 +2741,9 @@
 
 
 
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  if (typeof revealObs !== 'undefined' && revealObs && typeof revealObs.observe === 'function') {
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  }
 
   // ¦¦ GALERİ SİSTEMİ ¦¦
   const GALLERY_MAP = {
@@ -2908,6 +2910,14 @@
   let galImages = [];
   let galIdx    = 0;
 
+  function normalizeImagePath(src) {
+    if (!src) return src;
+    if (src.startsWith('/') || src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+      return src;
+    }
+    return '/' + src.replace(/^\.?\//, '');
+  }
+
   function galShow(index) {
     galIdx = index;
     const src = galImages[index];
@@ -2928,10 +2938,10 @@
   }
 
   function galOpen(images, title) {
-    galImages = images;
+    galImages = images.map(normalizeImagePath);
     galTitleEl.textContent = title;
     galFooter.innerHTML = '';
-    images.forEach((src, i) => {
+    galImages.forEach((src, i) => {
       const t = document.createElement('img');
       t.className = 'gal-thumb';
       t.src = src;
