@@ -957,9 +957,11 @@
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  .slide[data-href] { cursor: pointer; }
   .slide {
     flex: 0 0 100%;
     max-width: 100%;
+    cursor: default;
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -1555,7 +1557,7 @@
 
   <div class="slideshow-track" id="slideshow-track">
 
-    <div class="slide slide-1">
+    <div class="slide slide-1" data-href="/tum-etkinlikler/">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/evrimkonferansi_slider_mobile.webp">
         <img src="images/slideshow/evrimkonferansi_slider_desktop.webp" alt="Evrim Konferansı" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1566,7 +1568,7 @@
       </div>
     </div>
 
-    <div class="slide slide-2">
+    <div class="slide slide-2" data-href="/tum-etkinlikler/">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/cansusaracoglu_slider_mobile.webp">
         <img src="images/slideshow/cansusaracoglu_slider_desktop.webp" alt="Cansu Saraçoğlu ile Mercanlarda Popülasyon Genetiği" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1577,7 +1579,7 @@
       </div>
     </div>
 
-    <div class="slide slide-3">
+    <div class="slide slide-3" data-href="/tum-etkinlikler/">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider1_mobile.webp">
         <img src="images/slideshow/slider1_desktop.webp" alt="Dr. Bahar Patlar ile Eşeysel Seçilim Teorisi Çalıştayı" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1588,7 +1590,7 @@
       </div>
     </div>
 
-    <div class="slide slide-4">
+    <div class="slide slide-4" data-href="/tum-etkinlikler/">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider2_mobile.webp">
         <img src="images/slideshow/slider2_desktop.webp" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1599,7 +1601,7 @@
       </div>
     </div>
 
-    <div class="slide slide-5">
+    <div class="slide slide-5" data-href="/makale-grubu/">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider3_mobile.webp">
         <img src="images/slideshow/slider3_desktop.webp" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="eager" decoding="async">
@@ -1610,7 +1612,7 @@
       </div>
     </div>
 
-    <div class="slide slide-6">
+    <div class="slide slide-6" data-href="/tum-etkinlikler/">
       <picture style="width:100%;height:100%;display:block;">
         <source media="(max-width: 768px)" srcset="images/slideshow/slider4_mobile.webp">
         <img src="images/slideshow/slider4_desktop.webp" alt="Etkinlik" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" loading="lazy" decoding="async">
@@ -2019,6 +2021,7 @@
     border-color: rgba(109,191,103,0.07);
     filter: saturate(0.65);
     opacity: 0.82;
+    cursor: pointer;
   }
   .etk-card-past::before {
     background: linear-gradient(90deg, rgba(155,155,155,0.3), rgba(155,155,155,0.05));
@@ -2334,15 +2337,20 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   }
   .faq-item.open .faq-icon { transform: rotate(45deg); }
   .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.3s;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: max-height;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
   }
-  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
-  .faq-a p { font-size: 0.97rem; color: var(--text-muted); line-height: 1.75; }
+  .faq-item.open .faq-a { grid-template-rows: 1fr; }
+  .faq-a p {
+    overflow: hidden;
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    padding-bottom: 0;
+    transition: padding-bottom 0.3s ease;
+  }
+  .faq-item.open .faq-a p { padding-bottom: 1.2rem; }
   @media (max-width: 768px) { .sss-section { padding: 4rem 1.5rem; } }
   @media (max-width: 480px) {
     .hero h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }
@@ -2756,6 +2764,15 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     ss.addEventListener('mouseleave', () => { autoSlide = setInterval(() => slideMove(1), 6000); });
   }
 
+  // Slide tıklama yönlendirmesi
+  document.querySelectorAll('.slide[data-href]').forEach(slide => {
+    slide.addEventListener('click', e => {
+      if (!e.target.closest('.slide-btn') && !e.target.closest('.slide-cta-btn')) {
+        window.location.href = slide.dataset.href;
+      }
+    });
+  });
+
   // ── Nav: Etkinlikler dropdown hover ──
   const navEtkinlikler = document.getElementById('nav-etkinlikler');
   navEtkinlikler.querySelector('.nav-item-btn').addEventListener('mouseenter', () => navEtkinlikler.classList.add('open'));
@@ -2986,6 +3003,16 @@ bizKimizSection.addEventListener('touchend', function(e) {
       });
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.etk-item.past .etk-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        window.location.href = '/tum-etkinlikler/';
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
 
