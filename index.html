@@ -2290,7 +2290,10 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   .sss-section::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2000px;
     background-image: url('images/faq_background.png');
     background-size: 480px;
     background-repeat: repeat;
@@ -2299,6 +2302,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     filter: sepia(1) saturate(3) hue-rotate(78deg) brightness(0.6) contrast(1.2);
     z-index: 0;
     pointer-events: none;
+    transform: translateZ(0);
   }
 
   .sss-section > * {
@@ -2337,20 +2341,17 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   }
   .faq-item.open .faq-icon { transform: rotate(45deg); }
   .faq-a {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
-  }
-  .faq-item.open .faq-a { grid-template-rows: 1fr; }
-  .faq-a p {
     overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+  }
+  .faq-item.open .faq-a { max-height: 400px; }
+  .faq-a p {
     font-size: 0.97rem;
     color: var(--text-muted);
     line-height: 1.75;
-    padding-bottom: 0;
-    transition: padding-bottom 0.3s ease;
+    padding-bottom: 1.2rem;
   }
-  .faq-item.open .faq-a p { padding-bottom: 1.2rem; }
   @media (max-width: 768px) { .sss-section { padding: 4rem 1.5rem; } }
   @media (max-width: 480px) {
     .hero h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }

@@ -528,15 +528,25 @@
     position: relative;
     z-index: 1;
     padding: 6rem 4rem;
-    background-image: url('/images/makale grubu/background3.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     border-bottom: 1px solid var(--border);
     overflow: hidden;
   }
 
   .yaz-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2000px;
+    background-image: url('/images/makale grubu/background3.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+    transform: translateZ(0);
+  }
+
+  .yaz-section::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -627,13 +637,16 @@
     color: var(--text-muted);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.35s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     padding: 0;
-    will-change: max-height, padding;
   }
 
   .sss-item.open .sss-a {
     max-height: 600px;
+    opacity: 1;
+    transform: translateY(0);
     padding-bottom: 1rem;
   }
 
@@ -1037,12 +1050,25 @@
 
  });
   // ── SSS Accordion ──
+  function sssClose(item) {
+    const a = item.querySelector('.sss-a');
+    a.style.opacity = '0';
+    a.style.transform = 'translateY(-10px)';
+    setTimeout(() => { item.classList.remove('open'); a.style.opacity = ''; a.style.transform = ''; }, 320);
+  }
   document.querySelectorAll('.sss-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.sss-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.sss-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      if (isOpen) {
+        sssClose(item);
+      } else {
+        document.querySelectorAll('.sss-item.open').forEach(i => {
+          i.querySelector('.sss-a').style.opacity = '';
+          i.classList.remove('open');
+        });
+        item.classList.add('open');
+      }
     });
   });
 
