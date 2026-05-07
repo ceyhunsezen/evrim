@@ -315,6 +315,47 @@
   .page-hero-inner {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .page-hero-left {
+    flex: 1;
+  }
+
+  .hero-quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .hero-quick-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.6rem;
+    background: none;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+    transition: all 0.25s;
+  }
+
+  .hero-quick-link:hover {
+    border-color: rgba(109,191,103,0.35);
+    color: var(--text);
+  }
+
+  .hero-quick-link svg {
+    flex-shrink: 0;
+    opacity: 0.55;
   }
 
   .page-eyebrow {
@@ -727,6 +768,9 @@
 
   @media (max-width: 768px) {
     .page-hero { padding: 8rem 1.5rem 3.5rem; }
+    .page-hero-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    .hero-quick-links { flex-direction: row; flex-wrap: wrap; width: 100%; }
+    .hero-quick-link { flex: 1 1 auto; justify-content: center; }
     .events-main { padding: 3rem 1.5rem 4rem; }
     .stats-bar { padding: 1.5rem; gap: 1rem; }
     .events-grid { grid-template-columns: 1fr; }
@@ -1236,12 +1280,28 @@
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-inner">
-    <p class="page-eyebrow">İstanbul Üniversitesi Evrim Topluluğu</p>
-    <h1>Tüm <em>Etkinlikler</em></h1>
-    <p class="page-hero-desc">
-      Geçmiş etkinliklerimizi keşfedin, devam eden serileri takip edin.<br>
-      Söyleşilerden makale tartışmalarına, çalıştaylardan konferanslara...
-    </p>
+    <div class="page-hero-left">
+      <p class="page-eyebrow">İstanbul Üniversitesi Evrim Topluluğu</p>
+      <h1>Tüm <em>Etkinlikler</em></h1>
+      <p class="page-hero-desc">
+        Geçmiş etkinliklerimizi keşfedin, devam eden serileri takip edin.<br>
+        Söyleşilerden makale tartışmalarına, çalıştaylardan konferanslara...
+      </p>
+    </div>
+    <nav class="hero-quick-links" aria-label="Hızlı bağlantılar">
+      <a href="/#etkinlikler" class="hero-quick-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Yaklaşan Etkinlikler
+      </a>
+      <a href="/makale-grubu/" class="hero-quick-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Makale Grubu
+      </a>
+      <a href="/nasil-gidilir/" class="hero-quick-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Nasıl Gidilir?
+      </a>
+    </nav>
   </div>
 </section>
 
