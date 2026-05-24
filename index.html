@@ -2848,21 +2848,33 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 
   // ── Tab swipe ──
 let tabTouchStartX = 0;
+let tabTouchStartY = 0;
+let tabTouchStartT = 0;
 const bizKimizSection = document.getElementById('biz-kimiz');
 
 bizKimizSection.addEventListener('touchstart', function(e) {
   tabTouchStartX = e.touches[0].clientX;
+  tabTouchStartY = e.touches[0].clientY;
+  tabTouchStartT = Date.now();
 }, { passive: true });
 
 bizKimizSection.addEventListener('touchend', function(e) {
-  const diff = e.changedTouches[0].clientX - tabTouchStartX;
-  if (Math.abs(diff) > 60) {
+  const diffX = e.changedTouches[0].clientX - tabTouchStartX;
+  const diffY = e.changedTouches[0].clientY - tabTouchStartY;
+  const elapsed = Date.now() - tabTouchStartT;
+
+  // Yatay hareket belirgin, dikey kaydırmadan baskın ve hızlı bir jest olmalı.
+  const isHorizontal = Math.abs(diffX) > 80 &&
+                       Math.abs(diffX) > Math.abs(diffY) * 2 &&
+                       elapsed < 600;
+
+  if (isHorizontal) {
     const current = TAB_ORDER.indexOf(
       document.querySelector('.tab-btn.active')?.dataset.tab
     );
-    if (diff < 0 && current < TAB_ORDER.length - 1) {
+    if (diffX < 0 && current < TAB_ORDER.length - 1) {
       activateTab(TAB_ORDER[current + 1]);
-    } else if (diff > 0 && current > 0) {
+    } else if (diffX > 0 && current > 0) {
       activateTab(TAB_ORDER[current - 1]);
     }
   }
