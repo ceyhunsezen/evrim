@@ -106,9 +106,11 @@
     justify-content: space-between;
     padding: 0 4rem;
     height: 64px;
-    background: rgba(10,14,10,0.88);
-    backdrop-filter: blur(14px);
+    background: linear-gradient(to bottom, rgba(18,26,18,0.6), rgba(10,14,10,0.45));
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
     border-bottom: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.25);
   }
 
   /* LOGO */
@@ -272,7 +274,7 @@
   .hero-top {
     display: flex;
     flex-direction: column;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
   }
 
   .hero-bg-svg {
@@ -340,14 +342,24 @@
   }
 
   .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
     font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
     opacity: 1;
+  }
+  .hero-eyebrow-line {
+    width: 36px;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    display: inline-block;
+    flex-shrink: 0;
   }
 
   .hero h1 {
@@ -366,13 +378,63 @@
   .hero h1 em { font-style: normal; color: var(--accent); font-weight: 700; font-family: 'Outfit', 'Outfit', sans-serif; }
 
   .hero-sub {
-    margin-top: 2rem;
+    margin-top: 1.6rem;
     max-width: 600px;
     font-size: 1.25rem;
     line-height: 1.7;
     color: var(--text-muted);
     opacity: 1;
     padding-left: 0;
+  }
+
+  /* Hero CTA butonları */
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.6rem;
+  }
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.92rem 2.1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+  }
+  .hero-btn svg { transition: transform 0.28s ease; }
+  .hero-btn-primary,
+  .hero-btn-primary:link,
+  .hero-btn-primary:visited {
+    background: var(--accent);
+    color: var(--bg);
+    border: 1px solid var(--accent);
+  }
+  .hero-btn-primary:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(109,191,103,0.28);
+  }
+  .hero-btn-primary:hover svg { transform: translateX(4px); }
+  .hero-btn-ghost,
+  .hero-btn-ghost:link,
+  .hero-btn-ghost:visited {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .hero-btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(109,191,103,0.06);
+    transform: translateY(-2px);
   }
 
 
@@ -1227,6 +1289,7 @@
     .hero-quote { margin-left: 0; }
     .hero-quote-text { font-size: 1.1rem; }
     .hero-cta { margin-top: 1.5rem; }
+    .hero-actions { display: none; }
     .hero-scroll { display: none; }
 
     /* Biz Kimiz */
@@ -1499,22 +1562,27 @@
     <img src="images/hero_new.webp" alt="">
   </picture>
   <img class="hero-darwin-sketch" src="images/hero_darwin_sketch.webp" alt="">
-  <div class="hdl hdl-2"></div>
-    <div class="hdl hdl-3"></div>
-  </div>
 
   <div class="hero-top">
-    <p class="hero-eyebrow">İstanbul Üniversitesi</p>
+    <p class="hero-eyebrow"><span class="hero-eyebrow-line"></span>İstanbul Üniversitesi</p>
     <h1>Evrim <em>Topluluğu</em></h1>
     <p class="hero-sub">
     Bilimin ışığında, kökenlerin izinde.
     </p>
+
+    <div class="hero-actions">
+      <a href="#etkinlikler" class="hero-btn hero-btn-primary">
+        Yaklaşan Etkinlikler
+        <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M1 5.5h12M9 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#biz-kimiz" data-scroll-tab="katil" class="hero-btn hero-btn-ghost">Bize Katıl</a>
+    </div>
   </div>
 
   <div class="hero-quote">
     <span class="hero-quote-mark">"</span>
     <p class="hero-quote-text">Evrimin ışığı olmaksızın biyolojide hiçbir şeyin anlamı yoktur.</p>
-    <span class="hero-quote-attr">— THEDOSIUS DOBZHANSKY</span>
+    <span class="hero-quote-attr">— THEODOSIUS DOBZHANSKY</span>
   </div>
 
   <a href="#etkinlikler" class="hero-scroll">
