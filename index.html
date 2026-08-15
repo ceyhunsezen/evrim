@@ -8,15 +8,36 @@
   <title>İÜ Evrim Topluluğu</title>
 
   <meta name="description" content="İstanbul Üniversitesi Evrim Topluluğu'nun resmi web sitesidir. Biyoloji ve evrim temalı söyleşilerimize, Journal Club etkinliklerimize göz atın ve topluluğumuza katılın.">
+  <link rel="canonical" href="https://iuevrim.org/">
   <link rel="icon" type="image/png" href="images/evo_logo4.png">
+  <link rel="apple-touch-icon" href="images/evo_logo4.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="İÜ Evrim Topluluğu">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:url" content="https://iuevrim.org/">
+  <meta property="og:title" content="İÜ Evrim Topluluğu">
+  <meta property="og:description" content="İstanbul Üniversitesi Evrim Topluluğu'nun resmi web sitesi. Biyoloji ve evrim temalı söyleşilere, Journal Club ve makale grubu etkinliklerine katılın.">
+  <meta property="og:image" content="https://iuevrim.org/images/evo_logo4.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="İÜ Evrim Topluluğu">
+  <meta name="twitter:description" content="İstanbul Üniversitesi Evrim Topluluğu'nun resmi web sitesi. Biyoloji ve evrim temalı söyleşilere, Journal Club ve makale grubu etkinliklerine katılın.">
+  <meta name="twitter:image" content="https://iuevrim.org/images/evo_logo4.png">
 
   <script type="application/ld+json">
  {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "İÜ Evrim Topluluğu",
+  "alternateName": "İstanbul Üniversitesi Evrim Topluluğu",
   "url": "https://iuevrim.org",
-  "logo": "https://iuevrim.org/images/evo_logo4.png"
+  "logo": "https://iuevrim.org/images/evo_logo4.png",
+  "email": "iletisim@iuevrim.org",
+  "sameAs": [
+    "https://www.instagram.com/iu.evrimtoplulugu",
+    "https://www.linkedin.com/company/i%CC%87stanbul-%C3%BCniversitesi-evrim-toplulu%C4%9Fu"
+  ]
  }
  </script>
 
@@ -28,17 +49,10 @@
     gtag('config', 'G-8KV5XFSZ09');
   </script>
 
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preload" as="image" href="images/hero_new.webp">
-  <link rel="preload" as="image" href="images/hero_darwin_sketch.webp">
-  <link rel="preload" as="image" href="images/slideshow/evrimkonferansi_slider_desktop.webp">
-  <link rel="preload" as="image" href="images/slideshow/evrimkonferansi_slider_mobile.webp">
-  <link rel="preload" as="image" href="images/slideshow/cansusaracoglu_slider_desktop.webp">
-  <link rel="preload" as="image" href="images/slideshow/cansusaracoglu_slider_mobile.webp">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="images/hero_new.webp" fetchpriority="high">
   <link rel="preload" as="image" href="images/evo_logo4.webp">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 
@@ -259,275 +273,165 @@
   }
   .dropdown-row a:last-child { border-right: none; }
 
-  /* ── HERO ── */
-  .hero {
+  /* ── HERO (B) ── */
+  .hb-hero {
     position: relative;
+    z-index: 1;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 8rem 4rem;
-    z-index: 1;
+    text-align: center;
+    padding: 9rem clamp(1.3rem, 4vw, 3rem) 4rem;
     overflow: hidden;
   }
-
-  .hero-top {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4rem;
-  }
-
-  .hero-bg-svg {
+  .hb-hero-bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.07;
-    mix-blend-mode: screen;
-    pointer-events: none;
-    z-index: 0;
-    filter: sepia(1) saturate(3) hue-rotate(80deg) brightness(0.7);
-  }
-
-  .hero-bg-haeckel {
-    display: contents;
-  }
-
-  .hero-bg-haeckel img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    opacity: 0.22;
+    background: url('images/hero_new.webp') center 28% / cover;
+    opacity: 0.16;
     mix-blend-mode: luminosity;
-    pointer-events: none;
-    z-index: 0;
     filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.15);
-    mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 60%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, #000 20%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, #000 20%, transparent 78%);
+    pointer-events: none;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
-
-  .hero-darwin-sketch {
-    position: absolute;
-    right: 4%;
-    top: 50%;
-    width: clamp(420px, 52vw, 820px);
-    height: auto;
-    opacity: 0;
-    mix-blend-mode: luminosity;
-    pointer-events: none;
-    z-index: 0;
-    filter: sepia(1) saturate(0.4) hue-rotate(20deg) brightness(0.85) contrast(1.1);
-    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.5) 65%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.5) 65%, transparent 100%);
-    transform: perspective(700px) rotateY(-28deg) rotateX(10deg) rotate(2deg) translateY(calc(-50% + 30px));
-    animation: darwinReveal 0.7s 0.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  .hb-hero-inner {
+    position: relative;
+    max-width: 1000px;
+    animation: revealUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
-
-  @keyframes darwinReveal {
-    to {
-      opacity: 0.62;
-      transform: perspective(700px) rotateY(-18deg) rotateX(6deg) rotate(2deg) translateY(-50%);
-    }
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-
   @media (prefers-reduced-motion: reduce) {
-    .hero-darwin-sketch { animation: none; opacity: 0.62; transform: perspective(700px) rotateY(-18deg) rotateX(6deg) rotate(2deg) translateY(-50%); }
+    .hb-hero-inner { animation: none; }
   }
-
-  .hero-eyebrow {
-    display: inline-flex;
+  .hb-eyebrow {
+    display: flex;
     align-items: center;
-    gap: 0.8rem;
+    justify-content: center;
+    gap: 1rem;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.92rem;
+    font-size: 0.74rem;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 1rem;
-    opacity: 1;
+    margin-bottom: 1.8rem;
   }
-  .hero-eyebrow-line {
-    width: 36px;
+  .hb-eyebrow-line {
+    width: 40px;
     height: 1px;
-    background: linear-gradient(to right, var(--accent), transparent);
-    display: inline-block;
+    background: var(--accent);
+    opacity: 0.5;
     flex-shrink: 0;
   }
-
-  .hero h1 {
-    font-family: 'Outfit', 'Outfit', sans-serif;
-    font-size: clamp(2.8rem, 7vw, 6.5rem);
-    font-weight: 700;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-    opacity: 1;
+  .hb-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: clamp(4rem, 13vw, 11rem);
+    line-height: 0.86;
+    letter-spacing: 0.02em;
     color: var(--text);
-    position: relative;
-    z-index: 2;
   }
-
-  .hero h1 em { font-style: normal; color: var(--accent); font-weight: 700; font-family: 'Outfit', 'Outfit', sans-serif; }
-
-  .hero-sub {
-    margin-top: 1.6rem;
-    max-width: 600px;
-    font-size: 1.25rem;
-    line-height: 1.7;
+  .hb-title-accent { color: var(--accent); }
+  .hb-sub {
+    margin: 2rem auto 0;
+    max-width: 560px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.6;
     color: var(--text-muted);
-    opacity: 1;
-    padding-left: 0;
   }
-
-  /* Hero CTA butonları */
-  .hero-actions {
+  .hb-quote {
+    margin: 1.6rem auto 0;
+    max-width: 600px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    opacity: 0.85;
+  }
+  .hb-quote-attr {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(109,191,103,0.6);
+    margin-top: 0.6rem;
+  }
+  .hb-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center;
     margin-top: 2.6rem;
   }
-  .hero-btn {
+  .hb-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.55rem;
-    padding: 0.92rem 2.1rem;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
+    padding: 0.95rem 2rem;
     cursor: pointer;
     transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
   }
-  .hero-btn svg { transition: transform 0.28s ease; }
-  .hero-btn-primary,
-  .hero-btn-primary:link,
-  .hero-btn-primary:visited {
+  .hb-btn svg { transition: transform 0.28s ease; }
+  .hb-btn-primary,
+  .hb-btn-primary:link,
+  .hb-btn-primary:visited {
     background: var(--accent);
     color: var(--bg);
     border: 1px solid var(--accent);
   }
-  .hero-btn-primary:hover {
+  .hb-btn-primary:hover {
     background: var(--accent-soft);
     border-color: var(--accent-soft);
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(109,191,103,0.28);
+    box-shadow: 0 12px 30px rgba(109,191,103,0.28);
   }
-  .hero-btn-primary:hover svg { transform: translateX(4px); }
-  .hero-btn-ghost,
-  .hero-btn-ghost:link,
-  .hero-btn-ghost:visited {
+  .hb-btn-primary:hover svg { transform: translateX(4px); }
+  .hb-btn-ghost,
+  .hb-btn-ghost:link,
+  .hb-btn-ghost:visited {
     background: transparent;
     color: var(--text);
     border: 1px solid var(--border);
   }
-  .hero-btn-ghost:hover {
+  .hb-btn-ghost:hover {
     border-color: var(--accent);
     color: var(--accent);
     background: rgba(109,191,103,0.06);
     transform: translateY(-2px);
   }
 
-
-
-
-
-
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-
-
-
-  
-
-
-
-
-
-  /* Hero quote */
-  .hero-quote {
-    max-width: 600px;
-    opacity: 1;
-    position: relative;
-    padding-left: 1.2rem;
-    border-left: 2px solid rgba(109,191,103,0.5);
-    margin-left: -1.4rem;
+  @media (max-width: 768px) {
+    .hb-hero { min-height: auto; padding: 7rem 1.5rem 3rem; }
+    .hb-sub { font-size: 1.2rem; margin-top: 1.6rem; }
+    .hb-quote { font-size: 1.05rem; }
+    .hb-actions { gap: 0.7rem; margin-top: 2rem; }
+    .hb-btn { padding: 0.85rem 1.5rem; }
   }
-
-  .hero-quote-mark {
-    display: none;
-  }
-  .hero-quote-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--text-muted);
-    line-height: 1.65;
-    letter-spacing: 0.01em;
-  }
-  .hero-quote-attr {
-    display: block;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(109,191,103,0.6);
-    margin-top: 0.5rem;
-  }
-
-  /* Hero scroll göstergesi */
-  .hero-scroll {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: var(--text);
-    z-index: 2;
-    transition: opacity 0.3s;
-  }
-  .hero-scroll:hover { opacity: 1; }
-  .hero-scroll-text {
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--text-muted);
-    animation: scrollTextPulse 3s ease-in-out infinite;
-  }
-  @keyframes scrollTextPulse {
-    0%, 100% { opacity: 0.7; }
-    50%      { opacity: 1; }
-  }
-  .hero-scroll-chevron {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    animation: chevronBounce 2.2s ease-in-out infinite;
-  }
-  .hero-scroll-chevron svg:first-child { opacity: 0.4; }
-  .hero-scroll-chevron svg:last-child { opacity: 0.7; margin-top: -3px; }
-  @keyframes chevronBounce {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(6px); }
+  @media (max-width: 480px) {
+    .hb-eyebrow { font-size: 0.62rem; letter-spacing: 0.14em; gap: 0.6rem; flex-wrap: wrap; }
+    .hb-eyebrow-line { display: none; }
+    .hb-actions { width: 100%; }
+    .hb-btn { width: 100%; }
   }
 
   /* Duyuru bandı */
@@ -1269,11 +1173,6 @@
   }
   .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
   @media (max-width: 768px) {
     body > nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
@@ -1459,7 +1358,7 @@
   }
 
   /* 3. Ağır resim maskelerini (kenar silikleştirme) mobilde devre dışı bırakıyoruz */
-  .hero-bg-haeckel img,
+  .hb-hero-bg,
   .biz-kimiz::before,
   .etkinlikler-section::before,
   .sss-section::before {
@@ -1518,7 +1417,7 @@
     <span class="nav-logo-name">Topluluğu</span>
   </a>
 
-  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç" aria-controls="side-panel" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
@@ -1555,46 +1454,26 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <img class="hero-bg-svg" src="images/image_1.svg" alt="">
-  <picture class="hero-bg-haeckel">
-    <source media="(max-width: 768px)" srcset="images/hero_new.webp">
-    <img src="images/hero_new.webp" alt="">
-  </picture>
-  <img class="hero-darwin-sketch" src="images/hero_darwin_sketch.webp" alt="">
-
-  <div class="hero-top">
-    <p class="hero-eyebrow"><span class="hero-eyebrow-line"></span>İstanbul Üniversitesi</p>
-    <h1>Evrim <em>Topluluğu</em></h1>
-    <p class="hero-sub">
-    Bilimin ışığında, kökenlerin izinde.
+<section class="hb-hero">
+  <div class="hb-hero-bg" aria-hidden="true"></div>
+  <div class="hb-hero-inner">
+    <div class="hb-eyebrow">
+      <span class="hb-eyebrow-line"></span>İstanbul Üniversitesi<span class="hb-eyebrow-line"></span>
+    </div>
+    <h1 class="hb-title">Evrim<br><span class="hb-title-accent">Topluluğu</span></h1>
+    <p class="hb-sub">Bilimin ışığında, kökenlerin izinde.</p>
+    <p class="hb-quote">“Evrimin ışığı olmaksızın biyolojide hiçbir şeyin anlamı yoktur.”
+      <span class="hb-quote-attr">— Theodosius Dobzhansky</span>
     </p>
-
-    <div class="hero-actions">
-      <a href="#etkinlikler" class="hero-btn hero-btn-primary">
+    <div class="hb-actions">
+      <a href="#etkinlikler" class="hb-btn hb-btn-primary">
         Yaklaşan Etkinlikler
         <svg width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M1 5.5h12M9 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="#biz-kimiz" data-scroll-tab="katil" class="hero-btn hero-btn-ghost">Bize Katıl</a>
+      <a href="#biz-kimiz" data-scroll-tab="katil" class="hb-btn hb-btn-ghost">Bize Katıl</a>
     </div>
   </div>
-
-  <div class="hero-quote">
-    <span class="hero-quote-mark">"</span>
-    <p class="hero-quote-text">Evrimin ışığı olmaksızın biyolojide hiçbir şeyin anlamı yoktur.</p>
-    <span class="hero-quote-attr">— THEODOSIUS DOBZHANSKY</span>
-  </div>
-
-  <a href="#etkinlikler" class="hero-scroll">
-    <span class="hero-scroll-text">Keşfetmek için kaydır</span>
-    <div class="hero-scroll-chevron">
-      <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><polyline points="1,1 7,6.5 13,1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><polyline points="1,1 7,6.5 13,1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-  </a>
-
 </section>
-
 
 
 <!-- DUYURU BANDI
@@ -2573,7 +2452,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     <h2 class="section-title">İletişim</h2>
   </div>
   <div class="iletisim-grid">
-    <a href="mailto:evrimtoplulugu.iu@gmail.com" class="iletisim-card">
+    <a href="mailto:iletisim@iuevrim.org" class="iletisim-card">
       <div class="iletisim-icon">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -2581,7 +2460,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
         </svg>
       </div>
       <div class="iletisim-label">E-posta</div>
-      <div class="iletisim-value">evrimtoplulugu.iu@gmail.com</div>
+      <div class="iletisim-value">iletisim@iuevrim.org</div>
     </a>
     <a href="https://instagram.com/iu.evrimtoplulugu" target="_blank" rel="noopener" class="iletisim-card">
       <div class="iletisim-icon">
@@ -2726,7 +2605,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 
 <footer>
   <div class="footer-logo">İÜ Evrim Topluluğu</div>
-  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır.</div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır. · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
 <script>
@@ -2993,12 +2872,16 @@ bizKimizSection.addEventListener('touchend', function(e) {
     sidePanel.classList.add('open');
     sidePanelOverlay.classList.add('open');
     hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Menüyü kapat');
     document.body.style.overflow = 'hidden';
   }
   function closePanel() {
     sidePanel.classList.remove('open');
     sidePanelOverlay.classList.remove('open');
     hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Menüyü aç');
     document.body.style.overflow = '';
   }
   hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());

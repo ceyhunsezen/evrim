@@ -6,7 +6,22 @@
 
   <title>Tüm Etkinlikler | İÜ Evrim Topluluğu</title>
   <meta name="description" content="İstanbul Üniversitesi Evrim Topluluğu'nun düzenlediği tüm etkinlikler.">
+  <link rel="canonical" href="https://iuevrim.org/tum-etkinlikler/">
   <link rel="icon" type="image/png" href="/images/evo_logo4.png">
+  <link rel="apple-touch-icon" href="/images/evo_logo4.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="İÜ Evrim Topluluğu">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:url" content="https://iuevrim.org/tum-etkinlikler/">
+  <meta property="og:title" content="Tüm Etkinlikler | İÜ Evrim Topluluğu">
+  <meta property="og:description" content="Söyleşiler, makale tartışmaları, çalıştaylar ve konferanslar — geçmiş ve devam eden tüm etkinliklerimiz.">
+  <meta property="og:image" content="https://iuevrim.org/images/evo_logo4.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tüm Etkinlikler | İÜ Evrim Topluluğu">
+  <meta name="twitter:description" content="Söyleşiler, makale tartışmaları, çalıştaylar ve konferanslar — geçmiş ve devam eden tüm etkinliklerimiz.">
+  <meta name="twitter:image" content="https://iuevrim.org/images/evo_logo4.png">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KV5XFSZ09"></script>
   <script>
@@ -17,6 +32,7 @@
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -1244,7 +1260,7 @@
     <span class="nav-logo-name">Topluluğu</span>
   </a>
 
-  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç" aria-controls="side-panel" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
@@ -1375,7 +1391,8 @@
               </div>
               <h3 class="ec-title">Evrim Konferansı</h3>
               <p class="ec-desc">
-              İstanbul Üniversitesi Evrim Topluluğu olarak düzenlediğimiz ilk Evrim Konferansı'nda; Prof. Dr. Ferhat Matur, Prof. Dr. Ecevit Barış Özener ve Arş. Gör. Nisan Yıldız eşliğinde evrimsel biyolojinin farklı alanlarını ele aldık. 
+              İstanbul Üniversitesi Evrim Topluluğu olarak düzenlediğimiz ilk Evrim Konferansı'nda; Prof. Dr. Ferhat Matur, Prof. Dr. Ecevit Barış Özener ve Arş. Gör. Nisan Yıldız eşliğinde evrimsel biyolojinin farklı alanlarını ele aldık.
+              </p>
               <div class="ec-meta">
                 <span>📍 Amfi A</span>
                 <span>🕒 10:00 – 15:45</span>
@@ -2820,7 +2837,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">İÜ Evrim Topluluğu</div>
-  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır.</div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır. · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
 <script>
@@ -2844,12 +2861,16 @@
     sidePanel.classList.add('open');
     sidePanelOverlay.classList.add('open');
     hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Menüyü kapat');
     document.body.style.overflow = 'hidden';
   }
   function closePanel() {
     sidePanel.classList.remove('open');
     sidePanelOverlay.classList.remove('open');
     hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Menüyü aç');
     document.body.style.overflow = '';
   }
   hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
