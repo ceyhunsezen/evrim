@@ -757,13 +757,22 @@
     color: var(--accent);
     font-family: 'Outfit', sans-serif;
   }
+  a.team-card { display: block; text-decoration: none; color: inherit; }
   .team-role-sub {
     font-size: 0.62rem;
     color: var(--text-muted);
     font-family: 'Outfit', sans-serif;
-    margin-top: 0.25rem;
+    margin-top: 0.35rem;
     letter-spacing: 0.04em;
+    line-height: 1.5;
+    /* Satırları dengeli böl: "Bölümü" ya da "ve" tek başına alta düşmesin */
+    text-wrap: balance;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
   }
+  /* Bölüm adının parçaları kendi içinde bölünmesin */
+  .team-role-sub .rs-line { display: block; }
 
   /* BİZE KATIL */
   .katil-intro {
@@ -1172,6 +1181,8 @@
     font-weight: 500;
   }
   .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
+  .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
   @media (max-width: 768px) {
     body > nav { padding: 0 1.5rem; }
@@ -1611,8 +1622,8 @@
             <h3 class="etk-title">Evrimsel Nörobilim Journal Club | Paleonöroloji: Fosillerden Zihne</h3>
             <p class="etk-desc">Bu hafta, dinozorların nörobilişsel evrimini tartışıyoruz. Fosil kafataslarının iç kalıpları (endokastlar) üzerinden yapılan nöron sayısı tahminlerinin bilimsel geçerliliğini değerlendirecek; T. rex’in zekasına dair güncel iddiaları ve teropod dinozorların bilişsel sınırlarını ele alacağız.</p>
             <div class="etk-meta">
-              <span>📍 Derslik 5</span>
-              <span>🕒 16.30</span>
+              <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+              <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16.30</span></span>
             </div>
           </div>
           <div class="etk-poster-col">
@@ -1640,8 +1651,8 @@
             <h3 class="etk-title">Evrim Konferansı</h3>
             <p class="etk-desc">Istanbul Üniversitesi Evrim Topluluğu'nun ilk Evrim Konferansı 9 Mayıs'ta!</p>
             <div class="etk-meta">
-              <span>📍 Amfi A</span>
-              <span>🕒 10.00</span>
+              <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Amfi A</span></span>
+              <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">10.00</span></span>
             </div>
           </div>
           <div class="etk-poster-col">
@@ -1668,8 +1679,8 @@
             <h3 class="etk-title">Evrimsel Nörobilim Journal Club | Sauropsida</h3>
             <p class="etk-desc">Bu hafta Sauropsid’lerin dünyasındayız! Paul MacLean’in meşhur "Üçlü Beyin" modelini masaya yatırıyor ve içinizde ilkel bir sürüngen beyni yattığına dair o yaygın miti yıkıyoruz. Ayrıca, memelilerdeki gibi bir isokortekse sahip olmayan kuşların, nasıl büyük kuyruksuz maymunlar kadar zeki olabildiğini inceliyoruz.</p>
             <div class="etk-meta">
-              <span>📍 Derslik 5</span>
-              <span>🕒 16.30</span>
+              <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+              <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16.30</span></span>
             </div>
           </div>
           <div class="etk-poster-col">
@@ -1952,7 +1963,13 @@
     padding-top: 0.6rem;
     border-top: 1px solid var(--border);
   }
-  .etk-meta span { display: flex; align-items: center; gap: 0.3rem; }
+  .etk-meta > span { display: flex; align-items: center; gap: 0.35rem; }
+  .meta-ico {
+    width: 0.95em;
+    height: 0.95em;
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
 
   /* Geçmiş kartlar */
   .past-card { opacity: 0.5; }
@@ -2064,50 +2081,66 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
   <!-- YÜRÜTÜCÜ EKİP -->
   <div class="tab-panel" id="tab-ekip">
     <div class="period-selector">
-      <button class="period-btn active" data-period="2025-2026">2025–2026</button>
+      <button class="period-btn active" data-period="2026-2027">2026–2027</button>
+      <button class="period-btn" data-period="2025-2026">2025–2026</button>
       <button class="period-btn" data-period="2024-2025">2024–2025</button>
       <button class="period-btn" data-period="2023-2024">2023–2024</button>
     </div>
 
-    <div class="period-panel active" id="period-2025-2026">
+    <div class="period-panel active" id="period-2026-2027">
       <div class="team-grid">
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Sevval Ok</div><div class="team-role">Başkan Yardımcısı</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"></div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melsa_kurt.jpg" alt="Melsa Kurt" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Melsa Kurt</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/zehra_gundogdu.jpeg" alt="Zehra Gündoğdu" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Zehra Gündoğdu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/eda_citak.jpeg" alt="Eda Çıtak" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Eda Çıtak</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/elif_kara.jpeg" alt="Elif Kara" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Elif Kara</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Sevval Ok</div><div class="team-role">Başkan</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melsa_kurt.jpg" alt="Melsa Kurt" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Melsa Kurt</div><div class="team-role">Başkan Yardımcısı</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/elif_kara.jpeg" alt="Elif Kara" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Elif Kara</div><div class="team-role">Başkan Yardımcısı</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/zehra_gundogdu.jpeg" alt="Zehra Gündoğdu" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Zehra Gündoğdu</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/eda_citak.jpeg" alt="Eda Çıtak" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Eda Çıtak</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/aysegul_oral.jpeg" alt="Ayşegül Oral" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Ayşegül Oral</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar">E</div><div class="team-name">Esma Güler</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <a class="team-card" href="https://avesis.istanbul.edu.tr/mbona" target="_blank" rel="noopener"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div><div class="team-role-sub"><span class="rs-line">İÜ Biyoloji Bölümü</span><span class="rs-line">Botanik Ana Bilim Dalı</span></div></a>
+      </div>
+    </div>
+
+    <div class="period-panel" id="period-2025-2026">
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Sevval Ok</div><div class="team-role">Başkan Yardımcısı</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melsa_kurt.jpg" alt="Melsa Kurt" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Melsa Kurt</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/zehra_gundogdu.jpeg" alt="Zehra Gündoğdu" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Zehra Gündoğdu</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/eda_citak.jpeg" alt="Eda Çıtak" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Eda Çıtak</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/elif_kara.jpeg" alt="Elif Kara" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async"></div><div class="team-name">Elif Kara</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <a class="team-card" href="https://avesis.istanbul.edu.tr/mbona" target="_blank" rel="noopener"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div><div class="team-role-sub"><span class="rs-line">İÜ Biyoloji Bölümü</span><span class="rs-line">Botanik Ana Bilim Dalı</span></div></a>
       </div>
     </div>
 
     <div class="period-panel" id="period-2024-2025">
       <div class="team-grid">
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Başkan</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan Yardımcısı</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/umur_aslan.jpeg" alt="Umur Aslan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Umur Aslan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Sevval Ok</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/irem_balciogli.jpeg" alt="İrem Balcıoğlu" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">İrem Balcıoğlu</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/aziz_cetin.jpeg" alt="Muhammet Aziz Çetin" style="width:100%;height:100%;object-fit:contain;"></div><div class="team-name">Muhammet Aziz Çetin</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melisa_gürkan.jpeg" alt="Melisa Gürkan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Melisa Gürkan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Başkan</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Başkan Yardımcısı</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/umur_aslan.jpeg" alt="Umur Aslan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Umur Aslan</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/sevval_ok.jpeg" alt="Sevval Ok" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Sevval Ok</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/irem_balciogli.jpeg" alt="İrem Balcıoğlu" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">İrem Balcıoğlu</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/aziz_cetin.jpeg" alt="Muhammet Aziz Çetin" style="width:100%;height:100%;object-fit:contain;"></div><div class="team-name">Muhammet Aziz Çetin</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/yasin_turhan.jpeg" alt="Yasin Turhan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Yasin Turhan</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/melisa_gürkan.jpeg" alt="Melisa Gürkan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Melisa Gürkan</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <a class="team-card" href="https://avesis.istanbul.edu.tr/mbona" target="_blank" rel="noopener"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div><div class="team-role-sub"><span class="rs-line">İÜ Biyoloji Bölümü</span><span class="rs-line">Botanik Ana Bilim Dalı</span></div></a>
       </div>
     </div>
 
     <div class="period-panel" id="period-2023-2024">
       <div class="team-grid">
-        <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Başkan</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/umur_aslan.jpeg" alt="Umur Aslan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Umur Aslan</div><div class="team-role">Başkan Yardımcısı</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/aziz_cetin.jpeg" alt="Muhammet Aziz Çetin" style="width:100%;height:100%;object-fit:contain;"></div><div class="team-name">Muhammet Aziz Çetin</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/taylan_ozgur_delibas.png" alt="Taylan Özgür Delibaş" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Taylan Özgür Delibaş</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/can_furat.png" alt="Can Furat" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Can Furat</div><div class="team-role">Yönetim Kurulu Üyesi</div></div>
-        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div></div>
+        <div class="team-card"><div class="team-avatar">N</div><div class="team-name">Nudem Pekedis</div><div class="team-role">Başkan</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/umur_aslan.jpeg" alt="Umur Aslan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Umur Aslan</div><div class="team-role">Başkan Yardımcısı</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/betül_zehra_darcan.jpeg" alt="Betül Zehra Darcan" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Betül Zehra Darcan</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/ceyhun_sezen.jpg" alt="Ceyhun Sezen" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Ceyhun Sezen</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Biyoloji Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/aziz_cetin.jpeg" alt="Muhammet Aziz Çetin" style="width:100%;height:100%;object-fit:contain;"></div><div class="team-name">Muhammet Aziz Çetin</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/taylan_ozgur_delibas.png" alt="Taylan Özgür Delibaş" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Taylan Özgür Delibaş</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Matematik Bölümü</div></div>
+        <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/can_furat.png" alt="Can Furat" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Can Furat</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
+        <a class="team-card" href="https://avesis.istanbul.edu.tr/mbona" target="_blank" rel="noopener"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div><div class="team-role-sub"><span class="rs-line">İÜ Biyoloji Bölümü</span><span class="rs-line">Botanik Ana Bilim Dalı</span></div></a>
       </div>
       </div>
     </div>
@@ -2299,6 +2332,8 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     .hero h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }
     .period-btn { font-size: 0.75rem; padding: 0.45rem 0.9rem; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-card { padding: 2rem 1rem; }
+    .team-role-sub { font-size: 0.58rem; letter-spacing: 0.01em; }
     .faq-q { font-size: 0.92rem; }
   }
 
@@ -2604,8 +2639,8 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 </style>
 
 <footer>
-  <div class="footer-logo">İÜ Evrim Topluluğu</div>
-  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır. · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
+  <div class="footer-logo"><img class="footer-logo-img" src="images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
 <script>
@@ -2875,6 +2910,7 @@ bizKimizSection.addEventListener('touchend', function(e) {
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Menüyü kapat');
     document.body.style.overflow = 'hidden';
+    history.pushState({ sidePanelOpen: true }, '');
   }
   function closePanel() {
     sidePanel.classList.remove('open');
@@ -2884,9 +2920,21 @@ bizKimizSection.addEventListener('touchend', function(e) {
     hamburger.setAttribute('aria-label', 'Menüyü aç');
     document.body.style.overflow = '';
   }
-  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
-  sidePanelClose.addEventListener('click', closePanel);
-  sidePanelOverlay.addEventListener('click', closePanel);
+  // Kapatma; panel açıkken geri (swipe/donanım/tarayıcı) tuşunun
+  // uygulamadan çıkmak yerine önce paneli kapatması için history kullanılır.
+  function closePanelViaBack() {
+    if (history.state && history.state.sidePanelOpen) {
+      history.back();
+    } else {
+      closePanel();
+    }
+  }
+  window.addEventListener('popstate', () => {
+    if (sidePanel.classList.contains('open')) closePanel();
+  });
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanelViaBack() : openPanel());
+  sidePanelClose.addEventListener('click', closePanelViaBack);
+  sidePanelOverlay.addEventListener('click', closePanelViaBack);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
   sidePanel.querySelectorAll('[data-scroll-tab]').forEach(link => {
     link.addEventListener('click', e => {
@@ -2907,7 +2955,7 @@ bizKimizSection.addEventListener('touchend', function(e) {
   }, {passive: true});
   sidePanel.addEventListener('touchend', function(e) {
     const diff = e.changedTouches[0].clientX - panelTouchStartX;
-    if (diff > 60) closePanel();
+    if (diff > 60) closePanelViaBack();
   }, {passive: true});
 
   const buildRouteUrl = (locationText) => {
@@ -2917,10 +2965,11 @@ bizKimizSection.addEventListener('touchend', function(e) {
     return '/nasil-gidilir/';
   };
 
-  document.querySelectorAll('.etk-meta span').forEach((metaItem) => {
-    const text = metaItem.textContent || '';
-    if (!text.includes('📍') || metaItem.querySelector('a')) return;
+  document.querySelectorAll('.etk-meta .meta-loc').forEach((metaItem) => {
+    const label = metaItem.querySelector('.meta-txt');
+    if (!label || metaItem.querySelector('a')) return;
 
+    const text = label.textContent || '';
     const link = document.createElement('a');
     link.href = buildRouteUrl(text);
     link.textContent = text.trim();
@@ -2929,8 +2978,7 @@ bizKimizSection.addEventListener('touchend', function(e) {
     link.style.textUnderlineOffset = '2px';
     link.style.cursor = 'pointer';
 
-    metaItem.textContent = '';
-    metaItem.appendChild(link);
+    label.replaceWith(link);
   });
 
  });

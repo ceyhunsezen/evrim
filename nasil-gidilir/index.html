@@ -526,6 +526,8 @@
     }
 
     .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
+  .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
     @media (min-width: 901px) {
       .page {
@@ -833,7 +835,7 @@
 </main>
 
 <footer>
-  <div class="footer-logo">İÜ Evrim Topluluğu</div>
+  <div class="footer-logo"><img class="footer-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
   <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
@@ -860,6 +862,7 @@
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Menüyü kapat');
     document.body.style.overflow = 'hidden';
+    history.pushState({ sidePanelOpen: true }, '');
   }
   function closePanel() {
     sidePanel.classList.remove('open');
@@ -869,9 +872,21 @@
     hamburger.setAttribute('aria-label', 'Menüyü aç');
     document.body.style.overflow = '';
   }
-  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
-  sidePanelClose.addEventListener('click', closePanel);
-  sidePanelOverlay.addEventListener('click', closePanel);
+  // Kapatma; panel açıkken geri (swipe/donanım/tarayıcı) tuşunun
+  // uygulamadan çıkmak yerine önce paneli kapatması için history kullanılır.
+  function closePanelViaBack() {
+    if (history.state && history.state.sidePanelOpen) {
+      history.back();
+    } else {
+      closePanel();
+    }
+  }
+  window.addEventListener('popstate', () => {
+    if (sidePanel.classList.contains('open')) closePanel();
+  });
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanelViaBack() : openPanel());
+  sidePanelClose.addEventListener('click', closePanelViaBack);
+  sidePanelOverlay.addEventListener('click', closePanelViaBack);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
   document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
     link.addEventListener('click', e => {
@@ -889,7 +904,7 @@
   }, {passive: true});
   sidePanel.addEventListener('touchend', function(e) {
     const diff = e.changedTouches[0].clientX - panelTouchStartX;
-    if (diff > 60) closePanel();
+    if (diff > 60) closePanelViaBack();
   }, {passive: true});
 
  });

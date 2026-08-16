@@ -705,7 +705,13 @@
     padding-top: 0.75rem;
     border-top: 1px solid var(--border);
   }
-  .ec-meta span { display: flex; align-items: center; gap: 0.3rem; }
+  .ec-meta > span { display: flex; align-items: center; gap: 0.35rem; }
+  .meta-ico {
+    width: 0.95em;
+    height: 0.95em;
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
 
   /* ¦¦ BÜYÜK SERİ AYRAÇLARI ¦¦ */
   .series-divider {
@@ -776,6 +782,8 @@
     font-weight: 500;
   }
   .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
+  .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -1367,8 +1375,8 @@
                 Sauropsid'lerin, yani sürüngenler ve kuşların, dünyasına yakından bakıyoruz. Paul MacLean'in meşhur Triune Brain (Üçlü Beyin) modelini masaya yatırıyor ve içinizde ilkel bir sürüngen beyni yattığına dair o yaygın miti yıkıyoruz! Ayrıca, memelilerdeki gibi bir isokortekse sahip olmayan kuşların, nasıl büyük kuyruksuz maymunlar kadar zeki olabildiğini inceliyoruz.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1394,8 +1402,8 @@
               İstanbul Üniversitesi Evrim Topluluğu olarak düzenlediğimiz ilk Evrim Konferansı'nda; Prof. Dr. Ferhat Matur, Prof. Dr. Ecevit Barış Özener ve Arş. Gör. Nisan Yıldız eşliğinde evrimsel biyolojinin farklı alanlarını ele aldık.
               </p>
               <div class="ec-meta">
-                <span>📍 Amfi A</span>
-                <span>🕒 10:00 – 15:45</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Amfi A</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">10:00 – 15:45</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1421,8 +1429,8 @@
                 Sauropsid'lerin, yani sürüngenler ve kuşların, dünyasına yakından bakıyoruz. Paul MacLean'in meşhur Triune Brain (Üçlü Beyin) modelini masaya yatırıyor ve içinizde ilkel bir sürüngen beyni yattığına dair o yaygın miti yıkıyoruz! Ayrıca, memelilerdeki gibi bir isokortekse sahip olmayan kuşların, nasıl büyük kuyruksuz maymunlar kadar zeki olabildiğini inceliyoruz.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1448,8 +1456,8 @@
                 Omurgalı sinir sisteminin kökenlerine iniyoruz. Çenesi olmayan ilk omurgalılardan, 450 milyon yıldır okyanusları yöneten kıkırdaklı balıklara. Bu hafta; miyelin, motor kontrol ve köpekbalığı zekasını ele alıyoruz.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1476,8 +1484,8 @@
 
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1506,8 +1514,8 @@
                 Bu hafta, omurgalı sinir sisteminin kökenlerini anlamak için Kordalılar (Chordata) şubesinin omurgalı olmayan üyelerini, özellikle de Amphioxusları inceliyoruz.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1535,8 +1543,8 @@
                 Boğaziçi Üniversitesi'nden Taha Akkülah'ın konuk sunumu eşliğinde Tosches &amp; Arendt (2013), Martinez &amp; Sprecher (2020) ve Furness &amp; Stebbing (2017) makaleleriyle sinir sisteminin merkezileşmesini tartışıyoruz.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1562,8 +1570,8 @@
                 Martin Luther Üniversitesi'nden Dr. Bahar Patlar ile eşeysel seçilim teorisini tarihsel, felsefi ve biyolojik bağlamda bütüncül bir bakış açısıyla tartışan sertifikalı, kapsamlı bir tam günlük çalıştay.
               </p>
               <div class="ec-meta">
-                <span>📍 Amfi A</span>
-                <span>🕒 12:00 – 18:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Amfi A</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">12:00 – 18:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1589,8 +1597,8 @@
                 Cnidaria şubesi sinir sisteminin kökeni hakkında bize ne söylüyor? Kelava et al. (2015), Sprecher (2022) ve Arendt et al. (2016) makaleleriyle diffüz sinir ağlarından merkezi sinir sistemine geçişin evrimsel hikayesini inceledik.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1616,8 +1624,8 @@
                 Psikiyatrist Dr. İlker Küçükparlak'ın anlatımıyla psikopatolojik bozuklukları evrimsel bir perspektiften ele aldık.
               </p>
               <div class="ec-meta">
-                <span>📍 Fahir Yeniçay Dersliği</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1643,8 +1651,8 @@
                 Prof. Dr. Murat Belivermiş ile iklim değişikliği, okyanus ekosistemlerindeki bozulmalar, deniz canlılarının adaptasyonları ve bu süreçlerin evrimsel etkilerini tartıştık.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1670,8 +1678,8 @@
                 "Before the Brain" temasıyla sinaptik proteinlerin ve uyarılabilirliğin evrimsel kökenlerini Sachkova et al. (2025), Colgren &amp; Burkhardt (2025) ve Wan &amp; Jékely (2021) makaleleri üzerinden tartıştık.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1697,8 +1705,8 @@
                 Arş. Gör. Ahmet Arıhan Erözden eşliğinde, Sevde Nur Aydın ve Esma Güler'in sunumlarıyla Tardigradların evrimine ilişkin iki makaleyi inceledik.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Makale Grubu</div>
             </div>
@@ -1724,8 +1732,8 @@
                 Makale sunumlarına geçmeden önce evrim ve nörobilimin temel kavramlarını öğrenci sunumları eşliğinde tartıştık.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:40</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:40</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1751,8 +1759,8 @@
                 Tanışma etkinliği ve "A History of Ideas in Evolutionary Neuroscience" ile evrimsel nörobilime dair geçmişten bugüne geliştirilmiş düşünce ve çalışmaları tarihsel bir düzlemde keşfettik.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 6</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 6</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Journal Club</div>
             </div>
@@ -1778,8 +1786,8 @@
                 Kadir Has Üniversitesi'nden Doç. Dr. Onurcan Yılmaz'ın anlatımıyla günümüz ahlaki yargılarının kökenlerini evrimsel ve psikolojik bir perspektiften tartıştık.
               </p>
               <div class="ec-meta">
-                <span>📍 Fahir Yeniçay Dersliği</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1805,8 +1813,8 @@
                 Jane Goodall'ın anısına, onun şempanzelere adanmış ilham verici yolculuğunu anlatan Brett Morgen imzalı JANE (2017) belgeselini birlikte izledik.
               </p>
               <div class="ec-meta">
-                <span>📍 Amfi A</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Amfi A</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Belgesel</div>
             </div>
@@ -1832,8 +1840,8 @@
                 Hacettepe Üniversitesi'nden Dr. Nefize Ezgi Altınışık ile Türkiye'deki Antik DNA çalışmalarını ve bu çalışmaların kültürel anlatıya ve toplumsal cinsiyet rollerine olan etkisini konuştuk.
               </p>
               <div class="ec-meta">
-                <span>📍 Fahir Yeniçay Dersliği</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1859,8 +1867,8 @@
                 Sabancı Üniversitesi'nden Doç. Dr. Ogün Adebali ile evrimsel süreçte genomlarımızda biriken değişimlerin hastalıklardaki rolünü, DNA hasar birikimini ve filogenetik tabanlı yöntemleri konuştuk.
               </p>
               <div class="ec-meta">
-                <span>📍 Fahir Yeniçay Dersliği</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1886,8 +1894,8 @@
                 Üniversitemizde geçmişten bugüne evrim fikrinin nasıl ele alındığını ve İstanbul Üniversitesi çatısı altında yürütülen araştırmaların evrimle olan ilişkisini Prof. Dr. Cihan Demirci Tansel, Doç. Dr. Vahap Eldem ve Arş. Gör. Harun İnci'den dinledik.
               </p>
               <div class="ec-meta">
-                <span>📍 Engin Arık Dersliği</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Engin Arık Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1926,8 +1934,8 @@
                 1 Mayıs'a giderken, Prof. Dr. Mehmet Bona ve Arş. Gör. Atakan Çiftçi ile bilim emekçilerinin mücadelesini, akademinin durumunu ve çözüm yollarını tartıştık.
               </p>
               <div class="ec-meta">
-                <span>📍 Diş Kantini Açık Alan</span>
-                <span>🕒 13:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Diş Kantini Açık Alan</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">13:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -1953,8 +1961,8 @@
                 Sinir Sisteminin Gelişimi ve Neural Crest konularını ele aldık; beyin bölgeleri quizi, nöral gelişim sunumu ve "Evolution of Vertebrates as Viewed from the Crest" makalesi tartışmasıyla devam ettik.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Çalışma Grubu</div>
             </div>
@@ -1980,8 +1988,8 @@
                 Katılımcıların beyin bölgelerine dair kısa sunumlarıyla nöroanatomiye giriş yapıldı; ardından "The Evolutionary Origins of the Vertebrate Olfactory System" makalesi sunuldu ve tartışıldı.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Çalışma Grubu</div>
             </div>
@@ -2007,8 +2015,8 @@
                 8 Mart'a giderken; Sarah Blaffer Hrdy, Lynn Margulis ve Mary Leakey başta olmak üzere evrim teorisine katkı sunmuş kadın bilim insanlarının yaşam ve çalışmalarını konuştuk.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2034,8 +2042,8 @@
                 Nöronların ortaya çıkışı, sinir sisteminin merkezileşmesi ve farklı hayvan gruplarındaki evrimini inceleyen çalışma grubumuzun ilk buluşması; temel nörobilim ve gönüllü makale sunumlarıyla başladı.
               </p>
               <div class="ec-meta">
-                <span>📍 Biyoloji Yeni Bina — Derslik 5</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Biyoloji Yeni Bina — Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Evrimsel Nörobilim Çalışma Grubu</div>
             </div>
@@ -2061,8 +2069,8 @@
                 Doç. Dr. Yasemin Aydın tarafından belirlenen makalelerin öğrenci sunumları ve tartışmalarla işlendiği etkinlik, Fahir Yeniçay Dersliği'nde gerçekleşti.
               </p>
               <div class="ec-meta">
-                <span>📍 Fahir Yeniçay Dersliği</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Makale Grubu</div>
             </div>
@@ -2088,8 +2096,8 @@
                 Tarihinden ve felsefesinden bağımsız aktarılan anaakım bilim anlatısının ötesine geçerek biyoloji felsefesini keşfettiğimiz etkinlik; kitap ödüllü sorular da içerdi.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 6</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 6</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2115,8 +2123,8 @@
                 Fosilleri en doğru şekilde nasıl resmederiz? Canlılar farklı koşullarda evrimleşseydi nasıl görünürdü? Sanat ve bilimin kesişiminde C.M. Kösemen ile keşfettik.
               </p>
               <div class="ec-meta">
-                <span>📍 Engin Arık Dersliği</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Engin Arık Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2142,8 +2150,8 @@
                 25 Kasım Kadına Yönelik Şiddete Karşı Mücadele Günü haftasında Evelyn Fox Keller'ın kitabından bir bölümü okuyup toplumsal cinsiyet ile bilim eşitsizliğini tartıştık.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2169,8 +2177,8 @@
                 Sezonun ilk makale grubu etkinliğinde biri İngilizce biri Türkçe gerçekleştirilen iki sunum, Derslik 5'te öğrenciler arasında tartışıldı.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Makale Grubu</div>
             </div>
@@ -2196,8 +2204,8 @@
                 Evrim teorisi ve mekanizmalarının derinlemesine ele alındığı iki oturumlu ders serisi (14 ve 21 Ekim). Temellerden başlayarak giderek detaylandı; her seviyeden katılımcıya hitap etti.
               </p>
               <div class="ec-meta">
-                <span>📍 Engin Arık Dersliği</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Engin Arık Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2223,8 +2231,8 @@
                 Evrim Topluluğu'nu tanımak, yapılan ve yapılacak etkinlikler hakkında bilgi almak ve toplulukta aktif rol almak isteyen herkese yönelik tanışma toplantısı.
               </p>
               <div class="ec-meta">
-                <span>📍 Engin Arık Dersliği</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Engin Arık Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2263,7 +2271,7 @@
                 Evrim Topluluğu ve Sinema Topluluğu ortaklığıyla Şanidar Mağarası kazılarını ve en iyi korunmuş Neandertal iskeleti Shanidar Z'yi anlatan belgesel izlendi.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
               </div>
               <div class="ec-series-tag">Belgesel</div>
             </div>
@@ -2289,8 +2297,8 @@
                 Beste Zorlu ve Alper Karagöl'ün sunumuyla "Evolutionary rescue via transgenerational plasticity" ve "Predicting evolutionary responses due to climate change in the sea" makaleleri tartışıldı.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Makale Grubu</div>
             </div>
@@ -2316,7 +2324,7 @@
                 Evrim Topluluğu ve Antropoloji Kulübü'nün ilk ortak etkinliği; İTÜ Maden Fakültesi bünyesindeki Prof. Dr. İhsan Ketin Doğa Tarihi Müzesi'ne gezi.
               </p>
               <div class="ec-meta">
-                <span>📍 İTÜ Maden Fakültesi</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">İTÜ Maden Fakültesi</span></span>
               </div>
               <div class="ec-series-tag">Gezi</div>
             </div>
@@ -2342,8 +2350,8 @@
                 Derek Turner'ın "Paleontoloji ve Evrim: Felsefi Bir Yaklaşım" kitabının ilk üç bölümü üzerinden filetik kademelilik, kesintili denge ve tür kavramları tartışıldı.
               </p>
               <div class="ec-meta">
-                <span>📍 Biyoloji Bölümü — Derslik 5</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Biyoloji Bölümü — Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2369,8 +2377,8 @@
                 Vegan Topluluğu, Evrim Topluluğu ve Bilim Tarihi Kulübü'nün ortak etkinliği; ekoloji hareketi ve hayvan özgürlüğü mücadelesi tarihsel ve felsefi bir perspektiften ele alındı.
               </p>
               <div class="ec-meta">
-                <span>📍 Edebiyat Fakültesi Şeref Holü</span>
-                <span>🕒 14:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Edebiyat Fakültesi Şeref Holü</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">14:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2396,8 +2404,8 @@
                 Antropoloji bölümü akademisyeni Dr. Sercan Acar'ın sunumuyla primatların milyonlarca yıllık yaşam öyküleri ve evrimsel süreçleri incelendi.
               </p>
               <div class="ec-meta">
-                <span>📍 Engin Arık Dersliği</span>
-                <span>🕒 15:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Engin Arık Dersliği</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">15:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2423,8 +2431,8 @@
                 Richard Lewontin'in bilim ile ideoloji ilişkisini inceleyen "İdeoloji Olarak Biyoloji" kitabı tartışıldı; biyolojik indirgemecilik ve sınıfsal eşitsizliklerin perdelenmesi ele alındı.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 6</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 6</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2450,8 +2458,8 @@
                 Kulübün ilk resmi üniversite etkinliğinde Prof. Dr. Mehmet Bona ile evrimin işleyişini sağlayan mekanizmalar ele alındı.
               </p>
               <div class="ec-meta">
-                <span>📍 Derslik 5</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2478,8 +2486,8 @@
                 Kaan Biçici'nin anlatımıyla bilim ve laiklik arasındaki ilişki tarihsel ve felsefi bir perspektiften ele alındı.
               </p>
               <div class="ec-meta">
-                <span>📍 Simurg Kafe</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Simurg Kafe</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2506,8 +2514,8 @@
                 Barış Özener'in "İnsan Çeşitliliği" kitabı tartışıldı; insan çeşitliliğinin biyolojik ve evrimsel temelleri değerlendirildi.
               </p>
               <div class="ec-meta">
-                <span>📍 Bahçe Cafe</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Bahçe Cafe</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2534,8 +2542,8 @@
                 Immanuel Kant'ın "Aydınlanma Nedir" ve Douglas Futuyma'nın "Hipotez, Olgu ve Bilimin Doğası" metinleri okunup tartışıldı.
               </p>
               <div class="ec-meta">
-                <span>📍 Simurg Cafe</span>
-                <span>🕒 16:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Simurg Cafe</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2562,8 +2570,8 @@
                 "Darwin Öncesi ve Sonrası Düşünceler" başlığıyla Dr. Çağatay Tarhan'ın anlatımıyla evrim teorisinin tarihsel gelişimi ele alındı.
               </p>
               <div class="ec-meta">
-                <span>📍 Edebiyat Fakültesi B Blok — D-328</span>
-                <span>🕒 15:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Edebiyat Fakültesi B Blok — D-328</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">15:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2590,8 +2598,8 @@
                 Tamer Kaya'nın "Evrim" kitabının tartışıldığı ilk okuma grubu etkinliği; kalınan yerden devam edildi ve yeni dönemin ilk topluluğu buluşması gerçekleşti.
               </p>
               <div class="ec-meta">
-                <span>📍 Bahçe Kafe</span>
-                <span>🕒 17:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Bahçe Kafe</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:30</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2618,8 +2626,8 @@
                 Dönem boyunca gerçekleştirilecek etkinlikleri konuşmak ve birbirini tanımak için düzenlenen ilk buluşma.
               </p>
               <div class="ec-meta">
-                <span>📍 Simurg Cafe — 1. Kat</span>
-                <span>🕒 17:30</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Simurg Cafe — 1. Kat</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:30</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2660,8 +2668,8 @@
                 Bilim Tarihi Kulübü ile ortak düzenlenen söyleşide Dr. Öğr. Üyesi Çağatay Tarhan "Evrim Ne Söyler? Neden Önemlidir?" sorusunu ele aldı.
               </p>
               <div class="ec-meta">
-                <span>📍 D-226</span>
-                <span>🕒 16:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">D-226</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2688,8 +2696,8 @@
                 Sınavların ardından devam eden Evrim Okumalarında Darwin Devrimi üzerine metinler tartışıldı. PDF materyaller WhatsApp grubu üzerinden paylaşıldı.
               </p>
               <div class="ec-meta">
-                <span>📍 Çayİstanbul alt kat</span>
-                <span>🕒 17:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Çayİstanbul alt kat</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17:00</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2716,8 +2724,8 @@
                 Pangaltı Evrim Atölyesi ve İKÜ MBG kulübüyle ortak düzenlenen etkinlikte Prof. Dr. Ergi Deniz Özsoy, Ginko Bilim'den çıkan "Evrim, Bilim ve Tarih" kitabı üzerine konuştu ve kitaplarını imzaladı.
               </p>
               <div class="ec-meta">
-                <span>📍 Şişli Nostalji Kitap Kafe</span>
-                <span>🕒 19:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Şişli Nostalji Kitap Kafe</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">19:00</span></span>
               </div>
               <div class="ec-series-tag">Çalıştay &amp; Söyleşi</div>
             </div>
@@ -2744,8 +2752,8 @@
                 Dönem boyunca gerçekleştirilecek etkinliklerin konuşulduğu ve topluluğun birbirini tanıdığı ilk buluşma.
               </p>
               <div class="ec-meta">
-                <span>📍 Çayİstanbul alt kat</span>
-                <span>🕒 18:00</span>
+                <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Çayİstanbul alt kat</span></span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">18:00</span></span>
               </div>
               <div class="ec-series-tag">Toplantı</div>
             </div>
@@ -2772,7 +2780,7 @@
                 Çağrı Mert Bakırcı'nın "Evrim Kuramı ve Mekanizmaları" kitabıyla devam eden evrim okumalarına katılım için detaylar DM üzerinden paylaşıldı.
               </p>
               <div class="ec-meta">
-                <span>🕒 18:00</span>
+                <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">18:00</span></span>
               </div>
               <div class="ec-series-tag">Evrim Okumaları</div>
             </div>
@@ -2836,8 +2844,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">İÜ Evrim Topluluğu</div>
-  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu. Tüm Hakları Saklıdır. · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
+  <div class="footer-logo"><img class="footer-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
+  <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
 <script>
@@ -2864,6 +2872,7 @@
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Menüyü kapat');
     document.body.style.overflow = 'hidden';
+    history.pushState({ sidePanelOpen: true }, '');
   }
   function closePanel() {
     sidePanel.classList.remove('open');
@@ -2873,9 +2882,21 @@
     hamburger.setAttribute('aria-label', 'Menüyü aç');
     document.body.style.overflow = '';
   }
-  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
-  sidePanelClose.addEventListener('click', closePanel);
-  sidePanelOverlay.addEventListener('click', closePanel);
+  // Kapatma; panel açıkken geri (swipe/donanım/tarayıcı) tuşunun
+  // uygulamadan çıkmak yerine önce paneli kapatması için history kullanılır.
+  function closePanelViaBack() {
+    if (history.state && history.state.sidePanelOpen) {
+      history.back();
+    } else {
+      closePanel();
+    }
+  }
+  window.addEventListener('popstate', () => {
+    if (sidePanel.classList.contains('open')) closePanel();
+  });
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanelViaBack() : openPanel());
+  sidePanelClose.addEventListener('click', closePanelViaBack);
+  sidePanelOverlay.addEventListener('click', closePanelViaBack);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
   document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
     link.addEventListener('click', e => {
@@ -2893,7 +2914,7 @@
   }, {passive: true});
   sidePanel.addEventListener('touchend', function(e) {
     const diff = e.changedTouches[0].clientX - panelTouchStartX;
-    if (diff > 60) closePanel();
+    if (diff > 60) closePanelViaBack();
   }, {passive: true});
 
   const buildRouteUrl = (locationText) => {
@@ -2903,10 +2924,11 @@
     return '/nasil-gidilir/';
   };
 
-  document.querySelectorAll('.ec-meta span').forEach((metaItem) => {
-    const text = metaItem.textContent || '';
-    if (!text.includes('📍') || metaItem.querySelector('a')) return;
+  document.querySelectorAll('.ec-meta .meta-loc').forEach((metaItem) => {
+    const label = metaItem.querySelector('.meta-txt');
+    if (!label || metaItem.querySelector('a')) return;
 
+    const text = label.textContent || '';
     const link = document.createElement('a');
     link.href = buildRouteUrl(text);
     link.textContent = text.trim();
@@ -2916,8 +2938,7 @@
     link.style.cursor = 'pointer';
     link.addEventListener('click', (event) => event.stopPropagation());
 
-    metaItem.textContent = '';
-    metaItem.appendChild(link);
+    label.replaceWith(link);
   });
 
  });
@@ -3205,6 +3226,7 @@
     galShow(0);
     galOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    history.pushState({ galleryOpen: true }, '');
   }
 
   function galClose() {
@@ -3213,14 +3235,27 @@
     setTimeout(() => { galMainImg.src = ''; }, 300);
   }
 
-  galCloseBtn.addEventListener('click', galClose);
-  galOverlay.addEventListener('click', e => { if (e.target === galOverlay) galClose(); });
+  // Kapatma; galeri açıkken geri (swipe/donanım/tarayıcı) tuşunun
+  // uygulamadan çıkmak yerine önce galeriyi kapatması için history kullanılır.
+  function galCloseViaBack() {
+    if (history.state && history.state.galleryOpen) {
+      history.back();
+    } else {
+      galClose();
+    }
+  }
+  window.addEventListener('popstate', () => {
+    if (galOverlay.classList.contains('open')) galClose();
+  });
+
+  galCloseBtn.addEventListener('click', galCloseViaBack);
+  galOverlay.addEventListener('click', e => { if (e.target === galOverlay) galCloseViaBack(); });
   galPrevBtn.addEventListener('click', () => galShow(galIdx - 1));
   galNextBtn.addEventListener('click', () => galShow(galIdx + 1));
 
   document.addEventListener('keydown', e => {
     if (!galOverlay.classList.contains('open')) return;
-    if (e.key === 'Escape')     galClose();
+    if (e.key === 'Escape')     galCloseViaBack();
     if (e.key === 'ArrowLeft')  { if (galIdx > 0) galShow(galIdx - 1); }
     if (e.key === 'ArrowRight') { if (galIdx < galImages.length - 1) galShow(galIdx + 1); }
   });

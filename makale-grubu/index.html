@@ -892,6 +892,13 @@
     padding-top: 0.65rem;
     border-top: 1px solid var(--border);
   }
+  .blog-card-meta > span { display: flex; align-items: center; gap: 0.35rem; }
+  .meta-ico {
+    width: 0.95em;
+    height: 0.95em;
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
 
   .blog-card-read {
     display: flex;
@@ -1126,6 +1133,8 @@
     font-weight: 500;
   }
   .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
+  .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
   /* ── REVEAL ANİMASYON ── */
   .reveal {
@@ -1441,8 +1450,8 @@
         <h3 class="blog-card-title">Arş. Gör. Ahmet Arıhan Erözden Eşliğinde Tardigradlar</h3>
         <p class="blog-card-desc">Sevde Nur Aydın ve Esma Güler'in sunumlarıyla "Multiomics Study of a Heterotardigrade, Echinisicus testudo, Suggets The Possibility of Convergent Evolution of Abundant Heat-Soluble Proteins in Tardigrada" ve "Developmental and Genomic Insight Into The Origin of The Tardigrade Body Plan" makaleleri tartışıldı.</p>
         <div class="blog-card-meta">
-          <span>📍 Derslik 5</span>
-          <span>🕒 16:30</span>
+          <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+          <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
         </div>
       </div>
     </a>
@@ -1461,8 +1470,8 @@
         <h3 class="blog-card-title">Doç. Dr. Yasemin Aydın ile Gelişim Biyolojisi ve Evrim</h3>
         <p class="blog-card-desc">Sevval Ok ve İrem Balcıoğlu'nun sunumlarıyla "Feather function and the evolution of birds" ve "A farewell to arms and legs: a review of limb reduction in squamates" makaleleri tartışıldı.</p>
         <div class="blog-card-meta">
-          <span>📍 Fahir Yeniçay Dersliği</span>
-          <span>🕒 16:00</span>
+          <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
+          <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
         </div>
       </div>
     </a>
@@ -1481,8 +1490,8 @@
         <h3 class="blog-card-title">Sinir Sisteminin Omurgasız Kökenleri</h3>
         <p class="blog-card-desc">Betül Zehra Darcan ve Ceyhun Sezen'in sunumlarıyla "Evolution of Synapses and Neurotransmitter Systems: The Divide and Conquer Model for earyl neural cell-type evolution" ve "Evolutionary Origin of The Nervous System from Ctenophora Prospective" makaleleri tartışıldı.</p>
         <div class="blog-card-meta">
-          <span>📍 Derslik 5</span>
-          <span>🕒 16:00</span>
+          <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+          <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
         </div>
       </div>
     </a>
@@ -1501,8 +1510,8 @@
         <h3 class="blog-card-title">Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu</h3>
         <p class="blog-card-desc">Beste Zorlu ve Alper Karagöl'ün sunumuyla "Evolutionary rescue via transgenerational plasticity" ve "Predicting evolutionary responses due to climate change in the sea" makaleleri tartışıldı.</p>
         <div class="blog-card-meta">
-          <span>📍 Derslik 5</span>
-          <span>🕒 16:00</span>
+          <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
+          <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
         </div>
       </div>
     </a>
@@ -1537,7 +1546,7 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo">İÜ Evrim Topluluğu</div>
+  <div class="footer-logo"><img class="footer-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
   <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
@@ -1565,6 +1574,7 @@
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Menüyü kapat');
     document.body.style.overflow = 'hidden';
+    history.pushState({ sidePanelOpen: true }, '');
   }
   function closePanel() {
     sidePanel.classList.remove('open');
@@ -1574,9 +1584,21 @@
     hamburger.setAttribute('aria-label', 'Menüyü aç');
     document.body.style.overflow = '';
   }
-  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanel() : openPanel());
-  sidePanelClose.addEventListener('click', closePanel);
-  sidePanelOverlay.addEventListener('click', closePanel);
+  // Kapatma; panel açıkken geri (swipe/donanım/tarayıcı) tuşunun
+  // uygulamadan çıkmak yerine önce paneli kapatması için history kullanılır.
+  function closePanelViaBack() {
+    if (history.state && history.state.sidePanelOpen) {
+      history.back();
+    } else {
+      closePanel();
+    }
+  }
+  window.addEventListener('popstate', () => {
+    if (sidePanel.classList.contains('open')) closePanel();
+  });
+  hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanelViaBack() : openPanel());
+  sidePanelClose.addEventListener('click', closePanelViaBack);
+  sidePanelOverlay.addEventListener('click', closePanelViaBack);
   sidePanel.querySelectorAll('a').forEach(l => l.addEventListener('click', closePanel));
   document.querySelectorAll('a[data-scroll-tab]').forEach(link => {
     link.addEventListener('click', e => {
@@ -1594,7 +1616,7 @@
   }, {passive: true});
   sidePanel.addEventListener('touchend', function(e) {
     const diff = e.changedTouches[0].clientX - panelTouchStartX;
-    if (diff > 60) closePanel();
+    if (diff > 60) closePanelViaBack();
   }, {passive: true});
 
   const buildRouteUrl = (locationText) => {
@@ -1604,10 +1626,11 @@
     return '/nasil-gidilir/';
   };
 
-  document.querySelectorAll('.blog-card-meta span').forEach((metaItem) => {
-    const text = metaItem.textContent || '';
-    if (!text.includes('📍') || metaItem.querySelector('a')) return;
+  document.querySelectorAll('.blog-card-meta .meta-loc').forEach((metaItem) => {
+    const label = metaItem.querySelector('.meta-txt');
+    if (!label || metaItem.querySelector('a')) return;
 
+    const text = label.textContent || '';
     const link = document.createElement('a');
     link.href = buildRouteUrl(text);
     link.textContent = text.trim();
@@ -1616,8 +1639,7 @@
     link.style.textUnderlineOffset = '2px';
     link.style.cursor = 'pointer';
 
-    metaItem.textContent = '';
-    metaItem.appendChild(link);
+    label.replaceWith(link);
   });
 
  });
