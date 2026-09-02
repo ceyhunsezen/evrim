@@ -1596,7 +1596,7 @@
 </div>
 
 <!-- ETKİNLİKLER -->
-<section class="etkinlikler-section" id="etkinlikler">
+<section class="etkinlikler-section" id="etkinlikler" data-toc="Etkinlikler">
   <div class="etk-header">
     <h2 class="section-title">Yaklaşan Etkinlikler</h2>
   </div>
@@ -2036,7 +2036,7 @@
 </style>
 
 <!-- BİZ KİMİZ? -->
-<section class="biz-kimiz" id="biz-kimiz">
+<section class="biz-kimiz" id="biz-kimiz" data-toc="Biz Kimiz?">
   <div class="section-header">
     <h2 class="section-title">Biz Kimiz?</h2>
   </div>
@@ -2204,7 +2204,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 </section>
 
 <!-- SSS -->
-<section class="sss-section" id="sss">
+<section class="sss-section" id="sss" data-toc="SSS">
   <div class="section-header">
     <h2 class="section-title">Sıkça Sorulan Sorular</h2>
   </div>
@@ -2467,7 +2467,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 </style>
 
 <!-- SPONSORLUK VE İŞ BİRLİKLERİ -->
-<section class="sponsorluk" id="sponsorluk">
+<section class="sponsorluk" id="sponsorluk" data-toc="Sponsorluk">
   <div class="sponsorluk-inner">
     <span class="sponsorluk-label">DESTEK &amp; ORTAKLIKLAR</span>
     <h2 class="sponsorluk-title">İş Birlikleri<br><em>ve Destek</em></h2>
@@ -2482,7 +2482,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
 </section>
 
 <!-- İLETİŞİM -->
-<section class="iletisim-section" id="iletisim">
+<section class="iletisim-section" id="iletisim" data-toc="İletişim">
   <div class="section-header">
     <h2 class="section-title">İletişim</h2>
   </div>
@@ -2636,6 +2636,148 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     .iletisim-card { min-width: 100%; }
     .iletisim-map-frame { height: 240px; }
   }
+
+  /* ── İÇİNDEKİLER ──
+     Aynı veriden iki görünüm: masaüstünde sağ kenarda nokta rayı,
+     mobilde nav'ın altında yatay kaydırılan etiket şeridi.
+     Markup JS ile [data-toc] taşıyan bölümlerden üretiliyor.
+  */
+  [data-toc] { scroll-margin-top: 84px; }
+
+  .toc { position: fixed; z-index: 150; }
+  .toc a { text-decoration: none; }
+
+  /* Hero (ve ana sayfada slider) geçilene kadar gizli; sonra kayarak girer */
+  .toc-rail {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .toc-rail { transform: translateY(-50%) translateX(14px); }
+  .toc-rail[data-visible='true'] { opacity: 1; transform: translateY(-50%) translateX(0); }
+  .toc-rail[data-visible='true'] a { pointer-events: auto; }
+
+  .toc-bar {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+  .toc-bar[data-visible='true'] { transform: translateY(0); opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toc-rail, .toc-bar { transition: none; }
+  }
+
+  /* — Masaüstü: sağ kenar nokta rayı — */
+  .toc-rail {
+    top: 50%;
+    right: 1.1rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: flex-end;
+  }
+  /* Konteyner tıklamayı geçirir; satırlar kendi bandında yakalar.
+     Satırlar arası boşluklar sayfaya açık kalır. */
+  .toc-rail { pointer-events: none; }
+
+  /* Satırın tamamı (etiket + nokta) hem hover hem tıklama alanı */
+  .toc-rail a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    width: 11rem;
+    padding: 0.3rem 0;
+    pointer-events: auto;
+    color: var(--text-muted);
+  }
+  .toc-rail .toc-label {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.32rem 0.55rem;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .toc-rail .toc-dot {
+    display: block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(154,170,154,0.3);
+    flex-shrink: 0;
+    transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
+  }
+
+  /* Satırlardan birinin hizasına gelince BÜTÜN liste açılır */
+  .toc-rail:hover .toc-label,
+  .toc-rail:focus-within .toc-label { opacity: 1; transform: translateX(0); }
+  .toc-rail:hover .toc-dot,
+  .toc-rail:focus-within .toc-dot { background: rgba(154,170,154,0.55); }
+  .toc-rail a:hover .toc-label { color: var(--accent); border-color: rgba(109,191,103,0.45); }
+  .toc-rail a:hover .toc-dot { background: var(--accent-soft); }
+
+  .toc-rail a[aria-current='true'] .toc-dot {
+    background: var(--accent);
+    transform: scale(1.35);
+    box-shadow: 0 0 0 3px rgba(109,191,103,0.15);
+  }
+  .toc-rail:hover a[aria-current='true'] .toc-dot,
+  .toc-rail:focus-within a[aria-current='true'] .toc-dot { background: var(--accent); }
+  .toc-rail a[aria-current='true'] .toc-label { color: var(--accent); }
+
+
+  /* — Mobil: nav altında yatay şerit — */
+  .toc-bar {
+    display: none;
+    top: 64px; left: 0; right: 0;
+    /* Tamamen opak: yarı saydam bırakılınca altındaki metin
+       etiketlerin arasından okunup karışıyordu. */
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+  }
+  .toc-bar-inner {
+    display: flex;
+    gap: 0.45rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0.5rem 1rem;
+  }
+  .toc-bar-inner::-webkit-scrollbar { display: none; }
+  .toc-bar a {
+    flex: 0 0 auto;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.34rem 0.75rem;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .toc-bar a[aria-current='true'] {
+    color: var(--accent);
+    border-color: rgba(109,191,103,0.45);
+    background: rgba(109,191,103,0.08);
+  }
+
+  @media (max-width: 1100px) { .toc-rail { display: none; } }
+  @media (max-width: 768px) {
+    .toc-bar { display: block; }
+    [data-toc] { scroll-margin-top: 112px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .toc-rail .toc-label, .toc-rail .toc-dot { transition: none; }
+  }
+
 </style>
 
 <footer>
@@ -3018,6 +3160,109 @@ bizKimizSection.addEventListener('touchend', function(e) {
       });
     });
   });
+</script>
+
+<script>
+  /* ── İÇİNDEKİLER ──
+     [data-toc] taşıyan bölümlerden iki görünüm üretir (masaüstü rayı +
+     mobil şerit) ve kaydırdıkça aktif bölümü işaretler. Bölüm yoksa
+     hiçbir şey basmaz; her iki sayfada da aynı kod çalışır. */
+  (function () {
+    // Yapışkan (sticky/fixed) öğeler dışarıda: konumları ekrana
+    // sabitlendiği için kaydırma hesabını bozup kendilerinden önceki
+    // bölümlerin hiç aktif olamamasına yol açıyorlar.
+    const sections = Array.from(document.querySelectorAll('[data-toc]'))
+      .filter(el => {
+        const pos = getComputedStyle(el).position;
+        return pos !== 'sticky' && pos !== 'fixed';
+      });
+    if (sections.length < 2) return;
+
+    sections.forEach((sec, i) => { if (!sec.id) sec.id = 'bolum-' + (i + 1); });
+
+    // <nav> DEĞİL: site başlığının "body > nav" kuralı bu öğelere de
+    // uygulanıp konum/görünümü bozuyor. Rol öznitelikle veriliyor.
+    const rail = document.createElement('div');
+    rail.className = 'toc toc-rail';
+    rail.setAttribute('role', 'navigation');
+    rail.setAttribute('aria-label', 'Sayfa içeriği');
+
+    const bar = document.createElement('div');
+    bar.className = 'toc toc-bar';
+    bar.setAttribute('role', 'navigation');
+    bar.setAttribute('aria-label', 'Sayfa içeriği');
+    const barInner = document.createElement('div');
+    barInner.className = 'toc-bar-inner';
+    bar.appendChild(barInner);
+
+    const railLinks = [], barLinks = [];
+    sections.forEach(sec => {
+      const label = sec.dataset.toc;
+
+      const a = document.createElement('a');
+      a.href = '#' + sec.id;
+      a.innerHTML = '<span class="toc-label"></span><span class="toc-dot"></span>';
+      a.querySelector('.toc-label').textContent = label;
+      a.setAttribute('aria-label', label);
+      rail.appendChild(a);
+      railLinks.push(a);
+
+      const b = document.createElement('a');
+      b.href = '#' + sec.id;
+      b.textContent = label;
+      barInner.appendChild(b);
+      barLinks.push(b);
+    });
+
+    document.body.appendChild(rail);
+    document.body.appendChild(bar);
+
+    let active = -1;
+    const setActive = i => {
+      if (i === active || i < 0) return;
+      active = i;
+      railLinks.forEach((a, n) => a.setAttribute('aria-current', n === i ? 'true' : 'false'));
+      barLinks.forEach((a, n) => a.setAttribute('aria-current', n === i ? 'true' : 'false'));
+      // aktif etiketi mobil şeritte görünür tut (yalnızca şerit açıkken)
+      if (bar.offsetParent !== null) {
+        const el = barLinks[i];
+        const left = el.offsetLeft - (barInner.clientWidth - el.offsetWidth) / 2;
+        barInner.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+      }
+    };
+
+    // Referans çizgisini (viewport'un üst üçte biri) en son geçen bölüm aktif.
+    // Birkaç elemanlık döngü olduğu için doğrudan scroll'da hesaplanıyor;
+    // rAF ile ertelemek arka plan sekmelerinde takılmaya yol açıyordu.
+    /* İçindekiler hero'nun üstünde görünmesin:
+       - biraz aşağı inilmiş olmalı (kısa eşik), VE
+       - ilk bölüm ekrana yaklaşmış olmalı (ana sayfada hero + slider
+         geçilene kadar bu koşul sağlanmıyor). */
+    const setVisible = () => {
+      const yeterinceKaydi = window.scrollY > 260;
+      const ilkBolumYaklasti = sections[0].getBoundingClientRect().top < window.innerHeight * 0.6;
+      const gorunsun = yeterinceKaydi && ilkBolumYaklasti;
+      rail.dataset.visible = gorunsun ? 'true' : 'false';
+      bar.dataset.visible  = gorunsun ? 'true' : 'false';
+    };
+
+    const pickActive = () => {
+      setVisible();
+      const line = window.innerHeight * 0.32;
+      let best = 0;
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top - line <= 0) best = i;
+      }
+      // Sayfa sonunda son bolumun ustu cizgiyi hic gecemeyebilir;
+      // bu durumda son bolumu aktif say.
+      const dip = document.documentElement.scrollHeight - window.innerHeight;
+      if (dip > 0 && window.scrollY >= dip - 2) best = sections.length - 1;
+      setActive(best);
+    };
+    window.addEventListener('scroll', pickActive, { passive: true });
+    window.addEventListener('resize', pickActive);
+    pickActive();
+  })();
 </script>
 
 </body>

@@ -26,6 +26,72 @@
   <link rel="preload" as="image" href="/images/makale%20grubu/makale_grubu_hero.webp" media="(min-width: 769px)" fetchpriority="high">
   <link rel="preload" as="image" href="/images/makale%20grubu/makalegrubu_hero_mobile.webp" media="(max-width: 768px)" fetchpriority="high">
 
+  <!-- JS varsa reveal animasyonları devreye girsin; yoksa içerik gizlenmesin -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Yapısal veri: seri + geçmiş oturumlar -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EventSeries",
+    "name": "Makale Grubu",
+    "alternateName": "İÜ Evrim Topluluğu Journal Club",
+    "url": "https://iuevrim.org/makale-grubu/",
+    "description": "Evrimsel biyoloji literatüründen seçilen makalelerin öğrenci sunumları ve açık tartışmayla ele alındığı Journal Club serisi.",
+    "inLanguage": "tr",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "organizer": {
+      "@type": "Organization",
+      "name": "İstanbul Üniversitesi Evrim Topluluğu",
+      "url": "https://iuevrim.org/"
+    },
+    "location": {
+      "@type": "Place",
+      "name": "İstanbul Üniversitesi Fen Fakültesi, Biyoloji Bölümü",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Fatih",
+        "addressRegion": "İstanbul",
+        "addressCountry": "TR"
+      }
+    },
+    "subEvent": [
+      {
+        "@type": "Event",
+        "name": "Arş. Gör. Ahmet Arıhan Erözden Eşliğinde Tardigradlar",
+        "startDate": "2025-12-18T16:30+03:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Derslik 5", "address": "İstanbul Üniversitesi Fen Fakültesi, İstanbul" }
+      },
+      {
+        "@type": "Event",
+        "name": "Doç. Dr. Yasemin Aydın ile Gelişim Biyolojisi ve Evrim",
+        "startDate": "2024-12-26T16:00+03:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Fahir Yeniçay Dersliği", "address": "İstanbul Üniversitesi Fen Fakültesi, İstanbul" }
+      },
+      {
+        "@type": "Event",
+        "name": "Sinir Sisteminin Omurgasız Kökenleri",
+        "startDate": "2024-11-01T16:00+03:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Derslik 5", "address": "İstanbul Üniversitesi Fen Fakültesi, İstanbul" }
+      },
+      {
+        "@type": "Event",
+        "name": "Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu",
+        "startDate": "2024-05-02T16:00+03:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Derslik 5", "address": "İstanbul Üniversitesi Fen Fakültesi, İstanbul" }
+      }
+    ]
+  }
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8KV5XFSZ09"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -61,10 +127,41 @@
     font-weight: 300;
     min-height: 100vh;
     overflow-x: hidden;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   }
 
-  body {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  /* ── ERİŞİLEBİLİRLİK YARDIMCILARI ── */
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translate(-50%, -120%);
+    z-index: 300;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.75rem 1.6rem;
+    transition: transform 0.2s ease;
+  }
+  .skip-link:focus { transform: translate(-50%, 0); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   body::before {
@@ -319,12 +416,10 @@
   .sp-main:hover { color: var(--accent) !important; }
   .sp-current { color: var(--accent) !important; }
 
-  /* ── HERO (PLACEHOLDER) ── */
-  /*
-   * ===============================================================
-   *  HERO — Kullanıcı bu bölümü özelleştirecek
-   *  Mevcut içerik geçici placeholder'dır.
-   * ===============================================================
+  /* ── HERO ──
+   * Görsel afiş bandı sayfanın başlık tipografisini taşır.
+   * Erişilebilirlik ve SEO için gerçek <h1> .visually-hidden olarak
+   * markup'ta duruyor.
    */
   .page-hero {
     position: relative;
@@ -363,49 +458,6 @@
     z-index: 0;
   }
 
-  .page-hero-inner {
-    position: relative;
-    z-index: 1;
-  }
-
-  .page-eyebrow {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .page-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 28px; height: 1px;
-    background: var(--accent);
-    opacity: 0.6;
-  }
-
-  .page-hero h1 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.6rem, 6vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 1.8rem;
-  }
-  .page-hero h1 em { font-style: normal; color: var(--accent); }
-
-  .page-hero-desc {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    line-height: 1.75;
-    max-width: 520px;
-    padding-left: 1.2rem;
-    border-left: 2px solid rgba(109,191,103,0.4);
-  }
 
   .page-hero-scroll {
     position: absolute;
@@ -427,6 +479,116 @@
     0%, 100% { transform: translateY(0); opacity: 0.3; }
     50%       { transform: translateY(8px); opacity: 0.8; }
   }
+
+  /* ── SIRADAKİ OTURUM ── */
+  .next-session-section {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    padding: 3.5rem 4rem;
+    overflow: hidden;
+  }
+  /* Diğer bölümlerle aynı dokulu arka plan */
+  .next-session-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/makale grubu/background3.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.06;
+    mix-blend-mode: luminosity;
+    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+  /* Kartın çevresindeki pütürlü doku */
+  .next-session-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(109,191,103,0.22) 1px, transparent 1px);
+    background-size: 13px 13px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .next-session-section > * { position: relative; z-index: 1; }
+
+  .next-session {
+    border: 1px solid var(--border);
+    background: linear-gradient(150deg, var(--surface) 0%, var(--bg) 100%);
+    padding: 2.2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .next-session::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(109,191,103,0.1));
+  }
+
+  .next-session-label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+  }
+  .next-session-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(109,191,103,0.55);
+    animation: pulseDot 2.6s ease-out infinite;
+  }
+  @keyframes pulseDot {
+    0%   { box-shadow: 0 0 0 0 rgba(109,191,103,0.5); }
+    70%  { box-shadow: 0 0 0 9px rgba(109,191,103,0); }
+    100% { box-shadow: 0 0 0 0 rgba(109,191,103,0); }
+  }
+
+  .next-session-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+    max-width: 30ch;
+  }
+  .next-session-note {
+    max-width: 62ch;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .next-session-note a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(109,191,103,0.35); }
+  .next-session-note a:hover { border-bottom-color: var(--accent); }
+
+  .next-session-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+  .next-session-meta > span { display: flex; align-items: center; gap: 0.4rem; }
+
+  /* Oturum duyurulmadığında sakin görünüm */
+  .next-session.is-idle::before { background: rgba(109,191,103,0.22); }
+  .next-session.is-idle .next-session-label { color: var(--text-muted); }
+  .next-session.is-idle .next-session-dot { background: var(--text-muted); animation: none; opacity: 0.55; }
 
   /* ── AYLIK MAKALELER ── */
   .articles-section {
@@ -505,7 +667,7 @@
     display: flex;
     gap: 1.2rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity; /* mandatory: son karta yaslanmayi engelliyordu */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: 0.5rem;
@@ -513,7 +675,7 @@
   .articles-slider::-webkit-scrollbar { display: none; }
 
   .article-card {
-    flex: 0 0 300px;
+    flex: 0 0 320px;
     scroll-snap-align: start;
     background: linear-gradient(160deg, var(--bg) 0%, var(--surface2) 100%);
     border: 1px solid var(--border);
@@ -540,50 +702,50 @@
   }
   .article-card:hover::before { opacity: 1; }
 
+  /* Kart görseli */
   .article-card-img {
     width: 100%;
     height: 160px;
-    object-fit: cover;
     display: block;
     background: var(--surface2);
     border-bottom: 1px solid var(--border);
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    position: relative;
   }
   .article-card-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     display: block;
-    transition: opacity 0.3s;
     opacity: 0.85;
+    transition: opacity 0.3s, transform 0.4s;
   }
-  .article-card:hover .article-card-img img { opacity: 1; }
-  .article-card-img-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
-    position: relative;
-  }
-  .article-card-img-placeholder::before {
-    content: '';
+  .article-card:hover .article-card-img img { opacity: 1; transform: scale(1.03); }
+
+
+  /* Ay rozeti görselin üstünde durur */
+  .article-card-img .article-month-badge {
     position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(109,191,103,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(109,191,103,0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
+    top: 0.7rem; left: 0.7rem;
+    z-index: 1;
+    background: rgba(10,14,10,0.82);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Kart başlığı: dergi adı */
+  .article-card-head {
+    padding: 1rem 1.4rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    background: rgba(109,191,103,0.025);
   }
 
   .article-card-body {
-    padding: 1.2rem 1.3rem 1.4rem;
+    padding: 1.2rem 1.4rem 1.4rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -603,20 +765,30 @@
   }
 
   .article-journal {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: rgba(109,191,103,0.55);
+    font-size: 0.76rem;
+    letter-spacing: 0.11em;
+    line-height: 1.45;
+    text-transform: uppercase;
+    color: rgba(143,217,138,0.9);
     font-weight: 500;
+  }
+  .article-journal-vol {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-top: 0.15rem;
   }
 
   .article-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
+    font-size: 1.18rem;
     font-weight: 400;
-    line-height: 1.45;
+    line-height: 1.4;
     color: var(--text);
     transition: color 0.25s;
-    flex: 1;
   }
   .article-card:hover .article-title { color: var(--accent); }
 
@@ -627,6 +799,8 @@
     font-style: italic;
   }
 
+  /* Kartlar esit yukseklikte oldugu icin boslugu CTA'nin ustunde
+     topluyoruz; aksi halde baslik ile yazar arasi acilip duruyor. */
   .article-cta {
     display: flex;
     align-items: center;
@@ -635,7 +809,8 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-top: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.7rem;
     font-weight: 500;
   }
   .article-cta::after {
@@ -644,9 +819,153 @@
   }
   .article-card:hover .article-cta::after { transform: translateX(4px); }
 
-  /* Slider nav butonları */
+  /* ── İÇİNDEKİLER ──
+     Aynı veriden iki görünüm: masaüstünde sağ kenarda nokta rayı,
+     mobilde nav'ın altında yatay kaydırılan etiket şeridi.
+     Markup JS ile [data-toc] taşıyan bölümlerden üretiliyor.
+  */
+  [data-toc] { scroll-margin-top: 84px; }
+
+  .toc { position: fixed; z-index: 150; }
+  .toc a { text-decoration: none; }
+
+  /* Hero (ve ana sayfada slider) geçilene kadar gizli; sonra kayarak girer */
+  .toc-rail {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .toc-rail { transform: translateY(-50%) translateX(14px); }
+  .toc-rail[data-visible='true'] { opacity: 1; transform: translateY(-50%) translateX(0); }
+  .toc-rail[data-visible='true'] a { pointer-events: auto; }
+
+  .toc-bar {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+  .toc-bar[data-visible='true'] { transform: translateY(0); opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toc-rail, .toc-bar { transition: none; }
+  }
+
+  /* — Masaüstü: sağ kenar nokta rayı — */
+  .toc-rail {
+    top: 50%;
+    right: 1.1rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: flex-end;
+  }
+  /* Konteyner tıklamayı geçirir; satırlar kendi bandında yakalar.
+     Satırlar arası boşluklar sayfaya açık kalır. */
+  .toc-rail { pointer-events: none; }
+
+  /* Satırın tamamı (etiket + nokta) hem hover hem tıklama alanı */
+  .toc-rail a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    width: 11rem;
+    padding: 0.3rem 0;
+    pointer-events: auto;
+    color: var(--text-muted);
+  }
+  .toc-rail .toc-label {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.32rem 0.55rem;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .toc-rail .toc-dot {
+    display: block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(154,170,154,0.3);
+    flex-shrink: 0;
+    transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
+  }
+
+  /* Satırlardan birinin hizasına gelince BÜTÜN liste açılır */
+  .toc-rail:hover .toc-label,
+  .toc-rail:focus-within .toc-label { opacity: 1; transform: translateX(0); }
+  .toc-rail:hover .toc-dot,
+  .toc-rail:focus-within .toc-dot { background: rgba(154,170,154,0.55); }
+  .toc-rail a:hover .toc-label { color: var(--accent); border-color: rgba(109,191,103,0.45); }
+  .toc-rail a:hover .toc-dot { background: var(--accent-soft); }
+
+  .toc-rail a[aria-current='true'] .toc-dot {
+    background: var(--accent);
+    transform: scale(1.35);
+    box-shadow: 0 0 0 3px rgba(109,191,103,0.15);
+  }
+  .toc-rail:hover a[aria-current='true'] .toc-dot,
+  .toc-rail:focus-within a[aria-current='true'] .toc-dot { background: var(--accent); }
+  .toc-rail a[aria-current='true'] .toc-label { color: var(--accent); }
+
+
+  /* — Mobil: nav altında yatay şerit — */
+  .toc-bar {
+    display: none;
+    top: 64px; left: 0; right: 0;
+    /* Tamamen opak: yarı saydam bırakılınca altındaki metin
+       etiketlerin arasından okunup karışıyordu. */
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+  }
+  .toc-bar-inner {
+    display: flex;
+    gap: 0.45rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0.5rem 1rem;
+  }
+  .toc-bar-inner::-webkit-scrollbar { display: none; }
+  .toc-bar a {
+    flex: 0 0 auto;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.34rem 0.75rem;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .toc-bar a[aria-current='true'] {
+    color: var(--accent);
+    border-color: rgba(109,191,103,0.45);
+    background: rgba(109,191,103,0.08);
+  }
+
+  @media (max-width: 1100px) { .toc-rail { display: none; } }
+  @media (max-width: 768px) {
+    .toc-bar { display: block; }
+    [data-toc] { scroll-margin-top: 112px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .toc-rail .toc-label, .toc-rail .toc-dot { transition: none; }
+  }
+
+  /* ── ŞERİT KONTROLLERİ ──
+     Makale slider'ı ve foto galerisi ortak kullanıyor; oturum
+     sayfasındaki galeri de aynı yapıyı devralıyor. */
   .slider-nav {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
     margin-top: 1.2rem;
@@ -656,14 +975,48 @@
     border: 1px solid var(--border);
     color: var(--text-muted);
     width: 34px; height: 34px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, opacity 0.2s;
   }
-  .slider-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .slider-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .slider-btn:disabled {
+    opacity: 0.28;
+    cursor: default;
+  }
+
+  .slider-progress {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-right: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .slider-progress span {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.2s linear, transform 0.2s linear;
+  }
+
+  /* Son kart "end" hizalansın: aksi halde şeridin sonu geçerli bir
+     snap noktası olmadığı için sona yaslanma geri çekiliyor. */
+  .articles-slider > :last-child,
+  .gallery-strip > :last-child { scroll-snap-align: end; }
+
+  /* Sürüklenebilir şeritler */
+  .drag-strip { cursor: grab; }
+  /* Sürükleme sırasında snap kapalı, yoksa el hareketiyle çakışıyor */
+  .drag-strip.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .drag-strip.is-dragging a,
+  .drag-strip.is-dragging img { pointer-events: none; }
 
   /* ── HAKKINDA ── */
   .about-section {
@@ -692,28 +1045,32 @@
 
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 4rem;
-    align-items: start;
-    margin-top: 3rem;
+    align-items: stretch;
   }
 
-  .about-text {
+  /* Sol sütun: başlık + metin. Başlık grid'in içinde olduğu için
+     iki sütun aynı hizadan başlıyor. */
+  .about-main {
     font-size: 1.05rem;
     line-height: 1.85;
     color: var(--text-muted);
   }
-  .about-text p + p { margin-top: 1.1rem; }
-  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-main .section-header-mg { margin-bottom: 2rem; }
+  .about-main p + p { margin-top: 1.1rem; }
+  .about-main strong { color: var(--text); font-weight: 500; }
 
   .about-cards {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    justify-content: space-between;
+    gap: 0.9rem;
+    height: 100%;
   }
 
   .about-card {
-    padding: 1.4rem 1.5rem;
+    padding: 1.15rem 1.4rem;
     border: 1px solid var(--border-soft);
     background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
     position: relative;
@@ -729,17 +1086,17 @@
   .about-card:hover { border-color: rgba(109,191,103,0.3); }
 
   .about-card-label {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.35rem;
     font-weight: 500;
   }
   .about-card-text {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   /* ── GEÇMİŞ ETKİNLİKLER ── */
@@ -768,12 +1125,27 @@
 
   .blog-section > * { position: relative; z-index: 1; }
 
+  /* Arşiv her ekran boyutunda yatay şerit: kartlar alt alta uzamıyor */
   .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    display: flex;
     gap: 1.2rem;
     margin-top: 3rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -4rem;
+    margin-right: -4rem;
+    padding: 0 4rem;
+    scroll-padding-left: 4rem;
+    scroll-padding-right: 4rem;
   }
+  .blog-grid::-webkit-scrollbar { display: none; }
+  .blog-grid > .blog-card {
+    flex: 0 0 340px;
+    scroll-snap-align: start;
+  }
+  .blog-grid > :last-child { scroll-snap-align: end; }
 
   .blog-card {
     background: linear-gradient(160deg, var(--bg) 0%, var(--surface2) 100%);
@@ -808,10 +1180,16 @@
     overflow: hidden;
     position: relative;
   }
+  /* Afişler kare (1080×1080) ya da 4:5. Sabit 220px yükseklik bunları
+     ortadan ince bir şerit halinde kırpıyordu; kare orana sabitleyip
+     üstten hizalıyoruz — afiş başlığı böylece görünür kalıyor. */
   .blog-card-poster img {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 1 / 1;
+    max-height: 360px;
+    height: auto;
     object-fit: cover;
+    object-position: center top;
     display: block;
     opacity: 0.88;
     transition: opacity 0.3s, transform 0.4s;
@@ -847,22 +1225,32 @@
   .blog-card-top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
+    gap: 0.65rem;
+    flex-wrap: wrap;
   }
 
   .blog-card-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.1em;
-    color: rgba(109,191,103,0.45);
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    color: rgba(143,217,138,0.85);
     line-height: 1;
+    flex-shrink: 0;
   }
 
   .blog-card-date {
     font-size: 0.75rem;
     color: var(--text-muted);
     letter-spacing: 0.04em;
+    margin-right: auto;
+  }
+  .blog-card-date::before {
+    content: '';
+    display: inline-block;
+    width: 14px; height: 1px;
+    background: var(--border);
+    vertical-align: middle;
+    margin-right: 0.6rem;
   }
 
   .blog-card-title {
@@ -876,11 +1264,9 @@
   .blog-card:hover .blog-card-title { color: var(--accent); }
 
   .blog-card-desc {
-    font-size: 0.84rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
     line-height: 1.65;
-    margin-top: auto;
-    margin-bottom: auto;
   }
 
   .blog-card-meta {
@@ -889,7 +1275,7 @@
     gap: 0.4rem 1rem;
     font-size: 0.74rem;
     color: var(--text-muted);
-    padding-top: 0.65rem;
+    padding-top: 0.8rem;
     border-top: 1px solid var(--border);
   }
   .blog-card-meta > span { display: flex; align-items: center; gap: 0.35rem; }
@@ -900,42 +1286,63 @@
     opacity: 0.75;
   }
 
+  /* Oturumda tartışılan makaleler */
+  .blog-card-papers {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.2rem;
+  }
+  .blog-card-papers li {
+    position: relative;
+    padding-left: 0.85rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+  }
+  .blog-card-papers li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.6em;
+    width: 4px; height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  /* Kartın altındaki bağlantı satırı (özet sayfası / Instagram gönderisi) */
   .blog-card-read {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--accent);
     font-weight: 500;
-    margin-top: 0.2rem;
-    transition: gap 0.2s;
+    /* Kart yüksekliği ne olursa olsun bağlantı satırı meta'nın hemen
+       üstüne yaslansın; böylece bütün kartlarda aynı hizada durur. */
+    margin-top: auto;
+    padding-top: 0.9rem;
   }
   .blog-card-read::after {
     content: '→';
     transition: transform 0.2s;
   }
-  .blog-card:hover .blog-card-read::after { transform: translateX(4px); }
+  a.blog-card:hover .blog-card-read::after { transform: translateX(4px); }
 
-  /* Sayfalara gidemeyen (henüz hazır değil) kartlar */
-  .blog-card.no-post {
-    cursor: default;
-  }
+  /* Bağlantısı olmayan (tıklanamayan) kartlar */
+  .blog-card.no-post { cursor: default; }
   .blog-card.no-post:hover {
     transform: none;
     box-shadow: none;
-    border-color: rgba(109,191,103,0.2);
+    border-color: var(--border);
   }
   .blog-card.no-post:hover .blog-card-title { color: var(--text); }
-  .blog-card-coming {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    opacity: 0.5;
-    margin-top: 0.2rem;
-  }
+  .blog-card.no-post:hover .blog-card-poster img { opacity: 0.88; transform: none; }
 
   /* ── FORM SECTION ── */
   .form-section {
@@ -1083,13 +1490,13 @@
     display: flex;
     gap: 0.75rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity; /* mandatory: son karta yaslanmayi engelliyordu */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 0 4rem;
-    cursor: grab;
+    /* Serit sol boslugu kadar: ilk foto tam basa (scrollLeft 0) yaslansin */
+    scroll-padding-left: 4rem;
   }
-  .gallery-strip:active { cursor: grabbing; }
   .gallery-strip::-webkit-scrollbar { display: none; }
   .gallery-item {
     flex: 0 0 320px;
@@ -1098,6 +1505,9 @@
     overflow: hidden;
     border: 1px solid var(--border);
     flex-shrink: 0;
+    padding: 0;
+    background: var(--surface2);
+    cursor: zoom-in;
   }
   .gallery-item img {
     width: 100%; height: 100%;
@@ -1109,11 +1519,64 @@
   .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
   .gallery-nav {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
     margin-top: 1.2rem;
     padding: 0 4rem;
   }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    background: rgba(6,9,6,0.94);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem 4.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .lightbox[data-open='true'] { opacity: 1; pointer-events: auto; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 1px solid var(--border);
+  }
+  .lightbox-btn {
+    position: absolute;
+    background: rgba(10,14,10,0.6);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .lightbox-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .lightbox-close { top: 1.2rem; right: 1.2rem; }
+  .lightbox-prev  { left: 1.2rem;  top: 50%; transform: translateY(-50%); }
+  .lightbox-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 1.2rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    text-align: center;
+    max-width: 80%;
+  }
+  body.lightbox-open { overflow: hidden; }
 
   /* ── FOOTER ── */
   footer {
@@ -1136,17 +1599,27 @@
   .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
   .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
-  /* ── REVEAL ANİMASYON ── */
-  .reveal {
+  /* ── REVEAL ANİMASYON ──
+   * .js sınıfını <html>'e JS ekliyor; JS çalışmazsa içerik
+   * hiç gizlenmez (opacity:0'da takılı kalmaz).
+   */
+  .js .reveal {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.55s ease, transform 0.55s ease;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .js .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  /* ── HAREKET AZALTMA TERCİHİ ── */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .js .reveal { opacity: 1; transform: none; }
   }
 
   /* ── RESPONSİVE ── */
@@ -1158,6 +1631,11 @@
     body > nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
+    .next-session-section { padding: 2.5rem 1.5rem; }
+    .next-session { padding: 1.5rem 1.4rem; }
+    .lightbox { padding: 3.5rem 1rem; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
     .page-hero { padding: 4.5rem 1.5rem 1.5rem; min-height: 28vh; }
     .page-hero-bg {
       background-image: url('/images/makale grubu/makalegrubu_hero_mobile.webp');
@@ -1169,12 +1647,20 @@
     .about-section,
     .blog-section,
     .form-section { padding: 3.5rem 1.5rem; }
-    .blog-grid { grid-template-columns: 1fr; }
+    .blog-grid {
+      gap: 1rem;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding: 0 1.5rem;
+      scroll-padding-left: 1.5rem;
+      scroll-padding-right: 1.5rem;
+    }
+    .blog-grid > .blog-card { flex: 0 0 300px; }
     .form-body { padding: 1.8rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
     .gallery-section { padding: 2.5rem 0 2rem; }
     .gallery-section-header { padding: 0 1.5rem 1.5rem; }
-    .gallery-strip { padding: 0 1.5rem; }
+    .gallery-strip { padding: 0 1.5rem; scroll-padding-left: 1.5rem; }
     .gallery-nav { padding: 0 1.5rem; }
     .gallery-item { flex: 0 0 260px; height: 175px; }
   }
@@ -1190,22 +1676,31 @@
     position: absolute !important;
   }
 
-  /* 3. Ağır resim maskelerini (kenar silikleştirme) mobilde devre dışı bırakıyoruz */
-  .hero-bg-haeckel img,
-  .biz-kimiz::before,
-  .etkinlikler-section::before,
-  .sss-section::before {
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
+  /* 3. Bölüm arka planlarındaki blend/filter zincirini mobilde kapatıyoruz —
+        her scroll karesinde yeniden hesaplanıyor ve ciddi jank yaratıyor. */
+  .articles-section::after,
+  .next-session-section::before,
+  .about-section::before,
+  .blog-section::before,
+  .form-section::before,
+  .gallery-section::before {
+    display: none !important;
   }
-  body > nav {
+
+  /* 4. Blur'lu sabit çubuklar mobilde pahalı */
+  body > nav,
+  .lightbox {
     backdrop-filter: none !important;
-    background: rgba(10,14,10,0.97) !important;
+    -webkit-backdrop-filter: none !important;
   }
+  body > nav { background: rgba(10,14,10,0.97) !important; }
+  .lightbox { background: rgba(6,9,6,0.97) !important; }
 }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#icerik">İçeriğe atla</a>
 
 <!-- ── SIDE PANEL ── -->
 <div class="side-panel" id="side-panel">
@@ -1282,14 +1777,21 @@
   </ul>
 </nav>
 
+<main id="icerik">
+
 <!-- ==============================================================
-     HERO — Kullanıcı bu bölümü özelleştirecek.
-     Tasarımınızı buraya ekleyin.
+     HERO
+     Afiş görseli sayfanın başlık tipografisini taşıyor ("makale
+     grubu" wordmark'ı görselin içinde). Bu yüzden gerçek <h1>
+     .visually-hidden olarak duruyor: arama motorları ve ekran
+     okuyucular için var, görsel olarak tekrar etmiyor.
 ============================================================== -->
 <section class="page-hero" id="hero">
-  <div class="page-hero-bg"></div>
+  <div class="page-hero-bg" role="img"
+       aria-label="Makale Grubu afişlerinden ve bilimsel makale sayfalarından oluşan kolaj"></div>
+  <h1 class="visually-hidden">Makale Grubu — İstanbul Üniversitesi Evrim Topluluğu Journal Club Serisi</h1>
   <a href="#ayin-makaleleri" class="page-hero-scroll" aria-label="Aşağı kaydır">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   </a>
@@ -1300,62 +1802,120 @@
      Her ay yeni kartlar ekleyin; article-card'ı href özniteliğine
      makalenin DOI veya URL'sini yazın.
 ============================================================== -->
-<section class="articles-section" id="ayin-makaleleri">
+<section class="articles-section" id="ayin-makaleleri" aria-labelledby="lit-baslik" data-toc="Literatür">
   <div class="section-header-mg reveal">
     <div>
-      <h2 class="section-heading">Güncel Literatür</h2>
-      <p class="section-sub">Evrimsel biyoloji literatüründen güncel makale seçkisi — başlığa tıklayarak makaleye ulaşabilirsiniz.</p>
+      <h2 class="section-heading" id="lit-baslik">Güncel Literatür</h2>
+      <p class="section-sub">Evrimsel biyoloji literatüründen güncel makale seçkisi — kartlara tıklayarak makaleye ulaşabilirsiniz.</p>
     </div>
   </div>
 
   <div class="articles-slider-wrap reveal">
-    <div class="articles-slider" id="articles-slider">
+    <div class="articles-slider drag-strip" id="articles-slider"
+         role="region" aria-labelledby="lit-baslik" tabindex="0">
 
-      <a class="article-card" href="https://www.science.org/doi/10.1126/sciadv.aea8399" target="_blank" rel="noopener">
+      <a class="article-card" href="https://www.nature.com/articles/s41586-026-10809-9" target="_blank" rel="noopener">
         <div class="article-card-img">
-          <img src="/images/makale grubu/literature/ferraioli-et-al..webp" alt="Ferraioli et al. 2026">
+          <span class="article-month-badge">Temmuz 2026</span>
+          <img src="/images/makale%20grubu/literature/simoes-et-al.png" alt="Simões ve ark. 2026, Şekil 1: Tametara mirim holotipi"
+               width="685" height="493" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Nature<span class="article-journal-vol">Cilt 657, s. 170–178</span></span>
         </div>
         <div class="article-card-body">
-          <span class="article-month-badge">Mart 2026</span>
-          <span class="article-journal">SCIENCE ADVANCES 12, no. 10 </span>
-          <p class="article-title">The 3D architecture of the ctenophore aboral organ and the evolution of complex integrative centers in animals</p>
-          <p class="article-authors">Ferraioli et al. (2026) </p>
+          <p class="article-title">Exceptional brain and ecological diversity in the earliest snakes</p>
+          <p class="article-authors">Simões TR, Sobral G et al. (2026)</p>
           <span class="article-cta">Makaleyi Oku</span>
         </div>
       </a>
 
+      <a class="article-card" href="https://www.nature.com/articles/s41467-026-74234-2" target="_blank" rel="noopener">
+        <div class="article-card-img">
+          <span class="article-month-badge">Haziran 2026</span>
+          <img src="/images/makale%20grubu/literature/bossoms-mesa-et-al.png" alt="Bossoms Mesa ve ark. 2026, Şekil 1: Örnekleme yapılan mağara duvarları"
+               width="685" height="369" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Nature Communications<span class="article-journal-vol">Cilt 17, Makale 5561</span></span>
+        </div>
+        <div class="article-card-body">
+          <p class="article-title">Investigating ancient human DNA preservation on cave walls and in rock art</p>
+          <p class="article-authors">Bossoms Mesa A, Essel E et al. (2026)</p>
+          <span class="article-cta">Makaleyi Oku</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://www.nature.com/articles/s41559-026-03094-2" target="_blank" rel="noopener">
+        <div class="article-card-img">
+          <span class="article-month-badge">Haziran 2026</span>
+          <img src="/images/makale%20grubu/literature/mitchell-manica.png" alt="Mitchell ve Manica 2026, Şekil 1: Ediyakaran topluluk analizleri"
+               width="685" height="244" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Nature Ecology &amp; Evolution<span class="article-journal-vol">Cilt 10, s. 1234–1244</span></span>
+        </div>
+        <div class="article-card-body">
+          <p class="article-title">The influence of reproductive mode on resource competition and diversity patterns in Ediacaran early animal communities</p>
+          <p class="article-authors">Mitchell EG, Manica A (2026)</p>
+          <span class="article-cta">Makaleyi Oku</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://www.science.org/doi/10.1126/sciadv.aea8399" target="_blank" rel="noopener">
+        <div class="article-card-img">
+          <span class="article-month-badge">Mart 2026</span>
+          <img src="/images/makale%20grubu/literature/ferraioli-et-al..webp" alt="Ferraioli ve ark. 2026 makalesinden bir görsel" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Science Advances<span class="article-journal-vol">Cilt 12, Sayı 10</span></span>
+        </div>
+        <div class="article-card-body">
+          <p class="article-title">The 3D architecture of the ctenophore aboral organ and the evolution of complex integrative centers in animals</p>
+          <p class="article-authors">Ferraioli et al. (2026)</p>
+          <span class="article-cta">Makaleyi Oku</span>
+        </div>
+      </a>
 
       <a class="article-card" href="https://academic.oup.com/gbe/article/18/3/evag034/8487294" target="_blank" rel="noopener">
         <div class="article-card-img">
-          <img src="/images/makale grubu/literature/dhakad-et-al.png" alt="Dhakad et al. 2026">
+          <span class="article-month-badge">Mart 2026</span>
+          <img src="/images/makale%20grubu/literature/dhakad-et-al.png" alt="Dhakad ve Obbard 2026 makalesinden bir görsel" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Genome Biology and Evolution<span class="article-journal-vol">Cilt 18, Sayı 3</span></span>
         </div>
         <div class="article-card-body">
-          <span class="article-month-badge">Mart 2026</span>
-          <span class="article-journal">GENOME BIOLOGY AND EVOLUTION</span>
           <p class="article-title">Predictors of Protein Evolution in the drosophilid Immune System</p>
           <p class="article-authors">Dhakad P, Obbard DJ (2026)</p>
           <span class="article-cta">Makaleyi Oku</span>
         </div>
       </a>
+
       <a class="article-card" href="https://www.nature.com/articles/s41559-026-03003-7" target="_blank" rel="noopener">
         <div class="article-card-img">
-          <img src="/images/makale grubu/literature/moreira-et-al.PNG" alt="Cardoso-Moreira 2026">
+          <span class="article-month-badge">Şubat 2026</span>
+          <img src="/images/makale%20grubu/literature/moreira-et-al.PNG" alt="Cardoso-Moreira ve ark. 2026 makalesinden bir görsel" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Nature Ecology &amp; Evolution<span class="article-journal-vol">Cilt 10, s. 641–651</span></span>
         </div>
         <div class="article-card-body">
-          <span class="article-month-badge">Şubat 2026</span>
-          <span class="article-journal">NATURE ECOLOGY &amp; EVOLUTION</span>
           <p class="article-title">The molecular evolution of vertebrate organs</p>
           <p class="article-authors">Cardoso-Moreira M et al. (2026)</p>
           <span class="article-cta">Makaleyi Oku</span>
         </div>
       </a>
+
       <a class="article-card" href="https://www.annualreviews.org/content/journals/10.1146/annurev-ento-121423-013404" target="_blank" rel="noopener">
         <div class="article-card-img">
-          <img src="/images/makale grubu/literature/peris-et-al.PNG" alt="de Medeiros, Peris 2026">
+          <span class="article-month-badge">Ocak 2026</span>
+          <img src="/images/makale%20grubu/literature/peris-et-al.PNG" alt="de Medeiros ve Peris 2026 makalesinden bir görsel" loading="lazy" decoding="async">
+        </div>
+        <div class="article-card-head">
+          <span class="article-journal">Annual Review of Entomology<span class="article-journal-vol">Cilt 71, s. 557–575</span></span>
         </div>
         <div class="article-card-body">
-          <span class="article-month-badge">Ocak 2026</span>
-          <span class="article-journal">ANNUAL REVIEW OF ENTOMOLOGY</span>
           <p class="article-title">The Evolution of Flower Beetles as Visitors and Pollinators</p>
           <p class="article-authors">de Medeiros BAS, Peris D et al. (2026)</p>
           <span class="article-cta">Makaleyi Oku</span>
@@ -1365,25 +1925,57 @@
     </div>
 
     <div class="slider-nav">
-      <button class="slider-btn" id="slider-prev" aria-label="Önceki">&#8592;</button>
-      <button class="slider-btn" id="slider-next" aria-label="Sonraki">&#8594;</button>
+      <div class="slider-progress" aria-hidden="true"><span id="articles-progress"></span></div>
+      <button class="slider-btn" id="slider-prev" aria-label="Önceki makaleler" aria-controls="articles-slider">&#8592;</button>
+      <button class="slider-btn" id="slider-next" aria-label="Sonraki makaleler" aria-controls="articles-slider">&#8594;</button>
     </div>
+  </div>
+</section>
+
+<!-- ==============================================================
+     SIRADAKİ OTURUM
+
+     ▸ Yeni oturum duyurulduğunda: .next-session'dan "is-idle"
+       sınıfını kaldırın ve aşağıdaki yorum bloğundaki şablonu
+       .next-session-title / .next-session-note yerine koyun.
+============================================================== -->
+<section class="next-session-section" id="siradaki" aria-labelledby="siradaki-baslik" data-toc="Sıradaki Oturum">
+  <div class="next-session is-idle reveal">
+    <div class="next-session-label" id="siradaki-baslik"><span class="next-session-dot"></span>Sıradaki Oturum</div>
+    <div class="next-session-title">Yeni dönem programı hazırlanıyor</div>
+
+    <p class="next-session-note">
+      Bir sonraki oturumun tarihi ve makalesi belirlendiğinde burada duyurulacak.
+      Kaçırmamak için <a href="https://www.instagram.com/iu.evrimtoplulugu" target="_blank" rel="noopener">Instagram</a>
+      hesabımızı veya <a href="/tum-etkinlikler/">etkinlik takvimimizi</a> takip edebilirsiniz.
+    </p>
+
+    <!-- ŞABLON — oturum duyurulduğunda yukarıdaki başlık ve <p>'nin yerine:
+    <div class="next-session-title">Oturum başlığı buraya</div>
+    <p class="next-session-note">Sunucular: Ad Soyad, Ad Soyad</p>
+    <div class="next-session-meta">
+      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>12 Mart 2026</span>
+      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>16:00</span>
+      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg>Derslik 5</span>
+    </div>
+    -->
   </div>
 </section>
 
 <!-- ==============================================================
      MAKALE GRUBU NEDİR?
 ============================================================== -->
-<section class="about-section" id="hakkinda">
-  <div class="section-header-mg reveal">
-    <div>
-      <span class="section-eyebrow">Seri Hakkında</span>
-      <h2 class="section-heading">Makale Grubu Nedir?</h2>
-    </div>
-  </div>
-
+<section class="about-section" id="hakkinda" aria-labelledby="hakkinda-baslik" data-toc="Nedir?">
   <div class="about-grid">
-    <div class="about-text reveal">
+    <!-- Başlık sol sütunun içinde: iki sütun aynı hizadan başlayıp
+         yaklaşık aynı yükseklikte bitiyor. -->
+    <div class="about-main reveal">
+      <div class="section-header-mg">
+        <div>
+          <span class="section-eyebrow">Seri Hakkında</span>
+          <h2 class="section-heading" id="hakkinda-baslik">Makale Grubu Nedir?</h2>
+        </div>
+      </div>
       <p>
         Makale Grubu, İstanbul Üniversitesi Evrim Topluluğu bünyesinde yürütülen, öğrencilerin bilimsel araştırma ve sunum yetkinliklerini geliştirmeyi hedefleyen bir Journal Club serisidir.
       </p>
@@ -1391,12 +1983,8 @@
         Temel amacımız; akademik makale okuma ve bilimsel tartışma kültürünü yaygınlaştırmak, makalelerin sadece dinlenildiği değil, üzerine aktif olarak konuşulduğu ve fikir üretildiği bir ortam sunmaktır.
       </p>
       <p>
-        Makale veya konu önermek ya da sunucu olarak yer almak için aşağıdaki formları doldurabilirsiniz. Öneriler her dönem değerlendirilerek planlama sürecine dahil edilmektedir.
+        Makale veya konu önermek ya da sunucu olarak yer almak için sayfanın sonundaki formları doldurabilirsiniz. Öneriler her dönem değerlendirilerek planlama sürecine dahil edilmektedir.
       </p>
-      <div class="about-form-btns">
-        <a class="form-cta-btn" href="https://forms.gle/mSi67wDRW1ySXT5WA" target="_blank" rel="noopener">Makale / Konu Öner</a>
-        <a class="form-cta-btn form-cta-btn--ghost" href="https://forms.gle/HiWuxex3vJwmUQSP7" target="_blank" rel="noopener">Sunucu Ol</a>
-      </div>
     </div>
 
     <div class="about-cards reveal">
@@ -1425,30 +2013,54 @@
      Her oturumu href="makale-grubu-SLUG.html" şeklinde bağlayın.
      Sayfa henüz hazır değilse blog-card sınıfına "no-post" ekleyin.
 ============================================================== -->
-<section class="blog-section" id="arsiv">
+<section class="blog-section" id="arsiv" aria-labelledby="arsiv-baslik" data-toc="Geçmiş Oturumlar">
   <div class="section-header-mg reveal">
     <div>
       <span class="section-eyebrow">Arşiv</span>
-      <h2 class="section-heading">Geçmiş Oturumlar</h2>
+      <h2 class="section-heading" id="arsiv-baslik">Geçmiş Oturumlar</h2>
+      <p class="section-sub">Bugüne kadar yapılan oturumlar, sunucuları ve tartışılan makaleler.</p>
     </div>
   </div>
 
-  <div class="blog-grid">
+  <div class="blog-grid drag-strip" id="blog-grid"
+       role="region" aria-labelledby="arsiv-baslik" tabindex="0">
 
-    <!-- ── #8 Tardigradlar — 18 Aralık 2025 ── -->
-    <!-- Sayfa hazır olduğunda: href="makale-grubu-tardigradlar.html" ve no-post sınıfını kaldırın -->
-    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+    <!-- ══ KART ŞABLONU ══════════════════════════════════════════
+         Bir karta bağlantı eklemek için <article class="blog-card no-post">
+         yerine şunu kullanın ve </article> yerine </a> yazın:
+
+           a) Özet sayfasına:
+              <a class="blog-card" href="makale-grubu-tardigradlar.html">
+              ...ve gövdenin sonuna:
+              <span class="blog-card-read">Oturum Özetini Oku</span>
+
+           b) Instagram gönderisine:
+              <a class="blog-card" href="INSTAGRAM_URL" target="_blank" rel="noopener">
+              ...ve gövdenin sonuna:
+              <span class="blog-card-read">Instagram Gönderisi</span>
+
+         .blog-card-read satırı .blog-card-meta'dan ÖNCE gelmeli.
+    ══════════════════════════════════════════════════════════════ -->
+
+    <!-- ── 04 · Tardigradlar — 18 Aralık 2025 ── -->
+    <a class="blog-card" href="makale-grubu-tardigradlar.html">
       <div class="blog-card-poster">
         <img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(1).jpg"
-             alt="Makale Grubu — Tardigradlar"
-             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+             alt="Tardigradlar oturumunun afişi"
+             width="1080" height="1350" loading="lazy" decoding="async">
       </div>
       <div class="blog-card-body">
         <div class="blog-card-top">
+          <span class="blog-card-num">04</span>
           <span class="blog-card-date">18 Aralık 2025</span>
         </div>
         <h3 class="blog-card-title">Arş. Gör. Ahmet Arıhan Erözden Eşliğinde Tardigradlar</h3>
-        <p class="blog-card-desc">Sevde Nur Aydın ve Esma Güler'in sunumlarıyla "Multiomics Study of a Heterotardigrade, Echinisicus testudo, Suggets The Possibility of Convergent Evolution of Abundant Heat-Soluble Proteins in Tardigrada" ve "Developmental and Genomic Insight Into The Origin of The Tardigrade Body Plan" makaleleri tartışıldı.</p>
+        <p class="blog-card-desc">Sunucular: Sevde Nur Aydın, Esma Güler.</p>
+        <ul class="blog-card-papers">
+          <li>Multiomics Study of a Heterotardigrade, <em>Echiniscus testudo</em>, Suggests the Possibility of Convergent Evolution of Abundant Heat-Soluble Proteins in Tardigrada</li>
+          <li>Developmental and Genomic Insight into the Origin of the Tardigrade Body Plan</li>
+        </ul>
+        <span class="blog-card-read">Oturum Özetini Oku</span>
         <div class="blog-card-meta">
           <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
           <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:30</span></span>
@@ -1456,19 +2068,25 @@
       </div>
     </a>
 
-    <!-- ── #6 Doç. Dr. Yasemin Aydın — 26 Aralık 2024 ── -->
-    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+    <!-- ── 03 · Doç. Dr. Yasemin Aydın — 26 Aralık 2024 ── -->
+    <a class="blog-card" href="https://www.instagram.com/p/DD7v9jpO0Hc/" target="_blank" rel="noopener">
       <div class="blog-card-poster">
         <img src="/images/events/2425_makalegrubu_yaseminaydin%20(1).jpg"
-             alt="Makale Grubu — Yasemin Aydın ile Gelişim Biyolojisi"
-             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+             alt="Gelişim Biyolojisi ve Evrim oturumunun afişi"
+             width="1080" height="1080" loading="lazy" decoding="async">
       </div>
       <div class="blog-card-body">
         <div class="blog-card-top">
+          <span class="blog-card-num">03</span>
           <span class="blog-card-date">26 Aralık 2024</span>
         </div>
         <h3 class="blog-card-title">Doç. Dr. Yasemin Aydın ile Gelişim Biyolojisi ve Evrim</h3>
-        <p class="blog-card-desc">Sevval Ok ve İrem Balcıoğlu'nun sunumlarıyla "Feather function and the evolution of birds" ve "A farewell to arms and legs: a review of limb reduction in squamates" makaleleri tartışıldı.</p>
+        <p class="blog-card-desc">Sunucular: Şevval Ok, İrem Balcıoğlu.</p>
+        <ul class="blog-card-papers">
+          <li>Feather function and the evolution of birds</li>
+          <li>A farewell to arms and legs: a review of limb reduction in squamates</li>
+        </ul>
+        <span class="blog-card-read">Instagram Gönderisi</span>
         <div class="blog-card-meta">
           <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
           <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
@@ -1476,19 +2094,25 @@
       </div>
     </a>
 
-    <!-- ── #3a Sinir Sisteminin Omurgasız Kökenleri — 1 Kasım 2024 ── -->
-    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+    <!-- ── 02 · Sinir Sisteminin Omurgasız Kökenleri — 1 Kasım 2024 ── -->
+    <a class="blog-card" href="https://www.instagram.com/p/DBv3QndIFkT/" target="_blank" rel="noopener">
       <div class="blog-card-poster">
         <img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(1).jpg"
-             alt="Makale Grubu — Sinir Sisteminin Omurgasız Kökenleri"
-             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+             alt="Sinir Sisteminin Omurgasız Kökenleri oturumunun afişi"
+             width="1080" height="1080" loading="lazy" decoding="async">
       </div>
       <div class="blog-card-body">
         <div class="blog-card-top">
+          <span class="blog-card-num">02</span>
           <span class="blog-card-date">1 Kasım 2024</span>
         </div>
         <h3 class="blog-card-title">Sinir Sisteminin Omurgasız Kökenleri</h3>
-        <p class="blog-card-desc">Betül Zehra Darcan ve Ceyhun Sezen'in sunumlarıyla "Evolution of Synapses and Neurotransmitter Systems: The Divide and Conquer Model for earyl neural cell-type evolution" ve "Evolutionary Origin of The Nervous System from Ctenophora Prospective" makaleleri tartışıldı.</p>
+        <p class="blog-card-desc">Sunucular: Betül Zehra Darcan, Ceyhun Sezen.</p>
+        <ul class="blog-card-papers">
+          <li>Evolution of Synapses and Neurotransmitter Systems: The Divide-and-Conquer Model for Early Neural Cell-Type Evolution</li>
+          <li>Evolutionary Origin of the Nervous System from a Ctenophora Perspective</li>
+        </ul>
+        <span class="blog-card-read">Instagram Gönderisi</span>
         <div class="blog-card-meta">
           <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
           <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
@@ -1496,19 +2120,25 @@
       </div>
     </a>
 
-    <!-- ── #13 Prof. Dr. Murat Belivermiş — 2 Mayıs 2024 ── -->
-    <a class="blog-card no-post" href="javascript:void(0)" tabindex="-1">
+    <!-- ── 01 · Prof. Dr. Murat Belivermiş — 2 Mayıs 2024 ── -->
+    <a class="blog-card" href="https://www.instagram.com/p/C6ThO5AI9Ip/" target="_blank" rel="noopener">
       <div class="blog-card-poster">
         <img src="/images/events/2324_makalegrubu%20(1).jpg"
-             alt="Makale Grubu — Prof. Dr. Murat Belivermiş"
-             onerror="this.closest('.blog-card-poster').innerHTML='<div class=\'blog-card-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\'/><polyline points=\'14 2 14 8 20 8\'/></svg></div>'">
+             alt="Prof. Dr. Murat Belivermiş eşliğinde Makale Grubu oturumunun afişi"
+             width="1080" height="1080" loading="lazy" decoding="async">
       </div>
       <div class="blog-card-body">
         <div class="blog-card-top">
+          <span class="blog-card-num">01</span>
           <span class="blog-card-date">2 Mayıs 2024</span>
         </div>
         <h3 class="blog-card-title">Prof. Dr. Murat Belivermiş Eşliğinde Makale Grubu</h3>
-        <p class="blog-card-desc">Beste Zorlu ve Alper Karagöl'ün sunumuyla "Evolutionary rescue via transgenerational plasticity" ve "Predicting evolutionary responses due to climate change in the sea" makaleleri tartışıldı.</p>
+        <p class="blog-card-desc">Sunucular: Beste Zorlu, Alper Karagöl.</p>
+        <ul class="blog-card-papers">
+          <li>Evolutionary rescue via transgenerational plasticity</li>
+          <li>Predicting evolutionary responses due to climate change in the sea</li>
+        </ul>
+        <span class="blog-card-read">Instagram Gönderisi</span>
         <div class="blog-card-meta">
           <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
           <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">16:00</span></span>
@@ -1516,37 +2146,91 @@
       </div>
     </a>
 
+  </div>
+
+  <!-- Mobilde arşiv yatay şerit olarak kaydırılıyor; bu kontroller
+       yalnızca o modda görünür. -->
+  <div class="slider-nav blog-nav">
+    <div class="slider-progress" aria-hidden="true"><span id="blog-progress"></span></div>
+    <button class="slider-btn" id="blog-prev" aria-label="Önceki oturumlar" aria-controls="blog-grid">&#8592;</button>
+    <button class="slider-btn" id="blog-next" aria-label="Sonraki oturumlar" aria-controls="blog-grid">&#8594;</button>
+  </div>
+</section>
+
+<!-- ==============================================================
+     KATIL — FORM BANDI
+============================================================== -->
+<section class="form-section" id="katil" aria-labelledby="katil-baslik" data-toc="Katıl">
+  <div class="form-inner">
+    <div class="section-header-mg reveal">
+      <div>
+        <h2 class="section-heading" id="katil-baslik">Makale Sunmak İster misiniz?</h2>
+      </div>
+    </div>
+
+    <div class="form-body reveal">
+      <p class="form-desc">
+        Makale Grubu, <strong>sunum yapan öğrencilerle</strong> var oluyor. Alanında uzman olmanız
+        gerekmiyor — merak ettiğiniz bir makaleyi anlatmak yeterli.
+      </p>
+      <ul class="form-hint-list">
+        <li>Okuduğunuz ilginç bir makaleyi önerebilir, konu başlığı teklif edebilirsiniz.</li>
+        <li>Sunucu olmak isterseniz makale seçiminde ve hazırlıkta size eşlik ediyoruz.</li>
+        <li>Öneriler her dönem başında değerlendirilip programa alınıyor.</li>
+      </ul>
+      <div class="about-form-btns">
+        <a class="form-cta-btn" href="https://forms.gle/mSi67wDRW1ySXT5WA" target="_blank" rel="noopener">Makale / Konu Öner</a>
+        <a class="form-cta-btn form-cta-btn--ghost" href="https://forms.gle/HiWuxex3vJwmUQSP7" target="_blank" rel="noopener">Sunucu Ol</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ── FOTO GALERİ ── -->
-<section class="gallery-section">
+<section class="gallery-section" id="fotograflar" aria-labelledby="anilar-baslik" data-toc="Fotoğraflar">
   <div class="gallery-section-header reveal">
     <div class="section-header-mg" style="margin-bottom:0;">
       <div>
-        <h2 class="section-heading">Anılar</h2>
+        <span class="section-eyebrow">Galeri</span>
+        <h2 class="section-heading" id="anilar-baslik">Geçmiş Etkinliklerden Fotoğraflar</h2>
       </div>
     </div>
   </div>
-  <div class="gallery-strip" id="gallery-strip">
-    <div class="gallery-item"><img src="/images/events/2324_makalegrubu%20(2).jpg" alt="Makale Grubu 2023–24"></div>
-    <div class="gallery-item"><img src="/images/events/2324_makalegrubu%20(3).jpg" alt="Makale Grubu 2023–24"></div>
-    <div class="gallery-item"><img src="/images/events/2324_makalegrubu%20(4).jpg" alt="Makale Grubu 2023–24"></div>
-    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_yaseminaydin%20(4).jpg" alt="Makale Grubu — Yasemin Aydın"></div>
-    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_yaseminaydin%20(6).jpg" alt="Makale Grubu — Yasemin Aydın"></div>
-    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(2).jpg" alt="Sinir Sisteminin Omurgasız Kökenleri"></div>
-    <div class="gallery-item"><img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(3).jpg" alt="Sinir Sisteminin Omurgasız Kökenleri"></div>
-    <div class="gallery-item"><img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(2).jpg" alt="Makale Grubu — Tardigradlar"></div>
+  <div class="gallery-strip drag-strip" id="gallery-strip"
+       role="region" aria-labelledby="anilar-baslik" tabindex="0">
+    <button type="button" class="gallery-item"><img src="/images/events/2324_makalegrubu%20(2).jpg" alt="2023–24 Makale Grubu oturumundan bir kare" width="1080" height="810" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/2324_makalegrubu%20(3).jpg" alt="2023–24 Makale Grubu oturumundan bir kare" width="1080" height="810" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/2324_makalegrubu%20(4).jpg" alt="2023–24 Makale Grubu oturumundan bir kare" width="1080" height="810" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/2425_makalegrubu_yaseminaydin%20(4).jpg" alt="Doç. Dr. Yasemin Aydın ile oturumdan bir kare" width="1080" height="813" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/2425_makalegrubu_yaseminaydin%20(6).jpg" alt="Doç. Dr. Yasemin Aydın ile oturumdan bir kare" width="1080" height="813" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(2).jpg" alt="Sinir Sisteminin Omurgasız Kökenleri oturumundan bir kare" width="1011" height="758" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/2425_makalegrubu_sinirsistemininomurgasizkokenleri%20(3).jpg" alt="Sinir Sisteminin Omurgasız Kökenleri oturumundan bir kare" width="1080" height="758" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-01-sunum-hox.jpg" alt="Tardigradlar oturumunda Hox genleri sunumu" width="1600" height="1204" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-04-sunum-icerik.jpg" alt="Tardigradlar oturumundan bir sunum karesi" width="1600" height="1204" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-05-sunum-multiomics.jpg" alt="Tardigradlar oturumunda Multiomics makalesinin sunumu" width="1600" height="1204" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-06-ekip.jpg" alt="Tardigradlar oturumunun konuğu ve sunucuları" width="1204" height="1600" loading="lazy" decoding="async"></button>
   </div>
   <div class="gallery-nav">
-    <button class="slider-btn" id="gallery-prev" aria-label="Önceki">&#8592;</button>
-    <button class="slider-btn" id="gallery-next" aria-label="Sonraki">&#8594;</button>
+    <div class="slider-progress" aria-hidden="true"><span id="gallery-progress"></span></div>
+    <button class="slider-btn" id="gallery-prev" aria-label="Önceki fotoğraflar" aria-controls="gallery-strip">&#8592;</button>
+    <button class="slider-btn" id="gallery-next" aria-label="Sonraki fotoğraflar" aria-controls="gallery-strip">&#8594;</button>
   </div>
 </section>
 
+</main>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici">
+  <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Kapat">&#10005;</button>
+  <button class="lightbox-btn lightbox-prev"  id="lightbox-prev"  aria-label="Önceki fotoğraf">&#8592;</button>
+  <button class="lightbox-btn lightbox-next"  id="lightbox-next"  aria-label="Sonraki fotoğraf">&#8594;</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo"><img class="footer-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
+  <div class="footer-logo"><img class="footer-logo-img" src="/images/evo_logo4.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
   <div class="footer-copy">© 2026 İstanbul Üniversitesi Evrim Topluluğu · <a href="/gizlilik/" style="color:var(--text-muted); text-decoration:underline;">Gizlilik Politikası</a></div>
 </footer>
 
@@ -1644,30 +2328,269 @@
 
  });
 
-  // ── Makale slider butonları ──
-  const slider    = document.getElementById('articles-slider');
-  const cardWidth = () => slider.querySelector('.article-card')?.offsetWidth + 19 || 320; // gap dahil
-  document.getElementById('slider-prev').addEventListener('click', () => {
-    slider.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
-  });
-  document.getElementById('slider-next').addEventListener('click', () => {
-    slider.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+  /* ──────────────────────────────────────────────────────────────
+     YATAY ŞERİTLER (makale slider'ı + foto galerisi)
+     Tek bir kurulum fonksiyonu: ok butonları, uçlarda pasifleşme,
+     ilerleme çubuğu ve fare ile sürükleme — ikisinde de aynı.
+  ────────────────────────────────────────────────────────────── */
+  function setupStrip({ strip, prev, next, progress, itemSelector }) {
+    if (!strip) return;
+
+    const items = () => Array.from(strip.querySelectorAll(itemSelector));
+    const maxScroll = () => Math.max(0, strip.scrollWidth - strip.clientWidth);
+
+    // Bir kartın snap konumu: kartı şeridin scroll-padding sınırına
+    // hizalayan scrollLeft değeri.
+    const snapPos = item => {
+      const pad = parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0;
+      return item.getBoundingClientRect().left - strip.getBoundingClientRect().left
+             + strip.scrollLeft - pad;
+    };
+
+    const sync = () => {
+      const max = maxScroll();
+      // 1px tolerans: subpixel yuvarlamada buton erken kilitlenmesin
+      if (prev) prev.disabled = strip.scrollLeft <= 1;
+      if (next) next.disabled = strip.scrollLeft >= max - 1;
+      if (progress) {
+        const ratio = max > 0 ? strip.clientWidth / strip.scrollWidth : 1;
+        const pos   = max > 0 ? strip.scrollLeft / max : 0;
+        progress.style.width = (ratio * 100) + '%';
+        progress.style.transform = 'translateX(' + (pos * (100 / ratio - 100)) + '%)';
+      }
+    };
+
+    /* Sabit piksel farkı yerine bir sonraki/önceki kartın snap
+       konumuna gidiyoruz: hedef her zaman geçerli bir snap noktası
+       olduğu için kaydırma sonunda geri sıçrama olmuyor, son kart da
+       tam olarak görünüyor. */
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const goTo = dir => {
+      const max   = maxScroll();
+      const here  = strip.scrollLeft;
+      const stops = items().map(snapPos).map(p => Math.min(Math.max(p, 0), max));
+      const found = dir > 0
+        ? stops.find(p => p > here + 1)
+        : [...stops].reverse().find(p => p < here - 1);
+      const target = found === undefined ? (dir > 0 ? max : 0) : found;
+      strip.scrollTo({ left: target, behavior: reduced.matches ? 'auto' : 'smooth' });
+    };
+
+    if (prev) prev.addEventListener('click', () => goTo(-1));
+    if (next) next.addEventListener('click', () => goTo(1));
+
+    strip.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+
+    // Fare ile sürükleme. Eşik aşılmadan tıklama iptal edilmiyor,
+    // böylece kartlara normal tıklama da çalışmaya devam ediyor.
+    let down = false, moved = false, startX = 0, startScroll = 0;
+    strip.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      down = true; moved = false;
+      startX = e.pageX;
+      startScroll = strip.scrollLeft;
+    });
+    strip.addEventListener('mousemove', e => {
+      if (!down) return;
+      const dx = e.pageX - startX;
+      if (!moved && Math.abs(dx) < 5) return;
+      if (!moved) { moved = true; strip.classList.add('is-dragging'); }
+      e.preventDefault();
+      strip.scrollLeft = startScroll - dx;
+    });
+    const endDrag = () => {
+      if (!down) return;
+      down = false;
+      // Tıklama olayı sürüklemenin hemen ardından tetiklenmesin
+      if (moved) setTimeout(() => strip.classList.remove('is-dragging'), 0);
+    };
+    strip.addEventListener('mouseup', endDrag);
+    strip.addEventListener('mouseleave', endDrag);
+    strip.addEventListener('dragstart', e => { if (moved) e.preventDefault(); });
+
+    return sync;
+  }
+
+  setupStrip({
+    strip: document.getElementById('articles-slider'),
+    prev: document.getElementById('slider-prev'),
+    next: document.getElementById('slider-next'),
+    progress: document.getElementById('articles-progress'),
+    itemSelector: '.article-card'
   });
 
-  // ── Foto galerisi ──
   const galleryStrip = document.getElementById('gallery-strip');
-  const galleryItemW = () => (galleryStrip.querySelector('.gallery-item')?.offsetWidth || 320) + 12;
-  document.getElementById('gallery-prev').addEventListener('click', () => {
-    galleryStrip.scrollBy({ left: -galleryItemW(), behavior: 'smooth' });
+  setupStrip({
+    strip: galleryStrip,
+    prev: document.getElementById('gallery-prev'),
+    next: document.getElementById('gallery-next'),
+    progress: document.getElementById('gallery-progress'),
+    itemSelector: '.gallery-item'
   });
-  document.getElementById('gallery-next').addEventListener('click', () => {
-    galleryStrip.scrollBy({ left: galleryItemW(), behavior: 'smooth' });
+
+  setupStrip({
+    strip: document.getElementById('blog-grid'),
+    prev: document.getElementById('blog-prev'),
+    next: document.getElementById('blog-next'),
+    progress: document.getElementById('blog-progress'),
+    itemSelector: '.blog-card'
   });
-  let gDown = false, gStartX, gScrollLeft;
-  galleryStrip.addEventListener('mousedown', e => { gDown = true; gStartX = e.pageX - galleryStrip.offsetLeft; gScrollLeft = galleryStrip.scrollLeft; });
-  galleryStrip.addEventListener('mouseleave', () => { gDown = false; });
-  galleryStrip.addEventListener('mouseup', () => { gDown = false; });
-  galleryStrip.addEventListener('mousemove', e => { if (!gDown) return; e.preventDefault(); galleryStrip.scrollLeft = gScrollLeft - (e.pageX - galleryStrip.offsetLeft - gStartX); });
+
+  /* ── LIGHTBOX ── */
+  (function () {
+    const box     = document.getElementById('lightbox');
+    if (!box || !galleryStrip) return;
+    const boxImg  = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    const items   = Array.from(galleryStrip.querySelectorAll('.gallery-item'));
+    let index = 0, lastFocused = null;
+
+    const show = i => {
+      index = (i + items.length) % items.length;
+      const img = items[index].querySelector('img');
+      boxImg.src = img.currentSrc || img.src;
+      boxImg.alt = img.alt;
+      caption.textContent = img.alt + '  ·  ' + (index + 1) + ' / ' + items.length;
+    };
+
+    const open = i => {
+      lastFocused = document.activeElement;
+      show(i);
+      box.dataset.open = 'true';
+      document.body.classList.add('lightbox-open');
+      document.getElementById('lightbox-close').focus();
+    };
+
+    const close = () => {
+      box.dataset.open = 'false';
+      document.body.classList.remove('lightbox-open');
+      boxImg.src = '';
+      if (lastFocused) lastFocused.focus();
+    };
+
+    items.forEach((item, i) => item.addEventListener('click', () => {
+      // Sürükleme sonrası gelen tıklamayı yut
+      if (galleryStrip.classList.contains('is-dragging')) return;
+      open(i);
+    }));
+
+    document.getElementById('lightbox-close').addEventListener('click', close);
+    document.getElementById('lightbox-prev').addEventListener('click', () => show(index - 1));
+    document.getElementById('lightbox-next').addEventListener('click', () => show(index + 1));
+    box.addEventListener('click', e => { if (e.target === box) close(); });
+
+    document.addEventListener('keydown', e => {
+      if (box.dataset.open !== 'true') return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+  })();
+
+
+  /* ── İÇİNDEKİLER ──
+     [data-toc] taşıyan bölümlerden iki görünüm üretir (masaüstü rayı +
+     mobil şerit) ve kaydırdıkça aktif bölümü işaretler. Bölüm yoksa
+     hiçbir şey basmaz; her iki sayfada da aynı kod çalışır. */
+  (function () {
+    // Yapışkan (sticky/fixed) öğeler dışarıda: konumları ekrana
+    // sabitlendiği için kaydırma hesabını bozup kendilerinden önceki
+    // bölümlerin hiç aktif olamamasına yol açıyorlar.
+    const sections = Array.from(document.querySelectorAll('[data-toc]'))
+      .filter(el => {
+        const pos = getComputedStyle(el).position;
+        return pos !== 'sticky' && pos !== 'fixed';
+      });
+    if (sections.length < 2) return;
+
+    sections.forEach((sec, i) => { if (!sec.id) sec.id = 'bolum-' + (i + 1); });
+
+    // <nav> DEĞİL: site başlığının "body > nav" kuralı bu öğelere de
+    // uygulanıp konum/görünümü bozuyor. Rol öznitelikle veriliyor.
+    const rail = document.createElement('div');
+    rail.className = 'toc toc-rail';
+    rail.setAttribute('role', 'navigation');
+    rail.setAttribute('aria-label', 'Sayfa içeriği');
+
+    const bar = document.createElement('div');
+    bar.className = 'toc toc-bar';
+    bar.setAttribute('role', 'navigation');
+    bar.setAttribute('aria-label', 'Sayfa içeriği');
+    const barInner = document.createElement('div');
+    barInner.className = 'toc-bar-inner';
+    bar.appendChild(barInner);
+
+    const railLinks = [], barLinks = [];
+    sections.forEach(sec => {
+      const label = sec.dataset.toc;
+
+      const a = document.createElement('a');
+      a.href = '#' + sec.id;
+      a.innerHTML = '<span class="toc-label"></span><span class="toc-dot"></span>';
+      a.querySelector('.toc-label').textContent = label;
+      a.setAttribute('aria-label', label);
+      rail.appendChild(a);
+      railLinks.push(a);
+
+      const b = document.createElement('a');
+      b.href = '#' + sec.id;
+      b.textContent = label;
+      barInner.appendChild(b);
+      barLinks.push(b);
+    });
+
+    document.body.appendChild(rail);
+    document.body.appendChild(bar);
+
+    let active = -1;
+    const setActive = i => {
+      if (i === active || i < 0) return;
+      active = i;
+      railLinks.forEach((a, n) => a.setAttribute('aria-current', n === i ? 'true' : 'false'));
+      barLinks.forEach((a, n) => a.setAttribute('aria-current', n === i ? 'true' : 'false'));
+      // aktif etiketi mobil şeritte görünür tut (yalnızca şerit açıkken)
+      if (bar.offsetParent !== null) {
+        const el = barLinks[i];
+        const left = el.offsetLeft - (barInner.clientWidth - el.offsetWidth) / 2;
+        barInner.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+      }
+    };
+
+    // Referans çizgisini (viewport'un üst üçte biri) en son geçen bölüm aktif.
+    // Birkaç elemanlık döngü olduğu için doğrudan scroll'da hesaplanıyor;
+    // rAF ile ertelemek arka plan sekmelerinde takılmaya yol açıyordu.
+    /* İçindekiler hero'nun üstünde görünmesin:
+       - biraz aşağı inilmiş olmalı (kısa eşik), VE
+       - ilk bölüm ekrana yaklaşmış olmalı (ana sayfada hero + slider
+         geçilene kadar bu koşul sağlanmıyor). */
+    const setVisible = () => {
+      const yeterinceKaydi = window.scrollY > 260;
+      const ilkBolumYaklasti = sections[0].getBoundingClientRect().top < window.innerHeight * 0.6;
+      const gorunsun = yeterinceKaydi && ilkBolumYaklasti;
+      rail.dataset.visible = gorunsun ? 'true' : 'false';
+      bar.dataset.visible  = gorunsun ? 'true' : 'false';
+    };
+
+    const pickActive = () => {
+      setVisible();
+      const line = window.innerHeight * 0.32;
+      let best = 0;
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top - line <= 0) best = i;
+      }
+      // Sayfa sonunda son bolumun ustu cizgiyi hic gecemeyebilir;
+      // bu durumda son bolumu aktif say.
+      const dip = document.documentElement.scrollHeight - window.innerHeight;
+      if (dip > 0 && window.scrollY >= dip - 2) best = sections.length - 1;
+      setActive(best);
+    };
+    window.addEventListener('scroll', pickActive, { passive: true });
+    window.addEventListener('resize', pickActive);
+    pickActive();
+  })();
 
   // ── Scroll reveal ──
   const revealObs = new IntersectionObserver(entries => {
@@ -1683,7 +2606,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('touchstart', function(){}, {passive: true});
-    document.querySelectorAll('a, button, [role="button"], .tab-btn, .nav-item-btn')
+    document.querySelectorAll('a, button, [role="button"], .nav-item-btn')
       .forEach(el => {
         el.addEventListener('touchstart', function(e) {
           e.currentTarget.style.webkitTapHighlightColor = 'transparent';
