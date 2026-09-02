@@ -23,9 +23,6 @@
   <meta name="twitter:description" content="Tardigradlarda anhidrobiyoz, yakınsak evrim ve tardigrad vücut planının kökeni.">
   <meta name="twitter:image" content="https://iuevrim.org/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(1).jpg">
 
-  <!-- JS varsa reveal animasyonları devreye girsin; yoksa içerik gizlenmesin -->
-  <script>document.documentElement.classList.add('js');</script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -775,17 +772,6 @@
   .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
   .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
-  /* ── REVEAL ANİMASYON ──
-   * .js sınıfını <html>'e JS ekliyor; JS çalışmazsa içerik
-   * hiç gizlenmez (opacity:0'da takılı kalmaz).
-   */
-  .js .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-  .js .reveal.visible { opacity: 1; transform: translateY(0); }
-
   /* ── HAREKET AZALTMA TERCİHİ ── */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -795,7 +781,6 @@
       transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
-    .js .reveal { opacity: 1; transform: none; }
   }
 
   /* ── RESPONSİVE ── */
@@ -889,8 +874,43 @@
   .post-hero {
     position: relative;
     z-index: 1;
-    padding: 7rem 4rem 0;
+    padding: 7rem 4rem 2.25rem;
     max-width: 1400px;
+    isolation: isolate;
+  }
+
+  /* Darwin'in defterinden bir sayfa: blog sayfasindaki hero ile ayni gorsel.
+     Katman .post-hero'nun max-width'ini asip tam genislige yayiliyor. */
+  .post-hero-bg {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .post-hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.2;
+    mix-blend-mode: luminosity;
+    filter: sepia(0.4) saturate(1.4) hue-rotate(78deg) brightness(0.7) contrast(1.1);
+  }
+  /* Basligin okunurlugu icin: soldan saga ve yukaridan asagiya koyulasan
+     gradyanlar; alt kenar --bg'ye eriyerek govdeye baglaniyor. */
+  .post-hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(168,219,104,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 60%, rgba(168,219,104,0.04) 0%, transparent 45%),
+      linear-gradient(to right, rgba(10,14,10,0.5) 0%, rgba(10,14,10,0.22) 60%, rgba(10,14,10,0) 100%),
+      linear-gradient(to bottom, rgba(10,14,10,0.6) 0%, rgba(10,14,10,0.26) 55%, rgba(10,14,10,0.8) 92%, var(--bg) 100%);
   }
 
   .post-back {
@@ -926,6 +946,7 @@
     color: var(--text);
     margin-bottom: 1rem;
     white-space: nowrap;
+    text-shadow: 0 1px 18px rgba(10,14,10,0.85);
   }
   .post-hero h1 a {
     color: inherit;
@@ -935,7 +956,7 @@
   }
   .post-hero h1 a:hover { color: var(--accent-soft); border-bottom-color: var(--accent-soft); }
 
-  @media (max-width: 760px) {
+  @media (max-width: 768px) {
     .post-hero h1 { white-space: normal; }
   }
 
@@ -1057,6 +1078,10 @@
     padding-left: 0.9rem;
     border-left: 1px solid var(--border);
   }
+
+  /* Metin duvarını kıran ara kareler. Masaüstünde kenar sütunu ve sayfa
+     sonundaki galeri şeridi zaten bu işi görüyor; sadece mobilde çıksınlar. */
+  .post-figure-mobil { display: none; }
 
   .post-source {
     font-size: 0.82rem;
@@ -1219,7 +1244,7 @@
   }
 
   @media (max-width: 768px) {
-    .post-hero { padding: 5.25rem 1.25rem 0; }
+    .post-hero { padding: 5.25rem 1.25rem 1.75rem; }
     .post-layout { padding: 1.75rem 1.25rem 2.5rem; }
     .post-gallery { padding: 0 0 2.5rem; }
     .post-gallery-head { margin: 0 1.25rem 1rem; }
@@ -1246,7 +1271,7 @@
 
   /* Cok dar ekranlar */
   @media (max-width: 400px) {
-    .post-hero { padding: 5.25rem 1rem 0; }
+    .post-hero { padding: 5.25rem 1rem 1.75rem; }
     .post-layout { padding: 1.5rem 1rem 2rem; }
     .post-gallery-head { margin: 0 1rem 1rem; }
     .post-footer-nav { padding: 1rem 1rem 1.2rem; }
@@ -1294,6 +1319,187 @@
   @media (max-width: 768px) {
     .post-gallery { padding: 0 0 3rem; }
     .post-gallery-head { margin: 0 1.5rem 1.2rem; }
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     KÜNYE + MOBİL OKUMA AKIŞI
+  ══════════════════════════════════════════════════════════════ */
+
+  .post-kicker {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Yazar · tarih · okuma süresi: tek satır, künyeden ayrı */
+  .post-byline-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+  }
+  .post-byline-strip .sep { opacity: 0.4; }
+  .post-byline-strip a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(143,217,138,0.4);
+  }
+  .post-byline-strip a:hover { color: var(--accent-soft); }
+
+  /* Etiketli künye: ikon çorbası yerine etiket + değer */
+  .post-kunye {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid rgba(109,191,103,0.22);
+    border-bottom: 1px solid rgba(109,191,103,0.22);
+    max-width: 1000px;
+    margin: 0;
+  }
+  .post-kunye > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.1rem 1.6rem;
+    border-left: 1px solid var(--border);
+    min-width: 0;
+  }
+  .post-kunye > div:first-child { padding-left: 0; border-left: none; }
+  .post-kunye > div:last-child { padding-right: 0; }
+  .kunye-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(109,191,103,0.85);
+    font-weight: 500;
+  }
+  .kunye-val {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #dce4dc;
+  }
+  .kunye-val a {
+    color: var(--accent-soft);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(143,217,138,0.3);
+  }
+  .kunye-val a:hover { border-bottom-color: var(--accent-soft); }
+
+  /* Bölüm başlıkları: numara + kaynak etiketi + serif başlık */
+  .post-body { counter-reset: paper; }
+  .post-paper-ref {
+    counter-increment: paper;
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    margin-top: 3.2rem;
+    margin-bottom: 0.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(109,191,103,0.22);
+  }
+  .post-paper-ref::before {
+    content: "0" counter(paper);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-style: italic;
+    font-weight: 400;
+    /* Cormorant varsayilan olarak eski stil rakam kullaniyor; "01" x
+       yuksekliginde kalip kuculuyordu. Lining rakamlar tam boy. */
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(109,191,103,0.4);
+  }
+
+  /* Gri duvarı kıran alıntı */
+  .post-pull {
+    margin: 2.6rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(109,191,103,0.22);
+    border-bottom: 1px solid rgba(109,191,103,0.22);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--accent-soft);
+  }
+
+  /* Alıntının alt çizgisi zaten ayırıyor; hemen ardından gelen bölüm
+     başlığı ikinci bir çizgi çekmesin. */
+  .post-pull + .post-paper-ref {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 2.4rem;
+  }
+
+  @media (max-width: 1000px) {
+    .post-layout { display: flex; flex-direction: column; }
+  }
+
+  @media (max-width: 768px) {
+    /* Künye mobilde kutulu ve alt alta */
+    .post-kunye {
+      grid-template-columns: 1fr;
+      border: 1px solid rgba(109,191,103,0.18);
+      background: var(--surface);
+      padding: 0 1rem;
+      max-width: none;
+    }
+    .post-kunye > div {
+      padding: 0.75rem 0;
+      border-left: none;
+      border-bottom: 1px solid rgba(109,191,103,0.1);
+      gap: 0.25rem;
+    }
+    .post-kunye > div:last-child { border-bottom: none; }
+    .kunye-val { font-size: 0.88rem; }
+
+    .post-kicker { font-size: 0.62rem; margin-bottom: 0.7rem; }
+    .post-byline-strip { font-size: 0.82rem; margin-bottom: 1.3rem; gap: 0.45rem; }
+    .post-hero h1 { font-size: 1.95rem; line-height: 1.14; }
+
+    /* Okuma konforu: daha büyük punto, daha geniş paragraf arası,
+       Türkçe uzun terimler için heceleme */
+    .post-body {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      text-wrap: pretty;
+    }
+    .post-body p + p { margin-top: 1.5rem; }
+    .post-standfirst { font-size: 1.18rem; line-height: 1.6; color: #b8c6b8; }
+    .post-body h2 { font-size: 1.55rem; line-height: 1.2; }
+    .post-paper-ref { margin-top: 3rem; }
+    .post-pull { font-size: 1.35rem; margin: 2.4rem 0; }
+
+    /* Görseller kenardan kenara: sayfaya nefes ve ritim verir */
+    .post-figure-mobil { display: block; }
+    .post-figure { margin: 2.4rem -1.25rem; }
+    .post-figure img { border-left: none; border-right: none; }
+    .post-figure figcaption { margin-left: 1.25rem; margin-right: 1.25rem; }
+
+    /* Afiş metnin üstüne, kartlar metnin altına */
+    .post-layout { gap: 1.6rem; }
+    .post-aside { display: contents; }
+    .post-poster { order: -1; }
+    .post-body { order: 0; }
+    .post-recap, .post-card { order: 1; }
+  }
+
+  @media (max-width: 400px) {
+    .post-figure { margin: 2.2rem -1rem; }
+    .post-figure figcaption { margin-left: 1rem; margin-right: 1rem; }
+    .post-hero h1 { font-size: 1.8rem; }
   }
 
 </style>
@@ -1381,28 +1587,44 @@
 
 <article>
   <header class="post-hero" id="giris" data-toc="Giriş">
+    <div class="post-hero-bg" aria-hidden="true">
+      <img class="post-hero-bg-img" src="/images/yay%C4%B1nlar/yayinlar_hero.webp" alt=""
+           width="583" height="446" fetchpriority="high" decoding="async">
+      <div class="post-hero-bg-overlay"></div>
+    </div>
+
     <a class="post-back" href="/makale-grubu/#arsiv">Makale Grubu</a>
+
+    <span class="post-kicker">Oturum Özeti</span>
 
     <h1 class="post-title-1line">Arş. Gör. <a href="https://avesis.istanbul.edu.tr/aa.erozden" target="_blank" rel="noopener">Ahmet Arıhan Erözden</a> Eşliğinde Tardigradlar</h1>
 
-    <div class="post-meta">
-      <span class="post-date"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>2 Eylül 2026</span>
+    <div class="post-byline-strip">
+      <a href="https://www.linkedin.com/in/elif-kara-202458321" target="_blank" rel="noopener">Elif Kara</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <time datetime="2026-09-02">2 Eylül 2026</time>
+      <span class="sep" aria-hidden="true">·</span>
+      <span data-okuma-suresi>6 dk okuma</span>
     </div>
 
-    <div class="post-meta post-meta-etkinlik">
-      <span><span class="meta-label">Etkinlik:</span>&nbsp;18 Aralık 2025</span>
-      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg>Derslik 5</span>
-      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>16:30</span>
-      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 19a4 4 0 0 0-8 0"/><circle cx="12" cy="9" r="3.2"/><circle cx="12" cy="12" r="9.2"/></svg><span class="meta-label">Makale Sunucuları:</span>&nbsp;<a href="https://www.linkedin.com/in/sevde-nur-ayd%C4%B1n-70982033b" target="_blank" rel="noopener">Sevde Nur Aydın</a>,&nbsp;<a href="https://www.linkedin.com/in/esma-g%C3%BCler-575456377" target="_blank" rel="noopener">Esma Güler</a></span>
-    </div>
-
-    <div class="post-meta post-meta-hazirlayan">
-      <span><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 19a4 4 0 0 0-8 0"/><circle cx="12" cy="9" r="3.2"/><circle cx="12" cy="12" r="9.2"/></svg><span class="meta-label">Hazırlayan:</span>&nbsp;<a href="https://www.linkedin.com/in/elif-kara-202458321" target="_blank" rel="noopener">Elif Kara</a></span>
-    </div>
+    <dl class="post-kunye">
+      <div>
+        <dt class="kunye-label">Oturum</dt>
+        <dd class="kunye-val">18 Aralık 2025, 16:30</dd>
+      </div>
+      <div>
+        <dt class="kunye-label">Yer</dt>
+        <dd class="kunye-val">Derslik 5</dd>
+      </div>
+      <div>
+        <dt class="kunye-label">Makale Sunucuları</dt>
+        <dd class="kunye-val"><a href="https://www.linkedin.com/in/sevde-nur-ayd%C4%B1n-70982033b" target="_blank" rel="noopener">Sevde Nur Aydın</a>, <a href="https://www.linkedin.com/in/esma-g%C3%BCler-575456377" target="_blank" rel="noopener">Esma Güler</a></dd>
+      </div>
+    </dl>
   </header>
 
   <div class="post-layout">
-    <div class="post-body reveal">
+    <div class="post-body">
 
       <p class="post-standfirst">
         Bu yazı, geçtiğimiz dönem — 18 Aralık 2025’te — Arş. Gör. Ahmet Arıhan Erözden
@@ -1466,6 +1688,13 @@
         CAHS (Cytoplasmic Abundant Heat Soluble) proteinini kullanıyor.
       </p>
 
+      <figure class="post-figure post-figure-mobil">
+        <img src="/images/events/tardigradlar/tardigradlar-04-sunum-icerik.jpg"
+             alt="Sevde Nur Aydın’ın içerik slaydını anlatırken çekilmiş fotoğrafı"
+             width="1600" height="1204" loading="lazy" decoding="async">
+        <figcaption>Sevde Nur Aydın, birinci makalenin içerik slaydını anlatırken.</figcaption>
+      </figure>
+
       <p>
         Ancak Murai ve ark. genomik karşılaştırmalarını yaparken CAHS proteinine dair herhangi bir
         bulguya rastlayamadı. Laboratuvar ortamında üretilemeyen <em>Echiniscus testudo</em> türünden
@@ -1495,6 +1724,8 @@
         yakınsak evrimin tam tanımıdır.
       </p>
 
+      <blockquote class="post-pull">İki tardigrad sınıfı da kuraklığa karşı birbirinden bağımsız olarak benzer çözümler geliştirmiştir.</blockquote>
+
       <span class="post-paper-ref" id="makale-2" data-toc="2. Makale">İkinci makale · Smith ve ark. (2023)</span>
       <h2>Tardigrad vücut planının kökeni</h2>
 
@@ -1522,6 +1753,13 @@
         <em>Paramacrobiotus richtersi</em>’yi hem de heterotardigradlardan
         <em>Echiniscus testudo</em>’yu kullanmışlardır.
       </p>
+
+      <figure class="post-figure post-figure-mobil">
+        <img src="/images/events/tardigradlar/tardigradlar-01-sunum-hox.jpg"
+             alt="Hox genleri ve eksen paterni slaydının sunulduğu an"
+             width="1600" height="1204" loading="lazy" decoding="async">
+        <figcaption>Hox genleri ve eksen paterni slaydı anlatılırken.</figcaption>
+      </figure>
 
       <p>
         Bunun yanı sıra, Smith ve ark. embriyonik gelişim sırasında <em>en (engrailed)</em> genlerinin
@@ -1551,7 +1789,7 @@
 
     </div>
 
-    <aside class="post-aside reveal" id="kaynaklar">
+    <aside class="post-aside" id="kaynaklar">
       <div class="post-poster">
         <img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(1).jpg"
              alt="Tardigradlar oturumunun afişi"
@@ -1596,7 +1834,7 @@
     </aside>
   </div>
 
-  <section class="post-gallery reveal" id="fotograflar" data-toc="Fotoğraflar" aria-labelledby="galeri-baslik">
+  <section class="post-gallery" id="fotograflar" data-toc="Fotoğraflar" aria-labelledby="galeri-baslik">
     <h2 class="post-gallery-head" id="galeri-baslik">Etkinlikten Görseller</h2>
     <div class="gallery-strip drag-strip" id="post-gallery"
          role="region" aria-labelledby="galeri-baslik" tabindex="0">
@@ -1935,17 +2173,6 @@
     window.addEventListener('resize', pickActive);
     pickActive();
   })();
-
-  // ── Scroll reveal ──
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -1958,6 +2185,7 @@
       });
   });
 </script>
+<script src="/js/blog.js" defer></script>
 </body>
 </html>
 
