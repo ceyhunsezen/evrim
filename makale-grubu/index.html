@@ -1680,16 +1680,10 @@
     position: absolute !important;
   }
 
-  /* 3. Bölüm arka planlarındaki blend/filter zincirini mobilde kapatıyoruz —
-        her scroll karesinde yeniden hesaplanıyor ve ciddi jank yaratıyor. */
-  .articles-section::after,
-  .next-session-section::before,
-  .about-section::before,
-  .blog-section::before,
-  .form-section::before,
-  .gallery-section::before {
-    display: none !important;
-  }
+  /* Not: bu bölümlerin arka plan resmi de aynı ::before/::after üzerinde
+     taşınıyor; "display:none" burada resmin kendisini de kaldırıp mobilde
+     bölüm arka planlarını tamamen kayboluyordu. blend/filter zincirini
+     olduğu gibi bırakıp yalnızca resmi geri getiriyoruz. */
 
   /* 4. Blur'lu sabit çubuklar mobilde pahalı */
   body > nav,
@@ -2036,7 +2030,7 @@
          yerine şunu kullanın ve </article> yerine </a> yazın:
 
            a) Özet sayfasına:
-              <a class="blog-card" href="makale-grubu-tardigradlar.html">
+              <a class="blog-card" href="tardigradlar/">
               ...ve gövdenin sonuna:
               <span class="blog-card-read">Oturum Özetini Oku</span>
 
@@ -2049,7 +2043,7 @@
     ══════════════════════════════════════════════════════════════ -->
 
     <!-- ── 04 · Tardigradlar — 18 Aralık 2025 ── -->
-    <a class="blog-card" href="makale-grubu-tardigradlar.html">
+    <a class="blog-card" href="tardigradlar/">
       <div class="blog-card-poster">
         <img src="/images/events/2526_makalegrubu_ar%C4%B1hanerozden1%20(1).jpg"
              alt="Tardigradlar oturumunun afişi"

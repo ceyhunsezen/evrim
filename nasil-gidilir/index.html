@@ -834,7 +834,8 @@
       .venue-empty { padding: 2.5rem 1.5rem; font-size: 0.9rem; line-height: 1.6; }
 
       .help-card { margin-top: 1.35rem; padding: 1.15rem; flex-direction: column; align-items: stretch; gap: 0.9rem; }
-      .help-title { font-size: 0.78rem; letter-spacing: 0.2em; }
+      .help-body { flex: 1 1 auto; min-width: 0; }
+      .help-title { font-size: 0.92rem; letter-spacing: 0.18em; }
       .help-text { font-size: 0.88rem; line-height: 1.65; }
 
       .help-btn {
@@ -1234,10 +1235,9 @@
   }
 
   function closePlayerViaBack() {
+    closePlayer();
     if (history.state && history.state.playerOpen) {
       history.back();
-    } else {
-      closePlayer();
     }
   }
 
