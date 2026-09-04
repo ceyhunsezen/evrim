@@ -470,16 +470,18 @@
   /* — Masaüstü: sağ kenar nokta rayı — */
   .toc-rail {
     top: 50%;
-    right: 1.1rem;
+    right: 0.5rem; /* + 0.6rem sağ padding = eski 1.1rem hizası */
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
     align-items: flex-end;
   }
-  /* Konteyner tıklamayı geçirir; satırlar kendi bandında yakalar.
-     Satırlar arası boşluklar sayfaya açık kalır. */
-  .toc-rail { pointer-events: none; }
+  /* Ray tek bir dikdörtgen olarak hover'ı tutar: satır aralarına ya da
+     etiket-nokta boşluğuna gelince liste kapanmıyor. Görünür değilken
+     tıklama sayfaya geçer. */
+  .toc-rail { pointer-events: none; padding: 0.9rem 0.6rem 0.9rem 1rem; }
+  .toc-rail[data-visible='true'] { pointer-events: auto; }
 
   /* Satırın tamamı (etiket + nokta) hem hover hem tıklama alanı */
   .toc-rail a {
@@ -1522,6 +1524,7 @@
       <span class="sp-label">Etkinlikler</span>
       <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
       <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+      <a href="/evrim-konferansi/">Evrim Konferansı</a>
       <a href="/makale-grubu/" class="sp-current">Makale Grubu</a>
       <a href="/nasil-gidilir/">Nasıl Gidilir?</a>
     </div>
@@ -1565,6 +1568,7 @@
       <div class="dropdown">
         <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
         <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+        <a href="/evrim-konferansi/">Evrim Konferansı</a>
         <a href="/makale-grubu/" class="active-link">Makale Grubu</a>
         <a href="/nasil-gidilir/">Nasıl Gidilir?</a>
       </div>
@@ -1647,15 +1651,15 @@
 
       <p>
         Ekstrem ve zorlu koşullarda bireysel olarak yaşayabilen en dayanıklı hayvanlar arasında yer
-        alırlar. Bu ekstrem dayanıklılık, sadece birkaç limnoterrestrial türe özgüdür; denizel ve
-        tatlı su tardigradları bu özelliğe evrilmemişlerdir çünkü yaşadıkları ortam yeterince
-        stabildir. Limnoterrestrial tardigradlar ekstrem koşullara dayanabilmek üzere
-        3 temel duruma sahiptir: aktif, anoksibiyoz ve anhidrobiyoz. Aktif durumda
-        tardigradlar normal ritüellerini sürdürürken anoksibiyoz düşük oksijen durumunda devreye
-        girer. Anhidrobiyoz ise ekstrem kuraklık durumunda gerçekleşen ametabolik durumdur.
+        alırlar. Bu ekstrem dayanıklılık büyük ölçüde limnoterrestrial türlere özgüdür; denizel
+        tardigradlarda ise anhidrobiyoz yeteneği nadiren görülür. Limnoterrestrial tardigradlar
+        ekstrem koşullara dayanabilmek üzere başlıca 3 duruma sahiptir: aktif, anoksibiyoz ve
+        anhidrobiyoz. Aktif durumda tardigradlar normal ritüellerini sürdürürken anoksibiyoz düşük
+        oksijen durumunda devreye girer. Anhidrobiyoz ise ekstrem kuraklık durumunda gerçekleşen
+        ametabolik durumdur.
       </p>
 
-      <p class="post-source">Miller, William (2017). Tardigrades. <em>American Scientist.</em></p>
+      <p class="post-source">Miller, William R. (2011). Tardigrades. <em>American Scientist</em> 99: 384.</p>
 
       <figure class="post-figure">
         <img src="/images/events/tardigradlar/tardigradlar-acilis-slaydi.jpg"
@@ -1672,22 +1676,23 @@
         Murai ve ark. (2021) tarafından yazılan <em>“Multiomics study of a heterotardigrade,
         Echinisicus testudo, suggests the possibility of convergent evolution of abundant
         heat-soluble proteins in Tardigrada”</em> makalesi, heterotardigrad olan
-        <em>Echinisicus testudo</em>’yu merkeze alıyor. Heterotardigradların “akrabaları” olan
+        <em>Echiniscus testudo</em>’yu merkeze alıyor. Heterotardigradların “akrabaları” olan
         ötardigradların aksine, heterotardigradların anhidrobiyoz durumunu nasıl gerçekleştirdikleri
         bilinmiyordu. Murai ve arkadaşlarının elde ettiği sonuçlar bize heterotardigradların nasıl
-        kuraklıktan kendilerini koruduklarını açıklarken aynı zamanda iki sınıf arasındaki yakınsak
-        evrimi açıklıyor.
+        kuraklıktan kendilerini koruduklarını açıklarken aynı zamanda iki sınıf arasında yakınsak
+        evrim olasılığına işaret ediyor.
       </p>
 
       <p>
         Önceden tardigradların kendilerini kuraklıktan korumak için <em>Caenorhabditis elegans</em>,
-        <em>Artemia salina</em> ve <em>Polypedium vanderplanki</em> gibi canlıların trehaloz
+        <em>Artemia salina</em> ve <em>Polypedilum vanderplanki</em> gibi canlıların trehaloz
         disakkaritini veya bitkilerde ve bazı hayvanlarda bulunan LEA (Late Embryogenesis Abundant)
         proteinlerini kullandıkları düşünülürdü. Tardigradlarda da LEA proteinlerinin bulunmasına
         rağmen onları kuraklıktan koruyan ana unsur değildir. Ayrıca tardigradlarda trehaloz oranı
-        neredeyse yok denilebilecek kadar azdır. Bu unsurların yerine, makalenin de belirttiği üzere,
-        ötardigradlar kuraklığa karşı hayatta kalabilmek için anhidrobiyoz durumuna girerken
-        CAHS (Cytoplasmic Abundant Heat Soluble) proteinini kullanıyor.
+        en fazla birkaç yüzde düzeyindedir, hatta bazı türlerde ölçülebilir miktarda bulunmaz. Bu
+        unsurların yerine, makalenin de belirttiği üzere, ötardigradlar kuraklığa karşı hayatta
+        kalabilmek için anhidrobiyoz durumuna girerken CAHS (Cytoplasmic Abundant Heat Soluble)
+        proteinini kullanıyor.
       </p>
 
       <figure class="post-figure post-figure-mobil">
@@ -1699,31 +1704,33 @@
 
       <p>
         Ancak Murai ve ark. genomik karşılaştırmalarını yaparken CAHS proteinine dair herhangi bir
-        bulguya rastlayamadı. Laboratuvar ortamında üretilemeyen <em>Echiniscus testudo</em> türünden
-        10.000 birey ile yaptıkları araştırmada ilk olarak BlobTools aracı ile tardigrad DNA’sını
-        diğer kontaminantlardan ayrıştırarak izole ettiler. Ardından elde ettikleri bu proteinleri
-        10 dakika boyunca 100 °C’de kaynattılar. Normal proteinler yüksek sıcaklık sebebiyle denatüre
-        olurken anhidrobiyoz ile ilgili proteinler zarar görmedi. Bu sayede, testi geçen proteinleri
-        kütle spektrometrisi ile analiz ettikten sonra en dayanıklıları tespit edebildiler.
+        bulguya rastlayamadı. Laboratuvar ortamında üretilemeyen <em>Echiniscus testudo</em>’nun
+        genomunu, ultra düşük girdili dizileme protokolüyle tek bir bireyden çıkardılar; doğadan
+        toplanan örneklerde kaçınılmaz olan kontaminasyonu ise dizileme sonrasında BlobTools ile
+        ayıklayarak temiz bir genom elde ettiler. Ardından doğadan topladıkları yaklaşık 3000
+        bireyin lizatını 92 °C’de 20 dakika ısıttılar. Normal proteinler yüksek sıcaklıkta çökerken
+        anhidrobiyozla ilişkili olması beklenen proteinler çözünür kalmayı sürdürdü. Bu sayede,
+        testi geçen proteinleri kütle spektrometrisi ile analiz ettikten sonra en dayanıklıları
+        tespit edebildiler.
       </p>
 
       <p>
         Elde ettikleri proteinlerin ve genlerin, ötardigrad üyeleri olan
         <em>Ramazzottius varieornatus</em> ve <em>Hypsibius exemplaris</em> ile uyuşmadığını fark
-        ettiler. Elde ettikleri heterotardigradlara özgü olan bu proteine
-        EtAHS (Echiniscus testudo Abundant Heat-Soluble) adını verdiler. EtAHS
-        proteininin gerçekten de anhidrobiyozda görev aldığından emin olmak için de nükleer manyetik
-        rezonans ve dairesel dikroizm tekniklerini kullandılar. Elde ettikleri sonuçlar bu proteinin
-        anhidrobiyoz ile ilişkili olduğunu kanıtladı.
+        ettiler. Elde ettikleri, heterotardigradlara özgü bu iki protein ailesine EtAHS A ve
+        EtAHS B (Echiniscus testudo Abundant Heat Soluble) adını verdiler. EtAHS’nin yapısal
+        özelliklerini görmek için nükleer manyetik rezonans ve dairesel dikroizm tekniklerini
+        kullandılar. Sonuçlar proteinlerin çözeltide düzensiz olduğunu, su yerine trifloroetanol
+        konduğunda ise alfa-helix yapısına geçtiğini gösterdi; tam da CAHS’ta görülen davranış bu.
       </p>
 
       <p>
-        Böylece Murai ve ark., heterotardigradların ve ötardigradların yakınsak evrim
-        geçirdiğini ispatladı. CAHS ve EtAHS’nin iki farklı protein ailesinden olmasına ve genetik
-        olarak birbirine benzememesine rağmen her ikisi de aynı işi yapıyor. Her ikisi de ısıya
-        dayanıklı, düzensiz yapıda ve kuraklık durumunda alfa-heliks yapısını alıyor. İki tardigrad
-        sınıfı da kuraklığa karşı birbirinden bağımsız olarak benzer çözümler geliştirmiştir. Bu da
-        yakınsak evrimin tam tanımıdır.
+        Böylece Murai ve ark., heterotardigradlarla ötardigradların bu mekanizmayı birbirinden
+        bağımsız olarak, en az iki kez kazanmış olabileceğini öne sürdü. CAHS ve EtAHS’nin iki
+        farklı protein ailesinden olmasına ve genetik olarak birbirine benzememesine rağmen her
+        ikisi de aynı özellikleri taşıyor. Her ikisi de ısıya dayanıklı, düzensiz yapıda ve su
+        kaybında alfa-helix yapısını alıyor. İki tardigrad sınıfı da kuraklığa karşı birbirinden
+        bağımsız olarak benzer çözümler geliştirmiştir. Bu da yakınsak evrimin tam tanımıdır.
       </p>
 
       <blockquote class="post-pull">İki tardigrad sınıfı da kuraklığa karşı birbirinden bağımsız olarak benzer çözümler geliştirmiştir.</blockquote>
@@ -1734,26 +1741,30 @@
       <p>
         Smith ve ark. (2023) tarafından yazılan <em>“Developmental and genomic insight into the origin
         of the tardigrade body plan”</em> makalesinde ise tardigradların eşsiz vücut planlarının
-        evrimsel kökeni incelenmiştir. Smith ve ark., bu makalede genetik ve gelişimsel veriler ile
-        bulgularını sunuyor.
+        evrimsel kökeni incelenmiştir. Smith ve ark. bu makalede daha önceki gelişimsel ve genomik
+        çalışmaları derleyip, bunları heterotardigrad <em>Echiniscus testudo</em>’nun halka açık
+        genom ve transkriptom verilerini analiz ederek genişletiyor.
       </p>
 
       <p>
         Filogenetik olarak tardigradlar Ecdysozoa süperfilumundaki Panarthropoda
         kladında yer alır. Arthropoda ve Onychophora filumlarını da içeren Panarthropoda kladında
-        Tardigrada, bu iki büyük filumun yanında “dış grup” olarak kabul edilir ve Panarthropoda
+        Tardigrada, bu iki büyük filumun yanında “dış grup” olarak kabul edilir (her ne kadar
+        Tardigrada’nın Ecdysozoa içindeki yeri hâlâ tartışmalı olsa da) ve Panarthropoda
         üyelerinin vücut planını anlamak için önemli bakış açıları sunar.
       </p>
 
       <p>
-        Makalede Smith ve ark.; tardigradların evrimsel süreç sırasında <em>pb</em>, <em>Hox3</em>,
-        <em>dfd</em>, <em>scr</em>, <em>antp</em>, <em>ubx</em> ve <em>abdA</em> Hox genlerini
-        kaybederek arthropodlarda thorax ve abdomen bölgelerine karşılık gelen, orta segmentleri olan
-        gövdelerini yitirdiklerini belirtmişlerdir. Bu analizi yaparken Smith ve ark. Hox gen
-        haritalandırması yöntemini kullanmışlardır ve bunun tek bir türe özgü olmadığını kanıtlamak
-        için hem ötardigradlardan <em>Milnesium tardigradum</em>’u ve
-        <em>Paramacrobiotus richtersi</em>’yi hem de heterotardigradlardan
-        <em>Echiniscus testudo</em>’yu kullanmışlardır.
+        Makalede Smith ve ark.; tardigradların evrimsel süreç sırasında <em>pb</em>, <em>scr</em>,
+        <em>antp</em> ve UbdA motifli Hox genini (diğer panarthropodlarda <em>ubx</em> ve
+        <em>abdA</em> ile temsil edilen) kaybederek arthropodlarda thorax ve abdomen bölgelerine
+        karşılık gelen, orta segmentleri olan gövdelerini yitirdiklerini belirtmişlerdir. Bu tablo
+        daha önce yalnızca ötardigradlarda (<em>Hypsibius exemplaris</em>,
+        <em>Paramacrobiotus richtersi</em>, <em>Milnesium tardigradum</em> ve
+        <em>Ramazzottius varieornatus</em>) çıkarılmıştı. Smith ve ark. buna heterotardigradlardan
+        <em>Echiniscus testudo</em>’yu ekleyerek, karşılıklı BLAST ve filogenetik analizlerle aynı
+        Hox setinin onda da bulunduğunu gösterdi; böylece bu kayıpların tüm Tardigrada’nın son ortak
+        atasında gerçekleştiği ortaya çıktı.
       </p>
 
       <figure class="post-figure post-figure-mobil">
@@ -1764,27 +1775,28 @@
       </figure>
 
       <p>
-        Bunun yanı sıra, Smith ve ark. embriyonik gelişim sırasında <em>en (engrailed)</em> genlerinin
-        ifade alanlarını in situ hibridizasyon yöntemi ile incelerken, segmentlerin birbirlerine çok
-        yakın olduğunu fark ederek orta bölgenin kalmadığını farklı bir açıdan kanıtlıyor.
+        Bunun yanı sıra makale, embriyonik gelişim sırasında <em>en (engrailed)</em> geninin gövdede
+        yalnızca dört şerit hâlinde ifade edildiğini gösteren daha önceki çalışmaları da aktarıyor;
+        bu da tardigrad gövdesinin gerçekten sadece dört segmentten ibaret olduğunun bağımsız bir
+        göstergesi.
       </p>
 
       <p>
-        Ayrıca, Smith ve ark. in situ hibridizasyon, antikor boyama, karşılaştırmalı ekspresyon
-        sentezi, biyoinformatik, ortoloji analizi, morfolojik ve genetik veri entegrasyonu yöntemleri
-        ile <em>Hypsibius exemplaris</em>’in, <em>Thulinia stephaniae</em>’nin ve
-        <em>Milnesium</em> n. sp.’in segmentlerinin moleküler kimliğine inerek bacaklarının
-        kökenlerine iniyor. Deneylerden elde ettikleri sonuçlar, tardigradların ilk üç bacak çiftinin
-        diğer arthropodların kafa bölgelerinde ifade edilen genler tarafından kontrol edildiğini
-        gösterirken, dördüncü bacak çiftinin vücudun en sonundaki <em>abdB</em> genleri ile kontrol
-        edildiğini gösterdi.
+        Ayrıca Smith ve ark. <em>Hypsibius exemplaris</em> embriyolarında HCR in situ
+        hibridizasyonuyla <em>Dll</em>, <em>elav</em>, <em>six3</em> ve <em>otd</em> ifadesini,
+        <em>Milnesium</em> n. sp. örneklerinde ise antikor ve falloidin boyamayla kas ve sinir
+        sistemi anatomisini görüntüleyerek segmentlerin moleküler kimliğine inerek bacaklarının
+        kökenlerine iniyor. Bu sonuçlar, tardigradın başı ve ilk üç gövde segmentinin, yani ilk üç
+        bacak çiftinin, diğer panarthropodların en öndeki dört baş segmentine karşılık geldiğini;
+        dördüncü gövde segmentinin ön kısmının <em>ftz</em>, arka kısmının ise <em>abdB</em>
+        ifadesine dayanarak vücudun en arka segmentleriyle hizalandığını destekliyor.
       </p>
 
       <p>
         Tardigradların “basit” canlılar olduğu fikrini yıkan bu çalışma, onların evrimsel olarak ne
         kadar özelleşmiş ve kompakt bir vücut planına sahip olduğunu gözler önüne seriyor. Ayrıca bu
         durum, tardigradların ilkel değil, aksine fazlasıyla türetilmiş bir formda
-        olduklarını kanıtlıyor.
+        olduklarını gösteriyor.
       </p>
 
       <p class="post-byline">Hazırlayan: <a href="https://www.linkedin.com/in/elif-kara-202458321" target="_blank" rel="noopener">Elif Kara</a></p>

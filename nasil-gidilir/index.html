@@ -6,7 +6,7 @@
   <meta name="referrer" content="origin-when-cross-origin">
 
   <title>Nasıl Gidilir? | İÜ Evrim Topluluğu</title>
-  <meta name="description" content="İÜ Evrim Topluluğu etkinlik mekanlarına (Derslik 5, Amfi A) M2 Vezneciler durağından yol tarifi videoları ve ulaşım rehberi.">
+  <meta name="description" content="İÜ Evrim Topluluğu etkinlik mekânlarına (amfiler, derslikler, laboratuvarlar) M2 Vezneciler durağından başlayan yol tarifi videoları. Sınıfı seçin, tarif açılsın.">
   <link rel="canonical" href="https://iuevrim.org/nasil-gidilir/">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png">
@@ -48,26 +48,12 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background:
-        linear-gradient(rgba(10,14,10,0.84), rgba(10,14,10,0.84)),
-        url('/images/nas%C4%B1l%20gidilir/yol_hero.jpg') center/cover fixed no-repeat,
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       font-weight: 300;
       min-height: 100vh;
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(109,191,103,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(109,191,103,0.04) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     body > nav {
@@ -325,194 +311,414 @@
     .sp-group a:hover { color: var(--accent); padding-left: 0.35rem; }
     .sp-current { color: var(--accent) !important; }
 
-    .page {
+    /* ── Hero ── */
+    .hero {
       position: relative;
-      z-index: 1;
-      padding: 8rem 4rem 4rem;
+      padding: 9.5rem clamp(1.25rem, 4vw, 4rem) 3.25rem;
+      background:
+        linear-gradient(90deg, rgba(10,14,10,0.97) 0%, rgba(10,14,10,0.82) 45%, rgba(10,14,10,0.55) 100%),
+        url('/images/nas%C4%B1l%20gidilir/yol_hero.jpg') center 35%/cover no-repeat,
+        var(--bg);
+      border-bottom: 1px solid var(--border);
     }
 
-    .page-header {
-      max-width: 840px;
-      margin-bottom: 2.5rem;
-      padding: 1.4rem 1.4rem 1.4rem 1.2rem;
-      border-left: 2px solid rgba(109,191,103,0.5);
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(10,14,10,0.72) 0%, rgba(10,14,10,0.58) 100%);
-    }
+    .hero-inner { max-width: 1280px; margin: 0 auto; }
 
-    .page-header p {
+    .hero-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
       color: var(--accent);
-      letter-spacing: 0.14em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      font-size: 0.76rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .page-header h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.1rem, 5vw, 3.8rem);
-      font-weight: 500;
-      font-style: italic;
-      margin-bottom: 0.9rem;
-    }
-
-    .page-header .desc {
-      color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 720px;
-    }
-
-    .page-header .desc-line { display: block; }
-    .page-header .desc-line:first-child { margin-bottom: 1em; }
-    .page-header .desc-line:last-child { margin-top: 1em; }
-
-    .content-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .video-card {
-      background: linear-gradient(135deg, rgba(17,23,17,0.92) 0%, rgba(14,18,14,0.85) 100%);
-      border: 1px solid var(--border);
-      padding: 1rem;
-      content-visibility: auto;
-      contain-intrinsic-size: 420px;
-    }
-
-    .video-title {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .classroom-panel {
-      position: sticky;
-      top: 84px;
-      background: linear-gradient(135deg, rgba(17,23,17,0.92) 0%, rgba(14,18,14,0.84) 100%);
-      border: 1px solid var(--border);
-      padding: 1rem;
-    }
-
-    .classroom-panel-title {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .classroom-search {
-      width: 100%;
-      background: rgba(10,14,10,0.75);
-      border: 1px solid var(--border-soft);
-      color: var(--text);
-      padding: 0.65rem 0.75rem;
-      font-family: 'Outfit', sans-serif;
       font-size: 0.9rem;
-      outline: none;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.35rem;
     }
 
-    .classroom-search::placeholder { color: var(--text-muted); }
-    .classroom-search:focus { border-color: rgba(109,191,103,0.35); }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 7vw, 5.25rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+    }
 
-    .classroom-toggle {
-      display: none;
-      width: 100%;
+    .hero-desc {
+      color: #b6c4b6;
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      line-height: 1.7;
+      max-width: 46ch;
+      text-wrap: pretty;
+      margin-bottom: 1.9rem;
+    }
+
+    .hero-desc strong { font-weight: 500; color: var(--text); }
+
+    .hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+
+    .hero-pin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--text);
       background: rgba(109,191,103,0.1);
-      border: 1px solid rgba(109,191,103,0.28);
-      color: var(--accent);
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
+      border: 1px solid rgba(109,191,103,0.3);
+      padding: 0.7rem 1.1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 0.65rem 0.7rem;
-      margin-bottom: 0.75rem;
-      cursor: pointer;
+      white-space: nowrap;
       transition: background 0.2s, border-color 0.2s;
     }
 
-    .classroom-toggle:hover {
-      background: rgba(109,191,103,0.16);
-      border-color: rgba(109,191,103,0.4);
+    .hero-pin:hover { background: rgba(109,191,103,0.2); border-color: rgba(109,191,103,0.55); }
+    .hero-pin i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .hero-count { font-size: 0.85rem; color: #7f8f7f; letter-spacing: 0.04em; }
+
+    /* ── Araç çubuğu ── */
+    .toolbar {
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+      background: rgba(10,14,10,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(109,191,103,0.12);
+      padding: 0.85rem clamp(1.25rem, 4vw, 4rem);
     }
 
-    .classroom-list {
-      list-style: none;
+    .toolbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .venue-search {
+      flex: 1 1 240px;
+      min-width: 180px;
+      min-height: 44px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(109,191,103,0.18);
+      border-radius: 2px;
+      color: var(--text);
+      padding: 0.6rem 0.9rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .venue-search::placeholder { color: #6e7d6e; }
+    .venue-search:focus { border-color: rgba(109,191,103,0.5); background: rgba(109,191,103,0.06); }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .chip {
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 1rem;
+      min-height: 44px;
+      border-radius: 2px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(109,191,103,0.18);
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+
+    .chip:hover { color: var(--accent); border-color: rgba(109,191,103,0.4); }
+
+    .chip[aria-pressed="true"] {
+      color: #0a0e0a;
+      background: var(--accent);
+      border-color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Kart gridi ── */
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem clamp(1.25rem, 4vw, 4rem) 4rem;
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 1rem;
+    }
+
+    .venue-card {
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.35rem 1.15rem;
+      min-height: 208px;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      max-height: 52vh;
-      overflow-y: auto;
-      scrollbar-width: thin;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
     }
 
-    .classroom-list a {
-      display: block;
+    .venue-card:hover { border-color: rgba(109,191,103,0.5); background: var(--surface2); transform: translateY(-3px); }
+    .venue-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .venue-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--thumb);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.16;
+      filter: blur(1px) saturate(0.5);
+    }
+
+    .venue-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(17,23,17,0.72) 0%, rgba(17,23,17,0.94) 62%);
+    }
+
+    .venue-card > * { position: relative; z-index: 1; }
+
+    .venue-body { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; }
+
+    .venue-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .venue-type {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.86rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .venue-index {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      color: rgba(154,170,154,0.45);
+    }
+
+    .venue-name {
+      flex: 1 1 auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.62rem;
+      line-height: 1.18;
+      text-wrap: pretty;
+    }
+
+    .venue-sub { display: none; }
+
+    .venue-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.15rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(109,191,103,0.14);
+    }
+
+    .venue-play {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(109,191,103,0.45);
+      color: var(--accent);
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding-left: 2px;
+    }
+
+    .venue-cta span {
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .venue-play-lg,
+    .venue-chevron { display: none; }
+
+    .venue-empty { padding: 3rem 0; text-align: center; color: #7f8f7f; font-size: 0.95rem; }
+
+    /* ── Öneri kutusu ── */
+    .help-card {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+    }
+
+    .help-body { flex: 1 1 380px; min-width: 260px; }
+
+    .help-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.86rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .help-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 60ch;
+      text-wrap: pretty;
+    }
+
+    .help-text a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+    .help-btn {
+      flex: 0 0 auto;
       text-decoration: none;
-      color: var(--text-muted);
-      border: 1px solid var(--border-soft);
-      background: rgba(10,14,10,0.45);
-      padding: 0.6rem 0.7rem;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      color: var(--accent);
+      background: rgba(109,191,103,0.1);
+      border: 1px solid rgba(109,191,103,0.3);
+      padding: 0.85rem 1.4rem;
       font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
 
-    .classroom-list a:hover,
-    .classroom-list a.active {
-      color: var(--accent);
-      border-color: rgba(109,191,103,0.28);
-      background: rgba(109,191,103,0.08);
+    .help-btn:hover { background: rgba(109,191,103,0.2); border-color: rgba(109,191,103,0.55); color: var(--accent-soft); }
+
+    /* ── Oynatıcı ── */
+    .player {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      background: rgba(6,9,6,0.93);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 3vw, 2.5rem);
     }
 
-    .video-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 1px solid var(--border-soft);
-      overflow: hidden;
-      background: #000;
+    .player[hidden] { display: none; }
+
+    .player-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      max-width: 100%;
     }
 
-    .video-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      background: #000;
+    .player-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
     }
 
-    .video-fallback {
-      margin-top: 0.55rem;
-      font-size: 0.82rem;
+    .player-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      color: var(--text);
+    }
+
+    .player-tabs { display: flex; gap: 0.4rem; }
+
+    .player-tab {
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.8rem;
+      border-radius: 2px;
       color: var(--text-muted);
-      letter-spacing: 0.02em;
+      background: transparent;
+      border: 1px solid rgba(109,191,103,0.25);
+      transition: color 0.2s, background 0.2s;
     }
 
-    .video-fallback a {
-      color: var(--accent);
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    .player-tab[aria-pressed="true"] { color: #0a0e0a; background: var(--accent); border-color: var(--accent); }
+
+    .player-frame {
+      background: #000;
+      border: 1px solid rgba(109,191,103,0.22);
+      overflow: hidden;
+      aspect-ratio: 9 / 16;
+      height: min(72vh, 780px);
+      max-width: 92vw;
     }
 
-    .video-fallback a:hover {
-      color: var(--accent-soft);
+    .player-frame.is-landscape {
+      aspect-ratio: 16 / 9;
+      height: auto;
+      width: min(88vw, 1120px);
+      max-height: 72vh;
+      max-width: none;
     }
+
+    .player-frame iframe { width: 100%; height: 100%; border: 0; display: block; background: #000; }
+
+    .player-foot { display: flex; align-items: center; gap: 1.25rem; }
+
+    .player-foot a { font-size: 0.82rem; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .player-foot a:hover { color: var(--accent-soft); }
+
+    .player-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .player-close:hover { color: var(--text); }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 2.5rem 4rem;
+      padding: 2.5rem clamp(1.25rem, 4vw, 4rem);
       display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
       align-items: center;
       justify-content: space-between;
       position: relative;
@@ -520,6 +726,9 @@
     }
 
     .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem;
       color: var(--accent);
@@ -527,181 +736,120 @@
       font-weight: 500;
     }
 
+    .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
     .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
-  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
-  .footer-logo-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
-    @media (min-width: 901px) {
-      .page {
-        display: grid;
-        grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
-        column-gap: 1.5rem;
-        row-gap: 1.5rem;
-        align-items: start;
-      }
-
-      .page-header {
-        grid-column: 1;
-        grid-row: 1;
-        max-width: 100%;
-        margin-bottom: 0;
-      }
-
-      .content-layout {
-        display: contents;
-      }
-
-      .video-grid {
-        grid-column: 1;
-        grid-row: 2;
-      }
-
-      .classroom-panel {
-        grid-column: 2;
-        grid-row: 1 / span 2;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .content-layout { grid-template-columns: 1fr; }
-      .classroom-panel {
-        position: static;
-        order: -1;
-      }
-      .classroom-list {
-        max-height: none;
-      }
-      .page-header {
-        max-width: 100%;
-      }
-    }
-
+    /* ── Duyarlı ── */
     @media (max-width: 768px) {
       html { scroll-behavior: auto; }
       body > nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      body {
-        background:
-          linear-gradient(rgba(10,14,10,0.84), rgba(10,14,10,0.84)),
-          url('/images/nas%C4%B1l%20gidilir/yol_hero.jpg') center/cover no-repeat,
-          var(--bg);
-        background-attachment: scroll;
-      }
-      body::before {
-        display: none;
-      }
+
       body > nav {
         position: sticky;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         background: rgba(10,14,10,0.98);
       }
+
       .side-panel {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         background: rgba(10,14,10,0.96);
       }
-      .page-header,
-      .video-card,
-      .classroom-panel {
-        background: rgba(14,18,14,0.94);
+
+      .toolbar {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(10,14,10,0.98);
+        padding: 0.7rem 1.15rem;
       }
 
-      .page {
-        padding: 6rem 1rem 2.25rem;
+      .hero {
+        padding: 2rem 1.15rem 1.6rem;
+        background:
+          linear-gradient(180deg, rgba(10,14,10,0.72) 0%, rgba(10,14,10,0.93) 78%, var(--bg) 100%),
+          url('/images/nas%C4%B1l%20gidilir/yol_hero.jpg') center 40%/cover no-repeat,
+          var(--bg);
+        border-bottom: none;
       }
 
-      .page-header {
-        margin-bottom: 1.25rem;
-        padding: 1rem;
+      .hero-eyebrow { font-size: 0.74rem; letter-spacing: 0.24em; }
+      .hero h1 { font-size: clamp(2.1rem, 11vw, 3rem); margin-bottom: 0.8rem; }
+      .hero-desc { font-size: 0.94rem; margin-bottom: 1.1rem; }
+      .hero-pin { padding: 0 0.9rem; min-height: 46px; font-size: 0.76rem; letter-spacing: 0.08em; }
+
+      .toolbar-inner { gap: 0.6rem; }
+      .venue-search { flex: 1 1 100%; min-height: 46px; }
+
+      .filters {
+        flex: 1 1 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
       }
 
-      .page-header p {
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
+      .filters::-webkit-scrollbar { display: none; }
+      .chip { flex-shrink: 0; min-height: 40px; padding: 0 0.95rem; font-size: 0.76rem; }
+
+      .page { padding: 1.15rem 1.15rem 2.5rem; }
+      .venue-grid { grid-template-columns: 1fr; gap: 0.55rem; }
+
+      .venue-card {
+        min-height: 76px;
+        padding: 0.85rem 0.95rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.85rem;
       }
 
-      .page-header h1 {
-        font-size: clamp(1.9rem, 9vw, 2.6rem);
-        margin-bottom: 0.7rem;
+      .venue-card:hover { transform: none; }
+      .venue-card::after { background: linear-gradient(100deg, rgba(17,23,17,0.92) 0%, rgba(17,23,17,0.72) 100%); }
+      .venue-card:active { background: var(--surface2); border-color: rgba(109,191,103,0.45); }
+
+      .venue-play-lg {
+        display: flex;
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        border: 1px solid rgba(109,191,103,0.45);
+        color: var(--accent);
+        font-size: 0.7rem;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        padding-left: 3px;
       }
 
-      .page-header .desc {
-        font-size: 0.92rem;
-        line-height: 1.65;
-      }
+      .venue-top { display: block; margin-bottom: 0; }
+      .venue-index { display: none; }
+      .venue-type { font-size: 0.74rem; letter-spacing: 0.2em; }
+      .venue-name { display: block; font-size: 1.3rem; line-height: 1.2; margin-top: 0.15rem; }
+      .venue-sub { display: block; font-size: 0.72rem; letter-spacing: 0.06em; color: #7f8f7f; margin-top: 0.2rem; }
+      .venue-sub:empty { display: none; }
+      .venue-cta { display: none; }
+      .venue-chevron { display: block; color: rgba(154,170,154,0.5); font-size: 0.85rem; flex-shrink: 0; }
 
-      .content-layout {
-        gap: 1rem;
-      }
+      .venue-empty { padding: 2.5rem 1.5rem; font-size: 0.9rem; line-height: 1.6; }
 
-      .video-grid {
-        gap: 1rem;
-      }
+      .help-card { margin-top: 1.35rem; padding: 1.15rem; flex-direction: column; align-items: stretch; gap: 0.9rem; }
+      .help-title { font-size: 0.78rem; letter-spacing: 0.2em; }
+      .help-text { font-size: 0.88rem; line-height: 1.65; }
 
-      .video-card {
-        padding: 0.75rem;
-      }
-
-      .video-wrap {
-        contain: layout paint style;
-      }
-
-      .video-wrap iframe {
-        transform: translateZ(0);
-        backface-visibility: hidden;
-      }
-
-      .classroom-panel,
-      .page-header,
-      footer {
-        contain: layout paint;
-      }
-
-      .video-title {
-        font-size: 0.72rem;
-        margin-bottom: 0.55rem;
-      }
-
-      .classroom-panel {
-        padding: 0.75rem;
-      }
-
-      .classroom-search {
-        min-height: 42px;
-        font-size: 0.95rem;
-        padding: 0.6rem 0.7rem;
-      }
-
-      .classroom-toggle {
-        display: block;
-      }
-
-      .classroom-list a {
-        min-height: 42px;
+      .help-btn {
         display: flex;
         align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 1rem;
+        font-size: 0.88rem;
       }
 
-      .classroom-list {
-        display: flex;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        pointer-events: none;
-        transform: translateY(-6px);
-        will-change: max-height, opacity, transform;
-        transition: max-height 0.48s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.32s ease, transform 0.38s ease;
-      }
-
-      .classroom-panel.show-list .classroom-list {
-        max-height: var(--classroom-list-open-height, 52vh);
-        opacity: 1;
-        overflow-y: auto;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
+      .player { padding: 1rem; }
+      .player-frame { height: min(64vh, 640px); max-width: 100%; }
+      .player-frame.is-landscape { width: 100%; }
+      .player-tab { min-height: 38px; padding: 0 0.8rem; }
 
       footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
     }
@@ -715,8 +863,10 @@
 
     @media (max-width: 420px) {
       body > nav { padding: 0 0.8rem; }
-      .page { padding: 5.7rem 0.8rem 2rem; }
-      .page-header .desc { font-size: 0.88rem; }
+      .hero { padding: 1.6rem 0.9rem 1.4rem; }
+      .toolbar { padding: 0.65rem 0.9rem; }
+      .page { padding: 1rem 0.9rem 2rem; }
+      .hero-desc { font-size: 0.9rem; }
       .footer-copy { font-size: 0.74rem; }
     }
   </style>
@@ -734,6 +884,7 @@
       <span class="sp-label">Etkinlikler</span>
       <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
       <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+      <a href="/evrim-konferansi/">Evrim Konferansı</a>
       <a href="/makale-grubu/">Makale Grubu</a>
       <a href="/nasil-gidilir/" class="sp-current">Nasıl Gidilir?</a>
     </div>
@@ -776,6 +927,7 @@
       <div class="dropdown">
         <a href="/#etkinlikler">Yaklaşan Etkinlikler</a>
         <a href="/tum-etkinlikler/">Tüm Etkinlikler</a>
+        <a href="/evrim-konferansi/">Evrim Konferansı</a>
         <a href="/makale-grubu/">Makale Grubu</a>
         <a href="/nasil-gidilir/" class="active-link">Nasıl Gidilir?</a>
       </div>
@@ -796,45 +948,54 @@
   </ul>
 </nav>
 
-<main class="page">
-  <header class="page-header">
-    <p>Ulaşım Rehberi</p>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Ulaşım Rehberi</p>
     <h1>Nasıl Gidilir?</h1>
-    <div class="desc">
-      <span class="desc-line">Etkinlik mekanına ulaşım için hazırladığımız yol tarifi videolarını aşağıdan izleyebilirsiniz.</span>
-      <span class="desc-line">Yol tarifi videoları için başlangıç konumu her zaman M2 Vezneciler durağı'dır.</span>
-      <span class="desc-line">Konum: <a href="https://maps.app.goo.gl/qptJPw1J3mkACZiTA" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">https://maps.app.goo.gl/qptJPw1J3mkACZiTA</a></span>
+    <p class="hero-desc">Gideceğiniz sınıfı seçin, yol tarifi videosu açılsın. Tüm yol tarifleri <strong>M2 Vezneciler</strong> durağından başlıyor.</p>
+    <div class="hero-meta">
+      <a class="hero-pin" href="https://maps.app.goo.gl/qptJPw1J3mkACZiTA" target="_blank" rel="noopener noreferrer"><i></i>Başlangıç: M2 Vezneciler</a>
+      <span class="hero-count" id="hero-count">14 yol tarifi</span>
     </div>
-  </header>
-
-  <div class="content-layout">
-  <section class="video-grid" id="video-grid">
-    <article class="video-card" id="derslik-5" data-classroom="Derslik 5">
-      <div class="video-title">Derslik 5 Yol Tarifi</div>
-      <div class="video-wrap">
-        <iframe data-video-id="v3NUMHDVPM8" loading="lazy" title="Derslik 5 yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <p class="video-fallback"><a href="https://www.youtube.com/watch?v=v3NUMHDVPM8" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
-    </article>
-
-    <article class="video-card" id="amfi-a" data-classroom="Amfi A">
-      <div class="video-title">Amfi A Yol Tarifi</div>
-      <div class="video-wrap">
-        <iframe data-video-id="1k8EgwZW43Y" loading="lazy" title="Amfi A yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <p class="video-fallback"><a href="https://www.youtube.com/watch?v=1k8EgwZW43Y" target="_blank" rel="noopener noreferrer">YouTube'da izle</a></p>
-    </article>
-  </section>
-
-  <aside class="classroom-panel" aria-label="Derslik listesi">
-    <div class="classroom-panel-title">Derslik Seçimi</div>
-    <input id="classroom-search" class="classroom-search" type="text" placeholder="Derslik ara (örn. Derslik 5)" list="classroom-suggestions" autocomplete="off">
-    <button id="classroom-toggle" class="classroom-toggle" type="button" aria-expanded="false">Tüm sınıfları gör</button>
-    <datalist id="classroom-suggestions"></datalist>
-    <ul class="classroom-list" id="classroom-list"></ul>
-  </aside>
   </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <input id="venue-search" class="venue-search" type="text" placeholder="Yol tarifi ara — örn. Derslik 5" autocomplete="off" aria-label="Yol tarifi ara">
+    <div class="filters" id="filters" role="group" aria-label="Mekân türü"></div>
+  </div>
+</div>
+
+<main class="page">
+  <div class="venue-grid" id="venue-grid"></div>
+  <p class="venue-empty" id="venue-empty" hidden>Bu aramaya uygun yol tarifi yok. Aşağıdan bize yazabilirsiniz.</p>
+
+  <section class="help-card" id="yardim" aria-labelledby="yardim-baslik">
+    <div class="help-body">
+      <p class="help-title" id="yardim-baslik">Sınıfı Bulamıyor musunuz?</p>
+      <p class="help-text">Aradığınız sınıfın tarifi burada yoksa ya da videoyu izlediğiniz hâlde bulamadıysanız yazın; eksik tarifi listeye ekleyelim. Etkinlik günü acil durumlarda Instagram'dan <a href="https://www.instagram.com/iuevrim/" target="_blank" rel="noopener noreferrer">@iuevrim</a> hesabına da yazabilirsiniz.</p>
+    </div>
+    <a class="help-btn" href="mailto:iletisim@iuevrim.org?subject=Yol%20Tarifi%20%C3%96nerisi">iletisim@iuevrim.org</a>
+  </section>
 </main>
+
+<div class="player" id="player" hidden>
+  <div class="player-inner" role="dialog" aria-modal="true" aria-labelledby="player-title">
+    <div class="player-head">
+      <span class="player-title" id="player-title"></span>
+      <span class="player-tabs" id="player-tabs"></span>
+    </div>
+    <div class="player-frame" id="player-frame">
+      <iframe id="player-iframe" title="Yol tarifi videosu" referrerpolicy="origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="player-foot">
+      <a id="player-watch" href="#" target="_blank" rel="noopener noreferrer">YouTube'da izle</a>
+      <button class="player-close" id="player-close" type="button">Kapat ✕</button>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="footer-logo"><img class="footer-logo-img" src="/images/evo_logo4.webp" alt="İÜ Evrim Topluluğu Logo" loading="lazy" decoding="async"><span>İÜ Evrim Topluluğu</span></div>
@@ -911,184 +1072,197 @@
 
  });
 
-  const classroomSearch = document.getElementById('classroom-search');
-  const classroomPanel = document.querySelector('.classroom-panel');
-  const classroomToggle = document.getElementById('classroom-toggle');
-  const classroomSuggestions = document.getElementById('classroom-suggestions');
-  const classroomList = document.getElementById('classroom-list');
-  const classroomCards = Array.from(document.querySelectorAll('.video-card[data-classroom]'));
-  const classroomNames = [];
+  // ── Yol tarifi mekânları ──
+  const VENUES = [
+    { id: 'ahmet-yuksel-ozemre-amfisi', name: 'Ahmet Yüksel Özemre Amfisi', type: 'Amfi', vid: 'p6D6-TYSa2Q', portrait: true },
+    { id: 'amfi-a', name: 'Amfi A', type: 'Amfi', vid: '1k8EgwZW43Y', portrait: false },
+    { id: 'derslik-3', name: 'Derslik 3', type: 'Derslik', vid: 'atU6my3fn7U', portrait: true },
+    { id: 'derslik-5', name: 'Derslik 5', type: 'Derslik', vid: 'v3NUMHDVPM8', portrait: false },
+    { id: 'derslik-6', name: 'Derslik 6', type: 'Derslik', portrait: true, routes: [
+      { label: 'Fen Fakültesi', vid: 'egwPJDu0DcQ' },
+      { label: 'Su Bilimleri', vid: 'ua6qSypno48' }
+    ] },
+    { id: 'engin-arik-amfisi', name: 'Engin Arık Amfisi', type: 'Amfi', vid: 'n6lAnPmH7Kg', portrait: true },
+    { id: 'fahir-yenicay-amfisi', name: 'Fahir Yeniçay Amfisi', type: 'Amfi', vid: 'OwG97VgsF8U', portrait: true },
+    { id: 'feza-gursey-amfisi', name: 'Feza Gürsey Amfisi', type: 'Amfi', vid: '3J3dy39Engc', portrait: true },
+    { id: 'fizik-lab-208', name: 'Fizik Lab 208 · Elektrik', type: 'Laboratuvar', vid: '4OCzjeDB0U0', portrait: true },
+    { id: 'fizik-lab-209', name: 'Fizik Lab 209 · Mekanik', type: 'Laboratuvar', vid: 'b1yzolkQKMI', portrait: true },
+    { id: 'sb-amfi', name: 'SB-Amfi', type: 'Amfi', vid: 'OdPIOT3W6x4', portrait: true },
+    { id: 'sb-derslik-3', name: 'SB Derslik 3', type: 'Derslik', portrait: true, routes: [
+      { label: 'Fen Fakültesi', vid: 'eJ5kSCYDsTk' },
+      { label: 'Su Bilimleri', vid: 'RrqajTFUYZM' }
+    ] }
+  ];
 
-  classroomCards.forEach(card => {
-    const classroomName = (card.dataset.classroom || '').trim();
-    if (!classroomName || !card.id) return;
-    classroomNames.push(classroomName);
+  const FILTERS = ['Tümü', 'Amfi', 'Derslik', 'Laboratuvar'];
 
-    const li = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = `#${card.id}`;
-    link.dataset.target = card.id;
-    link.textContent = classroomName;
-    li.appendChild(link);
-    classroomList.appendChild(li);
+  const grid        = document.getElementById('venue-grid');
+  const emptyMsg    = document.getElementById('venue-empty');
+  const filtersBox  = document.getElementById('filters');
+  const searchInput = document.getElementById('venue-search');
+  const heroCount   = document.getElementById('hero-count');
+
+  const player       = document.getElementById('player');
+  const playerFrame  = document.getElementById('player-frame');
+  const playerIframe = document.getElementById('player-iframe');
+  const playerTitle  = document.getElementById('player-title');
+  const playerTabs   = document.getElementById('player-tabs');
+  const playerWatch  = document.getElementById('player-watch');
+  const playerClose  = document.getElementById('player-close');
+
+  let activeFilter = 'Tümü';
+  let activeVenue  = null;
+  let activeRoute  = 0;
+  let lastFocused  = null;
+
+  const videoCount = VENUES.reduce((n, v) => n + (v.routes ? v.routes.length : 1), 0);
+  heroCount.textContent = videoCount + ' yol tarifi';
+
+  function norm(value) {
+    return (value || '').toLocaleLowerCase('tr-TR').trim();
+  }
+
+  function videoIdOf(venue, routeIndex) {
+    if (!venue) return null;
+    if (!venue.routes) return venue.vid;
+    return venue.routes[Math.min(routeIndex || 0, venue.routes.length - 1)].vid;
+  }
+
+  // ── Filtre çipleri ──
+  FILTERS.forEach(label => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip';
+    chip.textContent = label;
+    chip.setAttribute('aria-pressed', String(label === activeFilter));
+    chip.addEventListener('click', () => {
+      activeFilter = label;
+      Array.from(filtersBox.children).forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+      render();
+    });
+    filtersBox.appendChild(chip);
   });
 
-  const classroomLinks = Array.from(document.querySelectorAll('#classroom-list a'));
+  // ── Kart listesi ──
+  function render() {
+    const q = norm(searchInput.value);
+    const list = VENUES.filter(v =>
+      (activeFilter === 'Tümü' || v.type === activeFilter) &&
+      (!q || norm(v.name).includes(q) || norm(v.type).includes(q))
+    );
 
-  function normalizeText(value) {
-    return value.toLocaleLowerCase('tr-TR').trim();
-  }
-
-  function updateSuggestions() {
-    const query = normalizeText(classroomSearch.value);
-    classroomSuggestions.innerHTML = '';
-    if (!query) return;
-
-    const uniqueNames = [...new Set(classroomNames)];
-    const matches = uniqueNames.filter(name => normalizeText(name).includes(query));
-    matches.forEach(name => {
-      const option = document.createElement('option');
-      option.value = name;
-      classroomSuggestions.appendChild(option);
+    grid.innerHTML = '';
+    list.forEach((v, i) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'venue-card';
+      card.id = v.id;
+      card.style.setProperty('--thumb', 'url(https://i.ytimg.com/vi/' + videoIdOf(v, 0) + '/hqdefault.jpg)');
+      card.innerHTML =
+        '<span class="venue-play-lg" aria-hidden="true">▶</span>' +
+        '<span class="venue-body">' +
+          '<span class="venue-top">' +
+            '<span class="venue-type">' + v.type + '</span>' +
+            '<span class="venue-index" aria-hidden="true">' + String(i + 1).padStart(2, '0') + '</span>' +
+          '</span>' +
+          '<span class="venue-name">' + v.name + '</span>' +
+          '<span class="venue-sub">' + (v.routes ? '2 farklı giriş' : '') + '</span>' +
+        '</span>' +
+        '<span class="venue-cta">' +
+          '<span class="venue-play" aria-hidden="true">▶</span>' +
+          '<span>' + (v.routes ? '2 giriş · tarifi izle' : 'Yol tarifini izle') + '</span>' +
+        '</span>' +
+        '<span class="venue-chevron" aria-hidden="true">›</span>';
+      card.addEventListener('click', () => openPlayer(v.id));
+      grid.appendChild(card);
     });
+
+    emptyMsg.hidden = list.length > 0;
   }
 
+  // ── Oynatıcı ──
+  function renderPlayer() {
+    if (!activeVenue) return;
 
-      const videoIframes = Array.from(document.querySelectorAll('.video-wrap iframe[data-video-id]'));
-      const isHttpPage = window.location.protocol === 'https:' || window.location.protocol === 'http:';
-      const baseOrigin = isHttpPage ? window.location.origin : 'https://iuevrim.org';
-      const pageReferrer = isHttpPage ? `${window.location.origin}${window.location.pathname}` : 'https://iuevrim.org/nasil-gidilir/';
+    const vid = videoIdOf(activeVenue, activeRoute);
+    playerTitle.textContent = activeVenue.name;
+    playerFrame.classList.toggle('is-landscape', !activeVenue.portrait);
+    playerIframe.title = activeVenue.name + ' yol tarifi videosu';
+    playerIframe.src = 'https://www.youtube.com/embed/' + vid +
+      '?rel=0&playsinline=1&modestbranding=1&autoplay=1&origin=' + encodeURIComponent(location.origin);
+    playerWatch.href = 'https://www.youtube.com/watch?v=' + vid;
 
-      function buildEmbedUrl(videoId) {
-        const params = new URLSearchParams({
-          rel: '0',
-          playsinline: '1',
-          modestbranding: '1',
-          enablejsapi: '1',
-          origin: baseOrigin,
-          widget_referrer: pageReferrer
+    playerTabs.innerHTML = '';
+    if (activeVenue.routes) {
+      activeVenue.routes.forEach((r, i) => {
+        const tab = document.createElement('button');
+        tab.type = 'button';
+        tab.className = 'player-tab';
+        tab.textContent = r.label;
+        tab.setAttribute('aria-pressed', String(i === activeRoute));
+        tab.addEventListener('click', () => {
+          if (i === activeRoute) return;
+          activeRoute = i;
+          renderPlayer();
         });
-
-        return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
-      }
-
-      function loadIframe(iframe) {
-        if (!iframe || iframe.dataset.loaded === '1') return;
-
-        const videoId = iframe.dataset.videoId;
-        if (!videoId) return;
-
-        iframe.src = buildEmbedUrl(videoId);
-        iframe.dataset.loaded = '1';
-      }
-
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            loadIframe(entry.target);
-            obs.unobserve(entry.target);
-          });
-        }, { rootMargin: '280px 0px', threshold: 0.01 });
-
-        videoIframes.forEach((iframe) => observer.observe(iframe));
-      } else {
-        videoIframes.forEach(loadIframe);
-      }
-  function filterClassrooms() {
-    const query = normalizeText(classroomSearch.value);
-    classroomLinks.forEach(link => {
-      const text = normalizeText(link.textContent || '');
-      const visible = text.includes(query);
-      link.parentElement.style.display = visible ? '' : 'none';
-    });
-  }
-
-  function setClassroomPanelOpen(isOpen) {
-    if (!classroomPanel || !classroomToggle) return;
-    classroomPanel.classList.toggle('show-list', isOpen);
-    classroomToggle.setAttribute('aria-expanded', String(isOpen));
-    classroomToggle.textContent = isOpen ? 'Tüm sınıfları gizle' : 'Tüm sınıfları gör';
-  }
-
-  function updateClassroomListHeight() {
-    if (!classroomPanel || !classroomList) return;
-
-    const maxViewportHeight = Math.floor(window.innerHeight * 0.52);
-    const contentHeight = classroomList.scrollHeight;
-    const openHeight = Math.min(contentHeight, maxViewportHeight);
-    classroomPanel.style.setProperty('--classroom-list-open-height', `${Math.max(openHeight, 0)}px`);
-  }
-
-  function scrollToClassroom(targetId) {
-    if (!targetId) return;
-    const target = document.getElementById(targetId);
-    if (!target) return;
-
-    classroomLinks.forEach(item => item.classList.remove('active'));
-    const activeLink = classroomLinks.find(link => link.dataset.target === targetId);
-    if (activeLink) activeLink.classList.add('active');
-
-    const nav = document.querySelector('body > nav');
-    const navHeight = nav ? nav.offsetHeight : 64;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
-    window.scrollTo({ top, behavior: 'smooth' });
-
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      setClassroomPanelOpen(false);
+        playerTabs.appendChild(tab);
+      });
     }
   }
 
-  classroomSearch.addEventListener('input', () => {
-    const hasQuery = normalizeText(classroomSearch.value).length > 0;
-    updateClassroomListHeight();
-    setClassroomPanelOpen(hasQuery && window.matchMedia('(max-width: 768px)').matches);
-    filterClassrooms();
-    updateSuggestions();
-  });
+  function openPlayer(id) {
+    const venue = VENUES.find(v => v.id === id);
+    if (!venue) return;
 
-  classroomSearch.addEventListener('blur', () => {
-    classroomSuggestions.innerHTML = '';
-  });
-
-  if (classroomToggle && classroomPanel) {
-    classroomToggle.addEventListener('click', () => {
-      const isOpen = !classroomPanel.classList.contains('show-list');
-      updateClassroomListHeight();
-      setClassroomPanelOpen(isOpen);
-      if (isOpen) {
-        classroomLinks.forEach(link => {
-          link.parentElement.style.display = '';
-        });
-        updateClassroomListHeight();
-      }
-    });
+    lastFocused = document.activeElement;
+    activeVenue = venue;
+    activeRoute = 0;
+    renderPlayer();
+    player.hidden = false;
+    document.body.style.overflow = 'hidden';
+    history.pushState({ playerOpen: true }, '');
+    playerClose.focus();
   }
 
-  window.addEventListener('resize', () => {
-    if (!window.matchMedia('(max-width: 768px)').matches) return;
-    updateClassroomListHeight();
-  });
+  function closePlayer() {
+    if (player.hidden) return;
+    player.hidden = true;
+    playerIframe.src = 'about:blank';
+    activeVenue = null;
+    document.body.style.overflow = '';
+    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
+  }
 
-  updateClassroomListHeight();
-
-  classroomLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      scrollToClassroom(link.dataset.target);
-    });
-  });
-
-  classroomSearch.addEventListener('keydown', (e) => {
-    if (e.key !== 'Enter') return;
-    const query = normalizeText(classroomSearch.value);
-    const firstMatch = classroomLinks.find(link => normalizeText(link.textContent || '').includes(query));
-    if (firstMatch) {
-      e.preventDefault();
-      scrollToClassroom(firstMatch.dataset.target);
+  function closePlayerViaBack() {
+    if (history.state && history.state.playerOpen) {
+      history.back();
+    } else {
+      closePlayer();
     }
+  }
+
+  window.addEventListener('popstate', () => {
+    if (!player.hidden) closePlayer();
   });
+
+  player.addEventListener('click', e => {
+    if (e.target === player) closePlayerViaBack();
+  });
+
+  playerClose.addEventListener('click', closePlayerViaBack);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !player.hidden) closePlayerViaBack();
+  });
+
+  searchInput.addEventListener('input', render);
+
+  render();
+
+  // Eski bağlantılar (#derslik-5 gibi) doğrudan videoyu açsın
+  const initial = decodeURIComponent(location.hash.replace('#', ''));
+  if (initial && VENUES.some(v => v.id === initial)) openPlayer(initial);
+
 </script>
 </body>
 </html>

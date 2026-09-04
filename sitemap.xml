@@ -11,6 +11,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://iuevrim.org/evrim-konferansi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://iuevrim.org/makale-grubu/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
