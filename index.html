@@ -468,24 +468,23 @@
     background: linear-gradient(to left, var(--surface2), transparent);
   }
 
+  .announcement-bar {
+    touch-action: pan-y;
+    cursor: grab;
+  }
+
+  .announcement-bar.dragging {
+    cursor: grabbing;
+  }
+
   .announcement-track {
     display: flex;
     align-items: center;
     gap: 1.5rem;
     white-space: nowrap;
-    animation: scrollBand 28s linear infinite;
     will-change: transform;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-  }
-
-  .announcement-track:hover {
-    animation-play-state: paused;
-  }
-
-  @keyframes scrollBand {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
   }
 
   .announcement-item {
@@ -496,6 +495,21 @@
     align-items: center;
     gap: 0.5rem;
     flex-shrink: 0;
+  }
+
+  a.announcement-item {
+    text-decoration: none;
+  }
+
+  a.announcement-item:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .ann-inline-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ann-dot {
@@ -1391,7 +1405,7 @@
 <!-- SIDE PANEL -->
 <div class="side-panel" id="side-panel">
   <button class="side-panel-close" id="side-panel-close" aria-label="Kapat">✕</button>
-  <a href="index.html" class="side-panel-logo" style="text-decoration: none;">
+  <a href="/" class="side-panel-logo" style="text-decoration: none;">
     <span class="nav-logo-iu">İÜ</span>
     <span class="nav-logo-name">Evrim Topluluğu</span>
   </a>
@@ -1497,21 +1511,25 @@
   -->
 <div class="announcement-bar">
   <div class="announcement-track">
-    <span class="announcement-item"><span class="ann-dot"></span> Evrim Topluluğunda yazı yazmak için bize ulaşın! Detaylar için Blog bölümüne bakınız.</span>
+    <span class="announcement-item"><span class="ann-dot"></span> iuevrim.org yayında! Keşfetmek için kaydır.</span>
     <span class="announcement-sep">·</span>
-    <span class="announcement-item"><span class="ann-dot"></span> Makale Grubu için sunucular aranıyor! Detaylar için makale grubu bölümüne bakınız.</span>
+    <span class="announcement-item"><span class="ann-dot"></span> Ekibimizde katılmak ister misin? <a href="#biz-kimiz" data-scroll-tab="katil" class="ann-inline-link">Bize katılın</a>.</span>
     <span class="announcement-sep">·</span>
-    <span class="announcement-item"><span class="ann-dot"></span> Evrim Konferansı 9 Mayıs'ta!</span>
+    <span class="announcement-item"><span class="ann-dot"></span> Evrim Topluluğunda yazı yazmak için bize ulaşın! Detaylar için <a href="/blog/#basvuru" class="ann-inline-link">Blog</a> bölümüne bakınız.</span>
     <span class="announcement-sep">·</span>
-    <span class="announcement-item"><span class="ann-dot"></span> Tasarım ekibinde yer almak için bize ulaşın!</span>
+    <a href="/makale-grubu/#katil" class="announcement-item"><span class="ann-dot"></span> Makale Grubu için sunucular aranıyor! Detaylar için makale grubu bölümüne bakınız.</a>
     <span class="announcement-sep">·</span>
-    <span class="announcement-item"><span class="ann-dot"></span> Evrim Topluluğunda yazı yazmak için bize ulaşın! Detaylar için Blog bölümüne bakınız.</span>
+    <span class="announcement-item"><span class="ann-dot"></span> Tasarım ekibinde yer almak için <a href="#biz-kimiz" data-scroll-tab="katil" class="ann-inline-link">bize ulaşın</a>!</span>
     <span class="announcement-sep">·</span>
-    <span class="announcement-item"><span class="ann-dot"></span> Makale Grubu için sunucular aranıyor! Detaylar için makale grubu bölümüne bakınız.</span>
-    <span class="announcement-sep">·</span> 
-    <span class="announcement-item"><span class="ann-dot"></span> Evrim Konferansı 9 Mayıs'ta!</span>
+    <span class="announcement-item"><span class="ann-dot"></span> iuevrim.org yayında! Keşfetmek için kaydır.</span>
     <span class="announcement-sep">·</span>
-    <span class="announcement-item"><span class="ann-dot"></span> Tasarım ekibinde yer almak için bize ulaşın!</span>
+    <span class="announcement-item"><span class="ann-dot"></span> Ekibimizde katılmak ister misin? <a href="#biz-kimiz" data-scroll-tab="katil" class="ann-inline-link">Bize katılın</a>.</span>
+    <span class="announcement-sep">·</span>
+    <span class="announcement-item"><span class="ann-dot"></span> Evrim Topluluğunda yazı yazmak için bize ulaşın! Detaylar için <a href="/blog/#basvuru" class="ann-inline-link">Blog</a> bölümüne bakınız.</span>
+    <span class="announcement-sep">·</span>
+    <a href="/makale-grubu/#katil" class="announcement-item"><span class="ann-dot"></span> Makale Grubu için sunucular aranıyor! Detaylar için makale grubu bölümüne bakınız.</a>
+    <span class="announcement-sep">·</span>
+    <span class="announcement-item"><span class="ann-dot"></span> Tasarım ekibinde yer almak için <a href="#biz-kimiz" data-scroll-tab="katil" class="ann-inline-link">bize ulaşın</a>!</span>
   </div>
 </div>
 
@@ -2109,7 +2127,6 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/taylan_ozgur_delibas.png" alt="Taylan Özgür Delibaş" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Taylan Özgür Delibaş</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub">İÜ Matematik Bölümü</div></div>
         <div class="team-card"><div class="team-avatar"><img src="images/yk_pics/can_furat.png" alt="Can Furat" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Can Furat</div><div class="team-role">Yönetim Kurulu Üyesi</div><div class="team-role-sub"><span class="rs-line">İÜ Moleküler Biyoloji</span><span class="rs-line">ve Genetik Bölümü</span></div></div>
         <a class="team-card" href="https://avesis.istanbul.edu.tr/mbona" target="_blank" rel="noopener"><div class="team-avatar"><img src="images/yk_pics/mehmet_bona.png" alt="Prof. Dr. Mehmet Bona" style="width:100%;height:100%;object-fit:cover;"></div><div class="team-name">Prof. Dr. Mehmet Bona</div><div class="team-role">Danışman</div><div class="team-role-sub"><span class="rs-line">İÜ Biyoloji Bölümü</span><span class="rs-line">Botanik Ana Bilim Dalı</span></div></a>
-      </div>
       </div>
     </div>
   </div>
@@ -3110,6 +3127,86 @@ bizKimizSection.addEventListener('touchend', function(e) {
     }
   })();
 
+</script>
+<script>
+  // ── Duyuru bandı: otomatik kayma + mobilde elle sürükleme ──
+  (function () {
+    const bar = document.querySelector('.announcement-bar');
+    const track = document.querySelector('.announcement-track');
+    if (!bar || !track) return;
+
+    const LOOP_SECONDS = 28;
+    let halfWidth = 0;
+    let speed = 0;
+    let pos = 0;
+    let lastTime = null;
+    let hoverPaused = false;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartPos = 0;
+    let dragMoved = 0;
+
+    function measure() {
+      halfWidth = track.scrollWidth / 2;
+      speed = halfWidth / (LOOP_SECONDS * 1000);
+    }
+    measure();
+    window.addEventListener('resize', measure);
+
+    function frame(ts) {
+      if (lastTime === null) lastTime = ts;
+      const dt = ts - lastTime;
+      lastTime = ts;
+      if (!dragging && !hoverPaused && halfWidth > 0) {
+        pos -= speed * dt;
+        if (pos <= -halfWidth) pos += halfWidth;
+      }
+      track.style.transform = 'translateX(' + pos + 'px)';
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    bar.addEventListener('mouseenter', () => { hoverPaused = true; });
+    bar.addEventListener('mouseleave', () => { hoverPaused = false; });
+
+    bar.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      dragging = true;
+      dragMoved = 0;
+      dragStartX = e.clientX;
+      dragStartPos = pos;
+      bar.classList.add('dragging');
+      if (bar.setPointerCapture) bar.setPointerCapture(e.pointerId);
+    });
+
+    bar.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - dragStartX;
+      dragMoved = Math.max(dragMoved, Math.abs(dx));
+      pos = dragStartPos + dx;
+      if (halfWidth > 0) {
+        while (pos <= -halfWidth) pos += halfWidth;
+        while (pos > 0) pos -= halfWidth;
+      }
+      track.style.transform = 'translateX(' + pos + 'px)';
+    });
+
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      bar.classList.remove('dragging');
+      if (dragMoved > 6) {
+        const suppressClick = (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          bar.removeEventListener('click', suppressClick, true);
+        };
+        bar.addEventListener('click', suppressClick, true);
+      }
+    }
+    bar.addEventListener('pointerup', endDrag);
+    bar.addEventListener('pointercancel', endDrag);
+  })();
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
