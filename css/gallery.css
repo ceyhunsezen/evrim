@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ORTAK FOTOĞRAF GALERİSİ
+
+   Sitedeki bütün galeriler bu dosyayı ve /js/gallery.js'i kullanır;
+   yapı evrim konferansı sayfasındaki galeriden alınmıştır:
+   yatay kaydırılan şerit + ilerleme çubuğu/oklar + lightbox.
+
+   Kullanım (her sayfada birebir aynı):
+
+     <div class="gallery-strip drag-strip" id="gal-x" data-lb="x"
+          role="region" tabindex="0" aria-label="...">
+       <button type="button" class="gallery-item"
+               data-full="/tam-boy.webp" data-cap="Alt yazı">
+         <img src="/kucuk.webp" alt="..." loading="lazy" decoding="async">
+       </button>
+       ...
+     </div>
+     <div class="gallery-nav" data-for="gal-x">
+       <div class="slider-progress" aria-hidden="true"><span></span></div>
+       <button class="slider-btn slider-prev" aria-label="Önceki fotoğraflar"
+               aria-controls="gal-x">&#8592;</button>
+       <button class="slider-btn slider-next" aria-label="Sonraki fotoğraflar"
+               aria-controls="gal-x">&#8594;</button>
+     </div>
+
+   Sayfaya serpiştirilmiş tekil fotoğraflar data-lb + data-idx ile aynı
+   gruba bağlanabilir. Lightbox'ın kendisini JS üretir.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Renkler sayfanın kendi paletinden gelir: konferans sayfası altın
+   (--kf-*) tanımladığı için orada altın, tanımlamayan sayfalarda yeşil
+   aksan tonları kullanılır. */
+:root {
+  --gal-accent: var(--kf-gold, var(--accent));
+  --gal-line:   var(--kf-gold-line, var(--border));
+  --gal-faint:  var(--kf-gold-faint, var(--border-soft));
+  --gal-fg:     var(--kf-cream, var(--text));
+  --gal-fg-dim: var(--kf-cream-dim, var(--text-muted));
+}
+
+/* ── ŞERİT ── */
+.gallery-strip {
+  display: flex; gap: 0.9rem;
+  overflow-x: auto; scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  /* Mobilde şeridi kaydırırken tarayıcının geri-kaydırma hareketi
+     devreye girmesin */
+  overscroll-behavior-x: contain;
+  padding-bottom: 2px; margin-top: 1.6rem;
+}
+.gallery-strip::-webkit-scrollbar { display: none; }
+.gallery-strip > :last-child { scroll-snap-align: end; }
+
+.gallery-item {
+  flex: 0 0 358px; height: 238px; scroll-snap-align: start;
+  overflow: hidden; border: 1px solid var(--border-soft);
+  padding: 0; background: var(--surface2); cursor: zoom-in;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  opacity: 0.82; transition: opacity 0.3s, transform 0.4s;
+}
+.gallery-item:hover img { opacity: 1; transform: scale(1.04); }
+/* Dikey (portre) kareler için */
+.gallery-item--tall { flex: 0 0 210px; height: 320px; }
+
+.drag-strip { cursor: grab; }
+.drag-strip.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.drag-strip.is-dragging a,
+.drag-strip.is-dragging img { pointer-events: none; }
+
+/* ── ŞERİT KONTROLLERİ ──
+   Sayfaların kendi slider'larıyla çakışmasın diye .gallery-nav altına
+   sınırlandırıldı. */
+.gallery-nav {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 0.5rem; margin-top: 1.2rem;
+}
+.gallery-nav .slider-progress {
+  flex: 1; height: 1px; background: var(--gal-faint);
+  margin-right: 0.75rem; position: relative; overflow: hidden;
+}
+.gallery-nav .slider-progress span {
+  position: absolute; top: 0; left: 0; height: 100%; width: 0;
+  background: var(--gal-accent); transition: width 0.2s linear, transform 0.2s linear;
+}
+.gallery-nav .slider-btn {
+  background: none; border: 1px solid var(--gal-line); color: var(--gal-fg-dim);
+  width: 34px; height: 34px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 0.9rem;
+  transition: border-color 0.2s, color 0.2s, opacity 0.2s;
+}
+.gallery-nav .slider-btn:hover:not(:disabled) { border-color: var(--gal-accent); color: var(--gal-fg); }
+.gallery-nav .slider-btn:disabled { opacity: 0.28; cursor: default; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 950;
+  background: rgba(5,7,5,0.95); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 3.5rem 4.5rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+}
+.lightbox[data-open='true'] { opacity: 1; pointer-events: auto; }
+.lightbox img {
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  border: 1px solid var(--gal-line);
+}
+.lightbox-btn {
+  position: absolute; background: rgba(7,9,7,0.65);
+  border: 1px solid var(--gal-line); color: var(--gal-fg-dim);
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+}
+.lightbox-btn:hover { color: var(--gal-fg); border-color: var(--gal-accent); }
+.lightbox-close { top: 1.2rem; right: 1.2rem; }
+.lightbox-prev  { left: 1.2rem;  top: 50%; transform: translateY(-50%); }
+.lightbox-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+.lightbox-caption {
+  position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.78rem; letter-spacing: 0.06em; color: var(--gal-fg-dim);
+  text-align: center; max-width: 80%;
+}
+body.lightbox-open { overflow: hidden; }
+
+/* ── MOBİL ──
+   Kareler ekran genişliğine göre küçülür, şerit parmakla kaydırılır. */
+@media (max-width: 768px) {
+  .gallery-item { flex: 0 0 min(78vw, 280px); height: 190px; }
+  .gallery-item--tall { flex: 0 0 min(52vw, 180px); height: 275px; }
+  .lightbox { padding: 3.5rem 1rem; }
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
+  /* Blur'lu tam ekran katman mobilde pahalı */
+  .lightbox {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    background: rgba(6,9,6,0.97);
+  }
+}

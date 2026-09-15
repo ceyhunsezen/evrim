@@ -59,6 +59,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Ortak fotoğraf galerisi (sitedeki tüm galerilerle aynı yapı) -->
+  <link rel="stylesheet" href="/css/gallery.css">
+  <script src="/js/gallery.js" defer></script>
 <style>
 
   :root {
@@ -627,8 +631,7 @@
 
   /* Son kart "end" hizalansın: aksi halde şeridin sonu geçerli bir
      snap noktası olmadığı için sona yaslanma geri çekiliyor. */
-  .articles-slider > :last-child,
-  .gallery-strip > :last-child { scroll-snap-align: end; }
+  .articles-slider > :last-child { scroll-snap-align: end; }
 
   /* Sürüklenebilir şeritler */
   .drag-strip { cursor: grab; }
@@ -637,123 +640,6 @@
   .drag-strip.is-dragging a,
   .drag-strip.is-dragging img { pointer-events: none; }
 
-  /* ── FOTO GALERİ ── */
-  .gallery-section {
-    position: relative;
-    z-index: 1;
-    padding: 4rem 0 3rem;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .gallery-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/images/makale grubu/background2.webp');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.05;
-    mix-blend-mode: luminosity;
-    filter: sepia(1) saturate(2) hue-rotate(78deg) brightness(0.5) contrast(1.2);
-    z-index: 0;
-    pointer-events: none;
-  }
-  .gallery-section > * { position: relative; z-index: 1; }
-  .gallery-section-header {
-    padding: 0 4rem 2rem;
-  }
-  .gallery-strip {
-    display: flex;
-    gap: 0.75rem;
-    overflow-x: auto;
-    scroll-snap-type: x proximity; /* mandatory: son karta yaslanmayi engelliyordu */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0 4rem;
-    /* Serit sol boslugu kadar: ilk foto tam basa (scrollLeft 0) yaslansin */
-    scroll-padding-left: 4rem;
-  }
-  .gallery-strip::-webkit-scrollbar { display: none; }
-  .gallery-item {
-    flex: 0 0 320px;
-    height: 215px;
-    scroll-snap-align: start;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    flex-shrink: 0;
-    padding: 0;
-    background: var(--surface2);
-    cursor: zoom-in;
-  }
-  .gallery-item img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.82;
-    transition: opacity 0.3s, transform 0.4s;
-  }
-  .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
-  .gallery-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 1.2rem;
-    padding: 0 4rem;
-  }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 400;
-    background: rgba(6,9,6,0.94);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3.5rem 4.5rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-  .lightbox[data-open='true'] { opacity: 1; pointer-events: auto; }
-  .lightbox img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border: 1px solid var(--border);
-  }
-  .lightbox-btn {
-    position: absolute;
-    background: rgba(10,14,10,0.6);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    width: 44px; height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .lightbox-btn:hover { color: var(--accent); border-color: var(--accent); }
-  .lightbox-close { top: 1.2rem; right: 1.2rem; }
-  .lightbox-prev  { left: 1.2rem;  top: 50%; transform: translateY(-50%); }
-  .lightbox-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
-  .lightbox-caption {
-    position: absolute;
-    bottom: 1.2rem; left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    text-align: center;
-    max-width: 80%;
-  }
-  body.lightbox-open { overflow: hidden; }
 
   /* ── FOOTER ── */
   footer {
@@ -798,9 +684,6 @@
     .hamburger { display: flex; }
     .next-session-section { padding: 2.5rem 1.5rem; }
     .next-session { padding: 1.5rem 1.4rem; }
-    .lightbox { padding: 3.5rem 1rem; }
-    .lightbox-prev { left: 0.5rem; }
-    .lightbox-next { right: 0.5rem; }
     .page-hero { padding: 4.5rem 1.5rem 1.5rem; min-height: 28vh; }
     .page-hero-bg {
       background-image: url('/images/makale grubu/makalegrubu_hero_mobile.webp');
@@ -823,11 +706,6 @@
     .blog-grid > .blog-card { flex: 0 0 300px; }
     .form-body { padding: 1.8rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
-    .gallery-section { padding: 2.5rem 0 2rem; }
-    .gallery-section-header { padding: 0 1.5rem 1.5rem; }
-    .gallery-strip { padding: 0 1.5rem; scroll-padding-left: 1.5rem; }
-    .gallery-nav { padding: 0 1.5rem; }
-    .gallery-item { flex: 0 0 260px; height: 175px; }
   }
  /* ── MOBİL PERFORMANS OPTİMİZASYONU ── */
 @media (max-width: 768px) {
@@ -853,13 +731,11 @@
   }
 
   /* 4. Blur'lu sabit çubuklar mobilde pahalı */
-  body > nav,
-  .lightbox {
+  body > nav {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    background: rgba(10,14,10,0.97) !important;
   }
-  body > nav { background: rgba(10,14,10,0.97) !important; }
-  .lightbox { background: rgba(6,9,6,0.97) !important; }
 }
   /* Meta satirlarindaki kucuk ikonlar */
   .meta-ico {
@@ -1252,6 +1128,8 @@
     .post-layout { padding: 1.75rem 1.25rem 2.5rem; }
     .post-gallery { padding: 0 0 2.5rem; }
     .post-gallery-head { margin: 0 1.25rem 1rem; }
+    .post-gallery .gallery-strip { padding: 0 1.25rem; scroll-padding-left: 1.25rem; }
+    .post-gallery .gallery-nav { padding: 0 1.25rem; }
     .post-footer-nav { padding: 1rem 1.25rem 1.2rem; }
 
     /* Okuma konforu: biraz daha genis satir araligi, dar olcu */
@@ -1278,6 +1156,8 @@
     .post-hero { padding: 5.25rem 1rem 1.75rem; }
     .post-layout { padding: 1.5rem 1rem 2rem; }
     .post-gallery-head { margin: 0 1rem 1rem; }
+    .post-gallery .gallery-strip { padding: 0 1rem; scroll-padding-left: 1rem; }
+    .post-gallery .gallery-nav { padding: 0 1rem; }
     .post-footer-nav { padding: 1rem 1rem 1.2rem; }
     .post-body { font-size: 0.96rem; }
   }
@@ -1300,6 +1180,14 @@
     border-left: 2px solid rgba(109,191,103,0.5);
     margin: 0 4rem 1.6rem;
   }
+  /* Şeridin ve lightbox'ın kendisi /css/gallery.css'te; burada yalnızca
+     bu bölüme özgü boşluklar veriliyor. */
+  .post-gallery .gallery-strip {
+    padding: 0 4rem;
+    /* Serit sol boslugu kadar: ilk foto tam basa (scrollLeft 0) yaslansin */
+    scroll-padding-left: 4rem;
+  }
+  .post-gallery .gallery-nav { padding: 0 4rem; }
 
   /* Hazırlayan satırı */
   .post-byline {
@@ -1323,6 +1211,8 @@
   @media (max-width: 768px) {
     .post-gallery { padding: 0 0 3rem; }
     .post-gallery-head { margin: 0 1.5rem 1.2rem; }
+    .post-gallery .gallery-strip { padding: 0 1.5rem; scroll-padding-left: 1.5rem; }
+    .post-gallery .gallery-nav { padding: 0 1.5rem; }
   }
 
   /* ══════════════════════════════════════════════════════════════
@@ -1852,7 +1742,7 @@
 
   <section class="post-gallery" id="fotograflar" data-toc="Fotoğraflar" aria-labelledby="galeri-baslik">
     <h2 class="post-gallery-head" id="galeri-baslik">Etkinlikten Görseller</h2>
-    <div class="gallery-strip drag-strip" id="post-gallery"
+    <div class="gallery-strip drag-strip" id="gal-tardigradlar" data-lb="tardigradlar"
          role="region" aria-labelledby="galeri-baslik" tabindex="0">
     <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-01-sunum-hox.jpg" alt="Hox genleri ve eksen paterni slaydının sunulduğu an" width="1600" height="1204" loading="lazy" decoding="async"></button>
     <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-02-sunum-hox-yakin.jpg" alt="Esma Güler’in Hox genleri sunumundan bir kare" width="1600" height="1204" loading="lazy" decoding="async"></button>
@@ -1861,10 +1751,10 @@
     <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-05-sunum-multiomics.jpg" alt="Multiomics makalesinin başlık slaydı ve sunucu" width="1600" height="1204" loading="lazy" decoding="async"></button>
     <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-06-ekip.jpg" alt="Oturumun konuğu ve sunucuları birlikte" width="1204" height="1600" loading="lazy" decoding="async"></button>
     </div>
-    <div class="gallery-nav">
-      <div class="slider-progress" aria-hidden="true"><span id="post-gallery-progress"></span></div>
-      <button class="slider-btn" id="post-gallery-prev" aria-label="Önceki fotoğraflar" aria-controls="post-gallery">&#8592;</button>
-      <button class="slider-btn" id="post-gallery-next" aria-label="Sonraki fotoğraflar" aria-controls="post-gallery">&#8594;</button>
+    <div class="gallery-nav" data-for="gal-tardigradlar">
+      <div class="slider-progress" aria-hidden="true"><span></span></div>
+      <button class="slider-btn slider-prev" aria-label="Önceki fotoğraflar" aria-controls="gal-tardigradlar">&#8592;</button>
+      <button class="slider-btn slider-next" aria-label="Sonraki fotoğraflar" aria-controls="gal-tardigradlar">&#8594;</button>
     </div>
   </section>
 
@@ -1875,15 +1765,6 @@
 
 </main>
 
-
-<!-- ── LIGHTBOX ── -->
-<div class="lightbox" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici">
-  <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Kapat">&#10005;</button>
-  <button class="lightbox-btn lightbox-prev"  id="lightbox-prev"  aria-label="Önceki fotoğraf">&#8592;</button>
-  <button class="lightbox-btn lightbox-next"  id="lightbox-next"  aria-label="Sonraki fotoğraf">&#8594;</button>
-  <img id="lightbox-img" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -2072,14 +1953,6 @@
   }
 
   setupStrip({
-    strip: document.getElementById('post-gallery'),
-    prev: document.getElementById('post-gallery-prev'),
-    next: document.getElementById('post-gallery-next'),
-    progress: document.getElementById('post-gallery-progress'),
-    itemSelector: '.gallery-item'
-  });
-
-  setupStrip({
     strip: document.getElementById('blog-grid'),
     prev: document.getElementById('blog-prev'),
     next: document.getElementById('blog-next'),
@@ -2204,52 +2077,3 @@
 <script src="/js/blog.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-<script>
-  /* Etkinlik galerisi lightbox'ı */
-  (function () {
-    var grid = document.getElementById('post-gallery');
-    var box  = document.getElementById('lightbox');
-    if (!grid || !box) return;
-    var boxImg  = document.getElementById('lightbox-img');
-    var caption = document.getElementById('lightbox-caption');
-    var items   = Array.prototype.slice.call(grid.querySelectorAll('button'));
-    var index = 0, lastFocused = null;
-
-    function show(i) {
-      index = (i + items.length) % items.length;
-      var img = items[index].querySelector('img');
-      boxImg.src = img.currentSrc || img.src;
-      boxImg.alt = img.alt;
-      caption.textContent = img.alt + '  ·  ' + (index + 1) + ' / ' + items.length;
-    }
-    function open(i) {
-      lastFocused = document.activeElement;
-      show(i);
-      box.dataset.open = 'true';
-      document.body.classList.add('lightbox-open');
-      document.getElementById('lightbox-close').focus();
-    }
-    function close() {
-      box.dataset.open = 'false';
-      document.body.classList.remove('lightbox-open');
-      boxImg.src = '';
-      if (lastFocused) lastFocused.focus();
-    }
-    items.forEach(function (item, i) { item.addEventListener('click', function () { open(i); }); });
-    document.getElementById('lightbox-close').addEventListener('click', close);
-    document.getElementById('lightbox-prev').addEventListener('click', function () { show(index - 1); });
-    document.getElementById('lightbox-next').addEventListener('click', function () { show(index + 1); });
-    box.addEventListener('click', function (e) { if (e.target === box) close(); });
-    document.addEventListener('keydown', function (e) {
-      if (box.dataset.open !== 'true') return;
-      if (e.key === 'Escape')     close();
-      if (e.key === 'ArrowLeft')  show(index - 1);
-      if (e.key === 'ArrowRight') show(index + 1);
-    });
-  })();
-</script>

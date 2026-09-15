@@ -105,6 +105,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Ortak fotoğraf galerisi (sitedeki tüm galerilerle aynı yapı) -->
+  <link rel="stylesheet" href="/css/gallery.css">
+  <script src="/js/gallery.js" defer></script>
 <style>
 
   :root {
@@ -1012,8 +1016,7 @@
 
   /* Son kart "end" hizalansın: aksi halde şeridin sonu geçerli bir
      snap noktası olmadığı için sona yaslanma geri çekiliyor. */
-  .articles-slider > :last-child,
-  .gallery-strip > :last-child { scroll-snap-align: end; }
+  .articles-slider > :last-child { scroll-snap-align: end; }
 
   /* Sürüklenebilir şeritler */
   .drag-strip { cursor: grab; }
@@ -1490,97 +1493,15 @@
   .gallery-section-header {
     padding: 0 4rem 2rem;
   }
-  .gallery-strip {
-    display: flex;
-    gap: 0.75rem;
-    overflow-x: auto;
-    scroll-snap-type: x proximity; /* mandatory: son karta yaslanmayi engelliyordu */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+  /* Şeridin ve lightbox'ın kendisi /css/gallery.css'te; burada yalnızca
+     bu sayfaya özgü bölüm boşlukları veriliyor. */
+  .gallery-section .gallery-strip {
     padding: 0 4rem;
     /* Serit sol boslugu kadar: ilk foto tam basa (scrollLeft 0) yaslansin */
     scroll-padding-left: 4rem;
   }
-  .gallery-strip::-webkit-scrollbar { display: none; }
-  .gallery-item {
-    flex: 0 0 320px;
-    height: 215px;
-    scroll-snap-align: start;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    flex-shrink: 0;
-    padding: 0;
-    background: var(--surface2);
-    cursor: zoom-in;
-  }
-  .gallery-item img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.82;
-    transition: opacity 0.3s, transform 0.4s;
-  }
-  .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
-  .gallery-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 1.2rem;
-    padding: 0 4rem;
-  }
+  .gallery-section .gallery-nav { padding: 0 4rem; }
 
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 400;
-    background: rgba(6,9,6,0.94);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3.5rem 4.5rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-  .lightbox[data-open='true'] { opacity: 1; pointer-events: auto; }
-  .lightbox img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border: 1px solid var(--border);
-  }
-  .lightbox-btn {
-    position: absolute;
-    background: rgba(10,14,10,0.6);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    width: 44px; height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .lightbox-btn:hover { color: var(--accent); border-color: var(--accent); }
-  .lightbox-close { top: 1.2rem; right: 1.2rem; }
-  .lightbox-prev  { left: 1.2rem;  top: 50%; transform: translateY(-50%); }
-  .lightbox-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
-  .lightbox-caption {
-    position: absolute;
-    bottom: 1.2rem; left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    text-align: center;
-    max-width: 80%;
-  }
-  body.lightbox-open { overflow: hidden; }
 
   /* ── FOOTER ── */
   footer {
@@ -1637,9 +1558,6 @@
     .hamburger { display: flex; }
     .next-session-section { padding: 2.5rem 1.5rem; }
     .next-session { padding: 1.5rem 1.4rem; }
-    .lightbox { padding: 3.5rem 1rem; }
-    .lightbox-prev { left: 0.5rem; }
-    .lightbox-next { right: 0.5rem; }
     .page-hero { padding: 4.5rem 1.5rem 1.5rem; min-height: 28vh; }
     .page-hero-bg {
       background-image: url('/images/makale grubu/makalegrubu_hero_mobile.webp');
@@ -1664,9 +1582,8 @@
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
     .gallery-section { padding: 2.5rem 0 2rem; }
     .gallery-section-header { padding: 0 1.5rem 1.5rem; }
-    .gallery-strip { padding: 0 1.5rem; scroll-padding-left: 1.5rem; }
-    .gallery-nav { padding: 0 1.5rem; }
-    .gallery-item { flex: 0 0 260px; height: 175px; }
+    .gallery-section .gallery-strip { padding: 0 1.5rem; scroll-padding-left: 1.5rem; }
+    .gallery-section .gallery-nav { padding: 0 1.5rem; }
   }
  /* ── MOBİL PERFORMANS OPTİMİZASYONU ── */
 @media (max-width: 768px) {
@@ -1686,13 +1603,11 @@
      olduğu gibi bırakıp yalnızca resmi geri getiriyoruz. */
 
   /* 4. Blur'lu sabit çubuklar mobilde pahalı */
-  body > nav,
-  .lightbox {
+  body > nav {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    background: rgba(10,14,10,0.97) !important;
   }
-  body > nav { background: rgba(10,14,10,0.97) !important; }
-  .lightbox { background: rgba(6,9,6,0.97) !important; }
 }
 </style>
 </head>
@@ -2196,7 +2111,7 @@
       </div>
     </div>
   </div>
-  <div class="gallery-strip drag-strip" id="gallery-strip"
+  <div class="gallery-strip drag-strip" id="gal-makale-grubu" data-lb="makale-grubu"
        role="region" aria-labelledby="anilar-baslik" tabindex="0">
     <button type="button" class="gallery-item"><img src="/images/events/2324_makalegrubu%20(2).jpg" alt="2023–24 Makale Grubu oturumundan bir kare" width="1080" height="810" loading="lazy" decoding="async"></button>
     <button type="button" class="gallery-item"><img src="/images/events/2324_makalegrubu%20(3).jpg" alt="2023–24 Makale Grubu oturumundan bir kare" width="1080" height="810" loading="lazy" decoding="async"></button>
@@ -2210,23 +2125,14 @@
     <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-05-sunum-multiomics.jpg" alt="Tardigradlar oturumunda Multiomics makalesinin sunumu" width="1600" height="1204" loading="lazy" decoding="async"></button>
     <button type="button" class="gallery-item"><img src="/images/events/tardigradlar/tardigradlar-06-ekip.jpg" alt="Tardigradlar oturumunun konuğu ve sunucuları" width="1204" height="1600" loading="lazy" decoding="async"></button>
   </div>
-  <div class="gallery-nav">
-    <div class="slider-progress" aria-hidden="true"><span id="gallery-progress"></span></div>
-    <button class="slider-btn" id="gallery-prev" aria-label="Önceki fotoğraflar" aria-controls="gallery-strip">&#8592;</button>
-    <button class="slider-btn" id="gallery-next" aria-label="Sonraki fotoğraflar" aria-controls="gallery-strip">&#8594;</button>
+  <div class="gallery-nav" data-for="gal-makale-grubu">
+    <div class="slider-progress" aria-hidden="true"><span></span></div>
+    <button class="slider-btn slider-prev" aria-label="Önceki fotoğraflar" aria-controls="gal-makale-grubu">&#8592;</button>
+    <button class="slider-btn slider-next" aria-label="Sonraki fotoğraflar" aria-controls="gal-makale-grubu">&#8594;</button>
   </div>
 </section>
 
 </main>
-
-<!-- ── LIGHTBOX ── -->
-<div class="lightbox" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici">
-  <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Kapat">&#10005;</button>
-  <button class="lightbox-btn lightbox-prev"  id="lightbox-prev"  aria-label="Önceki fotoğraf">&#8592;</button>
-  <button class="lightbox-btn lightbox-next"  id="lightbox-next"  aria-label="Sonraki fotoğraf">&#8594;</button>
-  <img id="lightbox-img" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -2422,15 +2328,6 @@
     itemSelector: '.article-card'
   });
 
-  const galleryStrip = document.getElementById('gallery-strip');
-  setupStrip({
-    strip: galleryStrip,
-    prev: document.getElementById('gallery-prev'),
-    next: document.getElementById('gallery-next'),
-    progress: document.getElementById('gallery-progress'),
-    itemSelector: '.gallery-item'
-  });
-
   setupStrip({
     strip: document.getElementById('blog-grid'),
     prev: document.getElementById('blog-prev'),
@@ -2438,58 +2335,6 @@
     progress: document.getElementById('blog-progress'),
     itemSelector: '.blog-card'
   });
-
-  /* ── LIGHTBOX ── */
-  (function () {
-    const box     = document.getElementById('lightbox');
-    if (!box || !galleryStrip) return;
-    const boxImg  = document.getElementById('lightbox-img');
-    const caption = document.getElementById('lightbox-caption');
-    const items   = Array.from(galleryStrip.querySelectorAll('.gallery-item'));
-    let index = 0, lastFocused = null;
-
-    const show = i => {
-      index = (i + items.length) % items.length;
-      const img = items[index].querySelector('img');
-      boxImg.src = img.currentSrc || img.src;
-      boxImg.alt = img.alt;
-      caption.textContent = img.alt + '  ·  ' + (index + 1) + ' / ' + items.length;
-    };
-
-    const open = i => {
-      lastFocused = document.activeElement;
-      show(i);
-      box.dataset.open = 'true';
-      document.body.classList.add('lightbox-open');
-      document.getElementById('lightbox-close').focus();
-    };
-
-    const close = () => {
-      box.dataset.open = 'false';
-      document.body.classList.remove('lightbox-open');
-      boxImg.src = '';
-      if (lastFocused) lastFocused.focus();
-    };
-
-    items.forEach((item, i) => item.addEventListener('click', () => {
-      // Sürükleme sonrası gelen tıklamayı yut
-      if (galleryStrip.classList.contains('is-dragging')) return;
-      open(i);
-    }));
-
-    document.getElementById('lightbox-close').addEventListener('click', close);
-    document.getElementById('lightbox-prev').addEventListener('click', () => show(index - 1));
-    document.getElementById('lightbox-next').addEventListener('click', () => show(index + 1));
-    box.addEventListener('click', e => { if (e.target === box) close(); });
-
-    document.addEventListener('keydown', e => {
-      if (box.dataset.open !== 'true') return;
-      if (e.key === 'Escape')     close();
-      if (e.key === 'ArrowLeft')  show(index - 1);
-      if (e.key === 'ArrowRight') show(index + 1);
-    });
-  })();
-
 
   /* ── İÇİNDEKİLER ──
      [data-toc] taşıyan bölümlerden iki görünüm üretir (masaüstü rayı +

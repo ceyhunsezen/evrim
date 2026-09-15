@@ -65,6 +65,10 @@
   <link rel="preload" as="image" href="/images/upcoming.webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Ortak fotoğraf galerisi (sitedeki tüm galerilerle aynı yapı) -->
+  <link rel="stylesheet" href="/css/gallery.css">
+  <script src="/js/gallery.js" defer></script>
+
   <style>
     :root {
       --bg: #0a0e0a;
@@ -692,53 +696,6 @@
   }
   .kf-feedback-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
 
-  /* ── ŞERİT GALERİ (makale grubu sayfasıyla aynı yapı) ── */
-  .gallery-strip {
-    display: flex; gap: 0.9rem;
-    overflow-x: auto; scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch; scrollbar-width: none;
-    padding-bottom: 2px; margin-top: 1.6rem;
-  }
-  .gallery-strip::-webkit-scrollbar { display: none; }
-  .gallery-strip > :last-child { scroll-snap-align: end; }
-  .gallery-item {
-    flex: 0 0 358px; height: 238px; scroll-snap-align: start;
-    overflow: hidden; border: 1px solid var(--border-soft);
-    padding: 0; background: var(--surface2); cursor: zoom-in;
-  }
-  .gallery-item img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    opacity: 0.82; transition: opacity 0.3s, transform 0.4s;
-  }
-  .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
-  .gallery-item--tall { flex: 0 0 210px; height: 320px; }
-
-  .drag-strip { cursor: grab; }
-  .drag-strip.is-dragging { cursor: grabbing; scroll-snap-type: none; }
-  .drag-strip.is-dragging img { pointer-events: none; }
-
-  .gallery-nav {
-    display: flex; align-items: center; justify-content: flex-end;
-    gap: 0.5rem; margin-top: 1.2rem;
-  }
-  .slider-progress {
-    flex: 1; height: 1px; background: var(--kf-gold-faint);
-    margin-right: 0.75rem; position: relative; overflow: hidden;
-  }
-  .slider-progress span {
-    position: absolute; top: 0; left: 0; height: 100%; width: 0;
-    background: var(--kf-gold); transition: width 0.2s linear, transform 0.2s linear;
-  }
-  .slider-btn {
-    background: none; border: 1px solid var(--kf-gold-line); color: var(--kf-cream-dim);
-    width: 34px; height: 34px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 0.9rem;
-    transition: border-color 0.2s, color 0.2s, opacity 0.2s;
-  }
-  .slider-btn:hover:not(:disabled) { border-color: var(--kf-gold); color: var(--kf-cream); }
-  .slider-btn:disabled { opacity: 0.28; cursor: default; }
-
   /* Sayfaya serpiştirilmiş fotoğraflar */
   .kf-grid-item {
     position: relative; aspect-ratio: 4/3; overflow: hidden; padding: 0;
@@ -753,36 +710,6 @@
     content: ''; position: absolute; inset: 0; border: 1px solid transparent; transition: border-color 0.25s;
   }
   .kf-grid-item:hover::after { border-color: var(--kf-gold-line); }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 950;
-    background: rgba(5,7,5,0.95); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    display: flex; align-items: center; justify-content: center;
-    padding: 3.5rem 4.5rem;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
-  }
-  .lightbox[data-open='true'] { opacity: 1; pointer-events: auto; }
-  .lightbox img {
-    max-width: 100%; max-height: 100%; object-fit: contain;
-    border: 1px solid var(--kf-gold-line);
-  }
-  .lightbox-btn {
-    position: absolute; background: rgba(7,9,7,0.65);
-    border: 1px solid var(--kf-gold-line); color: var(--kf-cream-dim);
-    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; cursor: pointer; transition: color 0.2s, border-color 0.2s;
-  }
-  .lightbox-btn:hover { color: var(--kf-cream); border-color: var(--kf-gold); }
-  .lightbox-close { top: 1.2rem; right: 1.2rem; }
-  .lightbox-prev  { left: 1.2rem;  top: 50%; transform: translateY(-50%); }
-  .lightbox-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
-  .lightbox-caption {
-    position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
-    font-size: 0.78rem; letter-spacing: 0.06em; color: var(--kf-cream-dim);
-    text-align: center; max-width: 80%;
-  }
-  body.lightbox-open { overflow: hidden; }
 
   /* ── FOOTER ── */
   footer {
@@ -906,11 +833,6 @@
     }
     .kf-trio::-webkit-scrollbar { display: none; }
     .kf-trio > .kf-grid-item { flex: 0 0 min(74vw, 300px); scroll-snap-align: start; }
-    .gallery-item { flex: 0 0 min(78vw, 280px); height: 190px; }
-    .gallery-item--tall { flex: 0 0 min(52vw, 180px); height: 275px; }
-    .lightbox { padding: 3.5rem 1rem; }
-    .lightbox-prev { left: 0.5rem; }
-    .lightbox-next { right: 0.5rem; }
     .kf-bad { grid-template-columns: 1fr; }
     .kf-bad-photo img { min-height: 0; aspect-ratio: 4/3; }
     .kf-bad-txt { padding: 1.6rem 1.4rem; }
@@ -930,15 +852,6 @@
   </style>
 </head>
 <body>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici">
-  <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Kapat">&#10005;</button>
-  <button class="lightbox-btn lightbox-prev"  id="lightbox-prev"  aria-label="Önceki fotoğraf">&#8592;</button>
-  <button class="lightbox-btn lightbox-next"  id="lightbox-next"  aria-label="Sonraki fotoğraf">&#8594;</button>
-  <img id="lightbox-img" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
 
 <!-- SIDE PANEL -->
 <div class="side-panel" id="side-panel">
@@ -1303,6 +1216,7 @@
           </span>
         </a>
         <a class="kf-sponsor" href="https://www.instagram.com/beyazt_zurna_durum" target="_blank" rel="noopener">
+          <span class="kf-sponsor-logo"><img src="/images/konferans/logo/zurnadurum.png" alt="Beyazıt Zurna Dürüm logosu" loading="lazy" decoding="async"></span>
           <span class="kf-sponsor-txt">
             <span class="kf-sponsor-name">Beyazıt Zurna Dürüm</span>
             <span class="kf-sponsor-handle">@beyazt_zurna_durum</span>
@@ -1337,10 +1251,10 @@
       <button type="button" class="gallery-item gallery-item--tall" data-full="/images/konferans/2026/sponsor-vefahalk.webp" data-cap="Vefa Halk Lokantası"><img src="/images/konferans/2026/sponsor-vefahalk-t.webp" alt="Vefa Halk Lokantası ikramı" loading="lazy" decoding="async"></button>
       <button type="button" class="gallery-item gallery-item--tall" data-full="/images/konferans/2026/sponsor-okulchurros.webp" data-cap="Okul Churros &amp; Waffle"><img src="/images/konferans/2026/sponsor-okulchurros-t.webp" alt="Okul Churros and Waffle tatlı ikramı" loading="lazy" decoding="async"></button>
     </div>
-    <div class="gallery-nav">
-      <div class="slider-progress" aria-hidden="true"><span id="gal-sponsor-progress"></span></div>
-      <button class="slider-btn" id="gal-sponsor-prev" aria-label="Önceki fotoğraflar" aria-controls="gal-sponsor">&#8592;</button>
-      <button class="slider-btn" id="gal-sponsor-next" aria-label="Sonraki fotoğraflar" aria-controls="gal-sponsor">&#8594;</button>
+    <div class="gallery-nav" data-for="gal-sponsor">
+      <div class="slider-progress" aria-hidden="true"><span></span></div>
+      <button class="slider-btn slider-prev" aria-label="Önceki fotoğraflar" aria-controls="gal-sponsor">&#8592;</button>
+      <button class="slider-btn slider-next" aria-label="Sonraki fotoğraflar" aria-controls="gal-sponsor">&#8594;</button>
     </div>
 
       <!-- GALERİ -->
@@ -1367,10 +1281,10 @@
       <button type="button" class="gallery-item" data-full="/images/konferans/2026/ikram-mola.webp" data-cap="Sponsorlarımızın ikramları"><img src="/images/konferans/2026/ikram-mola-t.webp" alt="Molada sponsorların ikramları" loading="lazy" decoding="async"></button>
       <button type="button" class="gallery-item" data-full="/images/konferans/2026/toplu-fotograf.webp" data-cap="Konferans sonunda toplu fotoğraf"><img src="/images/konferans/2026/toplu-fotograf-t.webp" alt="Konferans sonunda çekilen toplu fotoğraf" loading="lazy" decoding="async"></button>
     </div>
-    <div class="gallery-nav">
-      <div class="slider-progress" aria-hidden="true"><span id="gal-konferans-progress"></span></div>
-      <button class="slider-btn" id="gal-konferans-prev" aria-label="Önceki fotoğraflar" aria-controls="gal-konferans">&#8592;</button>
-      <button class="slider-btn" id="gal-konferans-next" aria-label="Sonraki fotoğraflar" aria-controls="gal-konferans">&#8594;</button>
+    <div class="gallery-nav" data-for="gal-konferans">
+      <div class="slider-progress" aria-hidden="true"><span></span></div>
+      <button class="slider-btn slider-prev" aria-label="Önceki fotoğraflar" aria-controls="gal-konferans">&#8592;</button>
+      <button class="slider-btn slider-next" aria-label="Sonraki fotoğraflar" aria-controls="gal-konferans">&#8594;</button>
     </div>
     </section>
 
@@ -1486,6 +1400,10 @@
   function closePanelViaBack() {
     if (history.state && history.state.sidePanelOpen) history.back(); else closePanel();
   }
+  // Geri tuşu önce paneli kapatsın (galeriyi /js/gallery.js kendisi kapatır)
+  window.addEventListener('popstate', () => {
+    if (sidePanel.classList.contains('open')) closePanel();
+  });
   hamburger.addEventListener('click', () => sidePanel.classList.contains('open') ? closePanelViaBack() : openPanel());
   sidePanelClose.addEventListener('click', closePanelViaBack);
   sidePanelOverlay.addEventListener('click', closePanelViaBack);
@@ -1683,170 +1601,6 @@
     document.getElementById('sp-close').addEventListener('click', close);
   })();
 
-  /* ══ Şerit kontrolleri (makale grubu sayfasındaki setupStrip ile aynı) ══ */
-  function setupStrip({ strip, prev, next, progress, itemSelector }) {
-    if (!strip) return;
-    const items = () => Array.from(strip.querySelectorAll(itemSelector));
-    const maxScroll = () => Math.max(0, strip.scrollWidth - strip.clientWidth);
-    const snapPos = item =>
-      item.getBoundingClientRect().left - strip.getBoundingClientRect().left + strip.scrollLeft;
-
-    const sync = () => {
-      const max = maxScroll();
-      if (prev) prev.disabled = strip.scrollLeft <= 1;
-      if (next) next.disabled = strip.scrollLeft >= max - 1;
-      if (progress) {
-        const ratio = max > 0 ? strip.clientWidth / strip.scrollWidth : 1;
-        const pos   = max > 0 ? strip.scrollLeft / max : 0;
-        progress.style.width = (ratio * 100) + '%';
-        progress.style.transform = 'translateX(' + (pos * (100 / ratio - 100)) + '%)';
-      }
-    };
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const goTo = dir => {
-      const max   = maxScroll();
-      const here  = strip.scrollLeft;
-      const stops = items().map(snapPos).map(p => Math.min(Math.max(p, 0), max));
-      const found = dir > 0
-        ? stops.find(p => p > here + 1)
-        : [...stops].reverse().find(p => p < here - 1);
-      const target = found === undefined ? (dir > 0 ? max : 0) : found;
-      strip.scrollTo({ left: target, behavior: reduced.matches ? 'auto' : 'smooth' });
-    };
-
-    if (prev) prev.addEventListener('click', () => goTo(-1));
-    if (next) next.addEventListener('click', () => goTo(1));
-    strip.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
-    sync();
-
-    // Fare ile sürükleme; eşik aşılmadan tıklama iptal edilmiyor
-    let down = false, moved = false, startX = 0, startScroll = 0;
-    strip.addEventListener('mousedown', e => {
-      if (e.button !== 0) return;
-      down = true; moved = false; startX = e.pageX; startScroll = strip.scrollLeft;
-    });
-    strip.addEventListener('mousemove', e => {
-      if (!down) return;
-      const dx = e.pageX - startX;
-      if (!moved && Math.abs(dx) < 5) return;
-      if (!moved) { moved = true; strip.classList.add('is-dragging'); }
-      e.preventDefault();
-      strip.scrollLeft = startScroll - dx;
-    });
-    const endDrag = () => {
-      if (!down) return;
-      down = false;
-      if (moved) setTimeout(() => strip.classList.remove('is-dragging'), 0);
-    };
-    strip.addEventListener('mouseup', endDrag);
-    strip.addEventListener('mouseleave', endDrag);
-    strip.addEventListener('dragstart', e => { if (moved) e.preventDefault(); });
-    return sync;
-  }
-
-  ['gal-konferans', 'gal-sponsor'].forEach(id => setupStrip({
-    strip: document.getElementById(id),
-    prev: document.getElementById(id + '-prev'),
-    next: document.getElementById(id + '-next'),
-    progress: document.getElementById(id + '-progress'),
-    itemSelector: '.gallery-item'
-  }));
-
-  /* ══ Lightbox ══ */
-  (function () {
-    const box = document.getElementById('lightbox');
-    if (!box) return;
-    const boxImg  = document.getElementById('lightbox-img');
-    const caption = document.getElementById('lightbox-caption');
-    const closeBtn = document.getElementById('lightbox-close');
-
-    // Şeritler galeri gruplarını oluşturur; sayfaya serpiştirilmiş
-    // fotoğraflar data-lb + data-idx ile aynı gruba bağlanır.
-    const groups = {};
-    document.querySelectorAll('.gallery-strip[data-lb]').forEach(strip => {
-      groups[strip.dataset.lb] = Array.from(strip.querySelectorAll('.gallery-item')).map(el => ({
-        full: el.dataset.full,
-        cap:  el.dataset.cap || '',
-        alt:  el.querySelector('img').alt || '',
-        el
-      }));
-    });
-
-    let items = [], index = 0, lastFocused = null;
-
-    const show = i => {
-      if (!items.length) return;
-      index = (i + items.length) % items.length;
-      const it = items[index];
-      boxImg.src = it.full;
-      boxImg.alt = it.alt;
-      caption.textContent = (it.cap || it.alt) + '  ·  ' + (index + 1) + ' / ' + items.length;
-      if (it.el) it.el.scrollIntoView({ block: 'nearest', inline: 'center' });
-    };
-
-    const open = (group, i) => {
-      items = groups[group] || [];
-      if (!items.length) return;
-      lastFocused = document.activeElement;
-      show(i);
-      box.dataset.open = 'true';
-      document.body.classList.add('lightbox-open');
-      closeBtn.focus();
-      history.pushState({ galleryOpen: true }, '');
-    };
-
-    const close = () => {
-      box.dataset.open = 'false';
-      document.body.classList.remove('lightbox-open');
-      boxImg.src = '';
-      if (lastFocused) lastFocused.focus();
-    };
-    const closeViaBack = () => {
-      if (history.state && history.state.galleryOpen) history.back(); else close();
-    };
-
-    window.addEventListener('popstate', () => {
-      if (box.dataset.open === 'true') close();
-      else if (sidePanel.classList.contains('open')) closePanel();
-    });
-
-    // Şerit öğeleri
-    document.querySelectorAll('.gallery-strip[data-lb]').forEach(strip => {
-      const group = strip.dataset.lb;
-      strip.querySelectorAll('.gallery-item').forEach((el, i) => {
-        el.addEventListener('click', () => {
-          if (strip.classList.contains('is-dragging')) return;   // sürükleme sonrası tıklamayı yut
-          open(group, i);
-        });
-      });
-    });
-    // Sayfaya serpiştirilmiş fotoğraflar
-    document.querySelectorAll('[data-lb][data-idx]').forEach(el => {
-      el.addEventListener('click', () => open(el.dataset.lb, Number(el.dataset.idx) || 0));
-    });
-
-    closeBtn.addEventListener('click', closeViaBack);
-    document.getElementById('lightbox-prev').addEventListener('click', () => show(index - 1));
-    document.getElementById('lightbox-next').addEventListener('click', () => show(index + 1));
-    box.addEventListener('click', e => { if (e.target === box) closeViaBack(); });
-
-    document.addEventListener('keydown', e => {
-      if (box.dataset.open !== 'true') return;
-      if (e.key === 'Escape')     closeViaBack();
-      if (e.key === 'ArrowLeft')  show(index - 1);
-      if (e.key === 'ArrowRight') show(index + 1);
-    });
-
-    let tx = 0;
-    box.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-    box.addEventListener('touchend', e => {
-      const d = e.changedTouches[0].clientX - tx;
-      if (Math.abs(d) < 50) return;
-      show(d > 0 ? index - 1 : index + 1);
-    }, { passive: true });
-  })();
 </script>
 </body>
 </html>
