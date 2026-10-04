@@ -1644,7 +1644,7 @@
     <!-- Kart yapısı: afiş + tarih rozeti + başlık + meta.
          Masaüstünde 3'lü grid, mobilde yatay liste (CSS ile). -->
 
-    <div class="etk-item upcoming" data-type="upcoming">
+    <div class="etk-item upcoming" data-type="upcoming" data-date="2026-10-01">
       <div class="etk-card" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
         <div class="etk-poster">
           <img src="images/events/2627_evrimegiris_afis.webp" alt="Evrime Giriş — Arş. Gör. Ahmet Arıhan Erözden" onerror="this.closest('.etk-poster').style.display='none'" loading="lazy" decoding="async">
@@ -1666,7 +1666,7 @@
       </div>
     </div>
 
-    <div class="etk-item upcoming" data-type="upcoming">
+    <div class="etk-item upcoming" data-type="upcoming" data-date="2026-10-08">
       <div class="etk-card" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
         <div class="etk-poster">
           <img src="images/events/2627_evrimegiris2_afis.webp" alt="Evrime Giriş 2. Oturum — Arş. Gör. Ahmet Arıhan Erözden" onerror="this.closest('.etk-poster').style.display='none'" loading="lazy" decoding="async">
@@ -2988,6 +2988,21 @@ bizKimizSection.addEventListener('touchend', function(e) {
     }
   }
   }, { passive: true });
+
+  // ── Etkinlik kartı: tarihi geçen etkinlik otomatik olarak "Geçmiş" olur ──
+  // Karta data-date="YYYY-AA-GG" yazmak yeterli; etkinlik gününün ertesi
+  // günü (İstanbul saatiyle) rozet değişir ve kayıt formu bağlantısı kalkar.
+  const etkToday = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Istanbul' }).format(new Date());
+  document.querySelectorAll('.etk-item[data-date]').forEach(item => {
+    if (item.dataset.date >= etkToday) return;
+    const badge = item.querySelector('.etk-badge');
+    if (badge) {
+      badge.classList.remove('upcoming-badge');
+      badge.classList.add('past-badge');
+      badge.textContent = 'Geçmiş';
+    }
+    item.querySelector('.etk-card')?.removeAttribute('data-href');
+  });
 
   // ── Etkinlik kartı: badge'e göre otomatik past/upcoming stili ──
   document.querySelectorAll('.etk-badge').forEach(badge => {

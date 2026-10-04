@@ -642,11 +642,6 @@
     padding: 0.15rem 0.55rem;
     flex-shrink: 0;
   }
-  .ec-badge.upcoming {
-    background: rgba(109,191,103,0.08);
-    color: var(--accent);
-    border: 1px solid rgba(109,191,103,0.25);
-  }
   .ec-badge.preclub {
     background: rgba(255,200,100,0.06);
     color: rgba(255,200,100,0.65);
@@ -1204,14 +1199,13 @@
         <div class="events-grid">
 
           <!-- 1. Evrime Giriş — 1. Oturum — 1 Ekim 2026 -->
-          <div class="event-card reveal" data-type="upcoming" data-series="calistay" data-period="2026-2027" data-sem="guz" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
+          <div class="event-card reveal" data-type="upcoming" data-date="2026-10-01" data-series="calistay" data-period="2026-2027" data-sem="guz" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
             <div class="ec-poster">
               <img src="/images/events/2627_evrimegiris_afis.webp" alt="Evrime Giriş — Arş. Gör. Ahmet Arıhan Erözden"
                    onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
             </div>
             <div class="ec-body">
               <div class="ec-top">
-                <span class="ec-badge upcoming">Yaklaşan</span>
                 <div class="ec-date">
                   <div class="ec-date-box">
                     <span class="ec-day">1</span>
@@ -1232,14 +1226,13 @@
           </div>
 
           <!-- 2. Evrime Giriş — 2. Oturum — 8 Ekim 2026 -->
-          <div class="event-card reveal" data-type="upcoming" data-series="calistay" data-period="2026-2027" data-sem="guz" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
+          <div class="event-card reveal" data-type="upcoming" data-date="2026-10-08" data-series="calistay" data-period="2026-2027" data-sem="guz" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
             <div class="ec-poster">
               <img src="/images/events/2627_evrimegiris2_afis.webp" alt="Evrime Giriş 2. Oturum — Arş. Gör. Ahmet Arıhan Erözden"
                    onerror="this.closest('.ec-poster').innerHTML='<div class=\'ec-poster-placeholder\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><path d=\'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\'/><circle cx=\'9\' cy=\'7\' r=\'4\'/></svg></div>'">
             </div>
             <div class="ec-body">
               <div class="ec-top">
-                <span class="ec-badge upcoming">Yaklaşan</span>
                 <div class="ec-date">
                   <div class="ec-date-box">
                     <span class="ec-day">8</span>
@@ -3110,6 +3103,16 @@
       alt:  title
     })), 0);
   }
+
+  // Tarihi geçen etkinlik otomatik olarak "geçmiş" olur: karta
+  // data-date="YYYY-AA-GG" yazmak yeterli; etkinlik gününün ertesi günü
+  // (İstanbul saatiyle) kayıt formu bağlantısı kalkar, kart galeriyi açar.
+  const etkToday = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Istanbul' }).format(new Date());
+  document.querySelectorAll('.event-card[data-date]').forEach(card => {
+    if (card.dataset.date >= etkToday) return;
+    card.dataset.type = 'past';
+    card.removeAttribute('data-href');
+  });
 
   // ¦¦ Kartlara galeri bağla ¦¦
   document.querySelectorAll('.event-card').forEach(card => {
