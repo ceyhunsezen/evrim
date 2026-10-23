@@ -1672,7 +1672,9 @@
 
   <div class="etk-timeline">
     <!-- Kart yapısı: afiş + tarih rozeti + başlık + meta.
-         Masaüstünde 3'lü grid, mobilde yatay liste (CSS ile). -->
+         Masaüstünde 3'lü grid, mobilde yatay liste (CSS ile).
+         Burada yalnızca en yeni 3 etkinlik durur; fazlası JS ile gizlenir,
+         eski kartlar Tüm Etkinlikler sayfasında kalır. -->
 
     <div class="etk-item upcoming" data-type="upcoming" data-date="2026-11-07">
       <div class="etk-card" data-href="/evrim-konferansi/">
@@ -1733,50 +1735,6 @@
           <p class="etk-desc">Cadılar Bayramı'nı kutlamazsak olmazdı! İstanbul Üniversitesi Biyoloji Bölümü, Zooloji Anabilim Dalı'ndan entomolog Dr. Gonca Yeşilyurt'un anlatımıyla örümceklerin ilginç dünyasına bir bakış attık. Kostümlü ya da kostümsüz katılımın serbest olduğu etkinliğimizde Halloween temalı ikramlarımız da vardı.</p>
           <div class="etk-meta">
             <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Derslik 5</span></span>
-            <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17.30</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="etk-item upcoming" data-type="upcoming" data-date="2026-10-01">
-      <div class="etk-card" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
-        <div class="etk-poster">
-          <img src="images/events/2627_evrimegiris_afis.webp" alt="Evrime Giriş — Arş. Gör. Ahmet Arıhan Erözden" onerror="this.closest('.etk-poster').style.display='none'" loading="lazy" decoding="async">
-          <div class="etk-datechip">
-            <span class="etk-day">1</span>
-            <span class="etk-month">Eki</span>
-          </div>
-        </div>
-        <div class="etk-body">
-          <span class="etk-mdate">1 EKİM</span>
-          <span class="etk-badge upcoming-badge">Yaklaşan</span>
-          <h3 class="etk-title">Evrime Giriş | 1. Oturum</h3>
-          <p class="etk-desc">Yeni dönemin ilk etkinliğiyle sizlerleyiz! Arş. Gör. Ahmet Arıhan Erözden'in anlatımıyla yaşamın başlangıcına, evrim fikrinin ortaya çıkışına ve evrimin temel ilkeleri ile mekanizmalarına giriş yapıyoruz. Evrimi öğrenmeye yeni başlayanları da temelleri hatırlamak isteyenleri de bekliyoruz.</p>
-          <div class="etk-meta">
-            <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
-            <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17.30</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="etk-item upcoming" data-type="upcoming" data-date="2026-10-08">
-      <div class="etk-card" data-href="https://forms.gle/7t8z2kVVpm3zzu9A9">
-        <div class="etk-poster">
-          <img src="images/events/2627_evrimegiris2_afis.webp" alt="Evrime Giriş 2. Oturum — Arş. Gör. Ahmet Arıhan Erözden" onerror="this.closest('.etk-poster').style.display='none'" loading="lazy" decoding="async">
-          <div class="etk-datechip">
-            <span class="etk-day">8</span>
-            <span class="etk-month">Eki</span>
-          </div>
-        </div>
-        <div class="etk-body">
-          <span class="etk-mdate">8 EKİM</span>
-          <span class="etk-badge upcoming-badge">Yaklaşan</span>
-          <h3 class="etk-title">Evrime Giriş | 2. Oturum</h3>
-          <p class="etk-desc">İki haftalık Evrime Giriş serimizin ikinci oturumu. İlk haftada ele aldığımız temeller üzerine, Arş. Gör. Ahmet Arıhan Erözden ile evrimin ilke ve mekanizmalarını derinleştirerek konuyu tamamlıyoruz.</p>
-          <div class="etk-meta">
-            <span class="meta-loc"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg><span class="meta-txt">Fahir Yeniçay Dersliği</span></span>
             <span class="meta-time"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span class="meta-txt">17.30</span></span>
           </div>
         </div>
@@ -3083,6 +3041,12 @@ bizKimizSection.addEventListener('touchend', function(e) {
     }
   }
   }, { passive: true });
+
+  // ── Etkinlik listesi: yalnızca en yeni 3 etkinlik görünsün ──
+  [...document.querySelectorAll('.etk-timeline .etk-item')]
+    .sort((a, b) => (b.dataset.date || '').localeCompare(a.dataset.date || ''))
+    .slice(3)
+    .forEach(item => item.remove());
 
   // ── Etkinlik kartı: tarihi geçen etkinlik otomatik olarak "Geçmiş" olur ──
   // Karta data-date="YYYY-AA-GG" yazmak yeterli; etkinlik gününün ertesi
