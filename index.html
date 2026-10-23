@@ -2879,7 +2879,7 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     touchStartY = e.touches[0].clientY;
     touchDiffX = 0;
     isSwiping = false;
-    clearInterval(autoSlide);
+    clearTimeout(autoSlide);
     track.style.transition = 'none';
   }, { passive: true });
 
@@ -2906,15 +2906,20 @@ Katılımcıların pasif bir dinleyici konumunda kalmak yerine; okuyan, sunum ya
     } else {
       goToSlide(slideIndex);
     }
-    autoSlide = setInterval(() => slideMove(1), 6000);
+    scheduleAutoSlide();
   });
 
-  // Otomatik geçiş
-  let autoSlide = setInterval(() => slideMove(1), 6000);
+  // Otomatik geçiş — ilk slayt (II. Evrim Konferansı) daha uzun kalır
+  let autoSlide;
+  function scheduleAutoSlide() {
+    clearTimeout(autoSlide);
+    autoSlide = setTimeout(() => { slideMove(1); scheduleAutoSlide(); }, slideIndex === 0 ? 10000 : 6000);
+  }
+  scheduleAutoSlide();
   const ss = document.querySelector('.photo-slideshow');
   if (ss) {
-    ss.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    ss.addEventListener('mouseleave', () => { autoSlide = setInterval(() => slideMove(1), 6000); });
+    ss.addEventListener('mouseenter', () => clearTimeout(autoSlide));
+    ss.addEventListener('mouseleave', scheduleAutoSlide);
   }
 
   // Slide tıklama yönlendirmesi
