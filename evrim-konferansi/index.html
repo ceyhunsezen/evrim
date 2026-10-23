@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>İstanbul Üniversitesi Evrim Konferansı | İÜ Evrim Topluluğu</title>
-  <meta name="description" content="İstanbul Üniversitesi Evrim Konferansı — İÜ Evrim Topluluğu'nun yıllık konferansı. I. İÜ Evrim Konferansı'nın programı, konuşmacıları, sunumları ve fotoğrafları; II. konferans için duyurular.">
+  <meta name="description" content="İstanbul Üniversitesi Evrim Konferansı — İÜ Evrim Topluluğu'nun yıllık konferansı. II. İÜ Evrim Konferansı 7 Kasım 2026'da: konuşmacılar ve konu başlıkları. I. konferansın programı, konuşmacıları, sunumları ve fotoğrafları.">
   <link rel="canonical" href="https://iuevrim.org/evrim-konferansi/">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png">
@@ -18,11 +18,11 @@
   <meta property="og:locale" content="tr_TR">
   <meta property="og:url" content="https://iuevrim.org/evrim-konferansi/">
   <meta property="og:title" content="İstanbul Üniversitesi Evrim Konferansı">
-  <meta property="og:description" content="İÜ Evrim Topluluğu'nun yıllık konferansı. I. konferansın programı, konuşmacıları ve fotoğrafları; II. konferans çok yakında.">
+  <meta property="og:description" content="İÜ Evrim Topluluğu'nun yıllık konferansı. II. konferans 7 Kasım 2026'da; I. konferansın programı, konuşmacıları ve fotoğrafları.">
   <meta property="og:image" content="https://iuevrim.org/images/konferans/hero-desktop.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="İstanbul Üniversitesi Evrim Konferansı">
-  <meta name="twitter:description" content="İÜ Evrim Topluluğu'nun yıllık konferansı. I. konferansın programı, konuşmacıları ve fotoğrafları; II. konferans çok yakında.">
+  <meta name="twitter:description" content="İÜ Evrim Topluluğu'nun yıllık konferansı. II. konferans 7 Kasım 2026'da; I. konferansın programı, konuşmacıları ve fotoğrafları.">
   <meta name="twitter:image" content="https://iuevrim.org/images/konferans/hero-desktop.webp">
 
   <script type="application/ld+json">
@@ -294,6 +294,12 @@
     line-height: 0.84; letter-spacing: -0.005em;
     color: #f5ecd0; text-shadow: 0 10px 60px rgba(0,0,0,0.7); text-wrap: balance;
   }
+  .kf-hero-kicker {
+    font-family: 'Outfit', sans-serif; font-weight: 300;
+    font-size: clamp(0.72rem, 1.2vw, 0.9rem); letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--kf-cream-dim);
+  }
+  .kf-hero-kicker b { font-weight: 500; color: var(--kf-gold); }
   .kf-hero-title span {
     display: block; font-style: italic; font-weight: 400;
     text-transform: none; letter-spacing: 0.005em; color: var(--kf-gold);
@@ -430,6 +436,8 @@
     border-bottom: 1px solid var(--kf-gold-line);
     overflow: hidden; line-height: 0; cursor: pointer; background: var(--kf-ink);
   }
+  /* Bölüm içinde, başlığın hemen altında */
+  .kf-sec .kf-strip { margin: 2rem 0 0.4rem; }
   .kf-strip img {
     width: 100%; display: block; aspect-ratio: 32/9; object-fit: cover;
     object-position: center 42%; opacity: 0.5; transition: opacity 0.4s, transform 0.8s;
@@ -448,41 +456,38 @@
   }
   @media (max-width: 768px) { .kf-strip img { aspect-ratio: 16/7; } }
 
-  /* ── 2. KONFERANS ── */
-  .kf-next {
-    position: relative; overflow: hidden;
-    border: 1px solid var(--kf-gold-line);
-    background: #0b0d0b;
-    padding: 4.5rem 3rem; text-align: center;
+  /* ── 2. KONFERANS: tasarım bandı + konuşmalar listesi ── */
+  .kf-banner {
+    display: block; margin-top: 2rem; line-height: 0;
+    border: 1px solid var(--kf-gold-line); background: var(--kf-ink);
   }
-  .kf-next-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background-image: url('/images/upcoming.webp');
-    background-size: cover; background-position: center 28%;
-    opacity: 0.42;
+  .kf-banner img { width: 100%; height: auto; display: block; }
+  .kf-soon-note {
+    margin-top: 1.5rem; font-size: 0.88rem; color: rgba(154,170,154,0.85);
+    line-height: 1.7; padding-left: 1rem; border-left: 1px solid var(--kf-gold-faint);
   }
-  .kf-next::after {
-    content: ''; position: absolute; inset: 0; z-index: 1;
-    background: radial-gradient(ellipse at center, rgba(7,9,7,0.5) 0%, rgba(7,9,7,0.93) 78%);
+  .kf-talks { border-top: 1px solid var(--border-soft); }
+  .kf-talk {
+    display: grid; grid-template-columns: 76px minmax(0,1fr);
+    gap: 0 1.5rem; align-items: center; padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-soft);
   }
-  .kf-next > *:not(.kf-next-bg) { position: relative; z-index: 2; }
-  .kf-next h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
-    font-size: clamp(1.7rem, 3.4vw, 2.7rem); color: var(--kf-cream); line-height: 1.15;
+  .kf-talk-face {
+    width: 76px; height: 76px; border-radius: 50%; overflow: hidden;
+    border: 1px solid var(--kf-gold-line); background: var(--surface2);
   }
-  .kf-soon {
-    display: inline-block; margin-top: 1.6rem;
+  .kf-talk-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .kf-talk-topic {
     font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--kf-gold);
-    letter-spacing: 0.04em; padding: 0 0 0.35rem;
-    border-bottom: 1px solid var(--kf-gold-line);
+    font-size: 1.32rem; color: var(--kf-cream); line-height: 1.4; text-wrap: balance;
   }
-  .kf-next p {
-    margin: 1.8rem auto 0; max-width: 54ch;
-    color: var(--text-muted); line-height: 1.8; font-size: 0.98rem;
+  .kf-talk-by { margin-top: 0.5rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; }
+  .kf-talk-role {
+    font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--kf-gold);
   }
-  .kf-next-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2.2rem; }
+  .kf-talks + .kf-sp-panel { margin-top: 1.2rem; }
+
+  .kf-next-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
 
   /* ── Butonlar ── */
   .kf-btn {
@@ -803,7 +808,6 @@
     }
     .hf-v { font-size: 1.12rem; margin-top: 0.35rem; }
     .kf-lede-lead { margin-top: 1.5rem; }
-    .kf-next { padding: 3rem 1.4rem; }
     .kf-nedir-art { display: none; }
     /* Panel: portre ile ad yan yana, biyografi altta tam genislikte */
     .kf-sp-panel.open { grid-template-columns: 64px minmax(0,1fr); gap: 0 1rem; align-items: start; }
@@ -837,6 +841,9 @@
     .kf-bad-photo img { min-height: 0; aspect-ratio: 4/3; }
     .kf-bad-txt { padding: 1.6rem 1.4rem; }
     .kf-prog-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .kf-talk { grid-template-columns: 56px minmax(0,1fr); gap: 0 1rem; align-items: start; }
+    .kf-talk-face { width: 56px; height: 56px; }
+    .kf-talk-topic { font-size: 1.12rem; }
     .kf-facts { flex-direction: column; gap: 0.15rem; padding: 0.9rem 1.2rem; }
     .kf-interlude-wide img { aspect-ratio: 16/10; }
     .kf-eyebrow { align-items: flex-start; gap: 0.7rem; }
@@ -941,11 +948,12 @@
         <img src="/images/evo_logo4.webp" alt="" aria-hidden="true" decoding="async">
         <span>İstanbul Üniversitesi<br>Evrim Topluluğu</span>
       </div>
+      <div class="kf-hero-kicker"><b>II. Konferans</b> · 7 Kasım 2026, Cumartesi</div>
       <h1 class="kf-hero-title">Evrim<br><span>Konferansı</span></h1>
       <!-- Masaüstü: fotoğrafın üzerinde, camsı kartlar (yalnızca ≥769px'te görünür) -->
       <div class="kf-hero-facts">
         <div><span class="hf-k">Konum</span><span class="hf-v">İstanbul Üniversitesi Vezneciler Kampüsü</span></div>
-        <div><span class="hf-k">Tarih</span><span class="hf-v">Çok Yakında</span></div>
+        <div><span class="hf-k">Tarih</span><span class="hf-v">7 Kasım 2026, Cumartesi</span></div>
         <div><span class="hf-k">Katılım</span><span class="hf-v">Herkese açık, ücretsiz</span></div>
       </div>
     </div>
@@ -954,7 +962,7 @@
   <div class="kf-hero-facts-wrap">
     <div class="kf-hero-facts">
       <div><span class="hf-k">Konum</span><span class="hf-v">İstanbul Üniversitesi Vezneciler Kampüsü</span></div>
-      <div><span class="hf-k">Tarih</span><span class="hf-v">Çok Yakında</span></div>
+      <div><span class="hf-k">Tarih</span><span class="hf-v">7 Kasım 2026, Cumartesi</span></div>
       <div><span class="hf-k">Katılım</span><span class="hf-v">Herkese açık, ücretsiz</span></div>
     </div>
   </div>
@@ -985,32 +993,121 @@
         bilime ilgi duyan tüm katılımcılara açık olan konferansımız tamamen ücretsizdir.
       </p>
       <p class="kf-lede">
-        9 Mayıs 2026 tarihinde ilkini düzenlediğimiz bu bilim buluşmasını, her yıl
-        genişleyen bir katılımla sürdürmeyi amaçlıyoruz.
+        9 Mayıs 2026 tarihinde ilkini düzenlediğimiz bu bilim buluşmasının ikincisini
+        7 Kasım 2026'da gerçekleştiriyoruz; her yıl genişleyen bir katılımla sürdürmeyi
+        amaçlıyoruz.
       </p>
     </section>
 
-    <!-- ── FOTOĞRAF BANDI ── -->
-    <button class="kf-strip" type="button" data-lb="galeri" data-idx="6"
-            data-full="/images/konferans/2026/katilimcilar-2.webp" data-cap="Dolu amfi">
-      <img src="/images/konferans/2026/katilimcilar-2.webp" alt="I. İÜ Evrim Konferansı'nda dolu Amfi A" loading="lazy" decoding="async">
-      <span class="kf-strip-cap">9 Mayıs 2026 — Amfi A</span>
-    </button>
-
     <!-- ── 2. KONFERANS ── -->
     <section class="kf-sec" id="konferans-2">
-      <div class="kf-next">
-        <div class="kf-next-bg" aria-hidden="true"></div>
-        <h3>II. İstanbul Üniversitesi<br>Evrim Konferansı</h3>
-        <div class="kf-soon">Çok Yakında</div>
-        <p>
-          İkinci konferansın tarihi, mekânı, konuşmacıları ve program akışı
-          bu sayfada ve Instagram hesabımızda duyurulacak.
-        </p>
-        <div class="kf-next-actions">
-          <a class="kf-btn solid" href="https://www.instagram.com/iu.evrimtoplulugu" target="_blank" rel="noopener">Duyurular İçin Takip Et</a>
-          <a class="kf-btn" href="/#iletisim">Sponsor Olmak İstiyorum</a>
+      <div class="kf-eyebrow"><span>7 Kasım 2026</span></div>
+      <h2 class="kf-h2">II. İÜ Evrim Konferansı</h2>
+
+      <picture class="kf-banner">
+        <source media="(max-width: 768px)" srcset="/images/slideshow/evrimkonferansi2_slider_mobile.webp">
+        <img src="/images/slideshow/evrimkonferansi2_slider_desktop.webp" alt="II. Evrim Konferansı — 7 Kasım" decoding="async">
+      </picture>
+
+      <!-- Konuşmacı tanıtımları yalnızca konferans tasarımındaki metinlere dayanır -->
+      <p class="kf-lede kf-lede-lead">
+        İkinci konferansımızda yapay zekâ çağında protein evriminden gen
+        regülasyonuna, insan doğasından spekülatif evrime uzanan dört konuşmayla
+        sizleri bekliyoruz.
+      </p>
+      <p class="kf-lede">
+        Hücrenin içinde belirli bir proteini tespit edebilen protein çiftleri tasarlayan
+        <strong>Dr. Taner Karagöl</strong> (MIT McGovern Institute); gelişim biyolojisi,
+        genetik ve moleküler çözümler üzerine çalışan <strong>Dr. Öğr. Üyesi Pınar Önal</strong>
+        (Bilkent Üniversitesi); sosyal psikoloji, bilişsel bilim ve evrimsel psikolojiyi
+        harmanlayarak ahlak, inanç ve iş birliği üzerine araştırmalar yürüten
+        <strong>Prof. Dr. Onurcan Yılmaz</strong> (Kadir Has Üniversitesi) ile araştırmacı,
+        tasarımcı ve yazar <strong>C. M. Kösemen</strong> bu yılki konuşmacılarımız.
+      </p>
+
+      <div class="kf-facts">
+        <span class="kf-fact">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          7 Kasım 2026, Cumartesi
+        </span>
+        <span class="kf-fact">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.75"/></svg>
+          İstanbul Üniversitesi Vezneciler Kampüsü
+        </span>
+        <span class="kf-fact">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Herkese açık, ücretsiz
+        </span>
+      </div>
+      <p class="kf-soon-note">
+        Kayıt, saat ve salon bilgisi ile program akışı yakında bu sayfada ve
+        Instagram hesabımızda duyurulacak.
+      </p>
+      <div class="kf-next-actions">
+        <a class="kf-btn solid" href="https://www.instagram.com/iu.evrimtoplulugu" target="_blank" rel="noopener">Duyurular İçin Takip Et</a>
+        <a class="kf-btn" href="/#iletisim">Sponsor Olmak İstiyorum</a>
+      </div>
+
+      <!-- KONUŞMALAR (II.) — konuşmacı adına tıklayınca biyografi açılır -->
+      <h3 class="kf-h3" id="konusmacilar-2">Konuşmalar ve Konuşmacılar</h3>
+      <div class="kf-talks">
+        <div class="kf-talk">
+          <div class="kf-talk-face"><img src="/images/konferans/2026-kasim/portre-karagol.webp" alt="Dr. Taner Karagöl" loading="lazy" decoding="async"></div>
+          <div>
+            <div class="kf-talk-topic">Yapay Zeka Çağında Evrimsel Çıkarım: AlphaFold'dan Protein Mühendisliğine</div>
+            <div class="kf-talk-by">
+              <button class="kf-prog-who" data-speaker="karagol">Dr. Taner Karagöl</button>
+              <span class="kf-talk-role">MIT McGovern Institute</span>
+            </div>
+          </div>
         </div>
+        <div class="kf-talk">
+          <div class="kf-talk-face"><img src="/images/konferans/2026-kasim/portre-onal.webp" alt="Dr. Öğr. Üyesi Pınar Önal" loading="lazy" decoding="async"></div>
+          <div>
+            <div class="kf-talk-topic">Fenotipik Varyasyonun Gelişimi ve Evriminde Transkripsiyonel Regülasyonun Rolü</div>
+            <div class="kf-talk-by">
+              <button class="kf-prog-who" data-speaker="onal">Dr. Öğr. Üyesi Pınar Önal</button>
+              <span class="kf-talk-role">Bilkent Üniversitesi</span>
+            </div>
+          </div>
+        </div>
+        <div class="kf-talk">
+          <div class="kf-talk-face"><img src="/images/konferans/2026-kasim/portre-yilmaz.webp" alt="Prof. Dr. Onurcan Yılmaz" loading="lazy" decoding="async"></div>
+          <div>
+            <div class="kf-talk-topic">İnsan Doğası Üzerine: Ahlaktan İşbirliğine, İnançtan Özgürlüğe</div>
+            <div class="kf-talk-by">
+              <button class="kf-prog-who" data-speaker="yilmaz">Prof. Dr. Onurcan Yılmaz</button>
+              <span class="kf-talk-role">Kadir Has Üniversitesi</span>
+            </div>
+          </div>
+        </div>
+        <div class="kf-talk">
+          <div class="kf-talk-face"><img src="/images/konferans/2026-kasim/portre-kosemen.webp" alt="C. M. Kösemen" loading="lazy" decoding="async"></div>
+          <div>
+            <div class="kf-talk-topic">All Tomorrows, Bilim Kurgu, Spekülatif Evrim ve Doğal Tarih</div>
+            <div class="kf-talk-by">
+              <button class="kf-prog-who" data-speaker="kosemen">C. M. Kösemen</button>
+              <span class="kf-talk-role">Araştırmacı, Tasarımcı, Yazar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kf-sp-panel" aria-live="polite">
+        <div class="p-face"><img class="sp-img" src="" alt=""></div>
+        <div class="p-main">
+          <div class="p-head-txt">
+            <div class="p-role sp-role"></div>
+            <div class="p-name sp-name"></div>
+            <div class="p-topic sp-topic"></div>
+          </div>
+          <div class="p-body">
+            <div class="p-bio sp-bio"></div>
+            <button class="kf-sp-more sp-more" type="button" aria-expanded="false">Devamını oku</button>
+            <div class="p-links sp-links"></div>
+          </div>
+        </div>
+        <button class="kf-sp-close sp-close">Kapat ✕</button>
       </div>
     </section>
 
@@ -1018,6 +1115,13 @@
     <section class="kf-sec" id="konferans-1">
       <div class="kf-eyebrow"><span>9 Mayıs 2026</span></div>
       <h2 class="kf-h2">I. İÜ Evrim Konferansı</h2>
+
+      <!-- ── FOTOĞRAF BANDI ── -->
+      <button class="kf-strip" type="button" data-lb="galeri" data-idx="6"
+              data-full="/images/konferans/2026/katilimcilar-2.webp" data-cap="Dolu amfi">
+        <img src="/images/konferans/2026/katilimcilar-2.webp" alt="I. İÜ Evrim Konferansı'nda dolu Amfi A" loading="lazy" decoding="async">
+        <span class="kf-strip-cap">9 Mayıs 2026 — Amfi A</span>
+      </button>
 
       <p class="kf-lede kf-lede-lead">
         Topluluğumuzun ilk evrim konferansı, 9 Mayıs 2026 Cumartesi günü
@@ -1120,21 +1224,21 @@
         </button>
       </div>
 
-      <div class="kf-sp-panel" id="kf-sp-panel" aria-live="polite">
-        <div class="p-face"><img id="sp-img" src="" alt=""></div>
+      <div class="kf-sp-panel" aria-live="polite">
+        <div class="p-face"><img class="sp-img" src="" alt=""></div>
         <div class="p-main">
           <div class="p-head-txt">
-            <div class="p-role" id="sp-role"></div>
-            <div class="p-name" id="sp-name"></div>
-            <div class="p-topic" id="sp-topic"></div>
+            <div class="p-role sp-role"></div>
+            <div class="p-name sp-name"></div>
+            <div class="p-topic sp-topic"></div>
           </div>
           <div class="p-body">
-            <div class="p-bio" id="sp-bio"></div>
-            <button class="kf-sp-more" id="sp-more" type="button" aria-expanded="false">Devamını oku</button>
-            <div class="p-links" id="sp-links"></div>
+            <div class="p-bio sp-bio"></div>
+            <button class="kf-sp-more sp-more" type="button" aria-expanded="false">Devamını oku</button>
+            <div class="p-links sp-links"></div>
           </div>
         </div>
-        <button class="kf-sp-close" id="sp-close">Kapat ✕</button>
+        <button class="kf-sp-close sp-close">Kapat ✕</button>
       </div>
 
       <div class="kf-trio">
@@ -1297,8 +1401,11 @@
     </button>
     <button class="kf-rail-item" data-target="konferans-2">
       <span class="ri-name">II. İÜ Evrim Konferansı</span>
-      <span class="ri-sub">Çok Yakında</span>
+      <span class="ri-sub">7 Kasım 2026</span>
     </button>
+    <div class="kf-rail-kids" data-for="konferans-2">
+      <button class="kf-rail-kid" data-target="konusmacilar-2">Konuşmalar ve Konuşmacılar</button>
+    </div>
     <button class="kf-rail-item" data-target="konferans-1">
       <span class="ri-name">I. İÜ Evrim Konferansı</span>
       <span class="ri-sub">9 Mayıs 2026</span>
@@ -1337,6 +1444,36 @@
 <script>
   /* ══ Konuşmacı verisi ══ */
   const SPEAKERS = {
+    /* II. İÜ Evrim Konferansı — 7 Kasım 2026 (metinler konferans tasarımından) */
+    karagol: {
+      role: 'MIT McGovern Institute · Doktora Sonrası Araştırmacı',
+      name: 'Dr. Taner Karagöl',
+      topic: 'Yapay Zeka Çağında Evrimsel Çıkarım: AlphaFold\'dan Protein Mühendisliğine',
+      img: '/images/konferans/2026-kasim/portre-karagol.webp',
+      bio: 'Tıp Doktoru &amp; Araştırmacı | MIT McGovern Institute, Doktora Sonrası Araştırmacı.<br><br>Yolculuğu, İstanbul Tıp Fakültesi’nde öğrenciyken pandemide AlphaFold’u kendi kendine öğrenmesiyle başladı. Bu hikâye, Nobel ödüllü Demis Hassabis ve John Jumper imzalı Google DeepMind yazısı “AlphaFold: Five Years of Impact”te yer aldı.<br><br>Bugün hücrenin içinde belirli bir proteini tespit edebilen protein çiftleri tasarlıyor. MIT McGovern Institute’taki bu projesi Anthropic’in AI for Science programı tarafından destekleniyor. 2022\'den bu yana MIT Media Lab’de Prof. Shuguang Zhang’ın Laboratory of Molecular Architecture ekibiyle çalışıyor. Bu ekipte nörotransmitter taşıyıcılarının izoformlarını, evrimsel profillerini ve yapılarını inceliyor; moleküler süreçlere oyun teorisini uyguluyor.<br><br>Hekim-bilim insanı bakışıyla atom düzeyindeki protein dinamiklerini klinik sonuçlarla buluşturmayı hedefliyor. UCL Structural Immunology Group’ta pıhtılaşma faktörlerindeki genetik varyantlar ve hastalık evrimi üzerine çalıştı. Harvard ve King’s College London’da klinik eğitim aldı. <em>Pharmaceutical Research</em> (2024 kapak makalesi), <em>PLoS ONE</em> ve <em>Journal of Molecular Evolution</em>’da ilk isim yazarı olarak yayınları ve 5 patent başvurusu var. Çalışmalarını SfN Neuroscience, European Human Genetics Conference ve Nature konferanslarında sundu.'
+    },
+    onal: {
+      role: 'Bilkent Üniversitesi · Doktor Öğretim Üyesi',
+      name: 'Dr. Öğr. Üyesi Pınar Önal',
+      topic: 'Fenotipik Varyasyonun Gelişimi ve Evriminde Transkripsiyonel Regülasyonun Rolü',
+      img: '/images/konferans/2026-kasim/portre-onal.webp',
+      bio: 'Gelişim biyolojisi, genetik ve moleküler çözümler üzerine çalışan bilim insanı Dr. Pınar Önal, lisans öğrenimini Orta Doğu Teknik Üniversitesi Moleküler Biyoloji ve Genetik Bölümünde (2000-2005) tamamlamış, yüksek lisans derecesini ise Sabancı Üniversitesi Biyolojik Bilimler alanında (2005-2007) almıştır. Doktora çalışmalarını Almanya\'daki Max-Delbrück Center bünyesinde (2009-2013) yürütmüştür.<br><br>Araştırma ve çalışma yaşamı boyunca 3 kıta, 4 ülke ve 6 kentte (İstanbul, Berlin ve New York dahil) 15 yılı aşkın bilimsellik deneyimi edinen Önal; doktora sonrası araştırmacı olarak ABD\'deki New York University (2014-2021) ve Northwestern University (2021-2022) bünyesinde görev yapmıştır. Eylül 2022\'den bu yana Bilkent Üniversitesi bünyesinde Doktor Öğretim Üyesi olarak akademik çalışmalarını ve araştırmalarını sürdürmektedir.'
+    },
+    yilmaz: {
+      role: 'Kadir Has Üniversitesi · Psikoloji Bölümü',
+      name: 'Prof. Dr. Onurcan Yılmaz',
+      topic: 'İnsan Doğası Üzerine: Ahlaktan İşbirliğine, İnançtan Özgürlüğe',
+      img: '/images/konferans/2026-kasim/portre-yilmaz.webp',
+      bio: 'Lisans eğitimini Yeditepe Üniversitesi Psikoloji Bölümünde, yüksek lisans eğitimlerini Boğaziçi Üniversitesi ve İstanbul Üniversitesinde, doktorasını ise İstanbul Üniversitesi Psikoloji Bölümünde tamamlamıştır. Nottingham (CeDEx) ve Queensland üniversitelerinde misafir araştırmacı olarak bulunmuştur. Akademik kariyerine Doğuş Üniversitesinde araştırma görevlisi olarak başlayan Yılmaz, Kadir Has Üniversitesi Psikoloji Bölümünde profesör olarak görev yapmakta ve kurucusu olduğu MINT Lab’ın (Ahlaki Sezgiler Laboratuvarı) direktörlüğünü yürütmektedir.<br><br>Sosyal psikoloji, bilişsel bilim ve evrimsel psikolojiyi harmanlayarak ahlak, inanç sistemleri, komplo teorileri ve insan iş birliği üzerine araştırmalar yürüten Yılmaz; <em>Nature Human Behaviour</em> ve <em>PNAS</em> gibi prestijli dergilerde makaleler yayımlamış, <em>Komplo Teorilerine Neden İnanırız?</em> <em>Sağcılığın Ve Solculuğun Psikolojisi</em> gibi bilim kitaplarına imza atmıştır. Ayrıca TÜBİTAK Teşvik, TÜBA-GEBİP, BAGEP ve Sakıp Sabancı Uluslararası Araştırma Ödülleri sahibidir.'
+    },
+    kosemen: {
+      role: 'Araştırmacı, Tasarımcı ve Yazar',
+      name: 'C. M. Kösemen',
+      topic: 'All Tomorrows, Bilim Kurgu, Spekülatif Evrim ve Doğal Tarih',
+      img: '/images/konferans/2026-kasim/portre-kosemen.webp',
+      bio: 'Cevdet Mehmet Kösemen; Cornell University, Goldsmiths University of London (Dijital İletişim ve Medya Yüksek Lisansı - Yüksek Onur) ve Sabancı Üniversitesi (Görsel İletişim Tasarımı) bünyesindeki eğitim geçmişiyle, İngilizce metin yazarlığı, içerik üretimi, editörlük ve çeviri alanlarında 20 yılı aşkın mesleki deneyime sahip araştırmacı, tasarımcı ve yazardır.<br><br>2012 yılından bu yana bağımsız (freelance) sanatçı ve araştırmacı olarak Irregular Books bünyesinde tarih, bilim ve görsel sanatlar alanlarında yayınlar hazırlayan Kösemen; Libra Books bünyesinde kitap kapağı tasarımı, İstanbul Araştırmaları Enstitüsü ve Pera Müzesinde İngilizce editörlük ve çevirmenlik, Alametifarika reklam ajansında dil uzmanı ve metin yazarlığı gibi çeşitli görevlerde bulunmuştur. Halen Ünite İletişim bünyesinde Editör ve Kreatif Katkı Sorumlusu (Editor and Creative Contributor) olarak metin yazarlığı ve içerik süreçlerini yürütmeye devam etmektedir.'
+    },
+    /* I. İÜ Evrim Konferansı — 9 Mayıs 2026 */
     bona: {
       role: 'Açılış Konuşması',
       name: 'Prof. Dr. Mehmet Bona',
@@ -1463,6 +1600,7 @@
     const barItems = [
       { target: 'nedir',        label: 'Nedir?' },
       { target: 'konferans-2',  label: 'II. Evrim Konferansı' },
+      { target: 'konusmacilar-2', label: 'Konuşmalar' },
       { target: 'konferans-1',  label: 'I. Evrim Konferansı' },
       { target: 'program',      label: 'Program', child: true },
       { target: 'konusmacilar', label: 'Konuşmacılar', child: true },
@@ -1535,16 +1673,19 @@
     row.lastElementChild.appendChild(a);
   });
 
-  /* ══ Konuşmacı paneli ══ */
-  (function () {
-    const panel  = document.getElementById('kf-sp-panel');
-    const elImg  = document.getElementById('sp-img');
-    const elRole = document.getElementById('sp-role');
-    const elName = document.getElementById('sp-name');
-    const elTop  = document.getElementById('sp-topic');
-    const elBio  = document.getElementById('sp-bio');
-    const elLink = document.getElementById('sp-links');
-    const tiles  = [...document.querySelectorAll('.kf-sp-tile')];
+  /* ══ Konuşmacı paneli ══
+     Her konferans bölümünün kendi paneli var; döşemeler ve program satırları
+     yalnızca kendi bölümlerindeki paneli açar. */
+  document.querySelectorAll('.kf-sp-panel').forEach(panel => {
+    const scope  = panel.closest('section');
+    const $      = sel => panel.querySelector(sel);
+    const elImg  = $('.sp-img');
+    const elRole = $('.sp-role');
+    const elName = $('.sp-name');
+    const elTop  = $('.sp-topic');
+    const elBio  = $('.sp-bio');
+    const elLink = $('.sp-links');
+    const tiles  = [...scope.querySelectorAll('.kf-sp-tile')];
     let current = null;
 
     function open(key, scroll) {
@@ -1576,7 +1717,7 @@
 
     /* Dar ekranda uzun biyografiler kirpilir; buton tam metni acar.
        Kisa metinlerde (or. acilis konusmasi) buton hic gorunmez. */
-    const more = document.getElementById('sp-more');
+    const more = $('.sp-more');
     const dar  = window.matchMedia('(max-width: 768px)');
     function syncClamp() {
       const uzun = dar.matches && elBio.textContent.trim().length > 320;
@@ -1596,10 +1737,10 @@
     tiles.forEach(t => t.addEventListener('click', () => {
       if (t.dataset.speaker === current) close(); else open(t.dataset.speaker, false);
     }));
-    document.querySelectorAll('.kf-prog-who').forEach(b =>
+    scope.querySelectorAll('.kf-prog-who').forEach(b =>
       b.addEventListener('click', () => open(b.dataset.speaker, true)));
-    document.getElementById('sp-close').addEventListener('click', close);
-  })();
+    $('.sp-close').addEventListener('click', close);
+  });
 
 </script>
 </body>
